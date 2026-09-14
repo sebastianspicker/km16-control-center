@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; connect-src 'self'; img-src 'self'; base-uri 'none'; object-src 'none'; form-action 'none'">
+    <meta name="description" content="Explore KM16 Control Center: sixteen factory workspaces, sixteen keys, and three dials in a local browser simulation.">
+    <title>KM16 Control Center · Interactive demo</title>
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="./styles.css">
+    <script src="./app.js" defer>
+    </script>
+  </head>
+  <body>
+    <header class="demo-header">
+      <a class="wordmark" href="./">KM16 <span>Control Center</span>
+      </a>
+      <span class="demo-badge">Interactive demo</span>
+    </header>
+    <div class="intro">
+      <div>
+        <p class="eyebrow">16 FACTORY PRESETS · 16 KEYS · 3 DIALS</p>
+        <h1>Explore KM16 Control Center.</h1>
+      </div>
+      <p>Choose a preset, inspect an assignment, and preview it locally.<br>This browser simulation never controls hardware or runs desktop actions.</p>
+    </div>
+    <div class="app-window">
+      <header class="toolbar">
+        <div class="traffic-lights" aria-hidden="true">
+          <i>
+          </i>
+          <i>
+          </i>
+          <i>
+          </i>
+        </div>
+        <span>KM16 Control Center</span>
+        <div class="toolbar-actions">
+          <button id="library-toggle" aria-expanded="false" aria-controls="sidebar">Presets</button>
+          <button id="reset" disabled>Reset demo</button>
+        </div>
+      </header>
+      <div id="load-state" role="status" class="load-state">Loading factory presets…</div>
+      <div id="app" class="app-layout" hidden>
+        <aside id="sidebar" class="sidebar">
+          <div class="brand">
+            <span aria-hidden="true">▦</span>
+            <div>
+              <strong>KM16</strong>
+              <small>Control Center</small>
+            </div>
+          </div>
+          <label class="search-label" for="search">Preset library <span id="profile-count">
+          </span>
+        </label>
+        <input id="search" type="search" placeholder="Search presets" autocomplete="off">
+        <nav id="profiles" aria-label="Factory presets">
+        </nav>
+        <p class="sidebar-note">Factory presets<br>
+          <span>All keys and dials assigned.</span>
+        </p>
+      </aside>
+      <main class="workspace">
+        <div class="workspace-heading">
+          <p class="eyebrow">WORKSPACE</p>
+          <span class="local-badge">○ Browser simulation</span>
+        </div>
+        <h2 id="profile-name">
+        </h2>
+        <p id="profile-summary" class="profile-summary">
+        </p>
+        <div class="device">
+          <div class="device-heading">
+            <span>KM16 PRO</span>
+            <span aria-hidden="true">•••</span>
+          </div>
+          <div class="device-controls">
+            <div id="keys" class="keys" role="group" aria-label="Sixteen keys">
+            </div>
+            <div id="dials" class="dials" role="group" aria-label="Three rotary encoders">
+            </div>
+          </div>
+        </div>
+        <p class="workspace-hint">
+          <span>↖ Select a control to edit its action</span>
+          <span>16 keys · 3 dials</span>
+        </p>
+        <section class="activity" aria-labelledby="activity-title">
+          <div class="activity-heading">
+            <h3 id="activity-title">Preview activity</h3>
+            <span>Local only</span>
+          </div>
+          <div id="activity" role="status" aria-live="polite">
+            <p class="empty-activity">Your previews will appear here. Nothing is sent or executed.</p>
+          </div>
+        </section>
+      </main>
+      <aside class="inspector" aria-label="Assignment inspector">
+        <p class="eyebrow">ASSIGNMENT</p>
+        <div class="assignment-heading">
+          <span id="action-icon" class="action-icon" aria-hidden="true">
+          </span>
+          <div>
+            <h3 id="control-name">
+            </h3>
+            <p id="kind-name">
+            </p>
+          </div>
+        </div>
+        <label for="action-name">Action name</label>
+        <input id="action-name" class="name-input" maxlength="100">
+        <p id="action-detail" class="action-detail">
+        </p>
+        <hr>
+        <h3>Action</h3>
+        <div class="field">
+          <span class="field-label">Action type</span>
+          <p id="action-type" class="type-value">
+          </p>
+        </div>
+        <div id="shortcut-preview" class="shortcut-preview" aria-hidden="true">
+        </div>
+        <label id="payload-label" for="payload">Payload</label>
+        <textarea id="payload" rows="4" spellcheck="false" maxlength="12000">
+        </textarea>
+        <p id="payload-help" class="field-help">Changes stay in memory until you reset or reload.</p>
+        <div id="target-section" class="field">
+          <span class="field-label">Destination in the desktop app</span>
+          <p id="target" class="destination">
+          </p>
+        </div>
+        <button id="preview" class="preview-button">▷ <span>Preview action</span>
+        </button>
+        <p class="simulation-note">Preview records this assignment here. It does not run shortcuts, commands, integrations, or profile switches.</p>
+        <p id="edit-status" class="edit-status" role="status">
+        </p>
+      </aside>
+    </div>
+    <footer class="statusbar">
+      <span>
+        <i>
+        </i> Simulation only</span>
+        <span>Edits stay in this tab · Reset restores factory presets</span>
+      </footer>
+    </div>
+    <footer class="page-footer">A browser tour of KM16 Control Center. The native macOS app supports desktop actions, service connections, and saved profiles.</footer>
+  </body>
+</html>

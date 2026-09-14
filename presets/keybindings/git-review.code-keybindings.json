@@ -1,0 +1,21 @@
+[
+  { "key": "ctrl+alt+shift+1", "command": "git.openAllChanges" },
+  { "key": "ctrl+alt+shift+2", "command": "git.viewChanges" },
+  { "key": "ctrl+alt+shift+3", "command": "git.viewStagedChanges" },
+  { "key": "ctrl+alt+shift+4", "command": "git.viewUntrackedChanges" },
+  { "key": "ctrl+alt+shift+5", "command": "git.showOutput" },
+  { "key": "ctrl+alt+shift+6", "command": "git.stageSelectedRanges" },
+  { "key": "ctrl+alt+shift+7", "command": "git.unstageSelectedRanges" },
+  { "key": "ctrl+alt+shift+8", "command": "git.stage" },
+  { "key": "ctrl+alt+shift+9", "command": "git.unstage" },
+  { "key": "ctrl+alt+shift+0", "command": "git.stageAll" },
+  { "key": "ctrl+alt+shift+a", "command": "git.unstageAll" },
+  { "key": "ctrl+alt+shift+b", "command": "git.fetch" },
+  { "key": "ctrl+alt+shift+c", "command": "git.pull" },
+  { "key": "ctrl+alt+shift+d", "command": "git.push" },
+  { "key": "ctrl+alt+shift+e", "command": "git.viewCommit" },
+  { "key": "ctrl+alt+shift+f", "command": "workbench.action.compareEditor.previousChange", "when": "isInDiffEditor" },
+  { "key": "ctrl+alt+shift+g", "command": "workbench.action.compareEditor.nextChange", "when": "isInDiffEditor" },
+  { "key": "ctrl+alt+shift+h", "command": "git.openChange" },
+  { "key": "ctrl+alt+shift+i", "command": "git.openFile" }
+]

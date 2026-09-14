@@ -1,0 +1,242 @@
+{
+  "activeProfileID" : "A0A9D0E6-00A7-4B50-B4DB-2C7D1007C5A4",
+  "profiles" : [
+    {
+      "bindings" : [
+        {
+          "action" : {
+            "detail" : "Start a new task in the current agent workspace.",
+            "kind" : "agentAction",
+            "label" : "New task",
+            "parameter" : "new-task"
+          },
+          "controlID" : "key-0-0"
+        },
+        {
+          "action" : {
+            "detail" : "Ask the agent to review the current changes.",
+            "kind" : "agentAction",
+            "label" : "Review changes",
+            "parameter" : "review-changes"
+          },
+          "controlID" : "key-0-1"
+        },
+        {
+          "action" : {
+            "detail" : "Ask the agent to run the relevant test suite.",
+            "kind" : "agentAction",
+            "label" : "Run tests",
+            "parameter" : "run-tests"
+          },
+          "controlID" : "key-0-2"
+        },
+        {
+          "action" : {
+            "detail" : "Explain the selected code or text.",
+            "kind" : "agentAction",
+            "label" : "Explain selection",
+            "parameter" : "explain-selection"
+          },
+          "controlID" : "key-0-3"
+        },
+        {
+          "action" : {
+            "detail" : "Stop the current agent task.",
+            "kind" : "agentAction",
+            "label" : "Stop task",
+            "parameter" : "stop-current-task"
+          },
+          "controlID" : "key-1-0"
+        },
+        {
+          "action" : {
+            "detail" : "Summarize the current working context.",
+            "kind" : "agentAction",
+            "label" : "Summarize context",
+            "parameter" : "summarize-context"
+          },
+          "controlID" : "key-1-1"
+        },
+        {
+          "action" : {
+            "detail" : "Draft a commit message from the current changes.",
+            "kind" : "agentAction",
+            "label" : "Draft commit",
+            "parameter" : "draft-commit"
+          },
+          "controlID" : "key-1-2"
+        },
+        {
+          "action" : {
+            "detail" : "Run a focused regression review.",
+            "kind" : "agentAction",
+            "label" : "Find regressions",
+            "parameter" : "prompt:Review the current changes for concrete regressions."
+          },
+          "controlID" : "key-1-3"
+        },
+        {
+          "action" : {
+            "detail" : "Analyze the latest visible failure.",
+            "kind" : "agentAction",
+            "label" : "Explain failure",
+            "parameter" : "prompt:Explain the latest failure and identify its root cause."
+          },
+          "controlID" : "key-2-0"
+        },
+        {
+          "action" : {
+            "detail" : "Plan a bounded follow-up change.",
+            "kind" : "agentAction",
+            "label" : "Plan next step",
+            "parameter" : "prompt:Propose the smallest useful next implementation step."
+          },
+          "controlID" : "key-2-1"
+        },
+        {
+          "action" : {
+            "detail" : "Review the current implementation's edge cases.",
+            "kind" : "agentAction",
+            "label" : "Check edge cases",
+            "parameter" : "prompt:Check this implementation for missing edge cases."
+          },
+          "controlID" : "key-2-2"
+        },
+        {
+          "action" : {
+            "detail" : "Review identifiers for clarity.",
+            "kind" : "agentAction",
+            "label" : "Improve names",
+            "parameter" : "prompt:Suggest clearer names without changing behavior."
+          },
+          "controlID" : "key-2-3"
+        },
+        {
+          "action" : {
+            "detail" : "Prepare a concise reviewer-facing summary.",
+            "kind" : "agentAction",
+            "label" : "Summarize diff",
+            "parameter" : "prompt:Summarize the current diff for a reviewer."
+          },
+          "controlID" : "key-3-0"
+        },
+        {
+          "action" : {
+            "detail" : "Compare nearby documentation with current behavior.",
+            "kind" : "agentAction",
+            "label" : "Check docs",
+            "parameter" : "prompt:Check whether the documentation matches the implementation."
+          },
+          "controlID" : "key-3-1"
+        },
+        {
+          "action" : {
+            "detail" : "Prepare a task handoff.",
+            "kind" : "agentAction",
+            "label" : "Write handoff",
+            "parameter" : "prompt:Draft a concise implementation handoff with checks and risks."
+          },
+          "controlID" : "key-3-2"
+        },
+        {
+          "action" : {
+            "detail" : "Surface the most consequential open question.",
+            "kind" : "agentAction",
+            "label" : "Ask one question",
+            "parameter" : "prompt:Identify the single question that most affects correctness."
+          },
+          "controlID" : "key-3-3"
+        },
+        {
+          "action" : {
+            "detail" : "Select the previous task.",
+            "kind" : "agentAction",
+            "label" : "Previous task",
+            "parameter" : "previous-task"
+          },
+          "controlID" : "encoder-0-ccw"
+        },
+        {
+          "action" : {
+            "detail" : "Select the next task.",
+            "kind" : "agentAction",
+            "label" : "Next task",
+            "parameter" : "next-task"
+          },
+          "controlID" : "encoder-0-cw"
+        },
+        {
+          "action" : {
+            "detail" : "Open the selected task.",
+            "kind" : "agentAction",
+            "label" : "Open task",
+            "parameter" : "open-task"
+          },
+          "controlID" : "encoder-0-press"
+        },
+        {
+          "action" : {
+            "detail" : "Select the previous changed file.",
+            "kind" : "agentAction",
+            "label" : "Previous changed file",
+            "parameter" : "previous-changed-file"
+          },
+          "controlID" : "encoder-1-ccw"
+        },
+        {
+          "action" : {
+            "detail" : "Select the next changed file.",
+            "kind" : "agentAction",
+            "label" : "Next changed file",
+            "parameter" : "next-changed-file"
+          },
+          "controlID" : "encoder-1-cw"
+        },
+        {
+          "action" : {
+            "detail" : "Open the diff for the selected changed file.",
+            "kind" : "agentAction",
+            "label" : "Open diff",
+            "parameter" : "open-diff"
+          },
+          "controlID" : "encoder-1-press"
+        },
+        {
+          "action" : {
+            "detail" : "Scroll the agent view upward.",
+            "kind" : "agentAction",
+            "label" : "Scroll up",
+            "parameter" : "scroll-up"
+          },
+          "controlID" : "encoder-2-ccw"
+        },
+        {
+          "action" : {
+            "detail" : "Scroll the agent view downward.",
+            "kind" : "agentAction",
+            "label" : "Scroll down",
+            "parameter" : "scroll-down"
+          },
+          "controlID" : "encoder-2-cw"
+        },
+        {
+          "action" : {
+            "detail" : "Switch to the Desktop preset.",
+            "kind" : "profileSwitch",
+            "label" : "Desktop",
+            "parameter" : "desktop"
+          },
+          "controlID" : "encoder-2-press"
+        }
+      ],
+      "id" : "A0A9D0E6-00A7-4B50-B4DB-2C7D1007C5A4",
+      "matchingBundleIDs" : [
+
+      ],
+      "name" : "Agent Deck",
+      "presetID" : "agent-deck",
+      "summary" : "Codex task, review, test, navigation, and reusable prompt controls."
+    }
+  ],
+  "schemaVersion" : 2
+}

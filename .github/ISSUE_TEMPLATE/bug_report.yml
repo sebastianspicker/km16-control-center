@@ -1,0 +1,46 @@
+name: Bug report
+description: Report reproducible behavior that is not working as expected.
+title: "[Bug] "
+body:
+  - type: markdown
+    attributes:
+      value: Do not attach raw firmware, device captures, credentials, signing files, or private logs. Reduce evidence to a synthetic example and remove personal data.
+  - type: textarea
+    id: behavior
+    attributes:
+      label: Observed and expected behavior
+      description: Describe what happened and what you expected instead.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: Give the smallest repeatable sequence, including commands when relevant.
+      placeholder: |
+        1. Run ...
+        2. Select ...
+        3. Observe ...
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Include the macOS version, project revision, and relevant tool or app versions.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Sanitized evidence
+      description: Add minimal logs or screenshots only after removing secrets, personal data, and private research material.
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Before submitting
+      options:
+        - label: I searched existing issues for this behavior.
+          required: true
+        - label: This report contains no raw firmware, device captures, credentials, signing files, or private logs.
+          required: true

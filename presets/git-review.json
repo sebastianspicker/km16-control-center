@@ -1,0 +1,267 @@
+{
+  "activeProfileID" : "BFE1910C-C69B-4A51-9E50-C6F7760D16C8",
+  "profiles" : [
+    {
+      "bindings" : [
+        {
+          "action" : {
+            "detail" : "Open VS Code's Source Control view.",
+            "kind" : "shortcut",
+            "label" : "Source Control",
+            "parameter" : "ctrl+shift+g",
+            "targetBundleID" : "com.microsoft.VSCode"
+          },
+          "controlID" : "key-0-0"
+        },
+        {
+          "action" : {
+            "detail" : "Open every working-tree change in VS Code's multi-diff editor; requires the supplied keybinding.",
+            "kind" : "shortcut",
+            "label" : "Open all changes",
+            "parameter" : "ctrl+alt+shift+1",
+            "targetBundleID" : "com.microsoft.VSCode"
+          },
+          "controlID" : "key-0-1"
+        },
+        {
+          "action" : {
+            "detail" : "Open the current repository's unstaged changes; requires the supplied keybinding.",
+            "kind" : "shortcut",
+            "label" : "View unstaged changes",
+            "parameter" : "ctrl+alt+shift+2",
+            "targetBundleID" : "com.microsoft.VSCode"
+          },
+          "controlID" : "key-0-2"
+        },
+        {
+          "action" : {
+            "detail" : "Open the current repository's staged changes; requires the supplied keybinding.",
+            "kind" : "shortcut",
+            "label" : "View staged changes",
+            "parameter" : "ctrl+alt+shift+3",
+            "targetBundleID" : "com.microsoft.VSCode"
+          },
+          "controlID" : "key-0-3"
+        },
+        {
+          "action" : {
+            "detail" : "Open the current repository's untracked files; requires the supplied keybinding.",
+            "kind" : "shortcut",
+            "label" : "View untracked changes",
+            "parameter" : "ctrl+alt+shift+4",
+            "targetBundleID" : "com.microsoft.VSCode"
+          },
+          "controlID" : "key-1-0"
+        },
+        {
+          "action" : {
+            "detail" : "Show the Git output channel for diagnostics; requires the supplied keybinding.",
+            "kind" : "shortcut",
+            "label" : "Git output",
+            "parameter" : "ctrl+alt+shift+5",
+            "targetBundleID" : "com.microsoft.VSCode"
+          },
+          "controlID" : "key-1-1"
+        },
+        {
+          "action" : {
+            "detail" : "Stage the selected ranges in an active Git diff editor; requires the supplied keybinding.",
+            "kind" : "shortcut",
+            "label" : "Stage selected ranges",
+            "parameter" : "ctrl+alt+shift+6",
+            "targetBundleID" : "com.microsoft.VSCode"
+          },
+          "controlID" : "key-1-2"
+        },
+        {
+          "action" : {
+            "detail" : "Unstage the selected ranges in an active Git diff editor; requires the supplied keybinding.",
+            "kind" : "shortcut",
+            "label" : "Unstage selected ranges",
+            "parameter" : "ctrl+alt+shift+7",
+            "targetBundleID" : "com.microsoft.VSCode"
+          },
+          "controlID" : "key-1-3"
+        },
+        {
+          "action" : {
+            "detail" : "Stage the selected Source Control resource; requires the supplied keybinding.",
+            "kind" : "shortcut",
+            "label" : "Stage selected item",
+            "parameter" : "ctrl+alt+shift+8",
+            "targetBundleID" : "com.microsoft.VSCode"
+          },
+          "controlID" : "key-2-0"
+        },
+        {
+          "action" : {
+            "detail" : "Unstage the selected Source Control resource; requires the supplied keybinding.",
+            "kind" : "shortcut",
+            "label" : "Unstage selected item",
+            "parameter" : "ctrl+alt+shift+9",
+            "targetBundleID" : "com.microsoft.VSCode"
+          },
+          "controlID" : "key-2-1"
+        },
+        {
+          "action" : {
+            "detail" : "Stage all changes in the chosen repository; requires the supplied keybinding.",
+            "kind" : "shortcut",
+            "label" : "Stage all",
+            "parameter" : "ctrl+alt+shift+0",
+            "targetBundleID" : "com.microsoft.VSCode"
+          },
+          "controlID" : "key-2-2"
+        },
+        {
+          "action" : {
+            "detail" : "Unstage all changes in the chosen repository; requires the supplied keybinding.",
+            "kind" : "shortcut",
+            "label" : "Unstage all",
+            "parameter" : "ctrl+alt+shift+a",
+            "targetBundleID" : "com.microsoft.VSCode"
+          },
+          "controlID" : "key-2-3"
+        },
+        {
+          "action" : {
+            "detail" : "Fetch remote refs for the chosen repository without merging; requires the supplied keybinding.",
+            "kind" : "shortcut",
+            "label" : "Fetch",
+            "parameter" : "ctrl+alt+shift+b",
+            "targetBundleID" : "com.microsoft.VSCode"
+          },
+          "controlID" : "key-3-0"
+        },
+        {
+          "action" : {
+            "detail" : "Pull the upstream branch for the chosen repository; requires the supplied keybinding.",
+            "kind" : "shortcut",
+            "label" : "Pull",
+            "parameter" : "ctrl+alt+shift+c",
+            "targetBundleID" : "com.microsoft.VSCode"
+          },
+          "controlID" : "key-3-1"
+        },
+        {
+          "action" : {
+            "detail" : "Push the current branch to its configured upstream; requires the supplied keybinding.",
+            "kind" : "shortcut",
+            "label" : "Push",
+            "parameter" : "ctrl+alt+shift+d",
+            "targetBundleID" : "com.microsoft.VSCode"
+          },
+          "controlID" : "key-3-2"
+        },
+        {
+          "action" : {
+            "detail" : "Choose a commit and open its changes in VS Code; requires the supplied keybinding.",
+            "kind" : "shortcut",
+            "label" : "View commit",
+            "parameter" : "ctrl+alt+shift+e",
+            "targetBundleID" : "com.microsoft.VSCode"
+          },
+          "controlID" : "key-3-3"
+        },
+        {
+          "action" : {
+            "detail" : "Move to the previous change in the active VS Code diff editor; requires the supplied keybinding.",
+            "kind" : "shortcut",
+            "label" : "Previous change",
+            "parameter" : "ctrl+alt+shift+f",
+            "targetBundleID" : "com.microsoft.VSCode"
+          },
+          "controlID" : "encoder-0-ccw"
+        },
+        {
+          "action" : {
+            "detail" : "Move to the next change in the active VS Code diff editor; requires the supplied keybinding.",
+            "kind" : "shortcut",
+            "label" : "Next change",
+            "parameter" : "ctrl+alt+shift+g",
+            "targetBundleID" : "com.microsoft.VSCode"
+          },
+          "controlID" : "encoder-0-cw"
+        },
+        {
+          "action" : {
+            "detail" : "Open the selected Source Control resource as a diff; requires the supplied keybinding.",
+            "kind" : "shortcut",
+            "label" : "Open selected diff",
+            "parameter" : "ctrl+alt+shift+h",
+            "targetBundleID" : "com.microsoft.VSCode"
+          },
+          "controlID" : "encoder-0-press"
+        },
+        {
+          "action" : {
+            "detail" : "Select the previous open VS Code editor.",
+            "kind" : "shortcut",
+            "label" : "Previous editor",
+            "parameter" : "ctrl+shift+tab",
+            "targetBundleID" : "com.microsoft.VSCode"
+          },
+          "controlID" : "encoder-1-ccw"
+        },
+        {
+          "action" : {
+            "detail" : "Select the next open VS Code editor.",
+            "kind" : "shortcut",
+            "label" : "Next editor",
+            "parameter" : "ctrl+tab",
+            "targetBundleID" : "com.microsoft.VSCode"
+          },
+          "controlID" : "encoder-1-cw"
+        },
+        {
+          "action" : {
+            "detail" : "Focus VS Code's Source Control view.",
+            "kind" : "shortcut",
+            "label" : "Focus Source Control",
+            "parameter" : "ctrl+shift+g",
+            "targetBundleID" : "com.microsoft.VSCode"
+          },
+          "controlID" : "encoder-1-press"
+        },
+        {
+          "action" : {
+            "detail" : "Scroll the active VS Code review surface upward.",
+            "kind" : "system",
+            "label" : "Scroll review up",
+            "parameter" : "scrollUp",
+            "targetBundleID" : "com.microsoft.VSCode"
+          },
+          "controlID" : "encoder-2-ccw"
+        },
+        {
+          "action" : {
+            "detail" : "Scroll the active VS Code review surface downward.",
+            "kind" : "system",
+            "label" : "Scroll review down",
+            "parameter" : "scrollDown",
+            "targetBundleID" : "com.microsoft.VSCode"
+          },
+          "controlID" : "encoder-2-cw"
+        },
+        {
+          "action" : {
+            "detail" : "Open the working-tree version of the selected Source Control resource; requires the supplied keybinding.",
+            "kind" : "shortcut",
+            "label" : "Open working file",
+            "parameter" : "ctrl+alt+shift+i",
+            "targetBundleID" : "com.microsoft.VSCode"
+          },
+          "controlID" : "encoder-2-press"
+        }
+      ],
+      "id" : "BFE1910C-C69B-4A51-9E50-C6F7760D16C8",
+      "matchingBundleIDs" : [
+
+      ],
+      "name" : "Git Review",
+      "presetID" : "git-review",
+      "summary" : "Visual Studio Code source-control review, staging, history, and remote controls."
+    }
+  ],
+  "schemaVersion" : 2
+}

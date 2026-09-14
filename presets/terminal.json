@@ -1,0 +1,266 @@
+{
+  "activeProfileID" : "8E25FD73-31E9-4B2E-992E-23AB9F21F8B4",
+  "profiles" : [
+    {
+      "bindings" : [
+        {
+          "action" : {
+            "detail" : "Bring Apple Terminal to the foreground.",
+            "kind" : "launchApp",
+            "label" : "Open Terminal",
+            "parameter" : "com.apple.Terminal"
+          },
+          "controlID" : "key-0-0"
+        },
+        {
+          "action" : {
+            "detail" : "Open a new Terminal window with the default profile.",
+            "kind" : "shortcut",
+            "label" : "New window",
+            "parameter" : "cmd+n",
+            "targetBundleID" : "com.apple.Terminal"
+          },
+          "controlID" : "key-0-1"
+        },
+        {
+          "action" : {
+            "detail" : "Open a new tab in the active Terminal window.",
+            "kind" : "shortcut",
+            "label" : "New tab",
+            "parameter" : "cmd+t",
+            "targetBundleID" : "com.apple.Terminal"
+          },
+          "controlID" : "key-0-2"
+        },
+        {
+          "action" : {
+            "detail" : "Split the active Terminal tab into two panes.",
+            "kind" : "shortcut",
+            "label" : "Split pane",
+            "parameter" : "cmd+d",
+            "targetBundleID" : "com.apple.Terminal"
+          },
+          "controlID" : "key-0-3"
+        },
+        {
+          "action" : {
+            "detail" : "Close the active split pane without closing the tab.",
+            "kind" : "shortcut",
+            "label" : "Close split pane",
+            "parameter" : "shift+cmd+d",
+            "targetBundleID" : "com.apple.Terminal"
+          },
+          "controlID" : "key-1-0"
+        },
+        {
+          "action" : {
+            "detail" : "Open Terminal's text search bar.",
+            "kind" : "shortcut",
+            "label" : "Find",
+            "parameter" : "cmd+f",
+            "targetBundleID" : "com.apple.Terminal"
+          },
+          "controlID" : "key-1-1"
+        },
+        {
+          "action" : {
+            "detail" : "Clear Terminal output back to the start of the scrollback buffer.",
+            "kind" : "shortcut",
+            "label" : "Clear to start",
+            "parameter" : "cmd+k",
+            "targetBundleID" : "com.apple.Terminal"
+          },
+          "controlID" : "key-1-2"
+        },
+        {
+          "action" : {
+            "detail" : "Start the shell's reverse command-history search.",
+            "kind" : "shortcut",
+            "label" : "Reverse history search",
+            "parameter" : "ctrl+r",
+            "targetBundleID" : "com.apple.Terminal"
+          },
+          "controlID" : "key-1-3"
+        },
+        {
+          "action" : {
+            "detail" : "Insert a concise Git status command without sending Return.",
+            "kind" : "snippet",
+            "label" : "Git status",
+            "parameter" : "git status --short --branch",
+            "targetBundleID" : "com.apple.Terminal"
+          },
+          "controlID" : "key-2-0"
+        },
+        {
+          "action" : {
+            "detail" : "Insert a Git working-tree summary command without sending Return.",
+            "kind" : "snippet",
+            "label" : "Git diff summary",
+            "parameter" : "git diff --stat",
+            "targetBundleID" : "com.apple.Terminal"
+          },
+          "controlID" : "key-2-1"
+        },
+        {
+          "action" : {
+            "detail" : "Insert a compact recent-history command without sending Return.",
+            "kind" : "snippet",
+            "label" : "Recent commits",
+            "parameter" : "git log --oneline --decorate -20",
+            "targetBundleID" : "com.apple.Terminal"
+          },
+          "controlID" : "key-2-2"
+        },
+        {
+          "action" : {
+            "detail" : "Insert the command that prints the current directory without sending Return.",
+            "kind" : "snippet",
+            "label" : "Current directory",
+            "parameter" : "pwd",
+            "targetBundleID" : "com.apple.Terminal"
+          },
+          "controlID" : "key-2-3"
+        },
+        {
+          "action" : {
+            "detail" : "Insert a detailed directory listing command without sending Return.",
+            "kind" : "snippet",
+            "label" : "List files",
+            "parameter" : "ls -la",
+            "targetBundleID" : "com.apple.Terminal"
+          },
+          "controlID" : "key-3-0"
+        },
+        {
+          "action" : {
+            "detail" : "Insert a command that totals the current directory's disk usage without sending Return.",
+            "kind" : "snippet",
+            "label" : "Disk usage",
+            "parameter" : "du -sh .",
+            "targetBundleID" : "com.apple.Terminal"
+          },
+          "controlID" : "key-3-1"
+        },
+        {
+          "action" : {
+            "detail" : "Insert a command that lists local listening TCP sockets without sending Return.",
+            "kind" : "snippet",
+            "label" : "Listening ports",
+            "parameter" : "lsof -nP -iTCP -sTCP:LISTEN",
+            "targetBundleID" : "com.apple.Terminal"
+          },
+          "controlID" : "key-3-2"
+        },
+        {
+          "action" : {
+            "detail" : "Insert a portable process snapshot command without sending Return.",
+            "kind" : "snippet",
+            "label" : "Process snapshot",
+            "parameter" : "ps -axo pid,ppid,%cpu,%mem,command",
+            "targetBundleID" : "com.apple.Terminal"
+          },
+          "controlID" : "key-3-3"
+        },
+        {
+          "action" : {
+            "detail" : "Select the previous Terminal tab.",
+            "kind" : "shortcut",
+            "label" : "Previous tab",
+            "parameter" : "ctrl+shift+tab",
+            "targetBundleID" : "com.apple.Terminal"
+          },
+          "controlID" : "encoder-0-ccw"
+        },
+        {
+          "action" : {
+            "detail" : "Select the next Terminal tab.",
+            "kind" : "shortcut",
+            "label" : "Next tab",
+            "parameter" : "ctrl+tab",
+            "targetBundleID" : "com.apple.Terminal"
+          },
+          "controlID" : "encoder-0-cw"
+        },
+        {
+          "action" : {
+            "detail" : "Enter or leave Terminal's tab overview.",
+            "kind" : "shortcut",
+            "label" : "Show all tabs",
+            "parameter" : "shift+cmd+\\",
+            "targetBundleID" : "com.apple.Terminal"
+          },
+          "controlID" : "encoder-0-press"
+        },
+        {
+          "action" : {
+            "detail" : "Scroll the active Terminal pane upward by one line.",
+            "kind" : "shortcut",
+            "label" : "Scroll one line up",
+            "parameter" : "alt+cmd+pageup",
+            "targetBundleID" : "com.apple.Terminal"
+          },
+          "controlID" : "encoder-1-ccw"
+        },
+        {
+          "action" : {
+            "detail" : "Scroll the active Terminal pane downward by one line.",
+            "kind" : "shortcut",
+            "label" : "Scroll one line down",
+            "parameter" : "alt+cmd+pagedown",
+            "targetBundleID" : "com.apple.Terminal"
+          },
+          "controlID" : "encoder-1-cw"
+        },
+        {
+          "action" : {
+            "detail" : "Move the active Terminal pane to the bottom of its scrollback.",
+            "kind" : "shortcut",
+            "label" : "Scroll to bottom",
+            "parameter" : "cmd+end",
+            "targetBundleID" : "com.apple.Terminal"
+          },
+          "controlID" : "encoder-1-press"
+        },
+        {
+          "action" : {
+            "detail" : "Decrease Terminal's displayed font size.",
+            "kind" : "shortcut",
+            "label" : "Smaller text",
+            "parameter" : "cmd+minus",
+            "targetBundleID" : "com.apple.Terminal"
+          },
+          "controlID" : "encoder-2-ccw"
+        },
+        {
+          "action" : {
+            "detail" : "Increase Terminal's displayed font size.",
+            "kind" : "shortcut",
+            "label" : "Larger text",
+            "parameter" : "cmd+plus",
+            "targetBundleID" : "com.apple.Terminal"
+          },
+          "controlID" : "encoder-2-cw"
+        },
+        {
+          "action" : {
+            "detail" : "Show or hide the Terminal inspector for the active session.",
+            "kind" : "shortcut",
+            "label" : "Inspector",
+            "parameter" : "cmd+i",
+            "targetBundleID" : "com.apple.Terminal"
+          },
+          "controlID" : "encoder-2-press"
+        }
+      ],
+      "id" : "8E25FD73-31E9-4B2E-992E-23AB9F21F8B4",
+      "matchingBundleIDs" : [
+        "com.apple.Terminal"
+      ],
+      "name" : "Terminal",
+      "presetID" : "terminal",
+      "summary" : "Apple Terminal windows, tabs, panes, navigation, and inert command-line snippets."
+    }
+  ],
+  "schemaVersion" : 2
+}

@@ -1,0 +1,267 @@
+{
+  "activeProfileID" : "D341C844-69D3-49C2-92E8-A7F6014B6831",
+  "profiles" : [
+    {
+      "bindings" : [
+        {
+          "action" : {
+            "detail" : "Show the VS Code Command Palette.",
+            "kind" : "shortcut",
+            "label" : "Command palette",
+            "parameter" : "cmd+shift+p",
+            "targetBundleID" : "com.microsoft.VSCode"
+          },
+          "controlID" : "key-0-0"
+        },
+        {
+          "action" : {
+            "detail" : "Open a file by name in VS Code.",
+            "kind" : "shortcut",
+            "label" : "Quick open",
+            "parameter" : "cmd+p",
+            "targetBundleID" : "com.microsoft.VSCode"
+          },
+          "controlID" : "key-0-1"
+        },
+        {
+          "action" : {
+            "detail" : "Create a new untitled file in VS Code.",
+            "kind" : "shortcut",
+            "label" : "New file",
+            "parameter" : "cmd+n",
+            "targetBundleID" : "com.microsoft.VSCode"
+          },
+          "controlID" : "key-0-2"
+        },
+        {
+          "action" : {
+            "detail" : "Open a file in VS Code.",
+            "kind" : "shortcut",
+            "label" : "Open file",
+            "parameter" : "cmd+o",
+            "targetBundleID" : "com.microsoft.VSCode"
+          },
+          "controlID" : "key-0-3"
+        },
+        {
+          "action" : {
+            "detail" : "Save the active file in VS Code.",
+            "kind" : "shortcut",
+            "label" : "Save",
+            "parameter" : "cmd+s",
+            "targetBundleID" : "com.microsoft.VSCode"
+          },
+          "controlID" : "key-1-0"
+        },
+        {
+          "action" : {
+            "detail" : "Save all edited files in VS Code.",
+            "kind" : "shortcut",
+            "label" : "Save all",
+            "parameter" : "alt+cmd+s",
+            "targetBundleID" : "com.microsoft.VSCode"
+          },
+          "controlID" : "key-1-1"
+        },
+        {
+          "action" : {
+            "detail" : "Close the active VS Code editor.",
+            "kind" : "shortcut",
+            "label" : "Close editor",
+            "parameter" : "cmd+w",
+            "targetBundleID" : "com.microsoft.VSCode"
+          },
+          "controlID" : "key-1-2"
+        },
+        {
+          "action" : {
+            "detail" : "Reopen the most recently closed editor.",
+            "kind" : "shortcut",
+            "label" : "Reopen editor",
+            "parameter" : "cmd+shift+t",
+            "targetBundleID" : "com.microsoft.VSCode"
+          },
+          "controlID" : "key-1-3"
+        },
+        {
+          "action" : {
+            "detail" : "Find text in the active editor.",
+            "kind" : "shortcut",
+            "label" : "Find",
+            "parameter" : "cmd+f",
+            "targetBundleID" : "com.microsoft.VSCode"
+          },
+          "controlID" : "key-2-0"
+        },
+        {
+          "action" : {
+            "detail" : "Search across the current workspace.",
+            "kind" : "shortcut",
+            "label" : "Find in files",
+            "parameter" : "cmd+shift+f",
+            "targetBundleID" : "com.microsoft.VSCode"
+          },
+          "controlID" : "key-2-1"
+        },
+        {
+          "action" : {
+            "detail" : "Replace text in the active editor.",
+            "kind" : "shortcut",
+            "label" : "Replace",
+            "parameter" : "alt+cmd+f",
+            "targetBundleID" : "com.microsoft.VSCode"
+          },
+          "controlID" : "key-2-2"
+        },
+        {
+          "action" : {
+            "detail" : "Toggle a line comment for the selection.",
+            "kind" : "shortcut",
+            "label" : "Toggle comment",
+            "parameter" : "cmd+/",
+            "targetBundleID" : "com.microsoft.VSCode"
+          },
+          "controlID" : "key-2-3"
+        },
+        {
+          "action" : {
+            "detail" : "Format the active document.",
+            "kind" : "shortcut",
+            "label" : "Format document",
+            "parameter" : "shift+alt+f",
+            "targetBundleID" : "com.microsoft.VSCode"
+          },
+          "controlID" : "key-3-0"
+        },
+        {
+          "action" : {
+            "detail" : "Show available code actions and quick fixes.",
+            "kind" : "shortcut",
+            "label" : "Quick fix",
+            "parameter" : "cmd+.",
+            "targetBundleID" : "com.microsoft.VSCode"
+          },
+          "controlID" : "key-3-1"
+        },
+        {
+          "action" : {
+            "detail" : "Open the selected symbol's definition.",
+            "kind" : "shortcut",
+            "label" : "Go to definition",
+            "parameter" : "f12",
+            "targetBundleID" : "com.microsoft.VSCode"
+          },
+          "controlID" : "key-3-2"
+        },
+        {
+          "action" : {
+            "detail" : "Show references for the selected symbol.",
+            "kind" : "shortcut",
+            "label" : "Go to references",
+            "parameter" : "shift+f12",
+            "targetBundleID" : "com.microsoft.VSCode"
+          },
+          "controlID" : "key-3-3"
+        },
+        {
+          "action" : {
+            "detail" : "Move the current line upward.",
+            "kind" : "shortcut",
+            "label" : "Move line up",
+            "parameter" : "alt+up",
+            "targetBundleID" : "com.microsoft.VSCode"
+          },
+          "controlID" : "encoder-0-ccw"
+        },
+        {
+          "action" : {
+            "detail" : "Move the current line downward.",
+            "kind" : "shortcut",
+            "label" : "Move line down",
+            "parameter" : "alt+down",
+            "targetBundleID" : "com.microsoft.VSCode"
+          },
+          "controlID" : "encoder-0-cw"
+        },
+        {
+          "action" : {
+            "detail" : "Copy the current line below.",
+            "kind" : "shortcut",
+            "label" : "Copy line down",
+            "parameter" : "shift+alt+down",
+            "targetBundleID" : "com.microsoft.VSCode"
+          },
+          "controlID" : "encoder-0-press"
+        },
+        {
+          "action" : {
+            "detail" : "Select the previous open editor.",
+            "kind" : "shortcut",
+            "label" : "Previous editor",
+            "parameter" : "ctrl+shift+tab",
+            "targetBundleID" : "com.microsoft.VSCode"
+          },
+          "controlID" : "encoder-1-ccw"
+        },
+        {
+          "action" : {
+            "detail" : "Select the next open editor.",
+            "kind" : "shortcut",
+            "label" : "Next editor",
+            "parameter" : "ctrl+tab",
+            "targetBundleID" : "com.microsoft.VSCode"
+          },
+          "controlID" : "encoder-1-cw"
+        },
+        {
+          "action" : {
+            "detail" : "Show or hide the integrated terminal.",
+            "kind" : "shortcut",
+            "label" : "Toggle terminal",
+            "parameter" : "ctrl+backtick",
+            "targetBundleID" : "com.microsoft.VSCode"
+          },
+          "controlID" : "encoder-1-press"
+        },
+        {
+          "action" : {
+            "detail" : "Scroll the VS Code editor upward.",
+            "kind" : "system",
+            "label" : "Scroll editor up",
+            "parameter" : "scrollUp",
+            "targetBundleID" : "com.microsoft.VSCode"
+          },
+          "controlID" : "encoder-2-ccw"
+        },
+        {
+          "action" : {
+            "detail" : "Scroll the VS Code editor downward.",
+            "kind" : "system",
+            "label" : "Scroll editor down",
+            "parameter" : "scrollDown",
+            "targetBundleID" : "com.microsoft.VSCode"
+          },
+          "controlID" : "encoder-2-cw"
+        },
+        {
+          "action" : {
+            "detail" : "Run the configured default build task.",
+            "kind" : "shortcut",
+            "label" : "Run build task",
+            "parameter" : "cmd+shift+b",
+            "targetBundleID" : "com.microsoft.VSCode"
+          },
+          "controlID" : "encoder-2-press"
+        }
+      ],
+      "id" : "D341C844-69D3-49C2-92E8-A7F6014B6831",
+      "matchingBundleIDs" : [
+        "com.microsoft.VSCode"
+      ],
+      "name" : "Developer",
+      "presetID" : "developer",
+      "summary" : "Visual Studio Code navigation, editing, search, formatting, and task controls."
+    }
+  ],
+  "schemaVersion" : 2
+}

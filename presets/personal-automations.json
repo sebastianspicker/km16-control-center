@@ -1,0 +1,251 @@
+{
+  "activeProfileID" : "4F936DFC-B773-4FDB-84A0-256566F3612E",
+  "profiles" : [
+    {
+      "bindings" : [
+        {
+          "action" : {
+            "detail" : "Run the user-created Start Workday routine. This requires a user-owned shortcut with the exact name.",
+            "kind" : "shell",
+            "label" : "Start Workday",
+            "parameter" : "{\"args\":[\"run\",\"Start Workday\"],\"executable\":\"/usr/bin/shortcuts\",\"timeoutSeconds\":300}"
+          },
+          "controlID" : "key-0-0"
+        },
+        {
+          "action" : {
+            "detail" : "Run the user-created End Workday routine. This requires a user-owned shortcut with the exact name.",
+            "kind" : "shell",
+            "label" : "End Workday",
+            "parameter" : "{\"args\":[\"run\",\"End Workday\"],\"executable\":\"/usr/bin/shortcuts\",\"timeoutSeconds\":300}"
+          },
+          "controlID" : "key-0-1"
+        },
+        {
+          "action" : {
+            "detail" : "Run the user-created Focus Session routine. This requires a user-owned shortcut with the exact name.",
+            "kind" : "shell",
+            "label" : "Focus Session",
+            "parameter" : "{\"args\":[\"run\",\"Focus Session\"],\"executable\":\"/usr/bin/shortcuts\",\"timeoutSeconds\":300}"
+          },
+          "controlID" : "key-0-2"
+        },
+        {
+          "action" : {
+            "detail" : "Run the user-created Break Timer routine. This requires a user-owned shortcut with the exact name.",
+            "kind" : "shell",
+            "label" : "Break Timer",
+            "parameter" : "{\"args\":[\"run\",\"Break Timer\"],\"executable\":\"/usr/bin/shortcuts\",\"timeoutSeconds\":300}"
+          },
+          "controlID" : "key-0-3"
+        },
+        {
+          "action" : {
+            "detail" : "Run the user-created Capture Idea routine. This requires a user-owned shortcut with the exact name.",
+            "kind" : "shell",
+            "label" : "Capture Idea",
+            "parameter" : "{\"args\":[\"run\",\"Capture Idea\"],\"executable\":\"/usr/bin/shortcuts\",\"timeoutSeconds\":300}"
+          },
+          "controlID" : "key-1-0"
+        },
+        {
+          "action" : {
+            "detail" : "Run the user-created New Journal Entry routine. This requires a user-owned shortcut with the exact name.",
+            "kind" : "shell",
+            "label" : "New Journal Entry",
+            "parameter" : "{\"args\":[\"run\",\"New Journal Entry\"],\"executable\":\"/usr/bin/shortcuts\",\"timeoutSeconds\":300}"
+          },
+          "controlID" : "key-1-1"
+        },
+        {
+          "action" : {
+            "detail" : "Run the user-created Plan Today routine. This requires a user-owned shortcut with the exact name.",
+            "kind" : "shell",
+            "label" : "Plan Today",
+            "parameter" : "{\"args\":[\"run\",\"Plan Today\"],\"executable\":\"/usr/bin/shortcuts\",\"timeoutSeconds\":300}"
+          },
+          "controlID" : "key-1-2"
+        },
+        {
+          "action" : {
+            "detail" : "Run the user-created Review Today routine. This requires a user-owned shortcut with the exact name.",
+            "kind" : "shell",
+            "label" : "Review Today",
+            "parameter" : "{\"args\":[\"run\",\"Review Today\"],\"executable\":\"/usr/bin/shortcuts\",\"timeoutSeconds\":300}"
+          },
+          "controlID" : "key-1-3"
+        },
+        {
+          "action" : {
+            "detail" : "Run the user-created Open Work Apps routine. This requires a user-owned shortcut with the exact name.",
+            "kind" : "shell",
+            "label" : "Open Work Apps",
+            "parameter" : "{\"args\":[\"run\",\"Open Work Apps\"],\"executable\":\"/usr/bin/shortcuts\",\"timeoutSeconds\":300}"
+          },
+          "controlID" : "key-2-0"
+        },
+        {
+          "action" : {
+            "detail" : "Run the user-created Close Work Apps routine. This requires a user-owned shortcut with the exact name.",
+            "kind" : "shell",
+            "label" : "Close Work Apps",
+            "parameter" : "{\"args\":[\"run\",\"Close Work Apps\"],\"executable\":\"/usr/bin/shortcuts\",\"timeoutSeconds\":300}"
+          },
+          "controlID" : "key-2-1"
+        },
+        {
+          "action" : {
+            "detail" : "Run the user-created Meeting Setup routine. This requires a user-owned shortcut with the exact name.",
+            "kind" : "shell",
+            "label" : "Meeting Setup",
+            "parameter" : "{\"args\":[\"run\",\"Meeting Setup\"],\"executable\":\"/usr/bin/shortcuts\",\"timeoutSeconds\":300}"
+          },
+          "controlID" : "key-2-2"
+        },
+        {
+          "action" : {
+            "detail" : "Run the user-created Meeting Wrap-up routine. This requires a user-owned shortcut with the exact name.",
+            "kind" : "shell",
+            "label" : "Meeting Wrap-up",
+            "parameter" : "{\"args\":[\"run\",\"Meeting Wrap-up\"],\"executable\":\"/usr/bin/shortcuts\",\"timeoutSeconds\":300}"
+          },
+          "controlID" : "key-2-3"
+        },
+        {
+          "action" : {
+            "detail" : "Run the user-created Quiet Mode routine. This requires a user-owned shortcut with the exact name.",
+            "kind" : "shell",
+            "label" : "Quiet Mode",
+            "parameter" : "{\"args\":[\"run\",\"Quiet Mode\"],\"executable\":\"/usr/bin/shortcuts\",\"timeoutSeconds\":300}"
+          },
+          "controlID" : "key-3-0"
+        },
+        {
+          "action" : {
+            "detail" : "Run the user-created Restore Notifications routine. This requires a user-owned shortcut with the exact name.",
+            "kind" : "shell",
+            "label" : "Restore Notifications",
+            "parameter" : "{\"args\":[\"run\",\"Restore Notifications\"],\"executable\":\"/usr/bin/shortcuts\",\"timeoutSeconds\":300}"
+          },
+          "controlID" : "key-3-1"
+        },
+        {
+          "action" : {
+            "detail" : "Run the user-created Daily Backup routine. This requires a user-owned shortcut with the exact name.",
+            "kind" : "shell",
+            "label" : "Daily Backup",
+            "parameter" : "{\"args\":[\"run\",\"Daily Backup\"],\"executable\":\"/usr/bin/shortcuts\",\"timeoutSeconds\":300}"
+          },
+          "controlID" : "key-3-2"
+        },
+        {
+          "action" : {
+            "detail" : "Run the user-created Home Arrival routine. This requires a user-owned shortcut with the exact name.",
+            "kind" : "shell",
+            "label" : "Home Arrival",
+            "parameter" : "{\"args\":[\"run\",\"Home Arrival\"],\"executable\":\"/usr/bin/shortcuts\",\"timeoutSeconds\":300}"
+          },
+          "controlID" : "key-3-3"
+        },
+        {
+          "action" : {
+            "detail" : "Move to the previous shortcut or row in the focused Shortcuts list.",
+            "kind" : "shortcut",
+            "label" : "Previous shortcut",
+            "parameter" : "up",
+            "targetBundleID" : "com.apple.shortcuts"
+          },
+          "controlID" : "encoder-0-ccw"
+        },
+        {
+          "action" : {
+            "detail" : "Move to the next shortcut or row in the focused Shortcuts list.",
+            "kind" : "shortcut",
+            "label" : "Next shortcut",
+            "parameter" : "down",
+            "targetBundleID" : "com.apple.shortcuts"
+          },
+          "controlID" : "encoder-0-cw"
+        },
+        {
+          "action" : {
+            "detail" : "Open the selected shortcut or activate the focused Shortcuts control.",
+            "kind" : "shortcut",
+            "label" : "Open selected shortcut",
+            "parameter" : "enter",
+            "targetBundleID" : "com.apple.shortcuts"
+          },
+          "controlID" : "encoder-0-press"
+        },
+        {
+          "action" : {
+            "detail" : "Move keyboard focus to the previous Shortcuts interface section.",
+            "kind" : "shortcut",
+            "label" : "Previous section",
+            "parameter" : "shift+tab",
+            "targetBundleID" : "com.apple.shortcuts"
+          },
+          "controlID" : "encoder-1-ccw"
+        },
+        {
+          "action" : {
+            "detail" : "Move keyboard focus to the next Shortcuts interface section.",
+            "kind" : "shortcut",
+            "label" : "Next section",
+            "parameter" : "tab",
+            "targetBundleID" : "com.apple.shortcuts"
+          },
+          "controlID" : "encoder-1-cw"
+        },
+        {
+          "action" : {
+            "detail" : "Activate the focused Shortcuts button or toggle.",
+            "kind" : "shortcut",
+            "label" : "Activate control",
+            "parameter" : "space",
+            "targetBundleID" : "com.apple.shortcuts"
+          },
+          "controlID" : "encoder-1-press"
+        },
+        {
+          "action" : {
+            "detail" : "Move upward by one page in the focused Shortcuts collection.",
+            "kind" : "shortcut",
+            "label" : "Page up",
+            "parameter" : "pageup",
+            "targetBundleID" : "com.apple.shortcuts"
+          },
+          "controlID" : "encoder-2-ccw"
+        },
+        {
+          "action" : {
+            "detail" : "Move downward by one page in the focused Shortcuts collection.",
+            "kind" : "shortcut",
+            "label" : "Page down",
+            "parameter" : "pagedown",
+            "targetBundleID" : "com.apple.shortcuts"
+          },
+          "controlID" : "encoder-2-cw"
+        },
+        {
+          "action" : {
+            "detail" : "Focus search in the Shortcuts app.",
+            "kind" : "shortcut",
+            "label" : "Search shortcuts",
+            "parameter" : "cmd+f",
+            "targetBundleID" : "com.apple.shortcuts"
+          },
+          "controlID" : "encoder-2-press"
+        }
+      ],
+      "id" : "4F936DFC-B773-4FDB-84A0-256566F3612E",
+      "matchingBundleIDs" : [
+        "com.apple.shortcuts"
+      ],
+      "name" : "Personal Automations",
+      "presetID" : "personal-automations",
+      "summary" : "User-owned Apple Shortcuts routines plus keyboard navigation for the Shortcuts app."
+    }
+  ],
+  "schemaVersion" : 2
+}

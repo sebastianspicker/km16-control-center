@@ -1,0 +1,62 @@
+# Local research inputs, captures, and third-party material
+/evidence/
+/firmware/vendor/
+/reference/
+/archive/
+/downloads/
+
+# Machine-specific tooling and unbuilt layout experiments
+/.codex/
+/.state/
+/bin/
+/apps/KM16ControlCenter/Views/
+
+# Build and release output
+/build/
+/dist/
+/firmware/custom/build*/
+.build/
+.swiftpm/
+DerivedData/
+*.xcuserstate
+xcuserdata/
+
+# Python and editor caches
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.DS_Store
+._*
+*.swp
+*.swo
+
+# Local configuration, credentials, and signing material
+.env
+.env.*
+!.env.example
+.envrc
+*.key
+*.pem
+*.p8
+*.p12
+*.pfx
+*.mobileprovision
+.git-credentials
+.netrc
+.npmrc
+.pypirc
+.aws/
+.azure/
+.gnupg/
+.kube/
+.ssh/
+.docker/
+.config/gh/
+id_rsa*
+id_ed25519*
+id_ecdsa*
+.*_history

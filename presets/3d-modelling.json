@@ -1,0 +1,267 @@
+{
+  "activeProfileID" : "9F1C0DBD-AD2B-4F7B-A5AA-CECF82C0B8B0",
+  "profiles" : [
+    {
+      "bindings" : [
+        {
+          "action" : {
+            "detail" : "Move the selected object or mesh elements interactively.",
+            "kind" : "shortcut",
+            "label" : "Move",
+            "parameter" : "g",
+            "targetBundleID" : "org.blenderfoundation.blender"
+          },
+          "controlID" : "key-0-0"
+        },
+        {
+          "action" : {
+            "detail" : "Rotate the selected object or mesh elements interactively.",
+            "kind" : "shortcut",
+            "label" : "Rotate",
+            "parameter" : "r",
+            "targetBundleID" : "org.blenderfoundation.blender"
+          },
+          "controlID" : "key-0-1"
+        },
+        {
+          "action" : {
+            "detail" : "Scale the selected object or mesh elements interactively.",
+            "kind" : "shortcut",
+            "label" : "Scale",
+            "parameter" : "s",
+            "targetBundleID" : "org.blenderfoundation.blender"
+          },
+          "controlID" : "key-0-2"
+        },
+        {
+          "action" : {
+            "detail" : "Switch the active object between Object Mode and Edit Mode.",
+            "kind" : "shortcut",
+            "label" : "Toggle Edit Mode",
+            "parameter" : "tab",
+            "targetBundleID" : "org.blenderfoundation.blender"
+          },
+          "controlID" : "key-0-3"
+        },
+        {
+          "action" : {
+            "detail" : "Extrude the selected mesh region interactively in Edit Mode.",
+            "kind" : "shortcut",
+            "label" : "Extrude region",
+            "parameter" : "e",
+            "targetBundleID" : "org.blenderfoundation.blender"
+          },
+          "controlID" : "key-1-0"
+        },
+        {
+          "action" : {
+            "detail" : "Inset the selected mesh faces interactively in Edit Mode.",
+            "kind" : "shortcut",
+            "label" : "Inset faces",
+            "parameter" : "i",
+            "targetBundleID" : "org.blenderfoundation.blender"
+          },
+          "controlID" : "key-1-1"
+        },
+        {
+          "action" : {
+            "detail" : "Bevel selected mesh edges interactively in Edit Mode.",
+            "kind" : "shortcut",
+            "label" : "Bevel edges",
+            "parameter" : "ctrl+b",
+            "targetBundleID" : "org.blenderfoundation.blender"
+          },
+          "controlID" : "key-1-2"
+        },
+        {
+          "action" : {
+            "detail" : "Start Blender's interactive Loop Cut and Slide tool in Edit Mode.",
+            "kind" : "shortcut",
+            "label" : "Loop cut",
+            "parameter" : "ctrl+r",
+            "targetBundleID" : "org.blenderfoundation.blender"
+          },
+          "controlID" : "key-1-3"
+        },
+        {
+          "action" : {
+            "detail" : "Select all compatible items in the Blender editor under the pointer.",
+            "kind" : "shortcut",
+            "label" : "Select all",
+            "parameter" : "a",
+            "targetBundleID" : "org.blenderfoundation.blender"
+          },
+          "controlID" : "key-2-0"
+        },
+        {
+          "action" : {
+            "detail" : "Deselect all compatible items in the Blender editor under the pointer.",
+            "kind" : "shortcut",
+            "label" : "Deselect all",
+            "parameter" : "alt+a",
+            "targetBundleID" : "org.blenderfoundation.blender"
+          },
+          "controlID" : "key-2-1"
+        },
+        {
+          "action" : {
+            "detail" : "Invert the selection in the Blender editor under the pointer.",
+            "kind" : "shortcut",
+            "label" : "Invert selection",
+            "parameter" : "ctrl+i",
+            "targetBundleID" : "org.blenderfoundation.blender"
+          },
+          "controlID" : "key-2-2"
+        },
+        {
+          "action" : {
+            "detail" : "Open Blender's context-sensitive delete confirmation for the current selection.",
+            "kind" : "shortcut",
+            "label" : "Delete",
+            "parameter" : "x",
+            "targetBundleID" : "org.blenderfoundation.blender"
+          },
+          "controlID" : "key-2-3"
+        },
+        {
+          "action" : {
+            "detail" : "Duplicate the current object or mesh selection and enter interactive move.",
+            "kind" : "shortcut",
+            "label" : "Duplicate",
+            "parameter" : "shift+d",
+            "targetBundleID" : "org.blenderfoundation.blender"
+          },
+          "controlID" : "key-3-0"
+        },
+        {
+          "action" : {
+            "detail" : "Open Blender's context-sensitive Add menu.",
+            "kind" : "shortcut",
+            "label" : "Add",
+            "parameter" : "shift+a",
+            "targetBundleID" : "org.blenderfoundation.blender"
+          },
+          "controlID" : "key-3-1"
+        },
+        {
+          "action" : {
+            "detail" : "Hide the selected objects or mesh elements.",
+            "kind" : "shortcut",
+            "label" : "Hide selected",
+            "parameter" : "h",
+            "targetBundleID" : "org.blenderfoundation.blender"
+          },
+          "controlID" : "key-3-2"
+        },
+        {
+          "action" : {
+            "detail" : "Reveal hidden objects or mesh elements in the focused editor.",
+            "kind" : "shortcut",
+            "label" : "Reveal hidden",
+            "parameter" : "alt+h",
+            "targetBundleID" : "org.blenderfoundation.blender"
+          },
+          "controlID" : "key-3-3"
+        },
+        {
+          "action" : {
+            "detail" : "Undo the most recent Blender operation using the macOS Command equivalent of Blender's Control shortcut.",
+            "kind" : "shortcut",
+            "label" : "Undo",
+            "parameter" : "cmd+z",
+            "targetBundleID" : "org.blenderfoundation.blender"
+          },
+          "controlID" : "encoder-0-ccw"
+        },
+        {
+          "action" : {
+            "detail" : "Redo the most recently undone Blender operation using the macOS Command equivalent.",
+            "kind" : "shortcut",
+            "label" : "Redo",
+            "parameter" : "shift+cmd+z",
+            "targetBundleID" : "org.blenderfoundation.blender"
+          },
+          "controlID" : "encoder-0-cw"
+        },
+        {
+          "action" : {
+            "detail" : "Open Blender's searchable command menu.",
+            "kind" : "shortcut",
+            "label" : "Menu Search",
+            "parameter" : "f3",
+            "targetBundleID" : "org.blenderfoundation.blender"
+          },
+          "controlID" : "encoder-0-press"
+        },
+        {
+          "action" : {
+            "detail" : "Move the animation playhead to the previous frame when a compatible editor has focus.",
+            "kind" : "shortcut",
+            "label" : "Previous frame",
+            "parameter" : "left",
+            "targetBundleID" : "org.blenderfoundation.blender"
+          },
+          "controlID" : "encoder-1-ccw"
+        },
+        {
+          "action" : {
+            "detail" : "Move the animation playhead to the next frame when a compatible editor has focus.",
+            "kind" : "shortcut",
+            "label" : "Next frame",
+            "parameter" : "right",
+            "targetBundleID" : "org.blenderfoundation.blender"
+          },
+          "controlID" : "encoder-1-cw"
+        },
+        {
+          "action" : {
+            "detail" : "Start or pause Blender animation playback.",
+            "kind" : "shortcut",
+            "label" : "Play or pause",
+            "parameter" : "space",
+            "targetBundleID" : "org.blenderfoundation.blender"
+          },
+          "controlID" : "encoder-1-press"
+        },
+        {
+          "action" : {
+            "detail" : "Send a downward scroll step to zoom out when the pointer is over the 3D Viewport.",
+            "kind" : "system",
+            "label" : "Zoom out",
+            "parameter" : "scrollDown",
+            "targetBundleID" : "org.blenderfoundation.blender"
+          },
+          "controlID" : "encoder-2-ccw"
+        },
+        {
+          "action" : {
+            "detail" : "Send an upward scroll step to zoom in when the pointer is over the 3D Viewport.",
+            "kind" : "system",
+            "label" : "Zoom in",
+            "parameter" : "scrollUp",
+            "targetBundleID" : "org.blenderfoundation.blender"
+          },
+          "controlID" : "encoder-2-cw"
+        },
+        {
+          "action" : {
+            "detail" : "Frame all objects in the 3D Viewport under the pointer.",
+            "kind" : "shortcut",
+            "label" : "Frame all",
+            "parameter" : "home",
+            "targetBundleID" : "org.blenderfoundation.blender"
+          },
+          "controlID" : "encoder-2-press"
+        }
+      ],
+      "id" : "9F1C0DBD-AD2B-4F7B-A5AA-CECF82C0B8B0",
+      "matchingBundleIDs" : [
+        "org.blenderfoundation.blender"
+      ],
+      "name" : "3D Modelling",
+      "presetID" : "3d-modelling",
+      "summary" : "Blender object and mesh modelling with transforms, selection, editing, viewport zoom, and animation controls."
+    }
+  ],
+  "schemaVersion" : 2
+}
