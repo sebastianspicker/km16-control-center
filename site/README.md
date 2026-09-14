@@ -1,5 +1,7 @@
 # Browser demo
 
+[Open the demo](https://sebastianspicker.github.io/km16-control-center/).
+
 An interactive mockup of KM16 Control Center for GitHub Pages. Choose a factory
 profile, select a key or dial action, inspect its assignment, and preview it.
 The demo uses the same preset data as the Mac app.
