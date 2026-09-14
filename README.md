@@ -7,8 +7,9 @@ The app works without a pad connected. Profiles stay on the Mac; live pad
 input, device configuration, and firmware flashing are not implemented. This
 repository also contains the hardware research and a portable C firmware core.
 
-The [browser demo](site/README.md) lets you try the controls with the same factory
-presets. It runs locally or on GitHub Pages and simulates all actions.
+Try the [browser demo](https://sebastianspicker.github.io/km16-control-center/)
+with the same factory presets. All actions are simulated. See the
+[demo guide](site/README.md) to run it locally or host your own copy.
 
 ## Get started
 
