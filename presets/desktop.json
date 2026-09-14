@@ -1,0 +1,242 @@
+{
+  "activeProfileID" : "3B2B8B5D-9387-4D04-9A21-1A1DA8027041",
+  "profiles" : [
+    {
+      "bindings" : [
+        {
+          "action" : {
+            "detail" : "Copy the current selection.",
+            "kind" : "shortcut",
+            "label" : "Copy",
+            "parameter" : "cmd+c"
+          },
+          "controlID" : "key-0-0"
+        },
+        {
+          "action" : {
+            "detail" : "Paste clipboard contents.",
+            "kind" : "shortcut",
+            "label" : "Paste",
+            "parameter" : "cmd+v"
+          },
+          "controlID" : "key-0-1"
+        },
+        {
+          "action" : {
+            "detail" : "Cut the current selection.",
+            "kind" : "shortcut",
+            "label" : "Cut",
+            "parameter" : "cmd+x"
+          },
+          "controlID" : "key-0-2"
+        },
+        {
+          "action" : {
+            "detail" : "Undo the most recent edit.",
+            "kind" : "shortcut",
+            "label" : "Undo",
+            "parameter" : "cmd+z"
+          },
+          "controlID" : "key-0-3"
+        },
+        {
+          "action" : {
+            "detail" : "Redo the most recently undone edit.",
+            "kind" : "shortcut",
+            "label" : "Redo",
+            "parameter" : "cmd+shift+z"
+          },
+          "controlID" : "key-1-0"
+        },
+        {
+          "action" : {
+            "detail" : "Select the current document or list.",
+            "kind" : "shortcut",
+            "label" : "Select all",
+            "parameter" : "cmd+a"
+          },
+          "controlID" : "key-1-1"
+        },
+        {
+          "action" : {
+            "detail" : "Open a new window in the foreground app.",
+            "kind" : "shortcut",
+            "label" : "New window",
+            "parameter" : "cmd+n"
+          },
+          "controlID" : "key-1-2"
+        },
+        {
+          "action" : {
+            "detail" : "Save the current document.",
+            "kind" : "shortcut",
+            "label" : "Save",
+            "parameter" : "cmd+s"
+          },
+          "controlID" : "key-1-3"
+        },
+        {
+          "action" : {
+            "detail" : "Close the foreground window.",
+            "kind" : "shortcut",
+            "label" : "Close window",
+            "parameter" : "cmd+w"
+          },
+          "controlID" : "key-2-0"
+        },
+        {
+          "action" : {
+            "detail" : "Bring Finder to the foreground.",
+            "kind" : "launchApp",
+            "label" : "Open Finder",
+            "parameter" : "com.apple.finder"
+          },
+          "controlID" : "key-2-1"
+        },
+        {
+          "action" : {
+            "detail" : "Bring Notes to the foreground.",
+            "kind" : "launchApp",
+            "label" : "Open Notes",
+            "parameter" : "com.apple.Notes"
+          },
+          "controlID" : "key-2-2"
+        },
+        {
+          "action" : {
+            "detail" : "Bring Safari to the foreground.",
+            "kind" : "launchApp",
+            "label" : "Open Safari",
+            "parameter" : "com.apple.Safari"
+          },
+          "controlID" : "key-2-3"
+        },
+        {
+          "action" : {
+            "detail" : "Open Spotlight search.",
+            "kind" : "shortcut",
+            "label" : "Spotlight",
+            "parameter" : "cmd+space"
+          },
+          "controlID" : "key-3-0"
+        },
+        {
+          "action" : {
+            "detail" : "Start the macOS region screenshot tool.",
+            "kind" : "shortcut",
+            "label" : "Capture region",
+            "parameter" : "cmd+shift+4"
+          },
+          "controlID" : "key-3-1"
+        },
+        {
+          "action" : {
+            "detail" : "Lock the current macOS session.",
+            "kind" : "shortcut",
+            "label" : "Lock screen",
+            "parameter" : "ctrl+cmd+q"
+          },
+          "controlID" : "key-3-2"
+        },
+        {
+          "action" : {
+            "detail" : "Open the character viewer.",
+            "kind" : "shortcut",
+            "label" : "Emoji & symbols",
+            "parameter" : "ctrl+cmd+space"
+          },
+          "controlID" : "key-3-3"
+        },
+        {
+          "action" : {
+            "detail" : "Lower the default output volume.",
+            "kind" : "system",
+            "label" : "Volume down",
+            "parameter" : "volumeDown"
+          },
+          "controlID" : "encoder-0-ccw"
+        },
+        {
+          "action" : {
+            "detail" : "Raise the default output volume.",
+            "kind" : "system",
+            "label" : "Volume up",
+            "parameter" : "volumeUp"
+          },
+          "controlID" : "encoder-0-cw"
+        },
+        {
+          "action" : {
+            "detail" : "Toggle default output muting.",
+            "kind" : "system",
+            "label" : "Mute",
+            "parameter" : "mute"
+          },
+          "controlID" : "encoder-0-press"
+        },
+        {
+          "action" : {
+            "detail" : "Ask the active media session for the previous item.",
+            "kind" : "system",
+            "label" : "Previous track",
+            "parameter" : "previousTrack"
+          },
+          "controlID" : "encoder-1-ccw"
+        },
+        {
+          "action" : {
+            "detail" : "Ask the active media session for the next item.",
+            "kind" : "system",
+            "label" : "Next track",
+            "parameter" : "nextTrack"
+          },
+          "controlID" : "encoder-1-cw"
+        },
+        {
+          "action" : {
+            "detail" : "Toggle the active media session.",
+            "kind" : "system",
+            "label" : "Play or pause",
+            "parameter" : "playPause"
+          },
+          "controlID" : "encoder-1-press"
+        },
+        {
+          "action" : {
+            "detail" : "Scroll the foreground view upward.",
+            "kind" : "system",
+            "label" : "Scroll up",
+            "parameter" : "scrollUp"
+          },
+          "controlID" : "encoder-2-ccw"
+        },
+        {
+          "action" : {
+            "detail" : "Scroll the foreground view downward.",
+            "kind" : "system",
+            "label" : "Scroll down",
+            "parameter" : "scrollDown"
+          },
+          "controlID" : "encoder-2-cw"
+        },
+        {
+          "action" : {
+            "detail" : "Switch to the Agent Deck preset.",
+            "kind" : "profileSwitch",
+            "label" : "Agent Deck",
+            "parameter" : "agent-deck"
+          },
+          "controlID" : "encoder-2-press"
+        }
+      ],
+      "id" : "3B2B8B5D-9387-4D04-9A21-1A1DA8027041",
+      "matchingBundleIDs" : [
+
+      ],
+      "name" : "Desktop",
+      "presetID" : "desktop",
+      "summary" : "Everyday macOS editing, app launching, media, volume, and scrolling controls."
+    }
+  ],
+  "schemaVersion" : 2
+}

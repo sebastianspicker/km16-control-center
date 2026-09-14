@@ -1,0 +1,264 @@
+{
+  "activeProfileID" : "0FE1C1A9-3D79-41C8-991F-D8C1DE4B2532",
+  "profiles" : [
+    {
+      "bindings" : [
+        {
+          "action" : {
+            "detail" : "Bring CotEditor to the foreground for Markdown drafting.",
+            "kind" : "launchApp",
+            "label" : "Open CotEditor",
+            "parameter" : "com.coteditor.CotEditor"
+          },
+          "controlID" : "key-0-0"
+        },
+        {
+          "action" : {
+            "detail" : "Create a new plain-text document in CotEditor.",
+            "kind" : "shortcut",
+            "label" : "New draft",
+            "parameter" : "cmd+n",
+            "targetBundleID" : "com.coteditor.CotEditor"
+          },
+          "controlID" : "key-0-1"
+        },
+        {
+          "action" : {
+            "detail" : "Open a text or Markdown document in CotEditor.",
+            "kind" : "shortcut",
+            "label" : "Open document",
+            "parameter" : "cmd+o",
+            "targetBundleID" : "com.coteditor.CotEditor"
+          },
+          "controlID" : "key-0-2"
+        },
+        {
+          "action" : {
+            "detail" : "Save the active CotEditor document.",
+            "kind" : "shortcut",
+            "label" : "Save draft",
+            "parameter" : "cmd+s",
+            "targetBundleID" : "com.coteditor.CotEditor"
+          },
+          "controlID" : "key-0-3"
+        },
+        {
+          "action" : {
+            "detail" : "Save the active CotEditor document under a new name.",
+            "kind" : "shortcut",
+            "label" : "Save draft as",
+            "parameter" : "shift+cmd+s",
+            "targetBundleID" : "com.coteditor.CotEditor"
+          },
+          "controlID" : "key-1-0"
+        },
+        {
+          "action" : {
+            "detail" : "Open CotEditor's find interface for the active document.",
+            "kind" : "shortcut",
+            "label" : "Find in draft",
+            "parameter" : "cmd+f",
+            "targetBundleID" : "com.coteditor.CotEditor"
+          },
+          "controlID" : "key-1-1"
+        },
+        {
+          "action" : {
+            "detail" : "Select the next match in CotEditor.",
+            "kind" : "shortcut",
+            "label" : "Find next",
+            "parameter" : "cmd+g",
+            "targetBundleID" : "com.coteditor.CotEditor"
+          },
+          "controlID" : "key-1-2"
+        },
+        {
+          "action" : {
+            "detail" : "Select the previous match in CotEditor.",
+            "kind" : "shortcut",
+            "label" : "Find previous",
+            "parameter" : "shift+cmd+g",
+            "targetBundleID" : "com.coteditor.CotEditor"
+          },
+          "controlID" : "key-1-3"
+        },
+        {
+          "action" : {
+            "detail" : "Insert a level-two Markdown heading at the insertion point.",
+            "kind" : "snippet",
+            "label" : "Heading",
+            "parameter" : "## Section",
+            "targetBundleID" : "com.coteditor.CotEditor"
+          },
+          "controlID" : "key-2-0"
+        },
+        {
+          "action" : {
+            "detail" : "Insert an unchecked Markdown task-list item at the insertion point.",
+            "kind" : "snippet",
+            "label" : "Task item",
+            "parameter" : "- [ ] Task",
+            "targetBundleID" : "com.coteditor.CotEditor"
+          },
+          "controlID" : "key-2-1"
+        },
+        {
+          "action" : {
+            "detail" : "Insert a Markdown link template ready for replacement.",
+            "kind" : "snippet",
+            "label" : "Link",
+            "parameter" : "[title](https://example.com)",
+            "targetBundleID" : "com.coteditor.CotEditor"
+          },
+          "controlID" : "key-2-2"
+        },
+        {
+          "action" : {
+            "detail" : "Insert a fenced Markdown code-block template.",
+            "kind" : "snippet",
+            "label" : "Code fence",
+            "parameter" : "```text\ncode\n```",
+            "targetBundleID" : "com.coteditor.CotEditor"
+          },
+          "controlID" : "key-2-3"
+        },
+        {
+          "action" : {
+            "detail" : "Bring Safari to the foreground for source reading.",
+            "kind" : "launchApp",
+            "label" : "Open Safari",
+            "parameter" : "com.apple.Safari"
+          },
+          "controlID" : "key-3-0"
+        },
+        {
+          "action" : {
+            "detail" : "Open Reader for the current Safari article when Reader is available.",
+            "kind" : "shortcut",
+            "label" : "Safari Reader",
+            "parameter" : "shift+cmd+r",
+            "targetBundleID" : "com.apple.Safari"
+          },
+          "controlID" : "key-3-1"
+        },
+        {
+          "action" : {
+            "detail" : "Add the current Safari page to Reading List.",
+            "kind" : "shortcut",
+            "label" : "Save to Reading List",
+            "parameter" : "shift+cmd+d",
+            "targetBundleID" : "com.apple.Safari"
+          },
+          "controlID" : "key-3-2"
+        },
+        {
+          "action" : {
+            "detail" : "Bring Apple Notes to the foreground for quick research capture.",
+            "kind" : "launchApp",
+            "label" : "Open Notes",
+            "parameter" : "com.apple.Notes"
+          },
+          "controlID" : "key-3-3"
+        },
+        {
+          "action" : {
+            "detail" : "Decrease the displayed text size in CotEditor.",
+            "kind" : "shortcut",
+            "label" : "Smaller draft text",
+            "parameter" : "cmd+minus",
+            "targetBundleID" : "com.coteditor.CotEditor"
+          },
+          "controlID" : "encoder-0-ccw"
+        },
+        {
+          "action" : {
+            "detail" : "Increase the displayed text size in CotEditor.",
+            "kind" : "shortcut",
+            "label" : "Larger draft text",
+            "parameter" : "cmd+plus",
+            "targetBundleID" : "com.coteditor.CotEditor"
+          },
+          "controlID" : "encoder-0-cw"
+        },
+        {
+          "action" : {
+            "detail" : "Show CotEditor's Outline inspector after assigning the documented custom binding.",
+            "kind" : "shortcut",
+            "label" : "Show outline",
+            "parameter" : "ctrl+cmd+o",
+            "targetBundleID" : "com.coteditor.CotEditor"
+          },
+          "controlID" : "encoder-0-press"
+        },
+        {
+          "action" : {
+            "detail" : "Select the previous tab in Safari.",
+            "kind" : "shortcut",
+            "label" : "Previous Safari tab",
+            "parameter" : "ctrl+shift+tab",
+            "targetBundleID" : "com.apple.Safari"
+          },
+          "controlID" : "encoder-1-ccw"
+        },
+        {
+          "action" : {
+            "detail" : "Select the next tab in Safari.",
+            "kind" : "shortcut",
+            "label" : "Next Safari tab",
+            "parameter" : "ctrl+tab",
+            "targetBundleID" : "com.apple.Safari"
+          },
+          "controlID" : "encoder-1-cw"
+        },
+        {
+          "action" : {
+            "detail" : "Focus Safari's Smart Search field.",
+            "kind" : "shortcut",
+            "label" : "Safari search field",
+            "parameter" : "cmd+l",
+            "targetBundleID" : "com.apple.Safari"
+          },
+          "controlID" : "encoder-1-press"
+        },
+        {
+          "action" : {
+            "detail" : "Return to the Apple Note that linked to the current note.",
+            "kind" : "shortcut",
+            "label" : "Previous linked note",
+            "parameter" : "alt+cmd+[",
+            "targetBundleID" : "com.apple.Notes"
+          },
+          "controlID" : "encoder-2-ccw"
+        },
+        {
+          "action" : {
+            "detail" : "Go forward to the linked Apple Note.",
+            "kind" : "shortcut",
+            "label" : "Next linked note",
+            "parameter" : "alt+cmd+]",
+            "targetBundleID" : "com.apple.Notes"
+          },
+          "controlID" : "encoder-2-cw"
+        },
+        {
+          "action" : {
+            "detail" : "Search across all Apple Notes accounts.",
+            "kind" : "shortcut",
+            "label" : "Search all notes",
+            "parameter" : "alt+cmd+f",
+            "targetBundleID" : "com.apple.Notes"
+          },
+          "controlID" : "encoder-2-press"
+        }
+      ],
+      "id" : "0FE1C1A9-3D79-41C8-991F-D8C1DE4B2532",
+      "matchingBundleIDs" : [
+        "com.coteditor.CotEditor"
+      ],
+      "name" : "Research & Writing",
+      "presetID" : "research-writing",
+      "summary" : "Markdown drafting in CotEditor with focused Safari reading and Apple Notes capture controls."
+    }
+  ],
+  "schemaVersion" : 2
+}

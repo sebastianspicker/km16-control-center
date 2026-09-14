@@ -1,0 +1,265 @@
+{
+  "activeProfileID" : "C8E159A6-C837-4EB7-A8F1-D09D4ED94DE2",
+  "profiles" : [
+    {
+      "bindings" : [
+        {
+          "action" : {
+            "detail" : "Bring Apple Preview to the foreground.",
+            "kind" : "launchApp",
+            "label" : "Open Preview",
+            "parameter" : "com.apple.Preview"
+          },
+          "controlID" : "key-0-0"
+        },
+        {
+          "action" : {
+            "detail" : "Save the current Preview document.",
+            "kind" : "shortcut",
+            "label" : "Save",
+            "parameter" : "cmd+s",
+            "targetBundleID" : "com.apple.Preview"
+          },
+          "controlID" : "key-0-1"
+        },
+        {
+          "action" : {
+            "detail" : "Print the current PDF or image.",
+            "kind" : "shortcut",
+            "label" : "Print",
+            "parameter" : "cmd+p",
+            "targetBundleID" : "com.apple.Preview"
+          },
+          "controlID" : "key-0-2"
+        },
+        {
+          "action" : {
+            "detail" : "Copy selected text or image area.",
+            "kind" : "shortcut",
+            "label" : "Copy selection",
+            "parameter" : "cmd+c",
+            "targetBundleID" : "com.apple.Preview"
+          },
+          "controlID" : "key-0-3"
+        },
+        {
+          "action" : {
+            "detail" : "Cut the selected Preview item.",
+            "kind" : "shortcut",
+            "label" : "Cut selection",
+            "parameter" : "cmd+x",
+            "targetBundleID" : "com.apple.Preview"
+          },
+          "controlID" : "key-1-0"
+        },
+        {
+          "action" : {
+            "detail" : "Paste clipboard contents into an image.",
+            "kind" : "shortcut",
+            "label" : "Paste into image",
+            "parameter" : "cmd+v",
+            "targetBundleID" : "com.apple.Preview"
+          },
+          "controlID" : "key-1-1"
+        },
+        {
+          "action" : {
+            "detail" : "Move to the next Preview tab.",
+            "kind" : "shortcut",
+            "label" : "Next tab",
+            "parameter" : "ctrl+tab",
+            "targetBundleID" : "com.apple.Preview"
+          },
+          "controlID" : "key-1-2"
+        },
+        {
+          "action" : {
+            "detail" : "Move to the previous Preview tab.",
+            "kind" : "shortcut",
+            "label" : "Previous tab",
+            "parameter" : "shift+ctrl+tab",
+            "targetBundleID" : "com.apple.Preview"
+          },
+          "controlID" : "key-1-3"
+        },
+        {
+          "action" : {
+            "detail" : "Enter or leave Preview full screen mode.",
+            "kind" : "shortcut",
+            "label" : "Full screen",
+            "parameter" : "ctrl+cmd+f",
+            "targetBundleID" : "com.apple.Preview"
+          },
+          "controlID" : "key-2-0"
+        },
+        {
+          "action" : {
+            "detail" : "Move to the previous PDF page.",
+            "kind" : "shortcut",
+            "label" : "Previous page",
+            "parameter" : "alt+up",
+            "targetBundleID" : "com.apple.Preview"
+          },
+          "controlID" : "key-2-1"
+        },
+        {
+          "action" : {
+            "detail" : "Move to the next PDF page.",
+            "kind" : "shortcut",
+            "label" : "Next page",
+            "parameter" : "alt+down",
+            "targetBundleID" : "com.apple.Preview"
+          },
+          "controlID" : "key-2-2"
+        },
+        {
+          "action" : {
+            "detail" : "Show images at actual size.",
+            "kind" : "shortcut",
+            "label" : "Actual size",
+            "parameter" : "alt+cmd+0",
+            "targetBundleID" : "com.apple.Preview"
+          },
+          "controlID" : "key-2-3"
+        },
+        {
+          "action" : {
+            "detail" : "Fit images to the Preview window.",
+            "kind" : "shortcut",
+            "label" : "Zoom to fit",
+            "parameter" : "alt+cmd+9",
+            "targetBundleID" : "com.apple.Preview"
+          },
+          "controlID" : "key-3-0"
+        },
+        {
+          "action" : {
+            "detail" : "Zoom into all open images.",
+            "kind" : "shortcut",
+            "label" : "Zoom in",
+            "parameter" : "alt+cmd+plus",
+            "targetBundleID" : "com.apple.Preview"
+          },
+          "controlID" : "key-3-1"
+        },
+        {
+          "action" : {
+            "detail" : "Zoom out of all open images.",
+            "kind" : "shortcut",
+            "label" : "Zoom out",
+            "parameter" : "alt+cmd+minus",
+            "targetBundleID" : "com.apple.Preview"
+          },
+          "controlID" : "key-3-2"
+        },
+        {
+          "action" : {
+            "detail" : "Run Preview's Remove Background command.",
+            "kind" : "shortcut",
+            "label" : "Remove background",
+            "parameter" : "shift+cmd+k",
+            "targetBundleID" : "com.apple.Preview"
+          },
+          "controlID" : "key-3-3"
+        },
+        {
+          "action" : {
+            "detail" : "Scroll upward or select the previous sidebar item.",
+            "kind" : "shortcut",
+            "label" : "Scroll up a line",
+            "parameter" : "up",
+            "targetBundleID" : "com.apple.Preview"
+          },
+          "controlID" : "encoder-0-ccw"
+        },
+        {
+          "action" : {
+            "detail" : "Scroll downward or select the next sidebar item.",
+            "kind" : "shortcut",
+            "label" : "Scroll down a line",
+            "parameter" : "down",
+            "targetBundleID" : "com.apple.Preview"
+          },
+          "controlID" : "encoder-0-cw"
+        },
+        {
+          "action" : {
+            "detail" : "Move up one screen or show the previous image.",
+            "kind" : "shortcut",
+            "label" : "Previous screen",
+            "parameter" : "pageup",
+            "targetBundleID" : "com.apple.Preview"
+          },
+          "controlID" : "encoder-0-press"
+        },
+        {
+          "action" : {
+            "detail" : "Move down one screen or show the next image.",
+            "kind" : "shortcut",
+            "label" : "Next screen",
+            "parameter" : "pagedown",
+            "targetBundleID" : "com.apple.Preview"
+          },
+          "controlID" : "encoder-1-ccw"
+        },
+        {
+          "action" : {
+            "detail" : "Move to the previous document in the window.",
+            "kind" : "shortcut",
+            "label" : "Previous document",
+            "parameter" : "alt+pageup",
+            "targetBundleID" : "com.apple.Preview"
+          },
+          "controlID" : "encoder-1-cw"
+        },
+        {
+          "action" : {
+            "detail" : "Move to the next document in the window.",
+            "kind" : "shortcut",
+            "label" : "Next document",
+            "parameter" : "alt+pagedown",
+            "targetBundleID" : "com.apple.Preview"
+          },
+          "controlID" : "encoder-1-press"
+        },
+        {
+          "action" : {
+            "detail" : "Scroll the foreground Preview document upward.",
+            "kind" : "system",
+            "label" : "Smooth scroll up",
+            "parameter" : "scrollUp",
+            "targetBundleID" : "com.apple.Preview"
+          },
+          "controlID" : "encoder-2-ccw"
+        },
+        {
+          "action" : {
+            "detail" : "Scroll the foreground Preview document downward.",
+            "kind" : "system",
+            "label" : "Smooth scroll down",
+            "parameter" : "scrollDown",
+            "targetBundleID" : "com.apple.Preview"
+          },
+          "controlID" : "encoder-2-cw"
+        },
+        {
+          "action" : {
+            "detail" : "Switch to the Desktop preset.",
+            "kind" : "profileSwitch",
+            "label" : "Desktop",
+            "parameter" : "desktop"
+          },
+          "controlID" : "encoder-2-press"
+        }
+      ],
+      "id" : "C8E159A6-C837-4EB7-A8F1-D09D4ED94DE2",
+      "matchingBundleIDs" : [
+        "com.apple.Preview"
+      ],
+      "name" : "Creative",
+      "presetID" : "creative",
+      "summary" : "Apple Preview document, image, page, zoom, and navigation controls."
+    }
+  ],
+  "schemaVersion" : 2
+}

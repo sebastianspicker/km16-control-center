@@ -1,0 +1,4059 @@
+{
+  "activeProfileID" : "3B2B8B5D-9387-4D04-9A21-1A1DA8027041",
+  "profiles" : [
+    {
+      "bindings" : [
+        {
+          "action" : {
+            "detail" : "Copy the current selection.",
+            "kind" : "shortcut",
+            "label" : "Copy",
+            "parameter" : "cmd+c"
+          },
+          "controlID" : "key-0-0"
+        },
+        {
+          "action" : {
+            "detail" : "Paste clipboard contents.",
+            "kind" : "shortcut",
+            "label" : "Paste",
+            "parameter" : "cmd+v"
+          },
+          "controlID" : "key-0-1"
+        },
+        {
+          "action" : {
+            "detail" : "Cut the current selection.",
+            "kind" : "shortcut",
+            "label" : "Cut",
+            "parameter" : "cmd+x"
+          },
+          "controlID" : "key-0-2"
+        },
+        {
+          "action" : {
+            "detail" : "Undo the most recent edit.",
+            "kind" : "shortcut",
+            "label" : "Undo",
+            "parameter" : "cmd+z"
+          },
+          "controlID" : "key-0-3"
+        },
+        {
+          "action" : {
+            "detail" : "Redo the most recently undone edit.",
+            "kind" : "shortcut",
+            "label" : "Redo",
+            "parameter" : "cmd+shift+z"
+          },
+          "controlID" : "key-1-0"
+        },
+        {
+          "action" : {
+            "detail" : "Select the current document or list.",
+            "kind" : "shortcut",
+            "label" : "Select all",
+            "parameter" : "cmd+a"
+          },
+          "controlID" : "key-1-1"
+        },
+        {
+          "action" : {
+            "detail" : "Open a new window in the foreground app.",
+            "kind" : "shortcut",
+            "label" : "New window",
+            "parameter" : "cmd+n"
+          },
+          "controlID" : "key-1-2"
+        },
+        {
+          "action" : {
+            "detail" : "Save the current document.",
+            "kind" : "shortcut",
+            "label" : "Save",
+            "parameter" : "cmd+s"
+          },
+          "controlID" : "key-1-3"
+        },
+        {
+          "action" : {
+            "detail" : "Close the foreground window.",
+            "kind" : "shortcut",
+            "label" : "Close window",
+            "parameter" : "cmd+w"
+          },
+          "controlID" : "key-2-0"
+        },
+        {
+          "action" : {
+            "detail" : "Bring Finder to the foreground.",
+            "kind" : "launchApp",
+            "label" : "Open Finder",
+            "parameter" : "com.apple.finder"
+          },
+          "controlID" : "key-2-1"
+        },
+        {
+          "action" : {
+            "detail" : "Bring Notes to the foreground.",
+            "kind" : "launchApp",
+            "label" : "Open Notes",
+            "parameter" : "com.apple.Notes"
+          },
+          "controlID" : "key-2-2"
+        },
+        {
+          "action" : {
+            "detail" : "Bring Safari to the foreground.",
+            "kind" : "launchApp",
+            "label" : "Open Safari",
+            "parameter" : "com.apple.Safari"
+          },
+          "controlID" : "key-2-3"
+        },
+        {
+          "action" : {
+            "detail" : "Open Spotlight search.",
+            "kind" : "shortcut",
+            "label" : "Spotlight",
+            "parameter" : "cmd+space"
+          },
+          "controlID" : "key-3-0"
+        },
+        {
+          "action" : {
+            "detail" : "Start the macOS region screenshot tool.",
+            "kind" : "shortcut",
+            "label" : "Capture region",
+            "parameter" : "cmd+shift+4"
+          },
+          "controlID" : "key-3-1"
+        },
+        {
+          "action" : {
+            "detail" : "Lock the current macOS session.",
+            "kind" : "shortcut",
+            "label" : "Lock screen",
+            "parameter" : "ctrl+cmd+q"
+          },
+          "controlID" : "key-3-2"
+        },
+        {
+          "action" : {
+            "detail" : "Open the character viewer.",
+            "kind" : "shortcut",
+            "label" : "Emoji & symbols",
+            "parameter" : "ctrl+cmd+space"
+          },
+          "controlID" : "key-3-3"
+        },
+        {
+          "action" : {
+            "detail" : "Lower the default output volume.",
+            "kind" : "system",
+            "label" : "Volume down",
+            "parameter" : "volumeDown"
+          },
+          "controlID" : "encoder-0-ccw"
+        },
+        {
+          "action" : {
+            "detail" : "Raise the default output volume.",
+            "kind" : "system",
+            "label" : "Volume up",
+            "parameter" : "volumeUp"
+          },
+          "controlID" : "encoder-0-cw"
+        },
+        {
+          "action" : {
+            "detail" : "Toggle default output muting.",
+            "kind" : "system",
+            "label" : "Mute",
+            "parameter" : "mute"
+          },
+          "controlID" : "encoder-0-press"
+        },
+        {
+          "action" : {
+            "detail" : "Ask the active media session for the previous item.",
+            "kind" : "system",
+            "label" : "Previous track",
+            "parameter" : "previousTrack"
+          },
+          "controlID" : "encoder-1-ccw"
+        },
+        {
+          "action" : {
+            "detail" : "Ask the active media session for the next item.",
+            "kind" : "system",
+            "label" : "Next track",
+            "parameter" : "nextTrack"
+          },
+          "controlID" : "encoder-1-cw"
+        },
+        {
+          "action" : {
+            "detail" : "Toggle the active media session.",
+            "kind" : "system",
+            "label" : "Play or pause",
+            "parameter" : "playPause"
+          },
+          "controlID" : "encoder-1-press"
+        },
+        {
+          "action" : {
+            "detail" : "Scroll the foreground view upward.",
+            "kind" : "system",
+            "label" : "Scroll up",
+            "parameter" : "scrollUp"
+          },
+          "controlID" : "encoder-2-ccw"
+        },
+        {
+          "action" : {
+            "detail" : "Scroll the foreground view downward.",
+            "kind" : "system",
+            "label" : "Scroll down",
+            "parameter" : "scrollDown"
+          },
+          "controlID" : "encoder-2-cw"
+        },
+        {
+          "action" : {
+            "detail" : "Switch to the Agent Deck preset.",
+            "kind" : "profileSwitch",
+            "label" : "Agent Deck",
+            "parameter" : "agent-deck"
+          },
+          "controlID" : "encoder-2-press"
+        }
+      ],
+      "id" : "3B2B8B5D-9387-4D04-9A21-1A1DA8027041",
+      "matchingBundleIDs" : [
+
+      ],
+      "name" : "Desktop",
+      "presetID" : "desktop",
+      "summary" : "Everyday macOS editing, app launching, media, volume, and scrolling controls."
+    },
+    {
+      "bindings" : [
+        {
+          "action" : {
+            "detail" : "Move and resize the active window to the left half of its desktop.",
+            "kind" : "system",
+            "label" : "Left half",
+            "parameter" : "windowLeftHalf"
+          },
+          "controlID" : "key-0-0"
+        },
+        {
+          "action" : {
+            "detail" : "Move and resize the active window to the right half of its desktop.",
+            "kind" : "system",
+            "label" : "Right half",
+            "parameter" : "windowRightHalf"
+          },
+          "controlID" : "key-0-1"
+        },
+        {
+          "action" : {
+            "detail" : "Move and resize the active window to the top half of its desktop.",
+            "kind" : "system",
+            "label" : "Top half",
+            "parameter" : "windowTopHalf"
+          },
+          "controlID" : "key-0-2"
+        },
+        {
+          "action" : {
+            "detail" : "Move and resize the active window to the bottom half of its desktop.",
+            "kind" : "system",
+            "label" : "Bottom half",
+            "parameter" : "windowBottomHalf"
+          },
+          "controlID" : "key-0-3"
+        },
+        {
+          "action" : {
+            "detail" : "Move and resize the active window to the top-left quarter of its desktop.",
+            "kind" : "system",
+            "label" : "Top-left quarter",
+            "parameter" : "windowTopLeft"
+          },
+          "controlID" : "key-1-0"
+        },
+        {
+          "action" : {
+            "detail" : "Move and resize the active window to the top-right quarter of its desktop.",
+            "kind" : "system",
+            "label" : "Top-right quarter",
+            "parameter" : "windowTopRight"
+          },
+          "controlID" : "key-1-1"
+        },
+        {
+          "action" : {
+            "detail" : "Move and resize the active window to the bottom-left quarter of its desktop.",
+            "kind" : "system",
+            "label" : "Bottom-left quarter",
+            "parameter" : "windowBottomLeft"
+          },
+          "controlID" : "key-1-2"
+        },
+        {
+          "action" : {
+            "detail" : "Move and resize the active window to the bottom-right quarter of its desktop.",
+            "kind" : "system",
+            "label" : "Bottom-right quarter",
+            "parameter" : "windowBottomRight"
+          },
+          "controlID" : "key-1-3"
+        },
+        {
+          "action" : {
+            "detail" : "Fill the current desktop with the active window while keeping it out of full-screen mode.",
+            "kind" : "system",
+            "label" : "Maximize",
+            "parameter" : "windowMaximize"
+          },
+          "controlID" : "key-2-0"
+        },
+        {
+          "action" : {
+            "detail" : "Center the active window on its current desktop.",
+            "kind" : "system",
+            "label" : "Center",
+            "parameter" : "windowCenter"
+          },
+          "controlID" : "key-2-1"
+        },
+        {
+          "action" : {
+            "detail" : "Return the active window to its size before the last native tile or fill operation.",
+            "kind" : "system",
+            "label" : "Restore size",
+            "parameter" : "windowRestore"
+          },
+          "controlID" : "key-2-2"
+        },
+        {
+          "action" : {
+            "detail" : "Move the active window to the previous connected display.",
+            "kind" : "system",
+            "label" : "Previous display",
+            "parameter" : "windowPreviousDisplay"
+          },
+          "controlID" : "key-2-3"
+        },
+        {
+          "action" : {
+            "detail" : "Move the active window to the next connected display.",
+            "kind" : "system",
+            "label" : "Next display",
+            "parameter" : "windowNextDisplay"
+          },
+          "controlID" : "key-3-0"
+        },
+        {
+          "action" : {
+            "detail" : "Minimize the active window into the Dock.",
+            "kind" : "system",
+            "label" : "Minimize",
+            "parameter" : "windowMinimize"
+          },
+          "controlID" : "key-3-1"
+        },
+        {
+          "action" : {
+            "detail" : "Focus the previous standard window belonging to the active app.",
+            "kind" : "system",
+            "label" : "Previous app window",
+            "parameter" : "windowPrevious"
+          },
+          "controlID" : "key-3-2"
+        },
+        {
+          "action" : {
+            "detail" : "Focus the next standard window belonging to the active app.",
+            "kind" : "system",
+            "label" : "Next app window",
+            "parameter" : "windowNext"
+          },
+          "controlID" : "key-3-3"
+        },
+        {
+          "action" : {
+            "detail" : "Move to the Space immediately to the left using the configured Mission Control shortcut.",
+            "kind" : "shortcut",
+            "label" : "Previous Space",
+            "parameter" : "ctrl+left"
+          },
+          "controlID" : "encoder-0-ccw"
+        },
+        {
+          "action" : {
+            "detail" : "Move to the Space immediately to the right using the configured Mission Control shortcut.",
+            "kind" : "shortcut",
+            "label" : "Next Space",
+            "parameter" : "ctrl+right"
+          },
+          "controlID" : "encoder-0-cw"
+        },
+        {
+          "action" : {
+            "detail" : "Show Mission Control using the configured macOS shortcut.",
+            "kind" : "shortcut",
+            "label" : "Mission Control",
+            "parameter" : "ctrl+up"
+          },
+          "controlID" : "encoder-0-press"
+        },
+        {
+          "action" : {
+            "detail" : "Ask the active app to select its previous window using the standard Window-menu shortcut.",
+            "kind" : "shortcut",
+            "label" : "Previous window shortcut",
+            "parameter" : "shift+cmd+backtick"
+          },
+          "controlID" : "encoder-1-ccw"
+        },
+        {
+          "action" : {
+            "detail" : "Ask the active app to select its next window using the standard Window-menu shortcut.",
+            "kind" : "shortcut",
+            "label" : "Next window shortcut",
+            "parameter" : "cmd+backtick"
+          },
+          "controlID" : "encoder-1-cw"
+        },
+        {
+          "action" : {
+            "detail" : "Show all windows for the active app using the configured Mission Control shortcut.",
+            "kind" : "shortcut",
+            "label" : "Application Windows",
+            "parameter" : "ctrl+down"
+          },
+          "controlID" : "encoder-1-press"
+        },
+        {
+          "action" : {
+            "detail" : "Ask the active app to decrease its document or content zoom when supported.",
+            "kind" : "shortcut",
+            "label" : "Zoom out",
+            "parameter" : "cmd+minus"
+          },
+          "controlID" : "encoder-2-ccw"
+        },
+        {
+          "action" : {
+            "detail" : "Ask the active app to increase its document or content zoom when supported.",
+            "kind" : "shortcut",
+            "label" : "Zoom in",
+            "parameter" : "cmd+plus"
+          },
+          "controlID" : "encoder-2-cw"
+        },
+        {
+          "action" : {
+            "detail" : "Ask the active app to enter or leave full-screen mode.",
+            "kind" : "shortcut",
+            "label" : "Toggle full screen",
+            "parameter" : "ctrl+cmd+f"
+          },
+          "controlID" : "encoder-2-press"
+        }
+      ],
+      "id" : "C92A50E6-2AD8-4DD2-8F0D-5E75E86E3A67",
+      "matchingBundleIDs" : [
+
+      ],
+      "name" : "Window Management",
+      "presetID" : "window-management",
+      "summary" : "Native macOS window placement, display movement, app-window navigation, Spaces, and zoom controls."
+    },
+    {
+      "bindings" : [
+        {
+          "action" : {
+            "detail" : "Run the user-created Start Workday routine. This requires a user-owned shortcut with the exact name.",
+            "kind" : "shell",
+            "label" : "Start Workday",
+            "parameter" : "{\"args\":[\"run\",\"Start Workday\"],\"executable\":\"/usr/bin/shortcuts\",\"timeoutSeconds\":300}"
+          },
+          "controlID" : "key-0-0"
+        },
+        {
+          "action" : {
+            "detail" : "Run the user-created End Workday routine. This requires a user-owned shortcut with the exact name.",
+            "kind" : "shell",
+            "label" : "End Workday",
+            "parameter" : "{\"args\":[\"run\",\"End Workday\"],\"executable\":\"/usr/bin/shortcuts\",\"timeoutSeconds\":300}"
+          },
+          "controlID" : "key-0-1"
+        },
+        {
+          "action" : {
+            "detail" : "Run the user-created Focus Session routine. This requires a user-owned shortcut with the exact name.",
+            "kind" : "shell",
+            "label" : "Focus Session",
+            "parameter" : "{\"args\":[\"run\",\"Focus Session\"],\"executable\":\"/usr/bin/shortcuts\",\"timeoutSeconds\":300}"
+          },
+          "controlID" : "key-0-2"
+        },
+        {
+          "action" : {
+            "detail" : "Run the user-created Break Timer routine. This requires a user-owned shortcut with the exact name.",
+            "kind" : "shell",
+            "label" : "Break Timer",
+            "parameter" : "{\"args\":[\"run\",\"Break Timer\"],\"executable\":\"/usr/bin/shortcuts\",\"timeoutSeconds\":300}"
+          },
+          "controlID" : "key-0-3"
+        },
+        {
+          "action" : {
+            "detail" : "Run the user-created Capture Idea routine. This requires a user-owned shortcut with the exact name.",
+            "kind" : "shell",
+            "label" : "Capture Idea",
+            "parameter" : "{\"args\":[\"run\",\"Capture Idea\"],\"executable\":\"/usr/bin/shortcuts\",\"timeoutSeconds\":300}"
+          },
+          "controlID" : "key-1-0"
+        },
+        {
+          "action" : {
+            "detail" : "Run the user-created New Journal Entry routine. This requires a user-owned shortcut with the exact name.",
+            "kind" : "shell",
+            "label" : "New Journal Entry",
+            "parameter" : "{\"args\":[\"run\",\"New Journal Entry\"],\"executable\":\"/usr/bin/shortcuts\",\"timeoutSeconds\":300}"
+          },
+          "controlID" : "key-1-1"
+        },
+        {
+          "action" : {
+            "detail" : "Run the user-created Plan Today routine. This requires a user-owned shortcut with the exact name.",
+            "kind" : "shell",
+            "label" : "Plan Today",
+            "parameter" : "{\"args\":[\"run\",\"Plan Today\"],\"executable\":\"/usr/bin/shortcuts\",\"timeoutSeconds\":300}"
+          },
+          "controlID" : "key-1-2"
+        },
+        {
+          "action" : {
+            "detail" : "Run the user-created Review Today routine. This requires a user-owned shortcut with the exact name.",
+            "kind" : "shell",
+            "label" : "Review Today",
+            "parameter" : "{\"args\":[\"run\",\"Review Today\"],\"executable\":\"/usr/bin/shortcuts\",\"timeoutSeconds\":300}"
+          },
+          "controlID" : "key-1-3"
+        },
+        {
+          "action" : {
+            "detail" : "Run the user-created Open Work Apps routine. This requires a user-owned shortcut with the exact name.",
+            "kind" : "shell",
+            "label" : "Open Work Apps",
+            "parameter" : "{\"args\":[\"run\",\"Open Work Apps\"],\"executable\":\"/usr/bin/shortcuts\",\"timeoutSeconds\":300}"
+          },
+          "controlID" : "key-2-0"
+        },
+        {
+          "action" : {
+            "detail" : "Run the user-created Close Work Apps routine. This requires a user-owned shortcut with the exact name.",
+            "kind" : "shell",
+            "label" : "Close Work Apps",
+            "parameter" : "{\"args\":[\"run\",\"Close Work Apps\"],\"executable\":\"/usr/bin/shortcuts\",\"timeoutSeconds\":300}"
+          },
+          "controlID" : "key-2-1"
+        },
+        {
+          "action" : {
+            "detail" : "Run the user-created Meeting Setup routine. This requires a user-owned shortcut with the exact name.",
+            "kind" : "shell",
+            "label" : "Meeting Setup",
+            "parameter" : "{\"args\":[\"run\",\"Meeting Setup\"],\"executable\":\"/usr/bin/shortcuts\",\"timeoutSeconds\":300}"
+          },
+          "controlID" : "key-2-2"
+        },
+        {
+          "action" : {
+            "detail" : "Run the user-created Meeting Wrap-up routine. This requires a user-owned shortcut with the exact name.",
+            "kind" : "shell",
+            "label" : "Meeting Wrap-up",
+            "parameter" : "{\"args\":[\"run\",\"Meeting Wrap-up\"],\"executable\":\"/usr/bin/shortcuts\",\"timeoutSeconds\":300}"
+          },
+          "controlID" : "key-2-3"
+        },
+        {
+          "action" : {
+            "detail" : "Run the user-created Quiet Mode routine. This requires a user-owned shortcut with the exact name.",
+            "kind" : "shell",
+            "label" : "Quiet Mode",
+            "parameter" : "{\"args\":[\"run\",\"Quiet Mode\"],\"executable\":\"/usr/bin/shortcuts\",\"timeoutSeconds\":300}"
+          },
+          "controlID" : "key-3-0"
+        },
+        {
+          "action" : {
+            "detail" : "Run the user-created Restore Notifications routine. This requires a user-owned shortcut with the exact name.",
+            "kind" : "shell",
+            "label" : "Restore Notifications",
+            "parameter" : "{\"args\":[\"run\",\"Restore Notifications\"],\"executable\":\"/usr/bin/shortcuts\",\"timeoutSeconds\":300}"
+          },
+          "controlID" : "key-3-1"
+        },
+        {
+          "action" : {
+            "detail" : "Run the user-created Daily Backup routine. This requires a user-owned shortcut with the exact name.",
+            "kind" : "shell",
+            "label" : "Daily Backup",
+            "parameter" : "{\"args\":[\"run\",\"Daily Backup\"],\"executable\":\"/usr/bin/shortcuts\",\"timeoutSeconds\":300}"
+          },
+          "controlID" : "key-3-2"
+        },
+        {
+          "action" : {
+            "detail" : "Run the user-created Home Arrival routine. This requires a user-owned shortcut with the exact name.",
+            "kind" : "shell",
+            "label" : "Home Arrival",
+            "parameter" : "{\"args\":[\"run\",\"Home Arrival\"],\"executable\":\"/usr/bin/shortcuts\",\"timeoutSeconds\":300}"
+          },
+          "controlID" : "key-3-3"
+        },
+        {
+          "action" : {
+            "detail" : "Move to the previous shortcut or row in the focused Shortcuts list.",
+            "kind" : "shortcut",
+            "label" : "Previous shortcut",
+            "parameter" : "up",
+            "targetBundleID" : "com.apple.shortcuts"
+          },
+          "controlID" : "encoder-0-ccw"
+        },
+        {
+          "action" : {
+            "detail" : "Move to the next shortcut or row in the focused Shortcuts list.",
+            "kind" : "shortcut",
+            "label" : "Next shortcut",
+            "parameter" : "down",
+            "targetBundleID" : "com.apple.shortcuts"
+          },
+          "controlID" : "encoder-0-cw"
+        },
+        {
+          "action" : {
+            "detail" : "Open the selected shortcut or activate the focused Shortcuts control.",
+            "kind" : "shortcut",
+            "label" : "Open selected shortcut",
+            "parameter" : "enter",
+            "targetBundleID" : "com.apple.shortcuts"
+          },
+          "controlID" : "encoder-0-press"
+        },
+        {
+          "action" : {
+            "detail" : "Move keyboard focus to the previous Shortcuts interface section.",
+            "kind" : "shortcut",
+            "label" : "Previous section",
+            "parameter" : "shift+tab",
+            "targetBundleID" : "com.apple.shortcuts"
+          },
+          "controlID" : "encoder-1-ccw"
+        },
+        {
+          "action" : {
+            "detail" : "Move keyboard focus to the next Shortcuts interface section.",
+            "kind" : "shortcut",
+            "label" : "Next section",
+            "parameter" : "tab",
+            "targetBundleID" : "com.apple.shortcuts"
+          },
+          "controlID" : "encoder-1-cw"
+        },
+        {
+          "action" : {
+            "detail" : "Activate the focused Shortcuts button or toggle.",
+            "kind" : "shortcut",
+            "label" : "Activate control",
+            "parameter" : "space",
+            "targetBundleID" : "com.apple.shortcuts"
+          },
+          "controlID" : "encoder-1-press"
+        },
+        {
+          "action" : {
+            "detail" : "Move upward by one page in the focused Shortcuts collection.",
+            "kind" : "shortcut",
+            "label" : "Page up",
+            "parameter" : "pageup",
+            "targetBundleID" : "com.apple.shortcuts"
+          },
+          "controlID" : "encoder-2-ccw"
+        },
+        {
+          "action" : {
+            "detail" : "Move downward by one page in the focused Shortcuts collection.",
+            "kind" : "shortcut",
+            "label" : "Page down",
+            "parameter" : "pagedown",
+            "targetBundleID" : "com.apple.shortcuts"
+          },
+          "controlID" : "encoder-2-cw"
+        },
+        {
+          "action" : {
+            "detail" : "Focus search in the Shortcuts app.",
+            "kind" : "shortcut",
+            "label" : "Search shortcuts",
+            "parameter" : "cmd+f",
+            "targetBundleID" : "com.apple.shortcuts"
+          },
+          "controlID" : "encoder-2-press"
+        }
+      ],
+      "id" : "4F936DFC-B773-4FDB-84A0-256566F3612E",
+      "matchingBundleIDs" : [
+        "com.apple.shortcuts"
+      ],
+      "name" : "Personal Automations",
+      "presetID" : "personal-automations",
+      "summary" : "User-owned Apple Shortcuts routines plus keyboard navigation for the Shortcuts app."
+    },
+    {
+      "bindings" : [
+        {
+          "action" : {
+            "detail" : "Start a new task in the current agent workspace.",
+            "kind" : "agentAction",
+            "label" : "New task",
+            "parameter" : "new-task"
+          },
+          "controlID" : "key-0-0"
+        },
+        {
+          "action" : {
+            "detail" : "Ask the agent to review the current changes.",
+            "kind" : "agentAction",
+            "label" : "Review changes",
+            "parameter" : "review-changes"
+          },
+          "controlID" : "key-0-1"
+        },
+        {
+          "action" : {
+            "detail" : "Ask the agent to run the relevant test suite.",
+            "kind" : "agentAction",
+            "label" : "Run tests",
+            "parameter" : "run-tests"
+          },
+          "controlID" : "key-0-2"
+        },
+        {
+          "action" : {
+            "detail" : "Explain the selected code or text.",
+            "kind" : "agentAction",
+            "label" : "Explain selection",
+            "parameter" : "explain-selection"
+          },
+          "controlID" : "key-0-3"
+        },
+        {
+          "action" : {
+            "detail" : "Stop the current agent task.",
+            "kind" : "agentAction",
+            "label" : "Stop task",
+            "parameter" : "stop-current-task"
+          },
+          "controlID" : "key-1-0"
+        },
+        {
+          "action" : {
+            "detail" : "Summarize the current working context.",
+            "kind" : "agentAction",
+            "label" : "Summarize context",
+            "parameter" : "summarize-context"
+          },
+          "controlID" : "key-1-1"
+        },
+        {
+          "action" : {
+            "detail" : "Draft a commit message from the current changes.",
+            "kind" : "agentAction",
+            "label" : "Draft commit",
+            "parameter" : "draft-commit"
+          },
+          "controlID" : "key-1-2"
+        },
+        {
+          "action" : {
+            "detail" : "Run a focused regression review.",
+            "kind" : "agentAction",
+            "label" : "Find regressions",
+            "parameter" : "prompt:Review the current changes for concrete regressions."
+          },
+          "controlID" : "key-1-3"
+        },
+        {
+          "action" : {
+            "detail" : "Analyze the latest visible failure.",
+            "kind" : "agentAction",
+            "label" : "Explain failure",
+            "parameter" : "prompt:Explain the latest failure and identify its root cause."
+          },
+          "controlID" : "key-2-0"
+        },
+        {
+          "action" : {
+            "detail" : "Plan a bounded follow-up change.",
+            "kind" : "agentAction",
+            "label" : "Plan next step",
+            "parameter" : "prompt:Propose the smallest useful next implementation step."
+          },
+          "controlID" : "key-2-1"
+        },
+        {
+          "action" : {
+            "detail" : "Review the current implementation's edge cases.",
+            "kind" : "agentAction",
+            "label" : "Check edge cases",
+            "parameter" : "prompt:Check this implementation for missing edge cases."
+          },
+          "controlID" : "key-2-2"
+        },
+        {
+          "action" : {
+            "detail" : "Review identifiers for clarity.",
+            "kind" : "agentAction",
+            "label" : "Improve names",
+            "parameter" : "prompt:Suggest clearer names without changing behavior."
+          },
+          "controlID" : "key-2-3"
+        },
+        {
+          "action" : {
+            "detail" : "Prepare a concise reviewer-facing summary.",
+            "kind" : "agentAction",
+            "label" : "Summarize diff",
+            "parameter" : "prompt:Summarize the current diff for a reviewer."
+          },
+          "controlID" : "key-3-0"
+        },
+        {
+          "action" : {
+            "detail" : "Compare nearby documentation with current behavior.",
+            "kind" : "agentAction",
+            "label" : "Check docs",
+            "parameter" : "prompt:Check whether the documentation matches the implementation."
+          },
+          "controlID" : "key-3-1"
+        },
+        {
+          "action" : {
+            "detail" : "Prepare a task handoff.",
+            "kind" : "agentAction",
+            "label" : "Write handoff",
+            "parameter" : "prompt:Draft a concise implementation handoff with checks and risks."
+          },
+          "controlID" : "key-3-2"
+        },
+        {
+          "action" : {
+            "detail" : "Surface the most consequential open question.",
+            "kind" : "agentAction",
+            "label" : "Ask one question",
+            "parameter" : "prompt:Identify the single question that most affects correctness."
+          },
+          "controlID" : "key-3-3"
+        },
+        {
+          "action" : {
+            "detail" : "Select the previous task.",
+            "kind" : "agentAction",
+            "label" : "Previous task",
+            "parameter" : "previous-task"
+          },
+          "controlID" : "encoder-0-ccw"
+        },
+        {
+          "action" : {
+            "detail" : "Select the next task.",
+            "kind" : "agentAction",
+            "label" : "Next task",
+            "parameter" : "next-task"
+          },
+          "controlID" : "encoder-0-cw"
+        },
+        {
+          "action" : {
+            "detail" : "Open the selected task.",
+            "kind" : "agentAction",
+            "label" : "Open task",
+            "parameter" : "open-task"
+          },
+          "controlID" : "encoder-0-press"
+        },
+        {
+          "action" : {
+            "detail" : "Select the previous changed file.",
+            "kind" : "agentAction",
+            "label" : "Previous changed file",
+            "parameter" : "previous-changed-file"
+          },
+          "controlID" : "encoder-1-ccw"
+        },
+        {
+          "action" : {
+            "detail" : "Select the next changed file.",
+            "kind" : "agentAction",
+            "label" : "Next changed file",
+            "parameter" : "next-changed-file"
+          },
+          "controlID" : "encoder-1-cw"
+        },
+        {
+          "action" : {
+            "detail" : "Open the diff for the selected changed file.",
+            "kind" : "agentAction",
+            "label" : "Open diff",
+            "parameter" : "open-diff"
+          },
+          "controlID" : "encoder-1-press"
+        },
+        {
+          "action" : {
+            "detail" : "Scroll the agent view upward.",
+            "kind" : "agentAction",
+            "label" : "Scroll up",
+            "parameter" : "scroll-up"
+          },
+          "controlID" : "encoder-2-ccw"
+        },
+        {
+          "action" : {
+            "detail" : "Scroll the agent view downward.",
+            "kind" : "agentAction",
+            "label" : "Scroll down",
+            "parameter" : "scroll-down"
+          },
+          "controlID" : "encoder-2-cw"
+        },
+        {
+          "action" : {
+            "detail" : "Switch to the Desktop preset.",
+            "kind" : "profileSwitch",
+            "label" : "Desktop",
+            "parameter" : "desktop"
+          },
+          "controlID" : "encoder-2-press"
+        }
+      ],
+      "id" : "A0A9D0E6-00A7-4B50-B4DB-2C7D1007C5A4",
+      "matchingBundleIDs" : [
+
+      ],
+      "name" : "Agent Deck",
+      "presetID" : "agent-deck",
+      "summary" : "Codex task, review, test, navigation, and reusable prompt controls."
+    },
+    {
+      "bindings" : [
+        {
+          "action" : {
+            "detail" : "Show the VS Code Command Palette.",
+            "kind" : "shortcut",
+            "label" : "Command palette",
+            "parameter" : "cmd+shift+p",
+            "targetBundleID" : "com.microsoft.VSCode"
+          },
+          "controlID" : "key-0-0"
+        },
+        {
+          "action" : {
+            "detail" : "Open a file by name in VS Code.",
+            "kind" : "shortcut",
+            "label" : "Quick open",
+            "parameter" : "cmd+p",
+            "targetBundleID" : "com.microsoft.VSCode"
+          },
+          "controlID" : "key-0-1"
+        },
+        {
+          "action" : {
+            "detail" : "Create a new untitled file in VS Code.",
+            "kind" : "shortcut",
+            "label" : "New file",
+            "parameter" : "cmd+n",
+            "targetBundleID" : "com.microsoft.VSCode"
+          },
+          "controlID" : "key-0-2"
+        },
+        {
+          "action" : {
+            "detail" : "Open a file in VS Code.",
+            "kind" : "shortcut",
+            "label" : "Open file",
+            "parameter" : "cmd+o",
+            "targetBundleID" : "com.microsoft.VSCode"
+          },
+          "controlID" : "key-0-3"
+        },
+        {
+          "action" : {
+            "detail" : "Save the active file in VS Code.",
+            "kind" : "shortcut",
+            "label" : "Save",
+            "parameter" : "cmd+s",
+            "targetBundleID" : "com.microsoft.VSCode"
+          },
+          "controlID" : "key-1-0"
+        },
+        {
+          "action" : {
+            "detail" : "Save all edited files in VS Code.",
+            "kind" : "shortcut",
+            "label" : "Save all",
+            "parameter" : "alt+cmd+s",
+            "targetBundleID" : "com.microsoft.VSCode"
+          },
+          "controlID" : "key-1-1"
+        },
+        {
+          "action" : {
+            "detail" : "Close the active VS Code editor.",
+            "kind" : "shortcut",
+            "label" : "Close editor",
+            "parameter" : "cmd+w",
+            "targetBundleID" : "com.microsoft.VSCode"
+          },
+          "controlID" : "key-1-2"
+        },
+        {
+          "action" : {
+            "detail" : "Reopen the most recently closed editor.",
+            "kind" : "shortcut",
+            "label" : "Reopen editor",
+            "parameter" : "cmd+shift+t",
+            "targetBundleID" : "com.microsoft.VSCode"
+          },
+          "controlID" : "key-1-3"
+        },
+        {
+          "action" : {
+            "detail" : "Find text in the active editor.",
+            "kind" : "shortcut",
+            "label" : "Find",
+            "parameter" : "cmd+f",
+            "targetBundleID" : "com.microsoft.VSCode"
+          },
+          "controlID" : "key-2-0"
+        },
+        {
+          "action" : {
+            "detail" : "Search across the current workspace.",
+            "kind" : "shortcut",
+            "label" : "Find in files",
+            "parameter" : "cmd+shift+f",
+            "targetBundleID" : "com.microsoft.VSCode"
+          },
+          "controlID" : "key-2-1"
+        },
+        {
+          "action" : {
+            "detail" : "Replace text in the active editor.",
+            "kind" : "shortcut",
+            "label" : "Replace",
+            "parameter" : "alt+cmd+f",
+            "targetBundleID" : "com.microsoft.VSCode"
+          },
+          "controlID" : "key-2-2"
+        },
+        {
+          "action" : {
+            "detail" : "Toggle a line comment for the selection.",
+            "kind" : "shortcut",
+            "label" : "Toggle comment",
+            "parameter" : "cmd+/",
+            "targetBundleID" : "com.microsoft.VSCode"
+          },
+          "controlID" : "key-2-3"
+        },
+        {
+          "action" : {
+            "detail" : "Format the active document.",
+            "kind" : "shortcut",
+            "label" : "Format document",
+            "parameter" : "shift+alt+f",
+            "targetBundleID" : "com.microsoft.VSCode"
+          },
+          "controlID" : "key-3-0"
+        },
+        {
+          "action" : {
+            "detail" : "Show available code actions and quick fixes.",
+            "kind" : "shortcut",
+            "label" : "Quick fix",
+            "parameter" : "cmd+.",
+            "targetBundleID" : "com.microsoft.VSCode"
+          },
+          "controlID" : "key-3-1"
+        },
+        {
+          "action" : {
+            "detail" : "Open the selected symbol's definition.",
+            "kind" : "shortcut",
+            "label" : "Go to definition",
+            "parameter" : "f12",
+            "targetBundleID" : "com.microsoft.VSCode"
+          },
+          "controlID" : "key-3-2"
+        },
+        {
+          "action" : {
+            "detail" : "Show references for the selected symbol.",
+            "kind" : "shortcut",
+            "label" : "Go to references",
+            "parameter" : "shift+f12",
+            "targetBundleID" : "com.microsoft.VSCode"
+          },
+          "controlID" : "key-3-3"
+        },
+        {
+          "action" : {
+            "detail" : "Move the current line upward.",
+            "kind" : "shortcut",
+            "label" : "Move line up",
+            "parameter" : "alt+up",
+            "targetBundleID" : "com.microsoft.VSCode"
+          },
+          "controlID" : "encoder-0-ccw"
+        },
+        {
+          "action" : {
+            "detail" : "Move the current line downward.",
+            "kind" : "shortcut",
+            "label" : "Move line down",
+            "parameter" : "alt+down",
+            "targetBundleID" : "com.microsoft.VSCode"
+          },
+          "controlID" : "encoder-0-cw"
+        },
+        {
+          "action" : {
+            "detail" : "Copy the current line below.",
+            "kind" : "shortcut",
+            "label" : "Copy line down",
+            "parameter" : "shift+alt+down",
+            "targetBundleID" : "com.microsoft.VSCode"
+          },
+          "controlID" : "encoder-0-press"
+        },
+        {
+          "action" : {
+            "detail" : "Select the previous open editor.",
+            "kind" : "shortcut",
+            "label" : "Previous editor",
+            "parameter" : "ctrl+shift+tab",
+            "targetBundleID" : "com.microsoft.VSCode"
+          },
+          "controlID" : "encoder-1-ccw"
+        },
+        {
+          "action" : {
+            "detail" : "Select the next open editor.",
+            "kind" : "shortcut",
+            "label" : "Next editor",
+            "parameter" : "ctrl+tab",
+            "targetBundleID" : "com.microsoft.VSCode"
+          },
+          "controlID" : "encoder-1-cw"
+        },
+        {
+          "action" : {
+            "detail" : "Show or hide the integrated terminal.",
+            "kind" : "shortcut",
+            "label" : "Toggle terminal",
+            "parameter" : "ctrl+backtick",
+            "targetBundleID" : "com.microsoft.VSCode"
+          },
+          "controlID" : "encoder-1-press"
+        },
+        {
+          "action" : {
+            "detail" : "Scroll the VS Code editor upward.",
+            "kind" : "system",
+            "label" : "Scroll editor up",
+            "parameter" : "scrollUp",
+            "targetBundleID" : "com.microsoft.VSCode"
+          },
+          "controlID" : "encoder-2-ccw"
+        },
+        {
+          "action" : {
+            "detail" : "Scroll the VS Code editor downward.",
+            "kind" : "system",
+            "label" : "Scroll editor down",
+            "parameter" : "scrollDown",
+            "targetBundleID" : "com.microsoft.VSCode"
+          },
+          "controlID" : "encoder-2-cw"
+        },
+        {
+          "action" : {
+            "detail" : "Run the configured default build task.",
+            "kind" : "shortcut",
+            "label" : "Run build task",
+            "parameter" : "cmd+shift+b",
+            "targetBundleID" : "com.microsoft.VSCode"
+          },
+          "controlID" : "encoder-2-press"
+        }
+      ],
+      "id" : "D341C844-69D3-49C2-92E8-A7F6014B6831",
+      "matchingBundleIDs" : [
+        "com.microsoft.VSCode"
+      ],
+      "name" : "Developer",
+      "presetID" : "developer",
+      "summary" : "Visual Studio Code navigation, editing, search, formatting, and task controls."
+    },
+    {
+      "bindings" : [
+        {
+          "action" : {
+            "detail" : "Open VS Code's Source Control view.",
+            "kind" : "shortcut",
+            "label" : "Source Control",
+            "parameter" : "ctrl+shift+g",
+            "targetBundleID" : "com.microsoft.VSCode"
+          },
+          "controlID" : "key-0-0"
+        },
+        {
+          "action" : {
+            "detail" : "Open every working-tree change in VS Code's multi-diff editor; requires the supplied keybinding.",
+            "kind" : "shortcut",
+            "label" : "Open all changes",
+            "parameter" : "ctrl+alt+shift+1",
+            "targetBundleID" : "com.microsoft.VSCode"
+          },
+          "controlID" : "key-0-1"
+        },
+        {
+          "action" : {
+            "detail" : "Open the current repository's unstaged changes; requires the supplied keybinding.",
+            "kind" : "shortcut",
+            "label" : "View unstaged changes",
+            "parameter" : "ctrl+alt+shift+2",
+            "targetBundleID" : "com.microsoft.VSCode"
+          },
+          "controlID" : "key-0-2"
+        },
+        {
+          "action" : {
+            "detail" : "Open the current repository's staged changes; requires the supplied keybinding.",
+            "kind" : "shortcut",
+            "label" : "View staged changes",
+            "parameter" : "ctrl+alt+shift+3",
+            "targetBundleID" : "com.microsoft.VSCode"
+          },
+          "controlID" : "key-0-3"
+        },
+        {
+          "action" : {
+            "detail" : "Open the current repository's untracked files; requires the supplied keybinding.",
+            "kind" : "shortcut",
+            "label" : "View untracked changes",
+            "parameter" : "ctrl+alt+shift+4",
+            "targetBundleID" : "com.microsoft.VSCode"
+          },
+          "controlID" : "key-1-0"
+        },
+        {
+          "action" : {
+            "detail" : "Show the Git output channel for diagnostics; requires the supplied keybinding.",
+            "kind" : "shortcut",
+            "label" : "Git output",
+            "parameter" : "ctrl+alt+shift+5",
+            "targetBundleID" : "com.microsoft.VSCode"
+          },
+          "controlID" : "key-1-1"
+        },
+        {
+          "action" : {
+            "detail" : "Stage the selected ranges in an active Git diff editor; requires the supplied keybinding.",
+            "kind" : "shortcut",
+            "label" : "Stage selected ranges",
+            "parameter" : "ctrl+alt+shift+6",
+            "targetBundleID" : "com.microsoft.VSCode"
+          },
+          "controlID" : "key-1-2"
+        },
+        {
+          "action" : {
+            "detail" : "Unstage the selected ranges in an active Git diff editor; requires the supplied keybinding.",
+            "kind" : "shortcut",
+            "label" : "Unstage selected ranges",
+            "parameter" : "ctrl+alt+shift+7",
+            "targetBundleID" : "com.microsoft.VSCode"
+          },
+          "controlID" : "key-1-3"
+        },
+        {
+          "action" : {
+            "detail" : "Stage the selected Source Control resource; requires the supplied keybinding.",
+            "kind" : "shortcut",
+            "label" : "Stage selected item",
+            "parameter" : "ctrl+alt+shift+8",
+            "targetBundleID" : "com.microsoft.VSCode"
+          },
+          "controlID" : "key-2-0"
+        },
+        {
+          "action" : {
+            "detail" : "Unstage the selected Source Control resource; requires the supplied keybinding.",
+            "kind" : "shortcut",
+            "label" : "Unstage selected item",
+            "parameter" : "ctrl+alt+shift+9",
+            "targetBundleID" : "com.microsoft.VSCode"
+          },
+          "controlID" : "key-2-1"
+        },
+        {
+          "action" : {
+            "detail" : "Stage all changes in the chosen repository; requires the supplied keybinding.",
+            "kind" : "shortcut",
+            "label" : "Stage all",
+            "parameter" : "ctrl+alt+shift+0",
+            "targetBundleID" : "com.microsoft.VSCode"
+          },
+          "controlID" : "key-2-2"
+        },
+        {
+          "action" : {
+            "detail" : "Unstage all changes in the chosen repository; requires the supplied keybinding.",
+            "kind" : "shortcut",
+            "label" : "Unstage all",
+            "parameter" : "ctrl+alt+shift+a",
+            "targetBundleID" : "com.microsoft.VSCode"
+          },
+          "controlID" : "key-2-3"
+        },
+        {
+          "action" : {
+            "detail" : "Fetch remote refs for the chosen repository without merging; requires the supplied keybinding.",
+            "kind" : "shortcut",
+            "label" : "Fetch",
+            "parameter" : "ctrl+alt+shift+b",
+            "targetBundleID" : "com.microsoft.VSCode"
+          },
+          "controlID" : "key-3-0"
+        },
+        {
+          "action" : {
+            "detail" : "Pull the upstream branch for the chosen repository; requires the supplied keybinding.",
+            "kind" : "shortcut",
+            "label" : "Pull",
+            "parameter" : "ctrl+alt+shift+c",
+            "targetBundleID" : "com.microsoft.VSCode"
+          },
+          "controlID" : "key-3-1"
+        },
+        {
+          "action" : {
+            "detail" : "Push the current branch to its configured upstream; requires the supplied keybinding.",
+            "kind" : "shortcut",
+            "label" : "Push",
+            "parameter" : "ctrl+alt+shift+d",
+            "targetBundleID" : "com.microsoft.VSCode"
+          },
+          "controlID" : "key-3-2"
+        },
+        {
+          "action" : {
+            "detail" : "Choose a commit and open its changes in VS Code; requires the supplied keybinding.",
+            "kind" : "shortcut",
+            "label" : "View commit",
+            "parameter" : "ctrl+alt+shift+e",
+            "targetBundleID" : "com.microsoft.VSCode"
+          },
+          "controlID" : "key-3-3"
+        },
+        {
+          "action" : {
+            "detail" : "Move to the previous change in the active VS Code diff editor; requires the supplied keybinding.",
+            "kind" : "shortcut",
+            "label" : "Previous change",
+            "parameter" : "ctrl+alt+shift+f",
+            "targetBundleID" : "com.microsoft.VSCode"
+          },
+          "controlID" : "encoder-0-ccw"
+        },
+        {
+          "action" : {
+            "detail" : "Move to the next change in the active VS Code diff editor; requires the supplied keybinding.",
+            "kind" : "shortcut",
+            "label" : "Next change",
+            "parameter" : "ctrl+alt+shift+g",
+            "targetBundleID" : "com.microsoft.VSCode"
+          },
+          "controlID" : "encoder-0-cw"
+        },
+        {
+          "action" : {
+            "detail" : "Open the selected Source Control resource as a diff; requires the supplied keybinding.",
+            "kind" : "shortcut",
+            "label" : "Open selected diff",
+            "parameter" : "ctrl+alt+shift+h",
+            "targetBundleID" : "com.microsoft.VSCode"
+          },
+          "controlID" : "encoder-0-press"
+        },
+        {
+          "action" : {
+            "detail" : "Select the previous open VS Code editor.",
+            "kind" : "shortcut",
+            "label" : "Previous editor",
+            "parameter" : "ctrl+shift+tab",
+            "targetBundleID" : "com.microsoft.VSCode"
+          },
+          "controlID" : "encoder-1-ccw"
+        },
+        {
+          "action" : {
+            "detail" : "Select the next open VS Code editor.",
+            "kind" : "shortcut",
+            "label" : "Next editor",
+            "parameter" : "ctrl+tab",
+            "targetBundleID" : "com.microsoft.VSCode"
+          },
+          "controlID" : "encoder-1-cw"
+        },
+        {
+          "action" : {
+            "detail" : "Focus VS Code's Source Control view.",
+            "kind" : "shortcut",
+            "label" : "Focus Source Control",
+            "parameter" : "ctrl+shift+g",
+            "targetBundleID" : "com.microsoft.VSCode"
+          },
+          "controlID" : "encoder-1-press"
+        },
+        {
+          "action" : {
+            "detail" : "Scroll the active VS Code review surface upward.",
+            "kind" : "system",
+            "label" : "Scroll review up",
+            "parameter" : "scrollUp",
+            "targetBundleID" : "com.microsoft.VSCode"
+          },
+          "controlID" : "encoder-2-ccw"
+        },
+        {
+          "action" : {
+            "detail" : "Scroll the active VS Code review surface downward.",
+            "kind" : "system",
+            "label" : "Scroll review down",
+            "parameter" : "scrollDown",
+            "targetBundleID" : "com.microsoft.VSCode"
+          },
+          "controlID" : "encoder-2-cw"
+        },
+        {
+          "action" : {
+            "detail" : "Open the working-tree version of the selected Source Control resource; requires the supplied keybinding.",
+            "kind" : "shortcut",
+            "label" : "Open working file",
+            "parameter" : "ctrl+alt+shift+i",
+            "targetBundleID" : "com.microsoft.VSCode"
+          },
+          "controlID" : "encoder-2-press"
+        }
+      ],
+      "id" : "BFE1910C-C69B-4A51-9E50-C6F7760D16C8",
+      "matchingBundleIDs" : [
+
+      ],
+      "name" : "Git Review",
+      "presetID" : "git-review",
+      "summary" : "Visual Studio Code source-control review, staging, history, and remote controls."
+    },
+    {
+      "bindings" : [
+        {
+          "action" : {
+            "detail" : "Bring Apple Terminal to the foreground.",
+            "kind" : "launchApp",
+            "label" : "Open Terminal",
+            "parameter" : "com.apple.Terminal"
+          },
+          "controlID" : "key-0-0"
+        },
+        {
+          "action" : {
+            "detail" : "Open a new Terminal window with the default profile.",
+            "kind" : "shortcut",
+            "label" : "New window",
+            "parameter" : "cmd+n",
+            "targetBundleID" : "com.apple.Terminal"
+          },
+          "controlID" : "key-0-1"
+        },
+        {
+          "action" : {
+            "detail" : "Open a new tab in the active Terminal window.",
+            "kind" : "shortcut",
+            "label" : "New tab",
+            "parameter" : "cmd+t",
+            "targetBundleID" : "com.apple.Terminal"
+          },
+          "controlID" : "key-0-2"
+        },
+        {
+          "action" : {
+            "detail" : "Split the active Terminal tab into two panes.",
+            "kind" : "shortcut",
+            "label" : "Split pane",
+            "parameter" : "cmd+d",
+            "targetBundleID" : "com.apple.Terminal"
+          },
+          "controlID" : "key-0-3"
+        },
+        {
+          "action" : {
+            "detail" : "Close the active split pane without closing the tab.",
+            "kind" : "shortcut",
+            "label" : "Close split pane",
+            "parameter" : "shift+cmd+d",
+            "targetBundleID" : "com.apple.Terminal"
+          },
+          "controlID" : "key-1-0"
+        },
+        {
+          "action" : {
+            "detail" : "Open Terminal's text search bar.",
+            "kind" : "shortcut",
+            "label" : "Find",
+            "parameter" : "cmd+f",
+            "targetBundleID" : "com.apple.Terminal"
+          },
+          "controlID" : "key-1-1"
+        },
+        {
+          "action" : {
+            "detail" : "Clear Terminal output back to the start of the scrollback buffer.",
+            "kind" : "shortcut",
+            "label" : "Clear to start",
+            "parameter" : "cmd+k",
+            "targetBundleID" : "com.apple.Terminal"
+          },
+          "controlID" : "key-1-2"
+        },
+        {
+          "action" : {
+            "detail" : "Start the shell's reverse command-history search.",
+            "kind" : "shortcut",
+            "label" : "Reverse history search",
+            "parameter" : "ctrl+r",
+            "targetBundleID" : "com.apple.Terminal"
+          },
+          "controlID" : "key-1-3"
+        },
+        {
+          "action" : {
+            "detail" : "Insert a concise Git status command without sending Return.",
+            "kind" : "snippet",
+            "label" : "Git status",
+            "parameter" : "git status --short --branch",
+            "targetBundleID" : "com.apple.Terminal"
+          },
+          "controlID" : "key-2-0"
+        },
+        {
+          "action" : {
+            "detail" : "Insert a Git working-tree summary command without sending Return.",
+            "kind" : "snippet",
+            "label" : "Git diff summary",
+            "parameter" : "git diff --stat",
+            "targetBundleID" : "com.apple.Terminal"
+          },
+          "controlID" : "key-2-1"
+        },
+        {
+          "action" : {
+            "detail" : "Insert a compact recent-history command without sending Return.",
+            "kind" : "snippet",
+            "label" : "Recent commits",
+            "parameter" : "git log --oneline --decorate -20",
+            "targetBundleID" : "com.apple.Terminal"
+          },
+          "controlID" : "key-2-2"
+        },
+        {
+          "action" : {
+            "detail" : "Insert the command that prints the current directory without sending Return.",
+            "kind" : "snippet",
+            "label" : "Current directory",
+            "parameter" : "pwd",
+            "targetBundleID" : "com.apple.Terminal"
+          },
+          "controlID" : "key-2-3"
+        },
+        {
+          "action" : {
+            "detail" : "Insert a detailed directory listing command without sending Return.",
+            "kind" : "snippet",
+            "label" : "List files",
+            "parameter" : "ls -la",
+            "targetBundleID" : "com.apple.Terminal"
+          },
+          "controlID" : "key-3-0"
+        },
+        {
+          "action" : {
+            "detail" : "Insert a command that totals the current directory's disk usage without sending Return.",
+            "kind" : "snippet",
+            "label" : "Disk usage",
+            "parameter" : "du -sh .",
+            "targetBundleID" : "com.apple.Terminal"
+          },
+          "controlID" : "key-3-1"
+        },
+        {
+          "action" : {
+            "detail" : "Insert a command that lists local listening TCP sockets without sending Return.",
+            "kind" : "snippet",
+            "label" : "Listening ports",
+            "parameter" : "lsof -nP -iTCP -sTCP:LISTEN",
+            "targetBundleID" : "com.apple.Terminal"
+          },
+          "controlID" : "key-3-2"
+        },
+        {
+          "action" : {
+            "detail" : "Insert a portable process snapshot command without sending Return.",
+            "kind" : "snippet",
+            "label" : "Process snapshot",
+            "parameter" : "ps -axo pid,ppid,%cpu,%mem,command",
+            "targetBundleID" : "com.apple.Terminal"
+          },
+          "controlID" : "key-3-3"
+        },
+        {
+          "action" : {
+            "detail" : "Select the previous Terminal tab.",
+            "kind" : "shortcut",
+            "label" : "Previous tab",
+            "parameter" : "ctrl+shift+tab",
+            "targetBundleID" : "com.apple.Terminal"
+          },
+          "controlID" : "encoder-0-ccw"
+        },
+        {
+          "action" : {
+            "detail" : "Select the next Terminal tab.",
+            "kind" : "shortcut",
+            "label" : "Next tab",
+            "parameter" : "ctrl+tab",
+            "targetBundleID" : "com.apple.Terminal"
+          },
+          "controlID" : "encoder-0-cw"
+        },
+        {
+          "action" : {
+            "detail" : "Enter or leave Terminal's tab overview.",
+            "kind" : "shortcut",
+            "label" : "Show all tabs",
+            "parameter" : "shift+cmd+\\",
+            "targetBundleID" : "com.apple.Terminal"
+          },
+          "controlID" : "encoder-0-press"
+        },
+        {
+          "action" : {
+            "detail" : "Scroll the active Terminal pane upward by one line.",
+            "kind" : "shortcut",
+            "label" : "Scroll one line up",
+            "parameter" : "alt+cmd+pageup",
+            "targetBundleID" : "com.apple.Terminal"
+          },
+          "controlID" : "encoder-1-ccw"
+        },
+        {
+          "action" : {
+            "detail" : "Scroll the active Terminal pane downward by one line.",
+            "kind" : "shortcut",
+            "label" : "Scroll one line down",
+            "parameter" : "alt+cmd+pagedown",
+            "targetBundleID" : "com.apple.Terminal"
+          },
+          "controlID" : "encoder-1-cw"
+        },
+        {
+          "action" : {
+            "detail" : "Move the active Terminal pane to the bottom of its scrollback.",
+            "kind" : "shortcut",
+            "label" : "Scroll to bottom",
+            "parameter" : "cmd+end",
+            "targetBundleID" : "com.apple.Terminal"
+          },
+          "controlID" : "encoder-1-press"
+        },
+        {
+          "action" : {
+            "detail" : "Decrease Terminal's displayed font size.",
+            "kind" : "shortcut",
+            "label" : "Smaller text",
+            "parameter" : "cmd+minus",
+            "targetBundleID" : "com.apple.Terminal"
+          },
+          "controlID" : "encoder-2-ccw"
+        },
+        {
+          "action" : {
+            "detail" : "Increase Terminal's displayed font size.",
+            "kind" : "shortcut",
+            "label" : "Larger text",
+            "parameter" : "cmd+plus",
+            "targetBundleID" : "com.apple.Terminal"
+          },
+          "controlID" : "encoder-2-cw"
+        },
+        {
+          "action" : {
+            "detail" : "Show or hide the Terminal inspector for the active session.",
+            "kind" : "shortcut",
+            "label" : "Inspector",
+            "parameter" : "cmd+i",
+            "targetBundleID" : "com.apple.Terminal"
+          },
+          "controlID" : "encoder-2-press"
+        }
+      ],
+      "id" : "8E25FD73-31E9-4B2E-992E-23AB9F21F8B4",
+      "matchingBundleIDs" : [
+        "com.apple.Terminal"
+      ],
+      "name" : "Terminal",
+      "presetID" : "terminal",
+      "summary" : "Apple Terminal windows, tabs, panes, navigation, and inert command-line snippets."
+    },
+    {
+      "bindings" : [
+        {
+          "action" : {
+            "detail" : "Bring CotEditor to the foreground for Markdown drafting.",
+            "kind" : "launchApp",
+            "label" : "Open CotEditor",
+            "parameter" : "com.coteditor.CotEditor"
+          },
+          "controlID" : "key-0-0"
+        },
+        {
+          "action" : {
+            "detail" : "Create a new plain-text document in CotEditor.",
+            "kind" : "shortcut",
+            "label" : "New draft",
+            "parameter" : "cmd+n",
+            "targetBundleID" : "com.coteditor.CotEditor"
+          },
+          "controlID" : "key-0-1"
+        },
+        {
+          "action" : {
+            "detail" : "Open a text or Markdown document in CotEditor.",
+            "kind" : "shortcut",
+            "label" : "Open document",
+            "parameter" : "cmd+o",
+            "targetBundleID" : "com.coteditor.CotEditor"
+          },
+          "controlID" : "key-0-2"
+        },
+        {
+          "action" : {
+            "detail" : "Save the active CotEditor document.",
+            "kind" : "shortcut",
+            "label" : "Save draft",
+            "parameter" : "cmd+s",
+            "targetBundleID" : "com.coteditor.CotEditor"
+          },
+          "controlID" : "key-0-3"
+        },
+        {
+          "action" : {
+            "detail" : "Save the active CotEditor document under a new name.",
+            "kind" : "shortcut",
+            "label" : "Save draft as",
+            "parameter" : "shift+cmd+s",
+            "targetBundleID" : "com.coteditor.CotEditor"
+          },
+          "controlID" : "key-1-0"
+        },
+        {
+          "action" : {
+            "detail" : "Open CotEditor's find interface for the active document.",
+            "kind" : "shortcut",
+            "label" : "Find in draft",
+            "parameter" : "cmd+f",
+            "targetBundleID" : "com.coteditor.CotEditor"
+          },
+          "controlID" : "key-1-1"
+        },
+        {
+          "action" : {
+            "detail" : "Select the next match in CotEditor.",
+            "kind" : "shortcut",
+            "label" : "Find next",
+            "parameter" : "cmd+g",
+            "targetBundleID" : "com.coteditor.CotEditor"
+          },
+          "controlID" : "key-1-2"
+        },
+        {
+          "action" : {
+            "detail" : "Select the previous match in CotEditor.",
+            "kind" : "shortcut",
+            "label" : "Find previous",
+            "parameter" : "shift+cmd+g",
+            "targetBundleID" : "com.coteditor.CotEditor"
+          },
+          "controlID" : "key-1-3"
+        },
+        {
+          "action" : {
+            "detail" : "Insert a level-two Markdown heading at the insertion point.",
+            "kind" : "snippet",
+            "label" : "Heading",
+            "parameter" : "## Section",
+            "targetBundleID" : "com.coteditor.CotEditor"
+          },
+          "controlID" : "key-2-0"
+        },
+        {
+          "action" : {
+            "detail" : "Insert an unchecked Markdown task-list item at the insertion point.",
+            "kind" : "snippet",
+            "label" : "Task item",
+            "parameter" : "- [ ] Task",
+            "targetBundleID" : "com.coteditor.CotEditor"
+          },
+          "controlID" : "key-2-1"
+        },
+        {
+          "action" : {
+            "detail" : "Insert a Markdown link template ready for replacement.",
+            "kind" : "snippet",
+            "label" : "Link",
+            "parameter" : "[title](https://example.com)",
+            "targetBundleID" : "com.coteditor.CotEditor"
+          },
+          "controlID" : "key-2-2"
+        },
+        {
+          "action" : {
+            "detail" : "Insert a fenced Markdown code-block template.",
+            "kind" : "snippet",
+            "label" : "Code fence",
+            "parameter" : "```text\ncode\n```",
+            "targetBundleID" : "com.coteditor.CotEditor"
+          },
+          "controlID" : "key-2-3"
+        },
+        {
+          "action" : {
+            "detail" : "Bring Safari to the foreground for source reading.",
+            "kind" : "launchApp",
+            "label" : "Open Safari",
+            "parameter" : "com.apple.Safari"
+          },
+          "controlID" : "key-3-0"
+        },
+        {
+          "action" : {
+            "detail" : "Open Reader for the current Safari article when Reader is available.",
+            "kind" : "shortcut",
+            "label" : "Safari Reader",
+            "parameter" : "shift+cmd+r",
+            "targetBundleID" : "com.apple.Safari"
+          },
+          "controlID" : "key-3-1"
+        },
+        {
+          "action" : {
+            "detail" : "Add the current Safari page to Reading List.",
+            "kind" : "shortcut",
+            "label" : "Save to Reading List",
+            "parameter" : "shift+cmd+d",
+            "targetBundleID" : "com.apple.Safari"
+          },
+          "controlID" : "key-3-2"
+        },
+        {
+          "action" : {
+            "detail" : "Bring Apple Notes to the foreground for quick research capture.",
+            "kind" : "launchApp",
+            "label" : "Open Notes",
+            "parameter" : "com.apple.Notes"
+          },
+          "controlID" : "key-3-3"
+        },
+        {
+          "action" : {
+            "detail" : "Decrease the displayed text size in CotEditor.",
+            "kind" : "shortcut",
+            "label" : "Smaller draft text",
+            "parameter" : "cmd+minus",
+            "targetBundleID" : "com.coteditor.CotEditor"
+          },
+          "controlID" : "encoder-0-ccw"
+        },
+        {
+          "action" : {
+            "detail" : "Increase the displayed text size in CotEditor.",
+            "kind" : "shortcut",
+            "label" : "Larger draft text",
+            "parameter" : "cmd+plus",
+            "targetBundleID" : "com.coteditor.CotEditor"
+          },
+          "controlID" : "encoder-0-cw"
+        },
+        {
+          "action" : {
+            "detail" : "Show CotEditor's Outline inspector after assigning the documented custom binding.",
+            "kind" : "shortcut",
+            "label" : "Show outline",
+            "parameter" : "ctrl+cmd+o",
+            "targetBundleID" : "com.coteditor.CotEditor"
+          },
+          "controlID" : "encoder-0-press"
+        },
+        {
+          "action" : {
+            "detail" : "Select the previous tab in Safari.",
+            "kind" : "shortcut",
+            "label" : "Previous Safari tab",
+            "parameter" : "ctrl+shift+tab",
+            "targetBundleID" : "com.apple.Safari"
+          },
+          "controlID" : "encoder-1-ccw"
+        },
+        {
+          "action" : {
+            "detail" : "Select the next tab in Safari.",
+            "kind" : "shortcut",
+            "label" : "Next Safari tab",
+            "parameter" : "ctrl+tab",
+            "targetBundleID" : "com.apple.Safari"
+          },
+          "controlID" : "encoder-1-cw"
+        },
+        {
+          "action" : {
+            "detail" : "Focus Safari's Smart Search field.",
+            "kind" : "shortcut",
+            "label" : "Safari search field",
+            "parameter" : "cmd+l",
+            "targetBundleID" : "com.apple.Safari"
+          },
+          "controlID" : "encoder-1-press"
+        },
+        {
+          "action" : {
+            "detail" : "Return to the Apple Note that linked to the current note.",
+            "kind" : "shortcut",
+            "label" : "Previous linked note",
+            "parameter" : "alt+cmd+[",
+            "targetBundleID" : "com.apple.Notes"
+          },
+          "controlID" : "encoder-2-ccw"
+        },
+        {
+          "action" : {
+            "detail" : "Go forward to the linked Apple Note.",
+            "kind" : "shortcut",
+            "label" : "Next linked note",
+            "parameter" : "alt+cmd+]",
+            "targetBundleID" : "com.apple.Notes"
+          },
+          "controlID" : "encoder-2-cw"
+        },
+        {
+          "action" : {
+            "detail" : "Search across all Apple Notes accounts.",
+            "kind" : "shortcut",
+            "label" : "Search all notes",
+            "parameter" : "alt+cmd+f",
+            "targetBundleID" : "com.apple.Notes"
+          },
+          "controlID" : "encoder-2-press"
+        }
+      ],
+      "id" : "0FE1C1A9-3D79-41C8-991F-D8C1DE4B2532",
+      "matchingBundleIDs" : [
+        "com.coteditor.CotEditor"
+      ],
+      "name" : "Research & Writing",
+      "presetID" : "research-writing",
+      "summary" : "Markdown drafting in CotEditor with focused Safari reading and Apple Notes capture controls."
+    },
+    {
+      "bindings" : [
+        {
+          "action" : {
+            "detail" : "Open Zoom's Join Meeting flow.",
+            "kind" : "shortcut",
+            "label" : "Join meeting",
+            "parameter" : "cmd+j",
+            "targetBundleID" : "us.zoom.xos"
+          },
+          "controlID" : "key-0-0"
+        },
+        {
+          "action" : {
+            "detail" : "Start a Zoom meeting.",
+            "kind" : "shortcut",
+            "label" : "Start meeting",
+            "parameter" : "cmd+ctrl+v",
+            "targetBundleID" : "us.zoom.xos"
+          },
+          "controlID" : "key-0-1"
+        },
+        {
+          "action" : {
+            "detail" : "Open Zoom's Schedule Meeting flow.",
+            "kind" : "shortcut",
+            "label" : "Schedule meeting",
+            "parameter" : "cmd+d",
+            "targetBundleID" : "us.zoom.xos"
+          },
+          "controlID" : "key-0-2"
+        },
+        {
+          "action" : {
+            "detail" : "Open Zoom's direct screen sharing flow.",
+            "kind" : "shortcut",
+            "label" : "Direct share",
+            "parameter" : "cmd+ctrl+s",
+            "targetBundleID" : "us.zoom.xos"
+          },
+          "controlID" : "key-0-3"
+        },
+        {
+          "action" : {
+            "detail" : "Toggle your Zoom microphone.",
+            "kind" : "shortcut",
+            "label" : "Mute or unmute",
+            "parameter" : "cmd+shift+a",
+            "targetBundleID" : "us.zoom.xos"
+          },
+          "controlID" : "key-1-0"
+        },
+        {
+          "action" : {
+            "detail" : "Toggle your Zoom camera.",
+            "kind" : "shortcut",
+            "label" : "Start or stop video",
+            "parameter" : "cmd+shift+v",
+            "targetBundleID" : "us.zoom.xos"
+          },
+          "controlID" : "key-1-1"
+        },
+        {
+          "action" : {
+            "detail" : "Select the next available Zoom camera.",
+            "kind" : "shortcut",
+            "label" : "Switch camera",
+            "parameter" : "cmd+shift+n",
+            "targetBundleID" : "us.zoom.xos"
+          },
+          "controlID" : "key-1-2"
+        },
+        {
+          "action" : {
+            "detail" : "Start or stop Zoom screen sharing.",
+            "kind" : "shortcut",
+            "label" : "Share screen",
+            "parameter" : "cmd+shift+s",
+            "targetBundleID" : "us.zoom.xos"
+          },
+          "controlID" : "key-1-3"
+        },
+        {
+          "action" : {
+            "detail" : "Pause or resume Zoom screen sharing.",
+            "kind" : "shortcut",
+            "label" : "Pause sharing",
+            "parameter" : "cmd+shift+t",
+            "targetBundleID" : "us.zoom.xos"
+          },
+          "controlID" : "key-2-0"
+        },
+        {
+          "action" : {
+            "detail" : "Start or stop a local Zoom recording.",
+            "kind" : "shortcut",
+            "label" : "Local recording",
+            "parameter" : "cmd+shift+r",
+            "targetBundleID" : "us.zoom.xos"
+          },
+          "controlID" : "key-2-1"
+        },
+        {
+          "action" : {
+            "detail" : "Start or stop a Zoom cloud recording when available.",
+            "kind" : "shortcut",
+            "label" : "Cloud recording",
+            "parameter" : "cmd+shift+c",
+            "targetBundleID" : "us.zoom.xos"
+          },
+          "controlID" : "key-2-2"
+        },
+        {
+          "action" : {
+            "detail" : "Cycle Zoom speaker and gallery views.",
+            "kind" : "shortcut",
+            "label" : "Change view",
+            "parameter" : "cmd+shift+w",
+            "targetBundleID" : "us.zoom.xos"
+          },
+          "controlID" : "key-2-3"
+        },
+        {
+          "action" : {
+            "detail" : "Show or hide Zoom's participants panel.",
+            "kind" : "shortcut",
+            "label" : "Participants",
+            "parameter" : "cmd+u",
+            "targetBundleID" : "us.zoom.xos"
+          },
+          "controlID" : "key-3-0"
+        },
+        {
+          "action" : {
+            "detail" : "Show or hide the in-meeting chat panel.",
+            "kind" : "shortcut",
+            "label" : "Meeting chat",
+            "parameter" : "cmd+shift+h",
+            "targetBundleID" : "us.zoom.xos"
+          },
+          "controlID" : "key-3-1"
+        },
+        {
+          "action" : {
+            "detail" : "Open the Zoom meeting invitation window.",
+            "kind" : "shortcut",
+            "label" : "Invite",
+            "parameter" : "cmd+i",
+            "targetBundleID" : "us.zoom.xos"
+          },
+          "controlID" : "key-3-2"
+        },
+        {
+          "action" : {
+            "detail" : "Copy the current Zoom meeting invitation link.",
+            "kind" : "shortcut",
+            "label" : "Copy invite link",
+            "parameter" : "cmd+shift+i",
+            "targetBundleID" : "us.zoom.xos"
+          },
+          "controlID" : "key-3-3"
+        },
+        {
+          "action" : {
+            "detail" : "Show the previous gallery page.",
+            "kind" : "shortcut",
+            "label" : "Previous gallery page",
+            "parameter" : "ctrl+p",
+            "targetBundleID" : "us.zoom.xos"
+          },
+          "controlID" : "encoder-0-ccw"
+        },
+        {
+          "action" : {
+            "detail" : "Show the next gallery page.",
+            "kind" : "shortcut",
+            "label" : "Next gallery page",
+            "parameter" : "ctrl+n",
+            "targetBundleID" : "us.zoom.xos"
+          },
+          "controlID" : "encoder-0-cw"
+        },
+        {
+          "action" : {
+            "detail" : "Open the Zoom meeting reactions panel.",
+            "kind" : "shortcut",
+            "label" : "Reactions",
+            "parameter" : "cmd+shift+y",
+            "targetBundleID" : "us.zoom.xos"
+          },
+          "controlID" : "encoder-0-press"
+        },
+        {
+          "action" : {
+            "detail" : "Ask Zoom to read the active speaker name.",
+            "kind" : "shortcut",
+            "label" : "Read active speaker",
+            "parameter" : "cmd+2",
+            "targetBundleID" : "us.zoom.xos"
+          },
+          "controlID" : "encoder-1-ccw"
+        },
+        {
+          "action" : {
+            "detail" : "Enter or exit Zoom full screen mode.",
+            "kind" : "shortcut",
+            "label" : "Full screen",
+            "parameter" : "cmd+shift+f",
+            "targetBundleID" : "us.zoom.xos"
+          },
+          "controlID" : "encoder-1-cw"
+        },
+        {
+          "action" : {
+            "detail" : "Switch Zoom to its minimal meeting window.",
+            "kind" : "shortcut",
+            "label" : "Minimal window",
+            "parameter" : "cmd+shift+m",
+            "targetBundleID" : "us.zoom.xos"
+          },
+          "controlID" : "encoder-1-press"
+        },
+        {
+          "action" : {
+            "detail" : "Toggle your raised-hand state in Zoom.",
+            "kind" : "shortcut",
+            "label" : "Raise or lower hand",
+            "parameter" : "alt+y",
+            "targetBundleID" : "us.zoom.xos"
+          },
+          "controlID" : "encoder-2-ccw"
+        },
+        {
+          "action" : {
+            "detail" : "Move backward in Zoom chat history.",
+            "kind" : "shortcut",
+            "label" : "Back in chat",
+            "parameter" : "cmd+[",
+            "targetBundleID" : "us.zoom.xos"
+          },
+          "controlID" : "encoder-2-cw"
+        },
+        {
+          "action" : {
+            "detail" : "Open Zoom Workplace global search.",
+            "kind" : "shortcut",
+            "label" : "Global search",
+            "parameter" : "cmd+e",
+            "targetBundleID" : "us.zoom.xos"
+          },
+          "controlID" : "encoder-2-press"
+        }
+      ],
+      "id" : "9BDF23B2-529C-4419-86E5-70BCE13D017B",
+      "matchingBundleIDs" : [
+        "us.zoom.xos"
+      ],
+      "name" : "Meetings",
+      "presetID" : "meetings",
+      "summary" : "Zoom Workplace meeting, sharing, recording, participant, chat, and navigation controls."
+    },
+    {
+      "bindings" : [
+        {
+          "action" : {
+            "detail" : "Start the slide show from its first slide.",
+            "kind" : "shortcut",
+            "label" : "Present from start",
+            "parameter" : "cmd+shift+enter",
+            "targetBundleID" : "com.microsoft.Powerpoint"
+          },
+          "controlID" : "key-0-0"
+        },
+        {
+          "action" : {
+            "detail" : "Start the slide show from the selected slide.",
+            "kind" : "shortcut",
+            "label" : "Present current slide",
+            "parameter" : "cmd+enter",
+            "targetBundleID" : "com.microsoft.Powerpoint"
+          },
+          "controlID" : "key-0-1"
+        },
+        {
+          "action" : {
+            "detail" : "Start the presentation in Presenter View.",
+            "kind" : "shortcut",
+            "label" : "Presenter View",
+            "parameter" : "alt+enter",
+            "targetBundleID" : "com.microsoft.Powerpoint"
+          },
+          "controlID" : "key-0-2"
+        },
+        {
+          "action" : {
+            "detail" : "End the active slide show or cancel the current editing operation.",
+            "kind" : "shortcut",
+            "label" : "End presentation",
+            "parameter" : "esc",
+            "targetBundleID" : "com.microsoft.Powerpoint"
+          },
+          "controlID" : "key-0-3"
+        },
+        {
+          "action" : {
+            "detail" : "During a slide show, toggle a black screen. In text editing this types B.",
+            "kind" : "shortcut",
+            "label" : "Black screen",
+            "parameter" : "b",
+            "targetBundleID" : "com.microsoft.Powerpoint"
+          },
+          "controlID" : "key-1-0"
+        },
+        {
+          "action" : {
+            "detail" : "During a slide show, toggle a white screen. In text editing this types W.",
+            "kind" : "shortcut",
+            "label" : "White screen",
+            "parameter" : "w",
+            "targetBundleID" : "com.microsoft.Powerpoint"
+          },
+          "controlID" : "key-1-1"
+        },
+        {
+          "action" : {
+            "detail" : "During a slide show, activate the laser pointer.",
+            "kind" : "shortcut",
+            "label" : "Laser pointer",
+            "parameter" : "cmd+l",
+            "targetBundleID" : "com.microsoft.Powerpoint"
+          },
+          "controlID" : "key-1-2"
+        },
+        {
+          "action" : {
+            "detail" : "During a slide show, restore the arrow pointer; in editing, this selects all.",
+            "kind" : "shortcut",
+            "label" : "Arrow pointer",
+            "parameter" : "cmd+a",
+            "targetBundleID" : "com.microsoft.Powerpoint"
+          },
+          "controlID" : "key-1-3"
+        },
+        {
+          "action" : {
+            "detail" : "In editing view, insert a new slide.",
+            "kind" : "shortcut",
+            "label" : "New slide",
+            "parameter" : "cmd+shift+n",
+            "targetBundleID" : "com.microsoft.Powerpoint"
+          },
+          "controlID" : "key-2-0"
+        },
+        {
+          "action" : {
+            "detail" : "In editing view, duplicate the selected slide.",
+            "kind" : "shortcut",
+            "label" : "Duplicate slide",
+            "parameter" : "cmd+shift+d",
+            "targetBundleID" : "com.microsoft.Powerpoint"
+          },
+          "controlID" : "key-2-1"
+        },
+        {
+          "action" : {
+            "detail" : "Undo the last presentation edit.",
+            "kind" : "shortcut",
+            "label" : "Undo",
+            "parameter" : "cmd+z",
+            "targetBundleID" : "com.microsoft.Powerpoint"
+          },
+          "controlID" : "key-2-2"
+        },
+        {
+          "action" : {
+            "detail" : "Redo the last undone presentation edit.",
+            "kind" : "shortcut",
+            "label" : "Redo",
+            "parameter" : "cmd+y",
+            "targetBundleID" : "com.microsoft.Powerpoint"
+          },
+          "controlID" : "key-2-3"
+        },
+        {
+          "action" : {
+            "detail" : "Save the current presentation.",
+            "kind" : "shortcut",
+            "label" : "Save",
+            "parameter" : "cmd+s",
+            "targetBundleID" : "com.microsoft.Powerpoint"
+          },
+          "controlID" : "key-3-0"
+        },
+        {
+          "action" : {
+            "detail" : "In editing view, insert a comment on the selection.",
+            "kind" : "shortcut",
+            "label" : "Add comment",
+            "parameter" : "cmd+shift+m",
+            "targetBundleID" : "com.microsoft.Powerpoint"
+          },
+          "controlID" : "key-3-1"
+        },
+        {
+          "action" : {
+            "detail" : "In editing view, add a hyperlink to the selected object or text.",
+            "kind" : "shortcut",
+            "label" : "Insert hyperlink",
+            "parameter" : "cmd+k",
+            "targetBundleID" : "com.microsoft.Powerpoint"
+          },
+          "controlID" : "key-3-2"
+        },
+        {
+          "action" : {
+            "detail" : "In editing view, open slide background formatting.",
+            "kind" : "shortcut",
+            "label" : "Format background",
+            "parameter" : "cmd+shift+2",
+            "targetBundleID" : "com.microsoft.Powerpoint"
+          },
+          "controlID" : "key-3-3"
+        },
+        {
+          "action" : {
+            "detail" : "Go to the previous slide in editing, or previous animation step during a slide show.",
+            "kind" : "shortcut",
+            "label" : "Previous slide / step",
+            "parameter" : "pageup",
+            "targetBundleID" : "com.microsoft.Powerpoint"
+          },
+          "controlID" : "encoder-0-ccw"
+        },
+        {
+          "action" : {
+            "detail" : "Go to the next slide in editing, or next animation step during a slide show.",
+            "kind" : "shortcut",
+            "label" : "Next slide / step",
+            "parameter" : "pagedown",
+            "targetBundleID" : "com.microsoft.Powerpoint"
+          },
+          "controlID" : "encoder-0-cw"
+        },
+        {
+          "action" : {
+            "detail" : "During a slide show, advance one animation or slide. In editing, Space may enter text or activate a focused control.",
+            "kind" : "shortcut",
+            "label" : "Next animation",
+            "parameter" : "space",
+            "targetBundleID" : "com.microsoft.Powerpoint"
+          },
+          "controlID" : "encoder-0-press"
+        },
+        {
+          "action" : {
+            "detail" : "Move to the previous object in editing or hyperlink/control during presentation; context determines focus.",
+            "kind" : "shortcut",
+            "label" : "Previous object / link",
+            "parameter" : "shift+tab",
+            "targetBundleID" : "com.microsoft.Powerpoint"
+          },
+          "controlID" : "encoder-1-ccw"
+        },
+        {
+          "action" : {
+            "detail" : "Move to the next object or presentation hotspot; inside text, inserts a tab.",
+            "kind" : "shortcut",
+            "label" : "Next object / link",
+            "parameter" : "tab",
+            "targetBundleID" : "com.microsoft.Powerpoint"
+          },
+          "controlID" : "encoder-1-cw"
+        },
+        {
+          "action" : {
+            "detail" : "During a slide show, open the selected hyperlink. In editing, Return may enter text.",
+            "kind" : "shortcut",
+            "label" : "Activate link / control",
+            "parameter" : "enter",
+            "targetBundleID" : "com.microsoft.Powerpoint"
+          },
+          "controlID" : "encoder-1-press"
+        },
+        {
+          "action" : {
+            "detail" : "Decrease slide-canvas zoom in editing view.",
+            "kind" : "shortcut",
+            "label" : "Editing zoom out",
+            "parameter" : "cmd+minus",
+            "targetBundleID" : "com.microsoft.Powerpoint"
+          },
+          "controlID" : "encoder-2-ccw"
+        },
+        {
+          "action" : {
+            "detail" : "Increase slide-canvas zoom in editing view.",
+            "kind" : "shortcut",
+            "label" : "Editing zoom in",
+            "parameter" : "cmd+plus",
+            "targetBundleID" : "com.microsoft.Powerpoint"
+          },
+          "controlID" : "encoder-2-cw"
+        },
+        {
+          "action" : {
+            "detail" : "Fit the slide to the editing window.",
+            "kind" : "shortcut",
+            "label" : "Fit slide",
+            "parameter" : "cmd+alt+o",
+            "targetBundleID" : "com.microsoft.Powerpoint"
+          },
+          "controlID" : "encoder-2-press"
+        }
+      ],
+      "id" : "6252708A-203E-4657-B27E-4D1D3C787E6A",
+      "matchingBundleIDs" : [
+        "com.microsoft.Powerpoint"
+      ],
+      "name" : "Presentations",
+      "presetID" : "presentations",
+      "summary" : "PowerPoint slide preparation and delivery, with slide, focus, and editing-zoom dials."
+    },
+    {
+      "bindings" : [
+        {
+          "action" : {
+            "detail" : "Undo the last image edit.",
+            "kind" : "shortcut",
+            "label" : "Undo",
+            "parameter" : "cmd+z",
+            "targetBundleID" : "com.canva.affinity"
+          },
+          "controlID" : "key-0-0"
+        },
+        {
+          "action" : {
+            "detail" : "Redo the last undone image edit.",
+            "kind" : "shortcut",
+            "label" : "Redo",
+            "parameter" : "cmd+shift+z",
+            "targetBundleID" : "com.canva.affinity"
+          },
+          "controlID" : "key-0-1"
+        },
+        {
+          "action" : {
+            "detail" : "Save the working Affinity document.",
+            "kind" : "shortcut",
+            "label" : "Save",
+            "parameter" : "cmd+s",
+            "targetBundleID" : "com.canva.affinity"
+          },
+          "controlID" : "key-0-2"
+        },
+        {
+          "action" : {
+            "detail" : "Open the image export dialog; choose format and destination there.",
+            "kind" : "shortcut",
+            "label" : "Export",
+            "parameter" : "cmd+alt+shift+s",
+            "targetBundleID" : "com.canva.affinity"
+          },
+          "controlID" : "key-0-3"
+        },
+        {
+          "action" : {
+            "detail" : "Select Crop in Pixel Studio; finish text or numeric entry first. Check the studio binding during setup.",
+            "kind" : "shortcut",
+            "label" : "Crop",
+            "parameter" : "c",
+            "targetBundleID" : "com.canva.affinity"
+          },
+          "controlID" : "key-1-0"
+        },
+        {
+          "action" : {
+            "detail" : "Select the Move tool for the current layer.",
+            "kind" : "shortcut",
+            "label" : "Move",
+            "parameter" : "v",
+            "targetBundleID" : "com.canva.affinity"
+          },
+          "controlID" : "key-1-1"
+        },
+        {
+          "action" : {
+            "detail" : "Select or cycle the selection tool group in Pixel Studio; verify its binding in Shortcuts settings.",
+            "kind" : "shortcut",
+            "label" : "Selection brush",
+            "parameter" : "w",
+            "targetBundleID" : "com.canva.affinity"
+          },
+          "controlID" : "key-1-2"
+        },
+        {
+          "action" : {
+            "detail" : "Select Freehand Selection in Pixel Studio; verify its binding in Shortcuts settings.",
+            "kind" : "shortcut",
+            "label" : "Freehand selection",
+            "parameter" : "l",
+            "targetBundleID" : "com.canva.affinity"
+          },
+          "controlID" : "key-1-3"
+        },
+        {
+          "action" : {
+            "detail" : "Clear the active pixel selection.",
+            "kind" : "shortcut",
+            "label" : "Deselect",
+            "parameter" : "cmd+d",
+            "targetBundleID" : "com.canva.affinity"
+          },
+          "controlID" : "key-2-0"
+        },
+        {
+          "action" : {
+            "detail" : "Invert the current pixel selection.",
+            "kind" : "shortcut",
+            "label" : "Invert selection",
+            "parameter" : "cmd+shift+i",
+            "targetBundleID" : "com.canva.affinity"
+          },
+          "controlID" : "key-2-1"
+        },
+        {
+          "action" : {
+            "detail" : "Duplicate the selected layer to keep the original available.",
+            "kind" : "shortcut",
+            "label" : "Duplicate layer",
+            "parameter" : "cmd+j",
+            "targetBundleID" : "com.canva.affinity"
+          },
+          "controlID" : "key-2-2"
+        },
+        {
+          "action" : {
+            "detail" : "Create a new pixel layer for non-destructive retouching.",
+            "kind" : "shortcut",
+            "label" : "New pixel layer",
+            "parameter" : "cmd+shift+n",
+            "targetBundleID" : "com.canva.affinity"
+          },
+          "controlID" : "key-2-3"
+        },
+        {
+          "action" : {
+            "detail" : "Copy the merged appearance of the selected image area.",
+            "kind" : "shortcut",
+            "label" : "Copy merged",
+            "parameter" : "cmd+shift+c",
+            "targetBundleID" : "com.canva.affinity"
+          },
+          "controlID" : "key-3-0"
+        },
+        {
+          "action" : {
+            "detail" : "Create a merged visible layer above the existing layers.",
+            "kind" : "shortcut",
+            "label" : "Merge visible copy",
+            "parameter" : "cmd+alt+shift+e",
+            "targetBundleID" : "com.canva.affinity"
+          },
+          "controlID" : "key-3-1"
+        },
+        {
+          "action" : {
+            "detail" : "Reset foreground and background colours for mask painting.",
+            "kind" : "shortcut",
+            "label" : "Reset colours",
+            "parameter" : "d",
+            "targetBundleID" : "com.canva.affinity"
+          },
+          "controlID" : "key-3-2"
+        },
+        {
+          "action" : {
+            "detail" : "Swap foreground and background colours for painting or masking.",
+            "kind" : "shortcut",
+            "label" : "Swap colours",
+            "parameter" : "shift+x",
+            "targetBundleID" : "com.canva.affinity"
+          },
+          "controlID" : "key-3-3"
+        },
+        {
+          "action" : {
+            "detail" : "Decrease brush width while a compatible pixel brush is active. Verify bracket bindings on your keyboard layout.",
+            "kind" : "shortcut",
+            "label" : "Smaller brush",
+            "parameter" : "[",
+            "targetBundleID" : "com.canva.affinity"
+          },
+          "controlID" : "encoder-0-ccw"
+        },
+        {
+          "action" : {
+            "detail" : "Increase brush width while a compatible pixel brush is active.",
+            "kind" : "shortcut",
+            "label" : "Larger brush",
+            "parameter" : "]",
+            "targetBundleID" : "com.canva.affinity"
+          },
+          "controlID" : "encoder-0-cw"
+        },
+        {
+          "action" : {
+            "detail" : "Select Paint Brush in Pixel Studio; verify this studio's B binding during setup.",
+            "kind" : "shortcut",
+            "label" : "Paint brush",
+            "parameter" : "b",
+            "targetBundleID" : "com.canva.affinity"
+          },
+          "controlID" : "encoder-0-press"
+        },
+        {
+          "action" : {
+            "detail" : "Decrease supported pixel-brush hardness by ten percentage points; requires the documented binding in the active studio.",
+            "kind" : "shortcut",
+            "label" : "Softer brush",
+            "parameter" : "shift+[",
+            "targetBundleID" : "com.canva.affinity"
+          },
+          "controlID" : "encoder-1-ccw"
+        },
+        {
+          "action" : {
+            "detail" : "Increase supported pixel-brush hardness by ten percentage points; requires the documented binding in the active studio.",
+            "kind" : "shortcut",
+            "label" : "Harder brush",
+            "parameter" : "shift+]",
+            "targetBundleID" : "com.canva.affinity"
+          },
+          "controlID" : "encoder-1-cw"
+        },
+        {
+          "action" : {
+            "detail" : "Select or cycle the erase brush group in Pixel Studio; verify its binding during setup.",
+            "kind" : "shortcut",
+            "label" : "Eraser",
+            "parameter" : "e",
+            "targetBundleID" : "com.canva.affinity"
+          },
+          "controlID" : "encoder-1-press"
+        },
+        {
+          "action" : {
+            "detail" : "Zoom out from the image canvas.",
+            "kind" : "shortcut",
+            "label" : "Zoom out",
+            "parameter" : "cmd+minus",
+            "targetBundleID" : "com.canva.affinity"
+          },
+          "controlID" : "encoder-2-ccw"
+        },
+        {
+          "action" : {
+            "detail" : "Zoom into the image canvas.",
+            "kind" : "shortcut",
+            "label" : "Zoom in",
+            "parameter" : "cmd+plus",
+            "targetBundleID" : "com.canva.affinity"
+          },
+          "controlID" : "encoder-2-cw"
+        },
+        {
+          "action" : {
+            "detail" : "Fit the complete image in the document view.",
+            "kind" : "shortcut",
+            "label" : "Fit image",
+            "parameter" : "cmd+0",
+            "targetBundleID" : "com.canva.affinity"
+          },
+          "controlID" : "encoder-2-press"
+        }
+      ],
+      "id" : "62041710-E430-4DB9-BDBB-37CA0D7AF44C",
+      "matchingBundleIDs" : [
+        "com.canva.affinity"
+      ],
+      "name" : "Photo Editing",
+      "presetID" : "photo-editing",
+      "summary" : "Affinity Pixel Studio retouching, selections, layers, brush size, hardness, and canvas zoom."
+    },
+    {
+      "bindings" : [
+        {
+          "action" : {
+            "detail" : "Bring Final Cut Pro to the foreground.",
+            "kind" : "launchApp",
+            "label" : "Open Final Cut Pro",
+            "parameter" : "com.apple.FinalCut"
+          },
+          "controlID" : "key-0-0"
+        },
+        {
+          "action" : {
+            "detail" : "Open Final Cut Pro's media import window.",
+            "kind" : "shortcut",
+            "label" : "Import media",
+            "parameter" : "cmd+i",
+            "targetBundleID" : "com.apple.FinalCut"
+          },
+          "controlID" : "key-0-1"
+        },
+        {
+          "action" : {
+            "detail" : "Create a new Final Cut Pro project.",
+            "kind" : "shortcut",
+            "label" : "New project",
+            "parameter" : "cmd+n",
+            "targetBundleID" : "com.apple.FinalCut"
+          },
+          "controlID" : "key-0-2"
+        },
+        {
+          "action" : {
+            "detail" : "Undo the last Final Cut Pro command.",
+            "kind" : "shortcut",
+            "label" : "Undo",
+            "parameter" : "cmd+z",
+            "targetBundleID" : "com.apple.FinalCut"
+          },
+          "controlID" : "key-0-3"
+        },
+        {
+          "action" : {
+            "detail" : "Redo the last undone Final Cut Pro command.",
+            "kind" : "shortcut",
+            "label" : "Redo",
+            "parameter" : "shift+cmd+z",
+            "targetBundleID" : "com.apple.FinalCut"
+          },
+          "controlID" : "key-1-0"
+        },
+        {
+          "action" : {
+            "detail" : "Append the browser selection to the end of the primary storyline.",
+            "kind" : "shortcut",
+            "label" : "Append",
+            "parameter" : "e",
+            "targetBundleID" : "com.apple.FinalCut"
+          },
+          "controlID" : "key-1-1"
+        },
+        {
+          "action" : {
+            "detail" : "Connect the browser selection to the primary storyline at the playhead.",
+            "kind" : "shortcut",
+            "label" : "Connect",
+            "parameter" : "q",
+            "targetBundleID" : "com.apple.FinalCut"
+          },
+          "controlID" : "key-1-2"
+        },
+        {
+          "action" : {
+            "detail" : "Insert the browser selection at the skimmer or playhead position.",
+            "kind" : "shortcut",
+            "label" : "Insert",
+            "parameter" : "w",
+            "targetBundleID" : "com.apple.FinalCut"
+          },
+          "controlID" : "key-1-3"
+        },
+        {
+          "action" : {
+            "detail" : "Overwrite the primary storyline at the skimmer or playhead with the browser selection.",
+            "kind" : "shortcut",
+            "label" : "Overwrite",
+            "parameter" : "d",
+            "targetBundleID" : "com.apple.FinalCut"
+          },
+          "controlID" : "key-2-0"
+        },
+        {
+          "action" : {
+            "detail" : "Cut the primary-storyline clip or current selection at the playhead.",
+            "kind" : "shortcut",
+            "label" : "Blade",
+            "parameter" : "cmd+b",
+            "targetBundleID" : "com.apple.FinalCut"
+          },
+          "controlID" : "key-2-1"
+        },
+        {
+          "action" : {
+            "detail" : "Cut every clip at the skimmer or playhead position.",
+            "kind" : "shortcut",
+            "label" : "Blade all",
+            "parameter" : "shift+cmd+b",
+            "targetBundleID" : "com.apple.FinalCut"
+          },
+          "controlID" : "key-2-2"
+        },
+        {
+          "action" : {
+            "detail" : "Delete the timeline selection or reject the browser selection.",
+            "kind" : "shortcut",
+            "label" : "Delete selection",
+            "parameter" : "delete",
+            "targetBundleID" : "com.apple.FinalCut"
+          },
+          "controlID" : "key-2-3"
+        },
+        {
+          "action" : {
+            "detail" : "Add a marker at the skimmer or playhead position.",
+            "kind" : "shortcut",
+            "label" : "Add marker",
+            "parameter" : "m",
+            "targetBundleID" : "com.apple.FinalCut"
+          },
+          "controlID" : "key-3-0"
+        },
+        {
+          "action" : {
+            "detail" : "Connect the default title to the primary storyline.",
+            "kind" : "shortcut",
+            "label" : "Default title",
+            "parameter" : "ctrl+t",
+            "targetBundleID" : "com.apple.FinalCut"
+          },
+          "controlID" : "key-3-1"
+        },
+        {
+          "action" : {
+            "detail" : "Activate Transform and show its onscreen controls for the selected clip.",
+            "kind" : "shortcut",
+            "label" : "Transform tool",
+            "parameter" : "shift+t",
+            "targetBundleID" : "com.apple.FinalCut"
+          },
+          "controlID" : "key-3-2"
+        },
+        {
+          "action" : {
+            "detail" : "Activate Crop and show its onscreen controls for the selected clip.",
+            "kind" : "shortcut",
+            "label" : "Crop tool",
+            "parameter" : "shift+c",
+            "targetBundleID" : "com.apple.FinalCut"
+          },
+          "controlID" : "key-3-3"
+        },
+        {
+          "action" : {
+            "detail" : "Play backward; repeat rotations to increase reverse playback speed.",
+            "kind" : "shortcut",
+            "label" : "Play reverse",
+            "parameter" : "j",
+            "targetBundleID" : "com.apple.FinalCut"
+          },
+          "controlID" : "encoder-0-ccw"
+        },
+        {
+          "action" : {
+            "detail" : "Play forward; repeat rotations to increase forward playback speed.",
+            "kind" : "shortcut",
+            "label" : "Play forward",
+            "parameter" : "l",
+            "targetBundleID" : "com.apple.FinalCut"
+          },
+          "controlID" : "encoder-0-cw"
+        },
+        {
+          "action" : {
+            "detail" : "Stop Final Cut Pro playback.",
+            "kind" : "shortcut",
+            "label" : "Stop playback",
+            "parameter" : "k",
+            "targetBundleID" : "com.apple.FinalCut"
+          },
+          "controlID" : "encoder-0-press"
+        },
+        {
+          "action" : {
+            "detail" : "Move the playhead back by one frame.",
+            "kind" : "shortcut",
+            "label" : "Previous frame",
+            "parameter" : "left",
+            "targetBundleID" : "com.apple.FinalCut"
+          },
+          "controlID" : "encoder-1-ccw"
+        },
+        {
+          "action" : {
+            "detail" : "Move the playhead forward by one frame.",
+            "kind" : "shortcut",
+            "label" : "Next frame",
+            "parameter" : "right",
+            "targetBundleID" : "com.apple.FinalCut"
+          },
+          "controlID" : "encoder-1-cw"
+        },
+        {
+          "action" : {
+            "detail" : "Start or pause playback at the playhead.",
+            "kind" : "shortcut",
+            "label" : "Play or pause",
+            "parameter" : "space",
+            "targetBundleID" : "com.apple.FinalCut"
+          },
+          "controlID" : "encoder-1-press"
+        },
+        {
+          "action" : {
+            "detail" : "Go to the previous item in the browser or edit point in the timeline.",
+            "kind" : "shortcut",
+            "label" : "Previous edit",
+            "parameter" : "up",
+            "targetBundleID" : "com.apple.FinalCut"
+          },
+          "controlID" : "encoder-2-ccw"
+        },
+        {
+          "action" : {
+            "detail" : "Go to the next item in the browser or edit point in the timeline.",
+            "kind" : "shortcut",
+            "label" : "Next edit",
+            "parameter" : "down",
+            "targetBundleID" : "com.apple.FinalCut"
+          },
+          "controlID" : "encoder-2-cw"
+        },
+        {
+          "action" : {
+            "detail" : "Share the selected project or clip using the configured default destination.",
+            "kind" : "shortcut",
+            "label" : "Share default",
+            "parameter" : "cmd+e",
+            "targetBundleID" : "com.apple.FinalCut"
+          },
+          "controlID" : "encoder-2-press"
+        }
+      ],
+      "id" : "CC15B6E4-6DF0-4AE1-8201-BC2EA33151D7",
+      "matchingBundleIDs" : [
+        "com.apple.FinalCut"
+      ],
+      "name" : "Video Editing",
+      "presetID" : "video-editing",
+      "summary" : "Final Cut Pro importing, timeline editing, tools, playback, navigation, and sharing using Apple defaults."
+    },
+    {
+      "bindings" : [
+        {
+          "action" : {
+            "detail" : "Move the selected object or mesh elements interactively.",
+            "kind" : "shortcut",
+            "label" : "Move",
+            "parameter" : "g",
+            "targetBundleID" : "org.blenderfoundation.blender"
+          },
+          "controlID" : "key-0-0"
+        },
+        {
+          "action" : {
+            "detail" : "Rotate the selected object or mesh elements interactively.",
+            "kind" : "shortcut",
+            "label" : "Rotate",
+            "parameter" : "r",
+            "targetBundleID" : "org.blenderfoundation.blender"
+          },
+          "controlID" : "key-0-1"
+        },
+        {
+          "action" : {
+            "detail" : "Scale the selected object or mesh elements interactively.",
+            "kind" : "shortcut",
+            "label" : "Scale",
+            "parameter" : "s",
+            "targetBundleID" : "org.blenderfoundation.blender"
+          },
+          "controlID" : "key-0-2"
+        },
+        {
+          "action" : {
+            "detail" : "Switch the active object between Object Mode and Edit Mode.",
+            "kind" : "shortcut",
+            "label" : "Toggle Edit Mode",
+            "parameter" : "tab",
+            "targetBundleID" : "org.blenderfoundation.blender"
+          },
+          "controlID" : "key-0-3"
+        },
+        {
+          "action" : {
+            "detail" : "Extrude the selected mesh region interactively in Edit Mode.",
+            "kind" : "shortcut",
+            "label" : "Extrude region",
+            "parameter" : "e",
+            "targetBundleID" : "org.blenderfoundation.blender"
+          },
+          "controlID" : "key-1-0"
+        },
+        {
+          "action" : {
+            "detail" : "Inset the selected mesh faces interactively in Edit Mode.",
+            "kind" : "shortcut",
+            "label" : "Inset faces",
+            "parameter" : "i",
+            "targetBundleID" : "org.blenderfoundation.blender"
+          },
+          "controlID" : "key-1-1"
+        },
+        {
+          "action" : {
+            "detail" : "Bevel selected mesh edges interactively in Edit Mode.",
+            "kind" : "shortcut",
+            "label" : "Bevel edges",
+            "parameter" : "ctrl+b",
+            "targetBundleID" : "org.blenderfoundation.blender"
+          },
+          "controlID" : "key-1-2"
+        },
+        {
+          "action" : {
+            "detail" : "Start Blender's interactive Loop Cut and Slide tool in Edit Mode.",
+            "kind" : "shortcut",
+            "label" : "Loop cut",
+            "parameter" : "ctrl+r",
+            "targetBundleID" : "org.blenderfoundation.blender"
+          },
+          "controlID" : "key-1-3"
+        },
+        {
+          "action" : {
+            "detail" : "Select all compatible items in the Blender editor under the pointer.",
+            "kind" : "shortcut",
+            "label" : "Select all",
+            "parameter" : "a",
+            "targetBundleID" : "org.blenderfoundation.blender"
+          },
+          "controlID" : "key-2-0"
+        },
+        {
+          "action" : {
+            "detail" : "Deselect all compatible items in the Blender editor under the pointer.",
+            "kind" : "shortcut",
+            "label" : "Deselect all",
+            "parameter" : "alt+a",
+            "targetBundleID" : "org.blenderfoundation.blender"
+          },
+          "controlID" : "key-2-1"
+        },
+        {
+          "action" : {
+            "detail" : "Invert the selection in the Blender editor under the pointer.",
+            "kind" : "shortcut",
+            "label" : "Invert selection",
+            "parameter" : "ctrl+i",
+            "targetBundleID" : "org.blenderfoundation.blender"
+          },
+          "controlID" : "key-2-2"
+        },
+        {
+          "action" : {
+            "detail" : "Open Blender's context-sensitive delete confirmation for the current selection.",
+            "kind" : "shortcut",
+            "label" : "Delete",
+            "parameter" : "x",
+            "targetBundleID" : "org.blenderfoundation.blender"
+          },
+          "controlID" : "key-2-3"
+        },
+        {
+          "action" : {
+            "detail" : "Duplicate the current object or mesh selection and enter interactive move.",
+            "kind" : "shortcut",
+            "label" : "Duplicate",
+            "parameter" : "shift+d",
+            "targetBundleID" : "org.blenderfoundation.blender"
+          },
+          "controlID" : "key-3-0"
+        },
+        {
+          "action" : {
+            "detail" : "Open Blender's context-sensitive Add menu.",
+            "kind" : "shortcut",
+            "label" : "Add",
+            "parameter" : "shift+a",
+            "targetBundleID" : "org.blenderfoundation.blender"
+          },
+          "controlID" : "key-3-1"
+        },
+        {
+          "action" : {
+            "detail" : "Hide the selected objects or mesh elements.",
+            "kind" : "shortcut",
+            "label" : "Hide selected",
+            "parameter" : "h",
+            "targetBundleID" : "org.blenderfoundation.blender"
+          },
+          "controlID" : "key-3-2"
+        },
+        {
+          "action" : {
+            "detail" : "Reveal hidden objects or mesh elements in the focused editor.",
+            "kind" : "shortcut",
+            "label" : "Reveal hidden",
+            "parameter" : "alt+h",
+            "targetBundleID" : "org.blenderfoundation.blender"
+          },
+          "controlID" : "key-3-3"
+        },
+        {
+          "action" : {
+            "detail" : "Undo the most recent Blender operation using the macOS Command equivalent of Blender's Control shortcut.",
+            "kind" : "shortcut",
+            "label" : "Undo",
+            "parameter" : "cmd+z",
+            "targetBundleID" : "org.blenderfoundation.blender"
+          },
+          "controlID" : "encoder-0-ccw"
+        },
+        {
+          "action" : {
+            "detail" : "Redo the most recently undone Blender operation using the macOS Command equivalent.",
+            "kind" : "shortcut",
+            "label" : "Redo",
+            "parameter" : "shift+cmd+z",
+            "targetBundleID" : "org.blenderfoundation.blender"
+          },
+          "controlID" : "encoder-0-cw"
+        },
+        {
+          "action" : {
+            "detail" : "Open Blender's searchable command menu.",
+            "kind" : "shortcut",
+            "label" : "Menu Search",
+            "parameter" : "f3",
+            "targetBundleID" : "org.blenderfoundation.blender"
+          },
+          "controlID" : "encoder-0-press"
+        },
+        {
+          "action" : {
+            "detail" : "Move the animation playhead to the previous frame when a compatible editor has focus.",
+            "kind" : "shortcut",
+            "label" : "Previous frame",
+            "parameter" : "left",
+            "targetBundleID" : "org.blenderfoundation.blender"
+          },
+          "controlID" : "encoder-1-ccw"
+        },
+        {
+          "action" : {
+            "detail" : "Move the animation playhead to the next frame when a compatible editor has focus.",
+            "kind" : "shortcut",
+            "label" : "Next frame",
+            "parameter" : "right",
+            "targetBundleID" : "org.blenderfoundation.blender"
+          },
+          "controlID" : "encoder-1-cw"
+        },
+        {
+          "action" : {
+            "detail" : "Start or pause Blender animation playback.",
+            "kind" : "shortcut",
+            "label" : "Play or pause",
+            "parameter" : "space",
+            "targetBundleID" : "org.blenderfoundation.blender"
+          },
+          "controlID" : "encoder-1-press"
+        },
+        {
+          "action" : {
+            "detail" : "Send a downward scroll step to zoom out when the pointer is over the 3D Viewport.",
+            "kind" : "system",
+            "label" : "Zoom out",
+            "parameter" : "scrollDown",
+            "targetBundleID" : "org.blenderfoundation.blender"
+          },
+          "controlID" : "encoder-2-ccw"
+        },
+        {
+          "action" : {
+            "detail" : "Send an upward scroll step to zoom in when the pointer is over the 3D Viewport.",
+            "kind" : "system",
+            "label" : "Zoom in",
+            "parameter" : "scrollUp",
+            "targetBundleID" : "org.blenderfoundation.blender"
+          },
+          "controlID" : "encoder-2-cw"
+        },
+        {
+          "action" : {
+            "detail" : "Frame all objects in the 3D Viewport under the pointer.",
+            "kind" : "shortcut",
+            "label" : "Frame all",
+            "parameter" : "home",
+            "targetBundleID" : "org.blenderfoundation.blender"
+          },
+          "controlID" : "encoder-2-press"
+        }
+      ],
+      "id" : "9F1C0DBD-AD2B-4F7B-A5AA-CECF82C0B8B0",
+      "matchingBundleIDs" : [
+        "org.blenderfoundation.blender"
+      ],
+      "name" : "3D Modelling",
+      "presetID" : "3d-modelling",
+      "summary" : "Blender object and mesh modelling with transforms, selection, editing, viewport zoom, and animation controls."
+    },
+    {
+      "bindings" : [
+        {
+          "action" : {
+            "detail" : "Start recording on record-enabled tracks at the playhead.",
+            "kind" : "shortcut",
+            "label" : "Record",
+            "parameter" : "r",
+            "targetBundleID" : "com.apple.logic10"
+          },
+          "controlID" : "key-0-0"
+        },
+        {
+          "action" : {
+            "detail" : "Turn Logic Pro Cycle mode on or off.",
+            "kind" : "shortcut",
+            "label" : "Cycle Mode",
+            "parameter" : "c",
+            "targetBundleID" : "com.apple.logic10"
+          },
+          "controlID" : "key-0-1"
+        },
+        {
+          "action" : {
+            "detail" : "Turn the Logic Pro metronome click on or off.",
+            "kind" : "shortcut",
+            "label" : "Metronome",
+            "parameter" : "k",
+            "targetBundleID" : "com.apple.logic10"
+          },
+          "controlID" : "key-0-2"
+        },
+        {
+          "action" : {
+            "detail" : "Toggle record enable for the selected track.",
+            "kind" : "shortcut",
+            "label" : "Record enable",
+            "parameter" : "ctrl+r",
+            "targetBundleID" : "com.apple.logic10"
+          },
+          "controlID" : "key-0-3"
+        },
+        {
+          "action" : {
+            "detail" : "Undo the most recent Logic Pro edit.",
+            "kind" : "shortcut",
+            "label" : "Undo",
+            "parameter" : "cmd+z",
+            "targetBundleID" : "com.apple.logic10"
+          },
+          "controlID" : "key-1-0"
+        },
+        {
+          "action" : {
+            "detail" : "Redo the most recently undone Logic Pro edit.",
+            "kind" : "shortcut",
+            "label" : "Redo",
+            "parameter" : "shift+cmd+z",
+            "targetBundleID" : "com.apple.logic10"
+          },
+          "controlID" : "key-1-1"
+        },
+        {
+          "action" : {
+            "detail" : "Save the current Logic Pro project.",
+            "kind" : "shortcut",
+            "label" : "Save",
+            "parameter" : "cmd+s",
+            "targetBundleID" : "com.apple.logic10"
+          },
+          "controlID" : "key-1-2"
+        },
+        {
+          "action" : {
+            "detail" : "Open Logic Pro's Bounce dialog for the current project or selection context.",
+            "kind" : "shortcut",
+            "label" : "Bounce",
+            "parameter" : "cmd+b",
+            "targetBundleID" : "com.apple.logic10"
+          },
+          "controlID" : "key-1-3"
+        },
+        {
+          "action" : {
+            "detail" : "Create a new audio track in the Main Window.",
+            "kind" : "shortcut",
+            "label" : "New audio track",
+            "parameter" : "alt+cmd+a",
+            "targetBundleID" : "com.apple.logic10"
+          },
+          "controlID" : "key-2-0"
+        },
+        {
+          "action" : {
+            "detail" : "Create a new software instrument track in the Main Window.",
+            "kind" : "shortcut",
+            "label" : "Instrument track",
+            "parameter" : "alt+cmd+s",
+            "targetBundleID" : "com.apple.logic10"
+          },
+          "controlID" : "key-2-1"
+        },
+        {
+          "action" : {
+            "detail" : "Create a new track with the selected track's settings.",
+            "kind" : "shortcut",
+            "label" : "Duplicate track",
+            "parameter" : "cmd+d",
+            "targetBundleID" : "com.apple.logic10"
+          },
+          "controlID" : "key-2-2"
+        },
+        {
+          "action" : {
+            "detail" : "Delete the selected track from the Main Window.",
+            "kind" : "shortcut",
+            "label" : "Delete track",
+            "parameter" : "cmd+delete",
+            "targetBundleID" : "com.apple.logic10"
+          },
+          "controlID" : "key-2-3"
+        },
+        {
+          "action" : {
+            "detail" : "Show or hide the Mixer.",
+            "kind" : "shortcut",
+            "label" : "Mixer",
+            "parameter" : "x",
+            "targetBundleID" : "com.apple.logic10"
+          },
+          "controlID" : "key-3-0"
+        },
+        {
+          "action" : {
+            "detail" : "Show or hide track automation in the Main Window.",
+            "kind" : "shortcut",
+            "label" : "Automation",
+            "parameter" : "a",
+            "targetBundleID" : "com.apple.logic10"
+          },
+          "controlID" : "key-3-1"
+        },
+        {
+          "action" : {
+            "detail" : "Show or hide the Piano Roll editor.",
+            "kind" : "shortcut",
+            "label" : "Piano Roll",
+            "parameter" : "p",
+            "targetBundleID" : "com.apple.logic10"
+          },
+          "controlID" : "key-3-2"
+        },
+        {
+          "action" : {
+            "detail" : "Show or hide the Library.",
+            "kind" : "shortcut",
+            "label" : "Library",
+            "parameter" : "y",
+            "targetBundleID" : "com.apple.logic10"
+          },
+          "controlID" : "key-3-3"
+        },
+        {
+          "action" : {
+            "detail" : "Select the previous track.",
+            "kind" : "shortcut",
+            "label" : "Previous track",
+            "parameter" : "up",
+            "targetBundleID" : "com.apple.logic10"
+          },
+          "controlID" : "encoder-0-ccw"
+        },
+        {
+          "action" : {
+            "detail" : "Select the next track.",
+            "kind" : "shortcut",
+            "label" : "Next track",
+            "parameter" : "down",
+            "targetBundleID" : "com.apple.logic10"
+          },
+          "controlID" : "encoder-0-cw"
+        },
+        {
+          "action" : {
+            "detail" : "Toggle mute for the selected track's channel strip.",
+            "kind" : "shortcut",
+            "label" : "Mute track",
+            "parameter" : "m",
+            "targetBundleID" : "com.apple.logic10"
+          },
+          "controlID" : "encoder-0-press"
+        },
+        {
+          "action" : {
+            "detail" : "Move the Logic Pro playhead backward.",
+            "kind" : "shortcut",
+            "label" : "Rewind",
+            "parameter" : ",",
+            "targetBundleID" : "com.apple.logic10"
+          },
+          "controlID" : "encoder-1-ccw"
+        },
+        {
+          "action" : {
+            "detail" : "Move the Logic Pro playhead forward.",
+            "kind" : "shortcut",
+            "label" : "Forward",
+            "parameter" : ".",
+            "targetBundleID" : "com.apple.logic10"
+          },
+          "controlID" : "encoder-1-cw"
+        },
+        {
+          "action" : {
+            "detail" : "Start or stop playback at the current playhead position.",
+            "kind" : "shortcut",
+            "label" : "Play or stop",
+            "parameter" : "space",
+            "targetBundleID" : "com.apple.logic10"
+          },
+          "controlID" : "encoder-1-press"
+        },
+        {
+          "action" : {
+            "detail" : "Zoom the focused Logic Pro editor out horizontally.",
+            "kind" : "shortcut",
+            "label" : "Horizontal zoom out",
+            "parameter" : "cmd+left",
+            "targetBundleID" : "com.apple.logic10"
+          },
+          "controlID" : "encoder-2-ccw"
+        },
+        {
+          "action" : {
+            "detail" : "Zoom the focused Logic Pro editor in horizontally.",
+            "kind" : "shortcut",
+            "label" : "Horizontal zoom in",
+            "parameter" : "cmd+right",
+            "targetBundleID" : "com.apple.logic10"
+          },
+          "controlID" : "encoder-2-cw"
+        },
+        {
+          "action" : {
+            "detail" : "Toggle zoom to fit the selection or all contents in the focused editor.",
+            "kind" : "shortcut",
+            "label" : "Zoom selection or all",
+            "parameter" : "z",
+            "targetBundleID" : "com.apple.logic10"
+          },
+          "controlID" : "encoder-2-press"
+        }
+      ],
+      "id" : "C7B93C0A-F8D4-4ED8-92E1-A3266F817DA1",
+      "matchingBundleIDs" : [
+        "com.apple.logic10"
+      ],
+      "name" : "Music Production",
+      "presetID" : "music-production",
+      "summary" : "Logic Pro recording, project editing, track creation, key views, navigation, and arrangement zoom controls."
+    },
+    {
+      "bindings" : [
+        {
+          "action" : {
+            "detail" : "Bring OBS Studio to the foreground.",
+            "kind" : "launchApp",
+            "label" : "Open OBS Studio",
+            "parameter" : "com.obsproject.obs-studio"
+          },
+          "controlID" : "key-0-0"
+        },
+        {
+          "action" : {
+            "detail" : "Make the first scene in the current OBS collection the Program scene.",
+            "kind" : "obsAction",
+            "label" : "Scene 1",
+            "parameter" : "scene-1"
+          },
+          "controlID" : "key-0-1"
+        },
+        {
+          "action" : {
+            "detail" : "Make the second scene in the current OBS collection the Program scene.",
+            "kind" : "obsAction",
+            "label" : "Scene 2",
+            "parameter" : "scene-2"
+          },
+          "controlID" : "key-0-2"
+        },
+        {
+          "action" : {
+            "detail" : "Make the third scene in the current OBS collection the Program scene.",
+            "kind" : "obsAction",
+            "label" : "Scene 3",
+            "parameter" : "scene-3"
+          },
+          "controlID" : "key-0-3"
+        },
+        {
+          "action" : {
+            "detail" : "Make the fourth scene in the current OBS collection the Program scene.",
+            "kind" : "obsAction",
+            "label" : "Scene 4",
+            "parameter" : "scene-4"
+          },
+          "controlID" : "key-1-0"
+        },
+        {
+          "action" : {
+            "detail" : "Make the fifth scene in the current OBS collection the Program scene.",
+            "kind" : "obsAction",
+            "label" : "Scene 5",
+            "parameter" : "scene-5"
+          },
+          "controlID" : "key-1-1"
+        },
+        {
+          "action" : {
+            "detail" : "Make the sixth scene in the current OBS collection the Program scene.",
+            "kind" : "obsAction",
+            "label" : "Scene 6",
+            "parameter" : "scene-6"
+          },
+          "controlID" : "key-1-2"
+        },
+        {
+          "action" : {
+            "detail" : "Make the seventh scene in the current OBS collection the Program scene.",
+            "kind" : "obsAction",
+            "label" : "Scene 7",
+            "parameter" : "scene-7"
+          },
+          "controlID" : "key-1-3"
+        },
+        {
+          "action" : {
+            "detail" : "Make the eighth scene in the current OBS collection the Program scene.",
+            "kind" : "obsAction",
+            "label" : "Scene 8",
+            "parameter" : "scene-8"
+          },
+          "controlID" : "key-2-0"
+        },
+        {
+          "action" : {
+            "detail" : "Start OBS recording when no recording is active.",
+            "kind" : "obsAction",
+            "label" : "Start recording",
+            "parameter" : "start-recording"
+          },
+          "controlID" : "key-2-1"
+        },
+        {
+          "action" : {
+            "detail" : "Stop and finalize the active OBS recording.",
+            "kind" : "obsAction",
+            "label" : "Stop recording",
+            "parameter" : "stop-recording"
+          },
+          "controlID" : "key-2-2"
+        },
+        {
+          "action" : {
+            "detail" : "Pause the active OBS recording when the output supports pausing.",
+            "kind" : "obsAction",
+            "label" : "Pause recording",
+            "parameter" : "pause-recording"
+          },
+          "controlID" : "key-2-3"
+        },
+        {
+          "action" : {
+            "detail" : "Resume a paused OBS recording.",
+            "kind" : "obsAction",
+            "label" : "Resume recording",
+            "parameter" : "resume-recording"
+          },
+          "controlID" : "key-3-0"
+        },
+        {
+          "action" : {
+            "detail" : "Save the current OBS replay buffer when the buffer is running.",
+            "kind" : "obsAction",
+            "label" : "Save replay",
+            "parameter" : "save-replay"
+          },
+          "controlID" : "key-3-1"
+        },
+        {
+          "action" : {
+            "detail" : "Enable or disable OBS Studio Mode.",
+            "kind" : "obsAction",
+            "label" : "Toggle Studio Mode",
+            "parameter" : "toggle-studio-mode"
+          },
+          "controlID" : "key-3-2"
+        },
+        {
+          "action" : {
+            "detail" : "Send the current preview scene to program while OBS Studio Mode is active.",
+            "kind" : "obsAction",
+            "label" : "Transition",
+            "parameter" : "transition"
+          },
+          "controlID" : "key-3-3"
+        },
+        {
+          "action" : {
+            "detail" : "Lower the configured OBS microphone input volume by one control step.",
+            "kind" : "obsAction",
+            "label" : "Microphone down",
+            "parameter" : "mic-down"
+          },
+          "controlID" : "encoder-0-ccw"
+        },
+        {
+          "action" : {
+            "detail" : "Raise the configured OBS microphone input volume by one control step.",
+            "kind" : "obsAction",
+            "label" : "Microphone up",
+            "parameter" : "mic-up"
+          },
+          "controlID" : "encoder-0-cw"
+        },
+        {
+          "action" : {
+            "detail" : "Toggle muting for the configured OBS microphone input.",
+            "kind" : "obsAction",
+            "label" : "Mute microphone",
+            "parameter" : "mic-mute"
+          },
+          "controlID" : "encoder-0-press"
+        },
+        {
+          "action" : {
+            "detail" : "Lower the configured OBS desktop or playback input volume by one control step.",
+            "kind" : "obsAction",
+            "label" : "Playback down",
+            "parameter" : "playback-down"
+          },
+          "controlID" : "encoder-1-ccw"
+        },
+        {
+          "action" : {
+            "detail" : "Raise the configured OBS desktop or playback input volume by one control step.",
+            "kind" : "obsAction",
+            "label" : "Playback up",
+            "parameter" : "playback-up"
+          },
+          "controlID" : "encoder-1-cw"
+        },
+        {
+          "action" : {
+            "detail" : "Toggle muting for the configured OBS desktop or playback input.",
+            "kind" : "obsAction",
+            "label" : "Mute playback",
+            "parameter" : "playback-mute"
+          },
+          "controlID" : "encoder-1-press"
+        },
+        {
+          "action" : {
+            "detail" : "Make the scene immediately before the current scene the OBS Program scene.",
+            "kind" : "obsAction",
+            "label" : "Previous scene",
+            "parameter" : "previous-scene"
+          },
+          "controlID" : "encoder-2-ccw"
+        },
+        {
+          "action" : {
+            "detail" : "Make the scene immediately after the current scene the OBS Program scene.",
+            "kind" : "obsAction",
+            "label" : "Next scene",
+            "parameter" : "next-scene"
+          },
+          "controlID" : "encoder-2-cw"
+        },
+        {
+          "action" : {
+            "detail" : "Switch to the Window Management preset.",
+            "kind" : "profileSwitch",
+            "label" : "Window Management",
+            "parameter" : "window-management"
+          },
+          "controlID" : "encoder-2-press"
+        }
+      ],
+      "id" : "4960743D-F082-41F5-BC8C-9291C0945238",
+      "matchingBundleIDs" : [
+        "com.obsproject.obs-studio"
+      ],
+      "name" : "Recording & Streaming",
+      "presetID" : "recording-streaming",
+      "summary" : "OBS Studio scenes, recording, replay buffer, studio transition, and audio controls."
+    },
+    {
+      "bindings" : [
+        {
+          "action" : {
+            "detail" : "Bring Apple Preview to the foreground.",
+            "kind" : "launchApp",
+            "label" : "Open Preview",
+            "parameter" : "com.apple.Preview"
+          },
+          "controlID" : "key-0-0"
+        },
+        {
+          "action" : {
+            "detail" : "Save the current Preview document.",
+            "kind" : "shortcut",
+            "label" : "Save",
+            "parameter" : "cmd+s",
+            "targetBundleID" : "com.apple.Preview"
+          },
+          "controlID" : "key-0-1"
+        },
+        {
+          "action" : {
+            "detail" : "Print the current PDF or image.",
+            "kind" : "shortcut",
+            "label" : "Print",
+            "parameter" : "cmd+p",
+            "targetBundleID" : "com.apple.Preview"
+          },
+          "controlID" : "key-0-2"
+        },
+        {
+          "action" : {
+            "detail" : "Copy selected text or image area.",
+            "kind" : "shortcut",
+            "label" : "Copy selection",
+            "parameter" : "cmd+c",
+            "targetBundleID" : "com.apple.Preview"
+          },
+          "controlID" : "key-0-3"
+        },
+        {
+          "action" : {
+            "detail" : "Cut the selected Preview item.",
+            "kind" : "shortcut",
+            "label" : "Cut selection",
+            "parameter" : "cmd+x",
+            "targetBundleID" : "com.apple.Preview"
+          },
+          "controlID" : "key-1-0"
+        },
+        {
+          "action" : {
+            "detail" : "Paste clipboard contents into an image.",
+            "kind" : "shortcut",
+            "label" : "Paste into image",
+            "parameter" : "cmd+v",
+            "targetBundleID" : "com.apple.Preview"
+          },
+          "controlID" : "key-1-1"
+        },
+        {
+          "action" : {
+            "detail" : "Move to the next Preview tab.",
+            "kind" : "shortcut",
+            "label" : "Next tab",
+            "parameter" : "ctrl+tab",
+            "targetBundleID" : "com.apple.Preview"
+          },
+          "controlID" : "key-1-2"
+        },
+        {
+          "action" : {
+            "detail" : "Move to the previous Preview tab.",
+            "kind" : "shortcut",
+            "label" : "Previous tab",
+            "parameter" : "shift+ctrl+tab",
+            "targetBundleID" : "com.apple.Preview"
+          },
+          "controlID" : "key-1-3"
+        },
+        {
+          "action" : {
+            "detail" : "Enter or leave Preview full screen mode.",
+            "kind" : "shortcut",
+            "label" : "Full screen",
+            "parameter" : "ctrl+cmd+f",
+            "targetBundleID" : "com.apple.Preview"
+          },
+          "controlID" : "key-2-0"
+        },
+        {
+          "action" : {
+            "detail" : "Move to the previous PDF page.",
+            "kind" : "shortcut",
+            "label" : "Previous page",
+            "parameter" : "alt+up",
+            "targetBundleID" : "com.apple.Preview"
+          },
+          "controlID" : "key-2-1"
+        },
+        {
+          "action" : {
+            "detail" : "Move to the next PDF page.",
+            "kind" : "shortcut",
+            "label" : "Next page",
+            "parameter" : "alt+down",
+            "targetBundleID" : "com.apple.Preview"
+          },
+          "controlID" : "key-2-2"
+        },
+        {
+          "action" : {
+            "detail" : "Show images at actual size.",
+            "kind" : "shortcut",
+            "label" : "Actual size",
+            "parameter" : "alt+cmd+0",
+            "targetBundleID" : "com.apple.Preview"
+          },
+          "controlID" : "key-2-3"
+        },
+        {
+          "action" : {
+            "detail" : "Fit images to the Preview window.",
+            "kind" : "shortcut",
+            "label" : "Zoom to fit",
+            "parameter" : "alt+cmd+9",
+            "targetBundleID" : "com.apple.Preview"
+          },
+          "controlID" : "key-3-0"
+        },
+        {
+          "action" : {
+            "detail" : "Zoom into all open images.",
+            "kind" : "shortcut",
+            "label" : "Zoom in",
+            "parameter" : "alt+cmd+plus",
+            "targetBundleID" : "com.apple.Preview"
+          },
+          "controlID" : "key-3-1"
+        },
+        {
+          "action" : {
+            "detail" : "Zoom out of all open images.",
+            "kind" : "shortcut",
+            "label" : "Zoom out",
+            "parameter" : "alt+cmd+minus",
+            "targetBundleID" : "com.apple.Preview"
+          },
+          "controlID" : "key-3-2"
+        },
+        {
+          "action" : {
+            "detail" : "Run Preview's Remove Background command.",
+            "kind" : "shortcut",
+            "label" : "Remove background",
+            "parameter" : "shift+cmd+k",
+            "targetBundleID" : "com.apple.Preview"
+          },
+          "controlID" : "key-3-3"
+        },
+        {
+          "action" : {
+            "detail" : "Scroll upward or select the previous sidebar item.",
+            "kind" : "shortcut",
+            "label" : "Scroll up a line",
+            "parameter" : "up",
+            "targetBundleID" : "com.apple.Preview"
+          },
+          "controlID" : "encoder-0-ccw"
+        },
+        {
+          "action" : {
+            "detail" : "Scroll downward or select the next sidebar item.",
+            "kind" : "shortcut",
+            "label" : "Scroll down a line",
+            "parameter" : "down",
+            "targetBundleID" : "com.apple.Preview"
+          },
+          "controlID" : "encoder-0-cw"
+        },
+        {
+          "action" : {
+            "detail" : "Move up one screen or show the previous image.",
+            "kind" : "shortcut",
+            "label" : "Previous screen",
+            "parameter" : "pageup",
+            "targetBundleID" : "com.apple.Preview"
+          },
+          "controlID" : "encoder-0-press"
+        },
+        {
+          "action" : {
+            "detail" : "Move down one screen or show the next image.",
+            "kind" : "shortcut",
+            "label" : "Next screen",
+            "parameter" : "pagedown",
+            "targetBundleID" : "com.apple.Preview"
+          },
+          "controlID" : "encoder-1-ccw"
+        },
+        {
+          "action" : {
+            "detail" : "Move to the previous document in the window.",
+            "kind" : "shortcut",
+            "label" : "Previous document",
+            "parameter" : "alt+pageup",
+            "targetBundleID" : "com.apple.Preview"
+          },
+          "controlID" : "encoder-1-cw"
+        },
+        {
+          "action" : {
+            "detail" : "Move to the next document in the window.",
+            "kind" : "shortcut",
+            "label" : "Next document",
+            "parameter" : "alt+pagedown",
+            "targetBundleID" : "com.apple.Preview"
+          },
+          "controlID" : "encoder-1-press"
+        },
+        {
+          "action" : {
+            "detail" : "Scroll the foreground Preview document upward.",
+            "kind" : "system",
+            "label" : "Smooth scroll up",
+            "parameter" : "scrollUp",
+            "targetBundleID" : "com.apple.Preview"
+          },
+          "controlID" : "encoder-2-ccw"
+        },
+        {
+          "action" : {
+            "detail" : "Scroll the foreground Preview document downward.",
+            "kind" : "system",
+            "label" : "Smooth scroll down",
+            "parameter" : "scrollDown",
+            "targetBundleID" : "com.apple.Preview"
+          },
+          "controlID" : "encoder-2-cw"
+        },
+        {
+          "action" : {
+            "detail" : "Switch to the Desktop preset.",
+            "kind" : "profileSwitch",
+            "label" : "Desktop",
+            "parameter" : "desktop"
+          },
+          "controlID" : "encoder-2-press"
+        }
+      ],
+      "id" : "C8E159A6-C837-4EB7-A8F1-D09D4ED94DE2",
+      "matchingBundleIDs" : [
+        "com.apple.Preview"
+      ],
+      "name" : "Creative",
+      "presetID" : "creative",
+      "summary" : "Apple Preview document, image, page, zoom, and navigation controls."
+    }
+  ],
+  "schemaVersion" : 2
+}

@@ -1,0 +1,267 @@
+{
+  "activeProfileID" : "62041710-E430-4DB9-BDBB-37CA0D7AF44C",
+  "profiles" : [
+    {
+      "bindings" : [
+        {
+          "action" : {
+            "detail" : "Undo the last image edit.",
+            "kind" : "shortcut",
+            "label" : "Undo",
+            "parameter" : "cmd+z",
+            "targetBundleID" : "com.canva.affinity"
+          },
+          "controlID" : "key-0-0"
+        },
+        {
+          "action" : {
+            "detail" : "Redo the last undone image edit.",
+            "kind" : "shortcut",
+            "label" : "Redo",
+            "parameter" : "cmd+shift+z",
+            "targetBundleID" : "com.canva.affinity"
+          },
+          "controlID" : "key-0-1"
+        },
+        {
+          "action" : {
+            "detail" : "Save the working Affinity document.",
+            "kind" : "shortcut",
+            "label" : "Save",
+            "parameter" : "cmd+s",
+            "targetBundleID" : "com.canva.affinity"
+          },
+          "controlID" : "key-0-2"
+        },
+        {
+          "action" : {
+            "detail" : "Open the image export dialog; choose format and destination there.",
+            "kind" : "shortcut",
+            "label" : "Export",
+            "parameter" : "cmd+alt+shift+s",
+            "targetBundleID" : "com.canva.affinity"
+          },
+          "controlID" : "key-0-3"
+        },
+        {
+          "action" : {
+            "detail" : "Select Crop in Pixel Studio; finish text or numeric entry first. Check the studio binding during setup.",
+            "kind" : "shortcut",
+            "label" : "Crop",
+            "parameter" : "c",
+            "targetBundleID" : "com.canva.affinity"
+          },
+          "controlID" : "key-1-0"
+        },
+        {
+          "action" : {
+            "detail" : "Select the Move tool for the current layer.",
+            "kind" : "shortcut",
+            "label" : "Move",
+            "parameter" : "v",
+            "targetBundleID" : "com.canva.affinity"
+          },
+          "controlID" : "key-1-1"
+        },
+        {
+          "action" : {
+            "detail" : "Select or cycle the selection tool group in Pixel Studio; verify its binding in Shortcuts settings.",
+            "kind" : "shortcut",
+            "label" : "Selection brush",
+            "parameter" : "w",
+            "targetBundleID" : "com.canva.affinity"
+          },
+          "controlID" : "key-1-2"
+        },
+        {
+          "action" : {
+            "detail" : "Select Freehand Selection in Pixel Studio; verify its binding in Shortcuts settings.",
+            "kind" : "shortcut",
+            "label" : "Freehand selection",
+            "parameter" : "l",
+            "targetBundleID" : "com.canva.affinity"
+          },
+          "controlID" : "key-1-3"
+        },
+        {
+          "action" : {
+            "detail" : "Clear the active pixel selection.",
+            "kind" : "shortcut",
+            "label" : "Deselect",
+            "parameter" : "cmd+d",
+            "targetBundleID" : "com.canva.affinity"
+          },
+          "controlID" : "key-2-0"
+        },
+        {
+          "action" : {
+            "detail" : "Invert the current pixel selection.",
+            "kind" : "shortcut",
+            "label" : "Invert selection",
+            "parameter" : "cmd+shift+i",
+            "targetBundleID" : "com.canva.affinity"
+          },
+          "controlID" : "key-2-1"
+        },
+        {
+          "action" : {
+            "detail" : "Duplicate the selected layer to keep the original available.",
+            "kind" : "shortcut",
+            "label" : "Duplicate layer",
+            "parameter" : "cmd+j",
+            "targetBundleID" : "com.canva.affinity"
+          },
+          "controlID" : "key-2-2"
+        },
+        {
+          "action" : {
+            "detail" : "Create a new pixel layer for non-destructive retouching.",
+            "kind" : "shortcut",
+            "label" : "New pixel layer",
+            "parameter" : "cmd+shift+n",
+            "targetBundleID" : "com.canva.affinity"
+          },
+          "controlID" : "key-2-3"
+        },
+        {
+          "action" : {
+            "detail" : "Copy the merged appearance of the selected image area.",
+            "kind" : "shortcut",
+            "label" : "Copy merged",
+            "parameter" : "cmd+shift+c",
+            "targetBundleID" : "com.canva.affinity"
+          },
+          "controlID" : "key-3-0"
+        },
+        {
+          "action" : {
+            "detail" : "Create a merged visible layer above the existing layers.",
+            "kind" : "shortcut",
+            "label" : "Merge visible copy",
+            "parameter" : "cmd+alt+shift+e",
+            "targetBundleID" : "com.canva.affinity"
+          },
+          "controlID" : "key-3-1"
+        },
+        {
+          "action" : {
+            "detail" : "Reset foreground and background colours for mask painting.",
+            "kind" : "shortcut",
+            "label" : "Reset colours",
+            "parameter" : "d",
+            "targetBundleID" : "com.canva.affinity"
+          },
+          "controlID" : "key-3-2"
+        },
+        {
+          "action" : {
+            "detail" : "Swap foreground and background colours for painting or masking.",
+            "kind" : "shortcut",
+            "label" : "Swap colours",
+            "parameter" : "shift+x",
+            "targetBundleID" : "com.canva.affinity"
+          },
+          "controlID" : "key-3-3"
+        },
+        {
+          "action" : {
+            "detail" : "Decrease brush width while a compatible pixel brush is active. Verify bracket bindings on your keyboard layout.",
+            "kind" : "shortcut",
+            "label" : "Smaller brush",
+            "parameter" : "[",
+            "targetBundleID" : "com.canva.affinity"
+          },
+          "controlID" : "encoder-0-ccw"
+        },
+        {
+          "action" : {
+            "detail" : "Increase brush width while a compatible pixel brush is active.",
+            "kind" : "shortcut",
+            "label" : "Larger brush",
+            "parameter" : "]",
+            "targetBundleID" : "com.canva.affinity"
+          },
+          "controlID" : "encoder-0-cw"
+        },
+        {
+          "action" : {
+            "detail" : "Select Paint Brush in Pixel Studio; verify this studio's B binding during setup.",
+            "kind" : "shortcut",
+            "label" : "Paint brush",
+            "parameter" : "b",
+            "targetBundleID" : "com.canva.affinity"
+          },
+          "controlID" : "encoder-0-press"
+        },
+        {
+          "action" : {
+            "detail" : "Decrease supported pixel-brush hardness by ten percentage points; requires the documented binding in the active studio.",
+            "kind" : "shortcut",
+            "label" : "Softer brush",
+            "parameter" : "shift+[",
+            "targetBundleID" : "com.canva.affinity"
+          },
+          "controlID" : "encoder-1-ccw"
+        },
+        {
+          "action" : {
+            "detail" : "Increase supported pixel-brush hardness by ten percentage points; requires the documented binding in the active studio.",
+            "kind" : "shortcut",
+            "label" : "Harder brush",
+            "parameter" : "shift+]",
+            "targetBundleID" : "com.canva.affinity"
+          },
+          "controlID" : "encoder-1-cw"
+        },
+        {
+          "action" : {
+            "detail" : "Select or cycle the erase brush group in Pixel Studio; verify its binding during setup.",
+            "kind" : "shortcut",
+            "label" : "Eraser",
+            "parameter" : "e",
+            "targetBundleID" : "com.canva.affinity"
+          },
+          "controlID" : "encoder-1-press"
+        },
+        {
+          "action" : {
+            "detail" : "Zoom out from the image canvas.",
+            "kind" : "shortcut",
+            "label" : "Zoom out",
+            "parameter" : "cmd+minus",
+            "targetBundleID" : "com.canva.affinity"
+          },
+          "controlID" : "encoder-2-ccw"
+        },
+        {
+          "action" : {
+            "detail" : "Zoom into the image canvas.",
+            "kind" : "shortcut",
+            "label" : "Zoom in",
+            "parameter" : "cmd+plus",
+            "targetBundleID" : "com.canva.affinity"
+          },
+          "controlID" : "encoder-2-cw"
+        },
+        {
+          "action" : {
+            "detail" : "Fit the complete image in the document view.",
+            "kind" : "shortcut",
+            "label" : "Fit image",
+            "parameter" : "cmd+0",
+            "targetBundleID" : "com.canva.affinity"
+          },
+          "controlID" : "encoder-2-press"
+        }
+      ],
+      "id" : "62041710-E430-4DB9-BDBB-37CA0D7AF44C",
+      "matchingBundleIDs" : [
+        "com.canva.affinity"
+      ],
+      "name" : "Photo Editing",
+      "presetID" : "photo-editing",
+      "summary" : "Affinity Pixel Studio retouching, selections, layers, brush size, hardness, and canvas zoom."
+    }
+  ],
+  "schemaVersion" : 2
+}

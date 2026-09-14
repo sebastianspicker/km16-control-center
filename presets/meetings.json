@@ -1,0 +1,267 @@
+{
+  "activeProfileID" : "9BDF23B2-529C-4419-86E5-70BCE13D017B",
+  "profiles" : [
+    {
+      "bindings" : [
+        {
+          "action" : {
+            "detail" : "Open Zoom's Join Meeting flow.",
+            "kind" : "shortcut",
+            "label" : "Join meeting",
+            "parameter" : "cmd+j",
+            "targetBundleID" : "us.zoom.xos"
+          },
+          "controlID" : "key-0-0"
+        },
+        {
+          "action" : {
+            "detail" : "Start a Zoom meeting.",
+            "kind" : "shortcut",
+            "label" : "Start meeting",
+            "parameter" : "cmd+ctrl+v",
+            "targetBundleID" : "us.zoom.xos"
+          },
+          "controlID" : "key-0-1"
+        },
+        {
+          "action" : {
+            "detail" : "Open Zoom's Schedule Meeting flow.",
+            "kind" : "shortcut",
+            "label" : "Schedule meeting",
+            "parameter" : "cmd+d",
+            "targetBundleID" : "us.zoom.xos"
+          },
+          "controlID" : "key-0-2"
+        },
+        {
+          "action" : {
+            "detail" : "Open Zoom's direct screen sharing flow.",
+            "kind" : "shortcut",
+            "label" : "Direct share",
+            "parameter" : "cmd+ctrl+s",
+            "targetBundleID" : "us.zoom.xos"
+          },
+          "controlID" : "key-0-3"
+        },
+        {
+          "action" : {
+            "detail" : "Toggle your Zoom microphone.",
+            "kind" : "shortcut",
+            "label" : "Mute or unmute",
+            "parameter" : "cmd+shift+a",
+            "targetBundleID" : "us.zoom.xos"
+          },
+          "controlID" : "key-1-0"
+        },
+        {
+          "action" : {
+            "detail" : "Toggle your Zoom camera.",
+            "kind" : "shortcut",
+            "label" : "Start or stop video",
+            "parameter" : "cmd+shift+v",
+            "targetBundleID" : "us.zoom.xos"
+          },
+          "controlID" : "key-1-1"
+        },
+        {
+          "action" : {
+            "detail" : "Select the next available Zoom camera.",
+            "kind" : "shortcut",
+            "label" : "Switch camera",
+            "parameter" : "cmd+shift+n",
+            "targetBundleID" : "us.zoom.xos"
+          },
+          "controlID" : "key-1-2"
+        },
+        {
+          "action" : {
+            "detail" : "Start or stop Zoom screen sharing.",
+            "kind" : "shortcut",
+            "label" : "Share screen",
+            "parameter" : "cmd+shift+s",
+            "targetBundleID" : "us.zoom.xos"
+          },
+          "controlID" : "key-1-3"
+        },
+        {
+          "action" : {
+            "detail" : "Pause or resume Zoom screen sharing.",
+            "kind" : "shortcut",
+            "label" : "Pause sharing",
+            "parameter" : "cmd+shift+t",
+            "targetBundleID" : "us.zoom.xos"
+          },
+          "controlID" : "key-2-0"
+        },
+        {
+          "action" : {
+            "detail" : "Start or stop a local Zoom recording.",
+            "kind" : "shortcut",
+            "label" : "Local recording",
+            "parameter" : "cmd+shift+r",
+            "targetBundleID" : "us.zoom.xos"
+          },
+          "controlID" : "key-2-1"
+        },
+        {
+          "action" : {
+            "detail" : "Start or stop a Zoom cloud recording when available.",
+            "kind" : "shortcut",
+            "label" : "Cloud recording",
+            "parameter" : "cmd+shift+c",
+            "targetBundleID" : "us.zoom.xos"
+          },
+          "controlID" : "key-2-2"
+        },
+        {
+          "action" : {
+            "detail" : "Cycle Zoom speaker and gallery views.",
+            "kind" : "shortcut",
+            "label" : "Change view",
+            "parameter" : "cmd+shift+w",
+            "targetBundleID" : "us.zoom.xos"
+          },
+          "controlID" : "key-2-3"
+        },
+        {
+          "action" : {
+            "detail" : "Show or hide Zoom's participants panel.",
+            "kind" : "shortcut",
+            "label" : "Participants",
+            "parameter" : "cmd+u",
+            "targetBundleID" : "us.zoom.xos"
+          },
+          "controlID" : "key-3-0"
+        },
+        {
+          "action" : {
+            "detail" : "Show or hide the in-meeting chat panel.",
+            "kind" : "shortcut",
+            "label" : "Meeting chat",
+            "parameter" : "cmd+shift+h",
+            "targetBundleID" : "us.zoom.xos"
+          },
+          "controlID" : "key-3-1"
+        },
+        {
+          "action" : {
+            "detail" : "Open the Zoom meeting invitation window.",
+            "kind" : "shortcut",
+            "label" : "Invite",
+            "parameter" : "cmd+i",
+            "targetBundleID" : "us.zoom.xos"
+          },
+          "controlID" : "key-3-2"
+        },
+        {
+          "action" : {
+            "detail" : "Copy the current Zoom meeting invitation link.",
+            "kind" : "shortcut",
+            "label" : "Copy invite link",
+            "parameter" : "cmd+shift+i",
+            "targetBundleID" : "us.zoom.xos"
+          },
+          "controlID" : "key-3-3"
+        },
+        {
+          "action" : {
+            "detail" : "Show the previous gallery page.",
+            "kind" : "shortcut",
+            "label" : "Previous gallery page",
+            "parameter" : "ctrl+p",
+            "targetBundleID" : "us.zoom.xos"
+          },
+          "controlID" : "encoder-0-ccw"
+        },
+        {
+          "action" : {
+            "detail" : "Show the next gallery page.",
+            "kind" : "shortcut",
+            "label" : "Next gallery page",
+            "parameter" : "ctrl+n",
+            "targetBundleID" : "us.zoom.xos"
+          },
+          "controlID" : "encoder-0-cw"
+        },
+        {
+          "action" : {
+            "detail" : "Open the Zoom meeting reactions panel.",
+            "kind" : "shortcut",
+            "label" : "Reactions",
+            "parameter" : "cmd+shift+y",
+            "targetBundleID" : "us.zoom.xos"
+          },
+          "controlID" : "encoder-0-press"
+        },
+        {
+          "action" : {
+            "detail" : "Ask Zoom to read the active speaker name.",
+            "kind" : "shortcut",
+            "label" : "Read active speaker",
+            "parameter" : "cmd+2",
+            "targetBundleID" : "us.zoom.xos"
+          },
+          "controlID" : "encoder-1-ccw"
+        },
+        {
+          "action" : {
+            "detail" : "Enter or exit Zoom full screen mode.",
+            "kind" : "shortcut",
+            "label" : "Full screen",
+            "parameter" : "cmd+shift+f",
+            "targetBundleID" : "us.zoom.xos"
+          },
+          "controlID" : "encoder-1-cw"
+        },
+        {
+          "action" : {
+            "detail" : "Switch Zoom to its minimal meeting window.",
+            "kind" : "shortcut",
+            "label" : "Minimal window",
+            "parameter" : "cmd+shift+m",
+            "targetBundleID" : "us.zoom.xos"
+          },
+          "controlID" : "encoder-1-press"
+        },
+        {
+          "action" : {
+            "detail" : "Toggle your raised-hand state in Zoom.",
+            "kind" : "shortcut",
+            "label" : "Raise or lower hand",
+            "parameter" : "alt+y",
+            "targetBundleID" : "us.zoom.xos"
+          },
+          "controlID" : "encoder-2-ccw"
+        },
+        {
+          "action" : {
+            "detail" : "Move backward in Zoom chat history.",
+            "kind" : "shortcut",
+            "label" : "Back in chat",
+            "parameter" : "cmd+[",
+            "targetBundleID" : "us.zoom.xos"
+          },
+          "controlID" : "encoder-2-cw"
+        },
+        {
+          "action" : {
+            "detail" : "Open Zoom Workplace global search.",
+            "kind" : "shortcut",
+            "label" : "Global search",
+            "parameter" : "cmd+e",
+            "targetBundleID" : "us.zoom.xos"
+          },
+          "controlID" : "encoder-2-press"
+        }
+      ],
+      "id" : "9BDF23B2-529C-4419-86E5-70BCE13D017B",
+      "matchingBundleIDs" : [
+        "us.zoom.xos"
+      ],
+      "name" : "Meetings",
+      "presetID" : "meetings",
+      "summary" : "Zoom Workplace meeting, sharing, recording, participant, chat, and navigation controls."
+    }
+  ],
+  "schemaVersion" : 2
+}

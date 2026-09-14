@@ -1,0 +1,267 @@
+{
+  "activeProfileID" : "C7B93C0A-F8D4-4ED8-92E1-A3266F817DA1",
+  "profiles" : [
+    {
+      "bindings" : [
+        {
+          "action" : {
+            "detail" : "Start recording on record-enabled tracks at the playhead.",
+            "kind" : "shortcut",
+            "label" : "Record",
+            "parameter" : "r",
+            "targetBundleID" : "com.apple.logic10"
+          },
+          "controlID" : "key-0-0"
+        },
+        {
+          "action" : {
+            "detail" : "Turn Logic Pro Cycle mode on or off.",
+            "kind" : "shortcut",
+            "label" : "Cycle Mode",
+            "parameter" : "c",
+            "targetBundleID" : "com.apple.logic10"
+          },
+          "controlID" : "key-0-1"
+        },
+        {
+          "action" : {
+            "detail" : "Turn the Logic Pro metronome click on or off.",
+            "kind" : "shortcut",
+            "label" : "Metronome",
+            "parameter" : "k",
+            "targetBundleID" : "com.apple.logic10"
+          },
+          "controlID" : "key-0-2"
+        },
+        {
+          "action" : {
+            "detail" : "Toggle record enable for the selected track.",
+            "kind" : "shortcut",
+            "label" : "Record enable",
+            "parameter" : "ctrl+r",
+            "targetBundleID" : "com.apple.logic10"
+          },
+          "controlID" : "key-0-3"
+        },
+        {
+          "action" : {
+            "detail" : "Undo the most recent Logic Pro edit.",
+            "kind" : "shortcut",
+            "label" : "Undo",
+            "parameter" : "cmd+z",
+            "targetBundleID" : "com.apple.logic10"
+          },
+          "controlID" : "key-1-0"
+        },
+        {
+          "action" : {
+            "detail" : "Redo the most recently undone Logic Pro edit.",
+            "kind" : "shortcut",
+            "label" : "Redo",
+            "parameter" : "shift+cmd+z",
+            "targetBundleID" : "com.apple.logic10"
+          },
+          "controlID" : "key-1-1"
+        },
+        {
+          "action" : {
+            "detail" : "Save the current Logic Pro project.",
+            "kind" : "shortcut",
+            "label" : "Save",
+            "parameter" : "cmd+s",
+            "targetBundleID" : "com.apple.logic10"
+          },
+          "controlID" : "key-1-2"
+        },
+        {
+          "action" : {
+            "detail" : "Open Logic Pro's Bounce dialog for the current project or selection context.",
+            "kind" : "shortcut",
+            "label" : "Bounce",
+            "parameter" : "cmd+b",
+            "targetBundleID" : "com.apple.logic10"
+          },
+          "controlID" : "key-1-3"
+        },
+        {
+          "action" : {
+            "detail" : "Create a new audio track in the Main Window.",
+            "kind" : "shortcut",
+            "label" : "New audio track",
+            "parameter" : "alt+cmd+a",
+            "targetBundleID" : "com.apple.logic10"
+          },
+          "controlID" : "key-2-0"
+        },
+        {
+          "action" : {
+            "detail" : "Create a new software instrument track in the Main Window.",
+            "kind" : "shortcut",
+            "label" : "Instrument track",
+            "parameter" : "alt+cmd+s",
+            "targetBundleID" : "com.apple.logic10"
+          },
+          "controlID" : "key-2-1"
+        },
+        {
+          "action" : {
+            "detail" : "Create a new track with the selected track's settings.",
+            "kind" : "shortcut",
+            "label" : "Duplicate track",
+            "parameter" : "cmd+d",
+            "targetBundleID" : "com.apple.logic10"
+          },
+          "controlID" : "key-2-2"
+        },
+        {
+          "action" : {
+            "detail" : "Delete the selected track from the Main Window.",
+            "kind" : "shortcut",
+            "label" : "Delete track",
+            "parameter" : "cmd+delete",
+            "targetBundleID" : "com.apple.logic10"
+          },
+          "controlID" : "key-2-3"
+        },
+        {
+          "action" : {
+            "detail" : "Show or hide the Mixer.",
+            "kind" : "shortcut",
+            "label" : "Mixer",
+            "parameter" : "x",
+            "targetBundleID" : "com.apple.logic10"
+          },
+          "controlID" : "key-3-0"
+        },
+        {
+          "action" : {
+            "detail" : "Show or hide track automation in the Main Window.",
+            "kind" : "shortcut",
+            "label" : "Automation",
+            "parameter" : "a",
+            "targetBundleID" : "com.apple.logic10"
+          },
+          "controlID" : "key-3-1"
+        },
+        {
+          "action" : {
+            "detail" : "Show or hide the Piano Roll editor.",
+            "kind" : "shortcut",
+            "label" : "Piano Roll",
+            "parameter" : "p",
+            "targetBundleID" : "com.apple.logic10"
+          },
+          "controlID" : "key-3-2"
+        },
+        {
+          "action" : {
+            "detail" : "Show or hide the Library.",
+            "kind" : "shortcut",
+            "label" : "Library",
+            "parameter" : "y",
+            "targetBundleID" : "com.apple.logic10"
+          },
+          "controlID" : "key-3-3"
+        },
+        {
+          "action" : {
+            "detail" : "Select the previous track.",
+            "kind" : "shortcut",
+            "label" : "Previous track",
+            "parameter" : "up",
+            "targetBundleID" : "com.apple.logic10"
+          },
+          "controlID" : "encoder-0-ccw"
+        },
+        {
+          "action" : {
+            "detail" : "Select the next track.",
+            "kind" : "shortcut",
+            "label" : "Next track",
+            "parameter" : "down",
+            "targetBundleID" : "com.apple.logic10"
+          },
+          "controlID" : "encoder-0-cw"
+        },
+        {
+          "action" : {
+            "detail" : "Toggle mute for the selected track's channel strip.",
+            "kind" : "shortcut",
+            "label" : "Mute track",
+            "parameter" : "m",
+            "targetBundleID" : "com.apple.logic10"
+          },
+          "controlID" : "encoder-0-press"
+        },
+        {
+          "action" : {
+            "detail" : "Move the Logic Pro playhead backward.",
+            "kind" : "shortcut",
+            "label" : "Rewind",
+            "parameter" : ",",
+            "targetBundleID" : "com.apple.logic10"
+          },
+          "controlID" : "encoder-1-ccw"
+        },
+        {
+          "action" : {
+            "detail" : "Move the Logic Pro playhead forward.",
+            "kind" : "shortcut",
+            "label" : "Forward",
+            "parameter" : ".",
+            "targetBundleID" : "com.apple.logic10"
+          },
+          "controlID" : "encoder-1-cw"
+        },
+        {
+          "action" : {
+            "detail" : "Start or stop playback at the current playhead position.",
+            "kind" : "shortcut",
+            "label" : "Play or stop",
+            "parameter" : "space",
+            "targetBundleID" : "com.apple.logic10"
+          },
+          "controlID" : "encoder-1-press"
+        },
+        {
+          "action" : {
+            "detail" : "Zoom the focused Logic Pro editor out horizontally.",
+            "kind" : "shortcut",
+            "label" : "Horizontal zoom out",
+            "parameter" : "cmd+left",
+            "targetBundleID" : "com.apple.logic10"
+          },
+          "controlID" : "encoder-2-ccw"
+        },
+        {
+          "action" : {
+            "detail" : "Zoom the focused Logic Pro editor in horizontally.",
+            "kind" : "shortcut",
+            "label" : "Horizontal zoom in",
+            "parameter" : "cmd+right",
+            "targetBundleID" : "com.apple.logic10"
+          },
+          "controlID" : "encoder-2-cw"
+        },
+        {
+          "action" : {
+            "detail" : "Toggle zoom to fit the selection or all contents in the focused editor.",
+            "kind" : "shortcut",
+            "label" : "Zoom selection or all",
+            "parameter" : "z",
+            "targetBundleID" : "com.apple.logic10"
+          },
+          "controlID" : "encoder-2-press"
+        }
+      ],
+      "id" : "C7B93C0A-F8D4-4ED8-92E1-A3266F817DA1",
+      "matchingBundleIDs" : [
+        "com.apple.logic10"
+      ],
+      "name" : "Music Production",
+      "presetID" : "music-production",
+      "summary" : "Logic Pro recording, project editing, track creation, key views, navigation, and arrangement zoom controls."
+    }
+  ],
+  "schemaVersion" : 2
+}

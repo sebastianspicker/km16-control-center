@@ -1,0 +1,266 @@
+{
+  "activeProfileID" : "CC15B6E4-6DF0-4AE1-8201-BC2EA33151D7",
+  "profiles" : [
+    {
+      "bindings" : [
+        {
+          "action" : {
+            "detail" : "Bring Final Cut Pro to the foreground.",
+            "kind" : "launchApp",
+            "label" : "Open Final Cut Pro",
+            "parameter" : "com.apple.FinalCut"
+          },
+          "controlID" : "key-0-0"
+        },
+        {
+          "action" : {
+            "detail" : "Open Final Cut Pro's media import window.",
+            "kind" : "shortcut",
+            "label" : "Import media",
+            "parameter" : "cmd+i",
+            "targetBundleID" : "com.apple.FinalCut"
+          },
+          "controlID" : "key-0-1"
+        },
+        {
+          "action" : {
+            "detail" : "Create a new Final Cut Pro project.",
+            "kind" : "shortcut",
+            "label" : "New project",
+            "parameter" : "cmd+n",
+            "targetBundleID" : "com.apple.FinalCut"
+          },
+          "controlID" : "key-0-2"
+        },
+        {
+          "action" : {
+            "detail" : "Undo the last Final Cut Pro command.",
+            "kind" : "shortcut",
+            "label" : "Undo",
+            "parameter" : "cmd+z",
+            "targetBundleID" : "com.apple.FinalCut"
+          },
+          "controlID" : "key-0-3"
+        },
+        {
+          "action" : {
+            "detail" : "Redo the last undone Final Cut Pro command.",
+            "kind" : "shortcut",
+            "label" : "Redo",
+            "parameter" : "shift+cmd+z",
+            "targetBundleID" : "com.apple.FinalCut"
+          },
+          "controlID" : "key-1-0"
+        },
+        {
+          "action" : {
+            "detail" : "Append the browser selection to the end of the primary storyline.",
+            "kind" : "shortcut",
+            "label" : "Append",
+            "parameter" : "e",
+            "targetBundleID" : "com.apple.FinalCut"
+          },
+          "controlID" : "key-1-1"
+        },
+        {
+          "action" : {
+            "detail" : "Connect the browser selection to the primary storyline at the playhead.",
+            "kind" : "shortcut",
+            "label" : "Connect",
+            "parameter" : "q",
+            "targetBundleID" : "com.apple.FinalCut"
+          },
+          "controlID" : "key-1-2"
+        },
+        {
+          "action" : {
+            "detail" : "Insert the browser selection at the skimmer or playhead position.",
+            "kind" : "shortcut",
+            "label" : "Insert",
+            "parameter" : "w",
+            "targetBundleID" : "com.apple.FinalCut"
+          },
+          "controlID" : "key-1-3"
+        },
+        {
+          "action" : {
+            "detail" : "Overwrite the primary storyline at the skimmer or playhead with the browser selection.",
+            "kind" : "shortcut",
+            "label" : "Overwrite",
+            "parameter" : "d",
+            "targetBundleID" : "com.apple.FinalCut"
+          },
+          "controlID" : "key-2-0"
+        },
+        {
+          "action" : {
+            "detail" : "Cut the primary-storyline clip or current selection at the playhead.",
+            "kind" : "shortcut",
+            "label" : "Blade",
+            "parameter" : "cmd+b",
+            "targetBundleID" : "com.apple.FinalCut"
+          },
+          "controlID" : "key-2-1"
+        },
+        {
+          "action" : {
+            "detail" : "Cut every clip at the skimmer or playhead position.",
+            "kind" : "shortcut",
+            "label" : "Blade all",
+            "parameter" : "shift+cmd+b",
+            "targetBundleID" : "com.apple.FinalCut"
+          },
+          "controlID" : "key-2-2"
+        },
+        {
+          "action" : {
+            "detail" : "Delete the timeline selection or reject the browser selection.",
+            "kind" : "shortcut",
+            "label" : "Delete selection",
+            "parameter" : "delete",
+            "targetBundleID" : "com.apple.FinalCut"
+          },
+          "controlID" : "key-2-3"
+        },
+        {
+          "action" : {
+            "detail" : "Add a marker at the skimmer or playhead position.",
+            "kind" : "shortcut",
+            "label" : "Add marker",
+            "parameter" : "m",
+            "targetBundleID" : "com.apple.FinalCut"
+          },
+          "controlID" : "key-3-0"
+        },
+        {
+          "action" : {
+            "detail" : "Connect the default title to the primary storyline.",
+            "kind" : "shortcut",
+            "label" : "Default title",
+            "parameter" : "ctrl+t",
+            "targetBundleID" : "com.apple.FinalCut"
+          },
+          "controlID" : "key-3-1"
+        },
+        {
+          "action" : {
+            "detail" : "Activate Transform and show its onscreen controls for the selected clip.",
+            "kind" : "shortcut",
+            "label" : "Transform tool",
+            "parameter" : "shift+t",
+            "targetBundleID" : "com.apple.FinalCut"
+          },
+          "controlID" : "key-3-2"
+        },
+        {
+          "action" : {
+            "detail" : "Activate Crop and show its onscreen controls for the selected clip.",
+            "kind" : "shortcut",
+            "label" : "Crop tool",
+            "parameter" : "shift+c",
+            "targetBundleID" : "com.apple.FinalCut"
+          },
+          "controlID" : "key-3-3"
+        },
+        {
+          "action" : {
+            "detail" : "Play backward; repeat rotations to increase reverse playback speed.",
+            "kind" : "shortcut",
+            "label" : "Play reverse",
+            "parameter" : "j",
+            "targetBundleID" : "com.apple.FinalCut"
+          },
+          "controlID" : "encoder-0-ccw"
+        },
+        {
+          "action" : {
+            "detail" : "Play forward; repeat rotations to increase forward playback speed.",
+            "kind" : "shortcut",
+            "label" : "Play forward",
+            "parameter" : "l",
+            "targetBundleID" : "com.apple.FinalCut"
+          },
+          "controlID" : "encoder-0-cw"
+        },
+        {
+          "action" : {
+            "detail" : "Stop Final Cut Pro playback.",
+            "kind" : "shortcut",
+            "label" : "Stop playback",
+            "parameter" : "k",
+            "targetBundleID" : "com.apple.FinalCut"
+          },
+          "controlID" : "encoder-0-press"
+        },
+        {
+          "action" : {
+            "detail" : "Move the playhead back by one frame.",
+            "kind" : "shortcut",
+            "label" : "Previous frame",
+            "parameter" : "left",
+            "targetBundleID" : "com.apple.FinalCut"
+          },
+          "controlID" : "encoder-1-ccw"
+        },
+        {
+          "action" : {
+            "detail" : "Move the playhead forward by one frame.",
+            "kind" : "shortcut",
+            "label" : "Next frame",
+            "parameter" : "right",
+            "targetBundleID" : "com.apple.FinalCut"
+          },
+          "controlID" : "encoder-1-cw"
+        },
+        {
+          "action" : {
+            "detail" : "Start or pause playback at the playhead.",
+            "kind" : "shortcut",
+            "label" : "Play or pause",
+            "parameter" : "space",
+            "targetBundleID" : "com.apple.FinalCut"
+          },
+          "controlID" : "encoder-1-press"
+        },
+        {
+          "action" : {
+            "detail" : "Go to the previous item in the browser or edit point in the timeline.",
+            "kind" : "shortcut",
+            "label" : "Previous edit",
+            "parameter" : "up",
+            "targetBundleID" : "com.apple.FinalCut"
+          },
+          "controlID" : "encoder-2-ccw"
+        },
+        {
+          "action" : {
+            "detail" : "Go to the next item in the browser or edit point in the timeline.",
+            "kind" : "shortcut",
+            "label" : "Next edit",
+            "parameter" : "down",
+            "targetBundleID" : "com.apple.FinalCut"
+          },
+          "controlID" : "encoder-2-cw"
+        },
+        {
+          "action" : {
+            "detail" : "Share the selected project or clip using the configured default destination.",
+            "kind" : "shortcut",
+            "label" : "Share default",
+            "parameter" : "cmd+e",
+            "targetBundleID" : "com.apple.FinalCut"
+          },
+          "controlID" : "encoder-2-press"
+        }
+      ],
+      "id" : "CC15B6E4-6DF0-4AE1-8201-BC2EA33151D7",
+      "matchingBundleIDs" : [
+        "com.apple.FinalCut"
+      ],
+      "name" : "Video Editing",
+      "presetID" : "video-editing",
+      "summary" : "Final Cut Pro importing, timeline editing, tools, playback, navigation, and sharing using Apple defaults."
+    }
+  ],
+  "schemaVersion" : 2
+}

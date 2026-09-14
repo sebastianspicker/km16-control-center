@@ -1,0 +1,242 @@
+{
+  "activeProfileID" : "4960743D-F082-41F5-BC8C-9291C0945238",
+  "profiles" : [
+    {
+      "bindings" : [
+        {
+          "action" : {
+            "detail" : "Bring OBS Studio to the foreground.",
+            "kind" : "launchApp",
+            "label" : "Open OBS Studio",
+            "parameter" : "com.obsproject.obs-studio"
+          },
+          "controlID" : "key-0-0"
+        },
+        {
+          "action" : {
+            "detail" : "Make the first scene in the current OBS collection the Program scene.",
+            "kind" : "obsAction",
+            "label" : "Scene 1",
+            "parameter" : "scene-1"
+          },
+          "controlID" : "key-0-1"
+        },
+        {
+          "action" : {
+            "detail" : "Make the second scene in the current OBS collection the Program scene.",
+            "kind" : "obsAction",
+            "label" : "Scene 2",
+            "parameter" : "scene-2"
+          },
+          "controlID" : "key-0-2"
+        },
+        {
+          "action" : {
+            "detail" : "Make the third scene in the current OBS collection the Program scene.",
+            "kind" : "obsAction",
+            "label" : "Scene 3",
+            "parameter" : "scene-3"
+          },
+          "controlID" : "key-0-3"
+        },
+        {
+          "action" : {
+            "detail" : "Make the fourth scene in the current OBS collection the Program scene.",
+            "kind" : "obsAction",
+            "label" : "Scene 4",
+            "parameter" : "scene-4"
+          },
+          "controlID" : "key-1-0"
+        },
+        {
+          "action" : {
+            "detail" : "Make the fifth scene in the current OBS collection the Program scene.",
+            "kind" : "obsAction",
+            "label" : "Scene 5",
+            "parameter" : "scene-5"
+          },
+          "controlID" : "key-1-1"
+        },
+        {
+          "action" : {
+            "detail" : "Make the sixth scene in the current OBS collection the Program scene.",
+            "kind" : "obsAction",
+            "label" : "Scene 6",
+            "parameter" : "scene-6"
+          },
+          "controlID" : "key-1-2"
+        },
+        {
+          "action" : {
+            "detail" : "Make the seventh scene in the current OBS collection the Program scene.",
+            "kind" : "obsAction",
+            "label" : "Scene 7",
+            "parameter" : "scene-7"
+          },
+          "controlID" : "key-1-3"
+        },
+        {
+          "action" : {
+            "detail" : "Make the eighth scene in the current OBS collection the Program scene.",
+            "kind" : "obsAction",
+            "label" : "Scene 8",
+            "parameter" : "scene-8"
+          },
+          "controlID" : "key-2-0"
+        },
+        {
+          "action" : {
+            "detail" : "Start OBS recording when no recording is active.",
+            "kind" : "obsAction",
+            "label" : "Start recording",
+            "parameter" : "start-recording"
+          },
+          "controlID" : "key-2-1"
+        },
+        {
+          "action" : {
+            "detail" : "Stop and finalize the active OBS recording.",
+            "kind" : "obsAction",
+            "label" : "Stop recording",
+            "parameter" : "stop-recording"
+          },
+          "controlID" : "key-2-2"
+        },
+        {
+          "action" : {
+            "detail" : "Pause the active OBS recording when the output supports pausing.",
+            "kind" : "obsAction",
+            "label" : "Pause recording",
+            "parameter" : "pause-recording"
+          },
+          "controlID" : "key-2-3"
+        },
+        {
+          "action" : {
+            "detail" : "Resume a paused OBS recording.",
+            "kind" : "obsAction",
+            "label" : "Resume recording",
+            "parameter" : "resume-recording"
+          },
+          "controlID" : "key-3-0"
+        },
+        {
+          "action" : {
+            "detail" : "Save the current OBS replay buffer when the buffer is running.",
+            "kind" : "obsAction",
+            "label" : "Save replay",
+            "parameter" : "save-replay"
+          },
+          "controlID" : "key-3-1"
+        },
+        {
+          "action" : {
+            "detail" : "Enable or disable OBS Studio Mode.",
+            "kind" : "obsAction",
+            "label" : "Toggle Studio Mode",
+            "parameter" : "toggle-studio-mode"
+          },
+          "controlID" : "key-3-2"
+        },
+        {
+          "action" : {
+            "detail" : "Send the current preview scene to program while OBS Studio Mode is active.",
+            "kind" : "obsAction",
+            "label" : "Transition",
+            "parameter" : "transition"
+          },
+          "controlID" : "key-3-3"
+        },
+        {
+          "action" : {
+            "detail" : "Lower the configured OBS microphone input volume by one control step.",
+            "kind" : "obsAction",
+            "label" : "Microphone down",
+            "parameter" : "mic-down"
+          },
+          "controlID" : "encoder-0-ccw"
+        },
+        {
+          "action" : {
+            "detail" : "Raise the configured OBS microphone input volume by one control step.",
+            "kind" : "obsAction",
+            "label" : "Microphone up",
+            "parameter" : "mic-up"
+          },
+          "controlID" : "encoder-0-cw"
+        },
+        {
+          "action" : {
+            "detail" : "Toggle muting for the configured OBS microphone input.",
+            "kind" : "obsAction",
+            "label" : "Mute microphone",
+            "parameter" : "mic-mute"
+          },
+          "controlID" : "encoder-0-press"
+        },
+        {
+          "action" : {
+            "detail" : "Lower the configured OBS desktop or playback input volume by one control step.",
+            "kind" : "obsAction",
+            "label" : "Playback down",
+            "parameter" : "playback-down"
+          },
+          "controlID" : "encoder-1-ccw"
+        },
+        {
+          "action" : {
+            "detail" : "Raise the configured OBS desktop or playback input volume by one control step.",
+            "kind" : "obsAction",
+            "label" : "Playback up",
+            "parameter" : "playback-up"
+          },
+          "controlID" : "encoder-1-cw"
+        },
+        {
+          "action" : {
+            "detail" : "Toggle muting for the configured OBS desktop or playback input.",
+            "kind" : "obsAction",
+            "label" : "Mute playback",
+            "parameter" : "playback-mute"
+          },
+          "controlID" : "encoder-1-press"
+        },
+        {
+          "action" : {
+            "detail" : "Make the scene immediately before the current scene the OBS Program scene.",
+            "kind" : "obsAction",
+            "label" : "Previous scene",
+            "parameter" : "previous-scene"
+          },
+          "controlID" : "encoder-2-ccw"
+        },
+        {
+          "action" : {
+            "detail" : "Make the scene immediately after the current scene the OBS Program scene.",
+            "kind" : "obsAction",
+            "label" : "Next scene",
+            "parameter" : "next-scene"
+          },
+          "controlID" : "encoder-2-cw"
+        },
+        {
+          "action" : {
+            "detail" : "Switch to the Window Management preset.",
+            "kind" : "profileSwitch",
+            "label" : "Window Management",
+            "parameter" : "window-management"
+          },
+          "controlID" : "encoder-2-press"
+        }
+      ],
+      "id" : "4960743D-F082-41F5-BC8C-9291C0945238",
+      "matchingBundleIDs" : [
+        "com.obsproject.obs-studio"
+      ],
+      "name" : "Recording & Streaming",
+      "presetID" : "recording-streaming",
+      "summary" : "OBS Studio scenes, recording, replay buffer, studio transition, and audio controls."
+    }
+  ],
+  "schemaVersion" : 2
+}

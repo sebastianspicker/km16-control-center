@@ -1,0 +1,267 @@
+{
+  "activeProfileID" : "6252708A-203E-4657-B27E-4D1D3C787E6A",
+  "profiles" : [
+    {
+      "bindings" : [
+        {
+          "action" : {
+            "detail" : "Start the slide show from its first slide.",
+            "kind" : "shortcut",
+            "label" : "Present from start",
+            "parameter" : "cmd+shift+enter",
+            "targetBundleID" : "com.microsoft.Powerpoint"
+          },
+          "controlID" : "key-0-0"
+        },
+        {
+          "action" : {
+            "detail" : "Start the slide show from the selected slide.",
+            "kind" : "shortcut",
+            "label" : "Present current slide",
+            "parameter" : "cmd+enter",
+            "targetBundleID" : "com.microsoft.Powerpoint"
+          },
+          "controlID" : "key-0-1"
+        },
+        {
+          "action" : {
+            "detail" : "Start the presentation in Presenter View.",
+            "kind" : "shortcut",
+            "label" : "Presenter View",
+            "parameter" : "alt+enter",
+            "targetBundleID" : "com.microsoft.Powerpoint"
+          },
+          "controlID" : "key-0-2"
+        },
+        {
+          "action" : {
+            "detail" : "End the active slide show or cancel the current editing operation.",
+            "kind" : "shortcut",
+            "label" : "End presentation",
+            "parameter" : "esc",
+            "targetBundleID" : "com.microsoft.Powerpoint"
+          },
+          "controlID" : "key-0-3"
+        },
+        {
+          "action" : {
+            "detail" : "During a slide show, toggle a black screen. In text editing this types B.",
+            "kind" : "shortcut",
+            "label" : "Black screen",
+            "parameter" : "b",
+            "targetBundleID" : "com.microsoft.Powerpoint"
+          },
+          "controlID" : "key-1-0"
+        },
+        {
+          "action" : {
+            "detail" : "During a slide show, toggle a white screen. In text editing this types W.",
+            "kind" : "shortcut",
+            "label" : "White screen",
+            "parameter" : "w",
+            "targetBundleID" : "com.microsoft.Powerpoint"
+          },
+          "controlID" : "key-1-1"
+        },
+        {
+          "action" : {
+            "detail" : "During a slide show, activate the laser pointer.",
+            "kind" : "shortcut",
+            "label" : "Laser pointer",
+            "parameter" : "cmd+l",
+            "targetBundleID" : "com.microsoft.Powerpoint"
+          },
+          "controlID" : "key-1-2"
+        },
+        {
+          "action" : {
+            "detail" : "During a slide show, restore the arrow pointer; in editing, this selects all.",
+            "kind" : "shortcut",
+            "label" : "Arrow pointer",
+            "parameter" : "cmd+a",
+            "targetBundleID" : "com.microsoft.Powerpoint"
+          },
+          "controlID" : "key-1-3"
+        },
+        {
+          "action" : {
+            "detail" : "In editing view, insert a new slide.",
+            "kind" : "shortcut",
+            "label" : "New slide",
+            "parameter" : "cmd+shift+n",
+            "targetBundleID" : "com.microsoft.Powerpoint"
+          },
+          "controlID" : "key-2-0"
+        },
+        {
+          "action" : {
+            "detail" : "In editing view, duplicate the selected slide.",
+            "kind" : "shortcut",
+            "label" : "Duplicate slide",
+            "parameter" : "cmd+shift+d",
+            "targetBundleID" : "com.microsoft.Powerpoint"
+          },
+          "controlID" : "key-2-1"
+        },
+        {
+          "action" : {
+            "detail" : "Undo the last presentation edit.",
+            "kind" : "shortcut",
+            "label" : "Undo",
+            "parameter" : "cmd+z",
+            "targetBundleID" : "com.microsoft.Powerpoint"
+          },
+          "controlID" : "key-2-2"
+        },
+        {
+          "action" : {
+            "detail" : "Redo the last undone presentation edit.",
+            "kind" : "shortcut",
+            "label" : "Redo",
+            "parameter" : "cmd+y",
+            "targetBundleID" : "com.microsoft.Powerpoint"
+          },
+          "controlID" : "key-2-3"
+        },
+        {
+          "action" : {
+            "detail" : "Save the current presentation.",
+            "kind" : "shortcut",
+            "label" : "Save",
+            "parameter" : "cmd+s",
+            "targetBundleID" : "com.microsoft.Powerpoint"
+          },
+          "controlID" : "key-3-0"
+        },
+        {
+          "action" : {
+            "detail" : "In editing view, insert a comment on the selection.",
+            "kind" : "shortcut",
+            "label" : "Add comment",
+            "parameter" : "cmd+shift+m",
+            "targetBundleID" : "com.microsoft.Powerpoint"
+          },
+          "controlID" : "key-3-1"
+        },
+        {
+          "action" : {
+            "detail" : "In editing view, add a hyperlink to the selected object or text.",
+            "kind" : "shortcut",
+            "label" : "Insert hyperlink",
+            "parameter" : "cmd+k",
+            "targetBundleID" : "com.microsoft.Powerpoint"
+          },
+          "controlID" : "key-3-2"
+        },
+        {
+          "action" : {
+            "detail" : "In editing view, open slide background formatting.",
+            "kind" : "shortcut",
+            "label" : "Format background",
+            "parameter" : "cmd+shift+2",
+            "targetBundleID" : "com.microsoft.Powerpoint"
+          },
+          "controlID" : "key-3-3"
+        },
+        {
+          "action" : {
+            "detail" : "Go to the previous slide in editing, or previous animation step during a slide show.",
+            "kind" : "shortcut",
+            "label" : "Previous slide / step",
+            "parameter" : "pageup",
+            "targetBundleID" : "com.microsoft.Powerpoint"
+          },
+          "controlID" : "encoder-0-ccw"
+        },
+        {
+          "action" : {
+            "detail" : "Go to the next slide in editing, or next animation step during a slide show.",
+            "kind" : "shortcut",
+            "label" : "Next slide / step",
+            "parameter" : "pagedown",
+            "targetBundleID" : "com.microsoft.Powerpoint"
+          },
+          "controlID" : "encoder-0-cw"
+        },
+        {
+          "action" : {
+            "detail" : "During a slide show, advance one animation or slide. In editing, Space may enter text or activate a focused control.",
+            "kind" : "shortcut",
+            "label" : "Next animation",
+            "parameter" : "space",
+            "targetBundleID" : "com.microsoft.Powerpoint"
+          },
+          "controlID" : "encoder-0-press"
+        },
+        {
+          "action" : {
+            "detail" : "Move to the previous object in editing or hyperlink/control during presentation; context determines focus.",
+            "kind" : "shortcut",
+            "label" : "Previous object / link",
+            "parameter" : "shift+tab",
+            "targetBundleID" : "com.microsoft.Powerpoint"
+          },
+          "controlID" : "encoder-1-ccw"
+        },
+        {
+          "action" : {
+            "detail" : "Move to the next object or presentation hotspot; inside text, inserts a tab.",
+            "kind" : "shortcut",
+            "label" : "Next object / link",
+            "parameter" : "tab",
+            "targetBundleID" : "com.microsoft.Powerpoint"
+          },
+          "controlID" : "encoder-1-cw"
+        },
+        {
+          "action" : {
+            "detail" : "During a slide show, open the selected hyperlink. In editing, Return may enter text.",
+            "kind" : "shortcut",
+            "label" : "Activate link / control",
+            "parameter" : "enter",
+            "targetBundleID" : "com.microsoft.Powerpoint"
+          },
+          "controlID" : "encoder-1-press"
+        },
+        {
+          "action" : {
+            "detail" : "Decrease slide-canvas zoom in editing view.",
+            "kind" : "shortcut",
+            "label" : "Editing zoom out",
+            "parameter" : "cmd+minus",
+            "targetBundleID" : "com.microsoft.Powerpoint"
+          },
+          "controlID" : "encoder-2-ccw"
+        },
+        {
+          "action" : {
+            "detail" : "Increase slide-canvas zoom in editing view.",
+            "kind" : "shortcut",
+            "label" : "Editing zoom in",
+            "parameter" : "cmd+plus",
+            "targetBundleID" : "com.microsoft.Powerpoint"
+          },
+          "controlID" : "encoder-2-cw"
+        },
+        {
+          "action" : {
+            "detail" : "Fit the slide to the editing window.",
+            "kind" : "shortcut",
+            "label" : "Fit slide",
+            "parameter" : "cmd+alt+o",
+            "targetBundleID" : "com.microsoft.Powerpoint"
+          },
+          "controlID" : "encoder-2-press"
+        }
+      ],
+      "id" : "6252708A-203E-4657-B27E-4D1D3C787E6A",
+      "matchingBundleIDs" : [
+        "com.microsoft.Powerpoint"
+      ],
+      "name" : "Presentations",
+      "presetID" : "presentations",
+      "summary" : "PowerPoint slide preparation and delivery, with slide, focus, and editing-zoom dials."
+    }
+  ],
+  "schemaVersion" : 2
+}
