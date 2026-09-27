@@ -18,11 +18,11 @@ struct ControlInspectorView: View {
                     Text("ASSIGNMENT").font(.system(size: 10, weight: .semibold)).tracking(1.8).foregroundStyle(.secondary)
                     HStack(spacing: 10) {
                         Image(systemName: StudioStyle.actionSymbol(store.selectedBinding.action.kind))
-                            .font(.system(size: 21, weight: .light)).foregroundStyle(Color.accentColor)
-                            .frame(width: 40, height: 40).background(Color.accentColor.opacity(0.07), in: RoundedRectangle(cornerRadius: 11))
+                            .font(.system(size: 21, weight: .light)).foregroundStyle(LegendInk(store.selectedBinding.action.kind).color)
+                            .frame(width: 40, height: 40).background(LegendInk(store.selectedBinding.action.kind).color.opacity(0.08), in: RoundedRectangle(cornerRadius: 8))
                         VStack(alignment: .leading, spacing: 4) {
                             Text(store.selectedControlID.gridTitle).font(.system(size: 13, weight: .semibold)).lineLimit(1).truncationMode(.tail)
-                            Text(store.selectedBinding.action.kind.displayName).font(.system(size: 11)).foregroundStyle(.secondary).lineLimit(1).truncationMode(.tail)
+                            Text("\(store.selectedBinding.action.kind.displayName) · \(LegendInk(store.selectedBinding.action.kind).title)").font(.system(size: 11)).foregroundStyle(.secondary).lineLimit(1).truncationMode(.tail)
                         }
                         .frame(maxWidth: .infinity, alignment: .leading)
                     }

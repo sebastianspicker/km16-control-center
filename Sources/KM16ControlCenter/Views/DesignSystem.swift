@@ -47,6 +47,78 @@ enum StudioStyle {
     }
 }
 
+/// Legend inks name what an action reaches, the way printed keyboard templates
+/// once coloured each legend: carbon types into the front app, cobalt adjusts the
+/// Mac, green opens or switches, vermilion runs something outside this app.
+enum LegendInk: CaseIterable {
+    case types, adjusts, opens, runs
+
+    init(_ kind: ActionKind) {
+        switch kind {
+        case .shortcut, .snippet, .disabled: self = .types
+        case .system: self = .adjusts
+        case .launchApp, .profileSwitch: self = .opens
+        case .shell, .agentAction, .obsAction: self = .runs
+        }
+    }
+
+    var title: String {
+        switch self {
+        case .types: "Types into the front app"
+        case .adjusts: "Adjusts the Mac"
+        case .opens: "Opens or switches"
+        case .runs: "Runs outside the app"
+        }
+    }
+
+    var color: Color {
+        switch self {
+        case .types: .primary
+        case .adjusts: Self.dynamic(light: 0x1F4FC1, dark: 0x93ACFF)
+        case .opens: Self.dynamic(light: 0x1D6B45, dark: 0x72C89D)
+        case .runs: Self.dynamic(light: 0xB8360F, dark: 0xFF8E6A)
+        }
+    }
+
+    private static func dynamic(light: UInt32, dark: UInt32) -> Color {
+        Color(nsColor: NSColor(name: nil) { appearance in
+            let hex = appearance.bestMatch(from: [.aqua, .darkAqua]) == .darkAqua ? dark : light
+            return NSColor(srgbRed: CGFloat(hex >> 16 & 0xFF) / 255, green: CGFloat(hex >> 8 & 0xFF) / 255, blue: CGFloat(hex & 0xFF) / 255, alpha: 1)
+        })
+    }
+}
+
+extension StudioStyle {
+    /// The tag printed on a key whose kind is not the default shortcut.
+    static func legendTag(_ kind: ActionKind) -> String {
+        switch kind {
+        case .shortcut: "Keys"
+        case .snippet: "Text"
+        case .system: "System"
+        case .launchApp: "App"
+        case .profileSwitch: "Switch"
+        case .shell: "Shell"
+        case .agentAction: "Agent"
+        case .obsAction: "OBS"
+        case .disabled: "Off"
+        }
+    }
+
+    /// The short code printed under a legend: what the control literally sends.
+    static func legendCode(_ action: ControlAction) -> String {
+        let value = action.parameter.trimmingCharacters(in: .whitespacesAndNewlines)
+        switch action.kind {
+        case .shortcut: return shortcutLabel(value)
+        case .launchApp: return value.split(separator: ".").last.map(String.init) ?? value
+        case .profileSwitch: return "→ \(value)"
+        case .snippet: return "“\(value)”"
+        case .shell: return (try? ProcessSpec.parse(value)).map { URL(filePath: $0.executable).lastPathComponent } ?? "process"
+        case .disabled: return "—"
+        default: return value
+        }
+    }
+}
+
 struct StudioSection<Content: View>: View {
     let title: String
     let subtitle: String?
