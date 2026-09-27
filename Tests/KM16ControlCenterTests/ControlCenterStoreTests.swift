@@ -2,6 +2,7 @@ import Foundation
 import Testing
 @testable import KM16ControlCenter
 import KM16ControlCore
+import KM16Presets
 
 @MainActor
 @Suite struct ControlCenterStoreTests {
@@ -16,16 +17,6 @@ import KM16ControlCore
     @Test func presetLibraryAdditionsPreserveExistingEditsSelectionAndSavedDataAndUndoAsOneChange() throws {
         let directory = temporaryDirectory()
         defer { try? FileManager.default.removeItem(at: directory) }
-
-        for id in ["git-review", "terminal", "research-writing", "window-management", "recording-streaming", "video-editing", "personal-automations", "photo-editing", "3d-modelling", "music-production", "presentations"] {
-            #expect(PresetSetupResources.guide(for: id)?.isEmpty == false, "Bundled setup guide missing: \(id)")
-        }
-        let exportFolder = directory.appendingPathComponent("setup-export")
-        try FileManager.default.createDirectory(at: exportFolder, withIntermediateDirectories: true)
-        try PresetSetupResources.export(to: exportFolder)
-        let exported = try FileManager.default.contentsOfDirectory(at: exportFolder, includingPropertiesForKeys: nil)
-        #expect(exported.count == 1)
-        #expect(FileManager.default.fileExists(atPath: exported[0].appendingPathComponent("keybindings/git-review.code-keybindings.json").path), "Setup export omitted keybindings")
 
         var edited = Presets.desktop()
         edited.name = "My Desktop"

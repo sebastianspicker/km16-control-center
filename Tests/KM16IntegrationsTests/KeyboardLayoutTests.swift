@@ -2,6 +2,7 @@ import Foundation
 import Testing
 @testable import KM16Integrations
 import KM16ControlCore
+import KM16Presets
 
 @Suite struct KeyboardLayoutTests {
     @MainActor

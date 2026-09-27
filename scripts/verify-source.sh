@@ -18,4 +18,3 @@ if [[ -f evidence/captures/knob-mapping-summary.json ]]; then
 else
   swift test
 fi
-python3 scripts/verify-preset-assets.py

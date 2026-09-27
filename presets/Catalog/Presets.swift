@@ -1,4 +1,5 @@
 import Foundation
+import KM16ControlCore
 
 public enum Presets {
     public static var all: [Profile] {

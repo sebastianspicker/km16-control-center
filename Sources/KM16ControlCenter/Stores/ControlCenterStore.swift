@@ -2,6 +2,7 @@ import Foundation
 import Observation
 import AppKit
 import KM16ControlCore
+import KM16Presets
 
 extension ProfileImportMode {
     var title: String {

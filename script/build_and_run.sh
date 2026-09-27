@@ -58,6 +58,17 @@ for bundle in "$KM16_BIN"/KM16ControlCenter_*.bundle; do
   rm -rf "$KM16_APP/Contents/Resources/$(basename "$bundle")"
   cp -R "$bundle" "$KM16_APP/Contents/Resources/"
 done
+
+# The preset setup guides must ship with the app: fail the build rather than package a bundle
+# that would silently fall back to "This preset uses the actions shown on the pad" everywhere.
+KM16_PRESETS_RESOURCES="$KM16_APP/Contents/Resources/KM16ControlCenter_KM16Presets.bundle/Contents/Resources"
+for required in setup/README.md setup/git-review.md setup/keybindings/git-review.code-keybindings.json; do
+  if [[ ! -f "$KM16_PRESETS_RESOURCES/$required" ]]; then
+    echo "Packaged KM16Presets bundle is missing $required" >&2
+    exit 1
+  fi
+done
+echo "Packaged KM16Presets bundle has the setup guides and keybindings fragment."
 cat > "$KM16_APP/Contents/Info.plist" <<'PLIST'
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">

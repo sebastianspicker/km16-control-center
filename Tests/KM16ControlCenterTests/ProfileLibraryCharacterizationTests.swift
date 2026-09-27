@@ -2,6 +2,7 @@ import Foundation
 import Testing
 @testable import KM16ControlCenter
 import KM16ControlCore
+import KM16Presets
 
 /// Pins the observable behaviour of `ControlCenterStore`'s profile-library editing rules
 /// before those rules move into `KM16ControlCore.ProfileLibrary`. Every expectation here

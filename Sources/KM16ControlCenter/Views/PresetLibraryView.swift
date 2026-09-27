@@ -1,6 +1,7 @@
 import SwiftUI
 import AppKit
 import KM16ControlCore
+import KM16Presets
 
 struct PresetLibraryView: View {
     @Environment(ControlCenterStore.self) private var store
@@ -60,7 +61,7 @@ struct PresetLibraryView: View {
                         }
                         Divider()
                         Text("Setup & controls").font(.headline)
-                        if let guide = PresetSetupResources.guide(for: selectedID) {
+                        if let guide = PresetSetupFiles.guide(for: selectedID) {
                             PresetGuideText(markdown: guide)
                         } else {
                             Text("This preset uses the actions shown on the pad. Select a control to inspect its destination and description. Preview is local; Run Selected requires live actions to be enabled in Connections.").font(.callout).foregroundStyle(.secondary)
@@ -89,7 +90,7 @@ struct PresetLibraryView: View {
         panel.prompt = "Export"
         panel.begin { response in
             guard response == .OK, let destination = panel.url else { return }
-            do { try PresetSetupResources.export(to: destination) }
+            do { try PresetSetupFiles.export(to: destination) }
             catch { exportError = error.localizedDescription }
         }
     }
@@ -140,21 +141,5 @@ private struct PresetGuideText: View {
                 }
             }
         }
-    }
-}
-
-enum PresetSetupResources {
-    static var directory: URL {
-        let packaged = Bundle.main.resourceURL?.appendingPathComponent("KM16ControlCenter_KM16ControlCenter.bundle")
-        let bundle = packaged.flatMap { Bundle(url: $0) } ?? Bundle.module
-        return bundle.resourceURL!.appendingPathComponent("PresetSetup", isDirectory: true)
-    }
-    static func guide(for presetID: String) -> String? {
-        try? String(contentsOf: directory.appendingPathComponent("\(presetID).md"), encoding: .utf8)
-    }
-    static func export(to directory: URL) throws {
-        // A fresh subfolder avoids replacing any user-owned editor configuration.
-        let destination = directory.appendingPathComponent("KM16-Preset-Setup-\(UUID().uuidString.prefix(8))", isDirectory: true)
-        try FileManager.default.copyItem(at: Self.directory, to: destination)
     }
 }
