@@ -1,5 +1,5 @@
 #define HID_CAPTURE_UNIT_TEST
-#include "../scripts/capture/hid-capture.c"
+#include "../capture/hid-capture.c"
 
 #include <assert.h>
 

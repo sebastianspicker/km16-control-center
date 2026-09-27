@@ -3,7 +3,7 @@ import importlib.util
 from pathlib import Path
 import unittest
 
-spec = importlib.util.spec_from_file_location("decoder", Path(__file__).resolve().parents[1] / "scripts/analysis/decode-live-eeprom.py")
+spec = importlib.util.spec_from_file_location("decoder", Path(__file__).resolve().parents[2] / "scripts/analysis/decode-live-eeprom.py")
 decoder = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(decoder)
 

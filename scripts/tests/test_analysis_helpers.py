@@ -9,7 +9,7 @@ import unittest
 
 
 MODULE_PATH = (
-    Path(__file__).resolve().parents[1] / "scripts/analysis/analyze-firmware.py"
+    Path(__file__).resolve().parents[2] / "scripts/analysis/analyze-firmware.py"
 )
 SPEC = importlib.util.spec_from_file_location("analyze_firmware", MODULE_PATH)
 analyze_firmware = importlib.util.module_from_spec(SPEC)

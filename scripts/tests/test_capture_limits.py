@@ -9,8 +9,8 @@ import unittest
 from unittest import mock
 
 
-MODULE_PATH = Path(__file__).resolve().parents[1] / "scripts/capture/capture-knob.py"
-REPOSITORY_ROOT = Path(__file__).resolve().parents[1]
+MODULE_PATH = Path(__file__).resolve().parents[2] / "scripts/capture/capture-knob.py"
+REPOSITORY_ROOT = Path(__file__).resolve().parents[2]
 SPEC = importlib.util.spec_from_file_location("capture_knob", MODULE_PATH)
 capture_knob = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(capture_knob)
@@ -44,7 +44,7 @@ class CaptureEvidenceLimitTest(unittest.TestCase):
         binary = self.root / "hid-capture-quota-test"
         compile_result = subprocess.run([
             "xcrun", "clang", "-std=c11", "-Wall", "-Wextra", "-Werror", "-O2",
-            str(REPOSITORY_ROOT / "tests/hid-capture-quota.c"),
+            str(REPOSITORY_ROOT / "scripts/tests/hid-capture-quota.c"),
             "-framework", "IOKit", "-framework", "CoreFoundation", "-o", str(binary),
         ], capture_output=True, text=True)
         self.assertEqual(compile_result.returncode, 0, compile_result.stderr)

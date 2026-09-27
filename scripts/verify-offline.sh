@@ -6,8 +6,8 @@ export PYTHONDONTWRITEBYTECODE=1
 python3 scripts/verify-preservation.py
 scripts/build.sh
 python3 scripts/verify.py
-node --test tests/webhid-trace.test.cjs
-python3 -m unittest discover -s tests -p 'test_*.py' -v
+node --test scripts/tests/webhid-trace.test.cjs
+python3 -m unittest discover -s scripts/tests -p 'test_*.py' -v
 
 python3 scripts/analysis/analyze-live-firmware.py
 python3 scripts/analysis/analyze-firmware.py \

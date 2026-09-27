@@ -4,7 +4,7 @@ const assert = require("node:assert/strict");
 const test = require("node:test");
 const {
   installWebHIDTrace,
-} = require("../tools/browser/webhid-trace.js");
+} = require("../../tools/browser/webhid-trace.js");
 
 function makeEnvironment(devices = []) {
   class MockHIDDevice extends EventTarget {

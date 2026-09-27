@@ -5,8 +5,8 @@ export PYTHONDONTWRITEBYTECODE=1
 
 # Public source checks: no original firmware, saved captures, or connected device required.
 bash scripts/build.sh
-node --test tests/webhid-trace.test.cjs
-python3 -m unittest discover -s tests -p 'test_*.py' -v
+node --test scripts/tests/webhid-trace.test.cjs
+python3 -m unittest discover -s scripts/tests -p 'test_*.py' -v
 node --check site/app.js
 python3 scripts/build-site.py
 cmake -S firmware/custom -B build/custom -DCMAKE_BUILD_TYPE=Debug
