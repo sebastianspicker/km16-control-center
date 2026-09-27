@@ -167,6 +167,7 @@ app.
 | A5 | Light mode is the primary appearance, with dark mode as a first-class alternative. | Desk-work audience; app screenshots are in light mode; the site had no dark mode. | medium |
 | A6 | Most visitors arrive from the GitHub README on desktop; mobile visitors want to browse presets, not edit payloads. | Demo linked from README; editing JSON payloads on a phone is rare. | medium |
 | A7 | The physical pad is dark or neutral; its real colours do not matter to the design. | No case colour is recorded in the repo; LED colours vary by layer. | low: the design deliberately avoids depicting case colour. |
+| A9 | The project is unofficial and not affiliated with the pad's maker; the demo footer says so. | The repository reverse-engineers stock firmware and excludes vendor material for licensing reasons. | medium |
 | A8 | The repository URL `github.com/sebastianspicker/km16-control-center` is public and fine to link from the demo. | `git remote`; the README links the Pages URL under the same account. | high |
 
 ---
@@ -309,3 +310,52 @@ feeling cramped with long labels. The longest factory label is 24 characters,
 so legends wrap to two lines and fall back to a tighter width, never to smaller
 than 12 px. If A3 is wrong (users prefer icons), the code line is a secondary
 line that can be dropped without breaking the layout.
+
+---
+
+## 10. Outcome and review notes
+
+**Rendered review.** Playwright screenshots were taken at 320, 390, 768, 900,
+1024, 1280, and 1440 px, in light and dark, plus these states: preview log,
+knob turn, empty search, focus, load error, and the phone preset sheet. The
+native app was captured at its default and minimum window widths. The fixes
+made after review were:
+
+- Keys overlapped their text on phones; they now use a minimum height instead
+  of a fixed aspect ratio.
+- "KEYS" was repeated on 13 keys; the tag is now printed only for kinds other
+  than shortcut.
+- Knobs read as clocks; they are now solid caps with 12 printed ticks.
+- The phone sheet had no close control, and its height collapsed because of
+  `align-self: start` on a fixed box.
+- Borders of inputs and keys were below 3:1; `--rule-strong` now meets 3:1
+  in both themes.
+- Shell legends were truncated to "shortcut…"; they now show the executable's
+  basename.
+
+**Contrast (WCAG 2.2 AA).**
+- Text and inks against every surface:
+  - light: ink 15.2, graphite 6.1, cobalt 6.1, green 5.6, vermilion 5.1;
+  - dark: at least 5.8 for every ink.
+- Component borders are at least 3.0 in both themes.
+
+**Low-confidence assumptions, revisited.**
+- *A3, codes over icons:* the code line is secondary and can be removed
+  without breaking the layout. The Mac inspector still shows the SF Symbol.
+- *A4, consequence inks:* the ink is always paired with text: a kind tag on the
+  key, "Shortcut · Types into the front app" in the entry, and the ink key on the
+  card. The meaning survives colour-blindness and a disagreement about the
+  grouping.
+- *A7, case colour:* the design never depicts the case, so it cannot contradict
+  the hardware.
+
+**Unresolved.**
+- The ⌘⇧⌥⌃ glyphs are not in Archivo or Fragment Mono. They fall back to
+  system fonts (SF on Apple platforms, Segoe UI Symbol on Windows) and look
+  slightly different there.
+- `hyphens: auto` depends on the browser's dictionaries. Headless Chromium
+  splits "Notifications" without a hyphen on 1280 px cards.
+- The Mac app's dark appearance was not captured. The colours are dynamic and
+  their contrast was checked numerically.
+- The other three README screenshots (Preset Library, action editor,
+  Connections) still show the earlier pad styling where it appears.
