@@ -333,7 +333,7 @@ struct ApprovalDesignFixture: View {
 
         Request parameters (complete):
         {
-          "command" : "swift test --package-path apps/KM16ControlCenter",
+          "command" : "swift test",
           "cwd" : "/Users/example/Project",
           "itemId" : "command-example",
           "reason" : "Run the affected package checks",

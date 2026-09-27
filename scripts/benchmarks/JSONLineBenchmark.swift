@@ -1,5 +1,5 @@
 // From the repository root:
-// swiftc -O apps/KM16ControlCenter/Sources/KM16Integrations/JSONValue.swift scripts/benchmarks/JSONLineBenchmark.swift -o /tmp/km16-json-bench
+// swiftc -O Sources/KM16Integrations/JSONValue.swift scripts/benchmarks/JSONLineBenchmark.swift -o /tmp/km16-json-bench
 import Foundation
 
 @main enum JSONLineBenchmark {

@@ -2,7 +2,7 @@
 set -euo pipefail
 
 KM16_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-KM16_ASSETS="$KM16_ROOT/apps/KM16ControlCenter/Assets"
+KM16_ASSETS="$KM16_ROOT/packaging"
 KM16_ICONSET="$KM16_ROOT/build/AppIcon.iconset"
 mkdir -p "$KM16_ICONSET"
 

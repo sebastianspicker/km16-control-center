@@ -1,7 +1,7 @@
 # Project status
 
 KM16 Control Center provides software profiles and desktop/service actions.
-Direct pad integration remains unfinished. See the [app guide](../../apps/KM16ControlCenter/README.md)
+Direct pad integration remains unfinished. See the [app guide](../app-guide.md)
 for use and the [architecture](COMPANION-ARCHITECTURE.md) for implementation details.
 
 ## Available

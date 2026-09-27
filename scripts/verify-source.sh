@@ -13,4 +13,4 @@ cmake -S firmware/custom -B build/custom -DCMAKE_BUILD_TYPE=Debug
 cmake --build build/custom
 ctest --test-dir build/custom --output-on-failure
 bash scripts/verify-companion.sh
-swift test --package-path apps/KM16ControlCenter
+swift test

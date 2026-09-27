@@ -5,7 +5,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 PRESETS = ROOT / "presets"
-BUNDLED = ROOT / "apps/KM16ControlCenter/Sources/KM16ControlCenter/Resources/PresetSetup"
+BUNDLED = ROOT / "Sources/KM16ControlCenter/Resources/PresetSetup"
 profiles = json.loads((PRESETS / "all.json").read_text())["profiles"]
 assert len(profiles) == 16
 assert sum(len(profile["bindings"]) for profile in profiles) == 400

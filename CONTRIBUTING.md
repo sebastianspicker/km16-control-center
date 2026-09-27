@@ -42,7 +42,7 @@ For focused checks:
 
 ```sh
 bash scripts/verify-companion.sh
-swift test --package-path apps/KM16ControlCenter
+swift test
 python3 -m unittest discover -s scripts/tests -p 'test_*.py' -v
 node --test scripts/tests/webhid-trace.test.cjs
 ```
@@ -51,7 +51,7 @@ To measure Agent Deck's text-update path with a fixed 280 KB diff and a mock
 transport, run:
 
 ```sh
-swift run --package-path apps/KM16ControlCenter KM16IntegrationSelfTest --benchmark-deck
+swift run KM16IntegrationSelfTest --benchmark-deck
 ```
 
 The benchmark checks the resulting transcript and changed-file list, then reports
@@ -60,7 +60,7 @@ seven timings after one warmup. Compare runs built with the same configuration.
 See the [firmware guide](firmware/custom/README.md) for C builds and the
 [app architecture](docs/development/COMPANION-ARCHITECTURE.md) for package boundaries.
 
-The app icon source is `apps/KM16ControlCenter/Assets/AppIcon.png`. After changing
+The app icon source is `packaging/AppIcon.png`. After changing
 it, run `bash script/build_app_icon.sh` to regenerate the bundled `.icns` file.
 
 The [browser demo](site/README.md) is a static HTML/CSS/JavaScript mockup. The source
@@ -75,7 +75,7 @@ unless a change is deliberate and documented. Preview and replay must remain
 separate from actions that affect other apps or devices. Test observable behavior.
 
 Edit setup guides in `presets/setup/` and make the same change in
-`apps/KM16ControlCenter/Sources/KM16ControlCenter/Resources/PresetSetup/`.
+`Sources/KM16ControlCenter/Resources/PresetSetup/`.
 Preset definition changes also need matching individual JSON exports and
 `presets/all.json`. Check the assets with:
 

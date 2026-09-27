@@ -10,7 +10,7 @@ The app is host-only. It does not detect the keyboard, read or change its live c
 
 Building from source requires a Mac running macOS 14 or later, a Swift 6 toolchain,
 and Python 3.10 or later. The repository's full verification also uses Node.js,
-CMake, and the Apple SDK; see [CONTRIBUTING.md](../../CONTRIBUTING.md).
+CMake, and the Apple SDK; see [CONTRIBUTING.md](../CONTRIBUTING.md).
 
 Editing and previewing need no special permissions. Other features are opt-in:
 
@@ -37,11 +37,11 @@ bash script/build_and_run.sh --build-only
 To test with a separate profile library, set `KM16_PROFILES_PATH` to the absolute
 path of a `profiles.json` file before launching.
 
-See [CONTRIBUTING.md](../../CONTRIBUTING.md) for development checks and focused test commands.
+See [CONTRIBUTING.md](../CONTRIBUTING.md) for development checks and focused test commands.
 
 ## Profiles
 
-The factory library contains 16 profiles and 400 assignments. Each profile maps 16 keys and the clockwise, counterclockwise, and press inputs of three knobs. See the [preset library](../../presets/README.md) for every assignment and any required app setup.
+The factory library contains 16 profiles and 400 assignments. Each profile maps 16 keys and the clockwise, counterclockwise, and press inputs of three knobs. See the [preset library](../presets/README.md) for every assignment and any required app setup.
 
 Select a profile and control to edit its assignment. Preview or Command-Return simulates the selected action. Run Selected or Command-Shift-Return runs it after live actions are enabled. Profile-switch actions change the active software profile in either mode.
 
@@ -78,7 +78,7 @@ Each action uses a short-lived connection. Scene controls select the current Pro
 
 Plain `ws://` connections are accepted only for localhost and loopback IP addresses. Remote OBS endpoints require `wss://` with a trusted TLS certificate. Redirects are refused to keep authentication bound to the configured endpoint.
 
-The preset does not start a stream or create scenes, inputs, recording paths, or credentials. See the [Recording & Streaming setup guide](../../presets/setup/recording-streaming.md) before using it live.
+The preset does not start a stream or create scenes, inputs, recording paths, or credentials. See the [Recording & Streaming setup guide](../presets/setup/recording-streaming.md) before using it live.
 
 ## Agent Deck and Codex
 
@@ -110,7 +110,7 @@ rejects stale or incomplete evidence, unknown fields, stdin requests without the
 input bytes, and session-wide file-access grants. Decline and Cancel remain
 available when the server supports them.
 
-The client follows the generated [Codex CLI 0.154.0 protocol contract](../../docs/development/codex-protocol-0.154.0.json). Test other CLI versions before relying on them.
+The client follows the generated [Codex CLI 0.154.0 protocol contract](development/codex-protocol-0.154.0.json). Test other CLI versions before relying on them.
 
 ## Preset setup files
 
