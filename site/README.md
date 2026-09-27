@@ -23,8 +23,9 @@ Open <http://127.0.0.1:8000>. Serve the built folder over HTTP; opening `index.h
 as a local file does not allow the page to load its preset JSON reliably.
 
 The site has no package installation or bundler step. `build-site.py` copies only
-`index.html`, `styles.css`, `app.js`, `favicon.svg`, and `presets/all.json` (as
-`presets.json`), then adds `.nojekyll`. Research files and the rest of the checkout are not part of
+`index.html`, `styles.css`, `app.js`, `favicon.svg`, the two self-hosted fonts
+(`archivo.woff2`, `fragment-mono.woff2`) with their licence (`fonts-OFL.txt`), and
+`presets/all.json` (as `presets.json`), then adds `.nojekyll`. Research files and the rest of the checkout are not part of
 the Pages artifact. If the output folder contains unexpected files, the build
 stops; choose a fresh destination with `--output`.
 
