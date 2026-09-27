@@ -13,6 +13,7 @@ const kinds = {
   shell: {name: 'Shell process', tag: 'Shell', ink: 'runs', payload: 'Process payload (JSON)'},
   agentAction: {name: 'Agent action', tag: 'Agent', ink: 'runs', payload: 'Agent action identifier'},
   obsAction: {name: 'OBS action', tag: 'OBS', ink: 'runs', payload: 'OBS action identifier'},
+  disabled: {name: 'Disabled', tag: 'Off', ink: 'types', payload: 'Payload'},
 };
 const inkNames = {
   types: 'Types into the front app',
@@ -66,6 +67,7 @@ function codeFor(assigned) {
     case 'shortcut': return shortcutDisplay(value);
     case 'launchApp': return value.split('.').pop() || value;
     case 'profileSwitch': return `→ ${value}`;
+    case 'disabled': return '—';
     case 'snippet': return `“${value}”`;
     case 'shell':
       try {
