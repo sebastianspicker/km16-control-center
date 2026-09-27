@@ -14,11 +14,7 @@ public struct SimulationEvent: Equatable, Sendable, Identifiable {
     }
 }
 
-public protocol ActionDispatching {
-    func dispatch(binding: Binding, profile: Profile) -> SimulationEvent
-}
-
-public struct SimulationDispatcher: ActionDispatching, Sendable {
+public struct SimulationDispatcher: Sendable {
     public init() {}
 
     public func dispatch(binding: Binding, profile: Profile) -> SimulationEvent {
@@ -35,17 +31,4 @@ public struct SimulationDispatcher: ActionDispatching, Sendable {
             message: "Would run \(action.kind.displayName.lowercased()) \"\(action.label)\" in \(profile.name)."
         )
     }
-}
-
-/// Boundaries for future integrations. This scaffold deliberately has no live providers.
-public protocol HIDCapabilityProviding: Sendable {
-    var deviceDescription: String { get }
-}
-
-public protocol DesktopActionProviding: Sendable {
-    func perform(_ action: ControlAction) async throws
-}
-
-public protocol AgentActionProviding: Sendable {
-    func request(_ action: ControlAction) async throws
 }

@@ -13,6 +13,4 @@ enum AppConfiguration {
         }
         return ProfilePersistence.defaultURL()
     }
-
-    static var requestsSmokeTest: Bool { CommandLine.arguments.contains("--smoke-test") }
 }

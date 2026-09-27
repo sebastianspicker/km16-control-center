@@ -191,21 +191,6 @@ public enum Presets {
         )
     }
 
-    public static func blank(name: String) -> Profile {
-        Profile(
-            name: name,
-            bindings: ControlID.all.map {
-                Binding(controlID: $0, action: ControlAction(
-                    kind: .disabled,
-                    label: "Unassigned",
-                    parameter: "",
-                    detail: "No action is assigned to this control."
-                ))
-            },
-            summary: "A blank profile ready for custom assignments."
-        )
-    }
-
     public static func preset(id: String) -> Profile? {
         let normalized = id.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
         return all.first { profile in

@@ -57,7 +57,7 @@ import Testing
     }
 
     @Test func blankPresetIsCompleteAndValid() throws {
-        let blank = Presets.blank(name: "Custom")
+        let blank = Profile.blank(name: "Custom")
         #expect(blank.bindings.count == 25)
         #expect(blank.bindings.allSatisfy { $0.action.kind == .disabled })
         try ProfileValidator.validate(ProfileDocument(activeProfileID: blank.id, profiles: [blank]))
@@ -194,17 +194,86 @@ import Testing
         #expect(!invalidEvent.message.contains("fictional-toggle"))
     }
 
-    @Test func profileEditorKeepsDocumentsValidAcrossCRUD() throws {
-        var editor = ProfileEditor(document: Presets.factoryDocument())
-        let blank = Presets.blank(name: "Custom")
-        try editor.add(blank)
-        #expect(editor.activeProfile?.id == blank.id)
-        let copyID = try editor.duplicateProfile(id: blank.id, name: "Custom copy")
-        #expect(editor.activeProfile?.presetID == nil)
-        try editor.updateProfile(id: copyID) { $0.summary = "Edited independently" }
-        #expect(editor.document.profiles.first { $0.id == blank.id }?.summary != "Edited independently")
-        try editor.removeProfile(id: copyID)
-        try ProfileValidator.validate(editor.document)
+}
+
+@Suite struct ProfileLibraryTests {
+    @Test func createDuplicateAndDeleteKeepDocumentsValidAndIsolated() throws {
+        var library = ProfileLibrary(document: Presets.factoryDocument())
+        let created = library.createProfile(named: "Custom")
+        #expect(library.document.activeProfileID == created.id)
+
+        let duplicateResult = library.duplicateActiveProfile()
+        let duplicate = try #require(duplicateResult)
+        #expect(library.document.activeProfileID == duplicate.id)
+        #expect(duplicate.presetID == nil)
+
+        library.document.profiles[library.document.profiles.firstIndex(where: { $0.id == duplicate.id })!].summary = "Edited independently"
+        #expect(library.document.profiles.first { $0.id == created.id }?.summary != "Edited independently", "editing the duplicate must not affect the original")
+
+        let deletedResult = library.deleteActiveProfile()
+        let deleted = try #require(deletedResult)
+        #expect(deleted.id == duplicate.id)
+        try ProfileValidator.validate(library.document)
+    }
+
+    @Test func deleteActiveProfileSelectsThePreviousProfile() {
+        var library = ProfileLibrary(document: Presets.factoryDocument())
+        let first = library.createProfile(named: "A")
+        let middle = library.createProfile(named: "B")
+        library.createProfile(named: "C")
+        library.document.activeProfileID = middle.id
+        let deleted = library.deleteActiveProfile()
+        let previousID = first.id
+        #expect(deleted?.id == middle.id)
+        #expect(library.document.activeProfileID == previousID)
+    }
+
+    @Test func deleteActiveProfileRefusesToRemoveTheLastProfile() {
+        let solo = Profile.blank(name: "Solo")
+        var library = ProfileLibrary(document: ProfileDocument(activeProfileID: solo.id, profiles: [solo]))
+        #expect(library.deleteActiveProfile() == nil)
+        #expect(library.document.profiles.count == 1)
+    }
+
+    @Test func uniqueNameAppendsCaseInsensitiveSequentialSuffixes() {
+        let document = ProfileDocument(activeProfileID: UUID(), profiles: [
+            Profile.blank(name: "X"), Profile.blank(name: "x 2")
+        ])
+        let library = ProfileLibrary(document: document)
+        #expect(library.uniqueName("Unused") == "Unused")
+        #expect(library.uniqueName("X") == "X 3")
+    }
+
+    @Test func resolveProfileSwitchRecognizesCyclePresetAndUUIDInPrecedenceOrder() {
+        let byName = Profile.blank(name: "AAAA")
+        let byUUID = Profile.blank(name: byName.id.uuidString)
+        let document = ProfileDocument(activeProfileID: byName.id, profiles: [byName, byUUID])
+        let library = ProfileLibrary(document: document)
+        #expect(library.resolveProfileSwitch(parameter: "cycle-profile") == .cycle)
+        // The switch parameter matches byUUID's name AND byName's id; name/presetID wins.
+        #expect(library.resolveProfileSwitch(parameter: byName.id.uuidString) == .profile(byUUID.id))
+        #expect(library.resolveProfileSwitch(parameter: "missing") == .unavailable)
+    }
+
+    @Test func mergedRemapsForwardReferencesAndReassignsCollidingIDs() throws {
+        let local = Profile.blank(name: "Local")
+        let library = ProfileLibrary(document: ProfileDocument(activeProfileID: local.id, profiles: [local]))
+
+        var source = Profile.blank(name: "Source")
+        let destination = Profile.blank(name: "Destination")
+        source.bindings[0].action = ControlAction(kind: .profileSwitch, label: "go", parameter: destination.id.uuidString)
+        let merged = library.merged(with: ProfileDocument(activeProfileID: source.id, profiles: [source, destination]), replaceNameConflicts: false)
+
+        let mergedSource = try #require(merged.profiles.first { $0.name == "Source" })
+        let mergedDestination = try #require(merged.profiles.first { $0.name == "Destination" })
+        #expect(UUID(uuidString: mergedSource.bindings[0].action.parameter) == mergedDestination.id)
+        #expect(merged.activeProfileID == local.id, "merged keeps the base document's active profile")
+
+        var colliding = Profile.blank(name: "Colliding Name")
+        colliding.id = local.id
+        let withCollision = library.merged(with: ProfileDocument(activeProfileID: colliding.id, profiles: [colliding]), replaceNameConflicts: false)
+        let mergedColliding = try #require(withCollision.profiles.first { $0.name == "Colliding Name" })
+        #expect(mergedColliding.id != local.id, "an id collision with an existing profile must get a fresh UUID")
     }
 }
 
@@ -294,7 +363,7 @@ import Testing
         let directory = temporaryDirectory()
         defer { try? FileManager.default.removeItem(at: directory) }
         let persistence = ProfilePersistence(url: directory.appending(path: "profiles.json"))
-        let profiles = (0...ProfilePersistence.maximumProfileCount).map { Presets.blank(name: "Profile \($0)") }
+        let profiles = (0...ProfilePersistence.maximumProfileCount).map { Profile.blank(name: "Profile \($0)") }
         let document = ProfileDocument(activeProfileID: profiles[0].id, profiles: profiles)
         #expect(performing: { try persistence.save(document) }, throws: { error in
             error.localizedDescription.contains("at most \(ProfilePersistence.maximumProfileCount)")

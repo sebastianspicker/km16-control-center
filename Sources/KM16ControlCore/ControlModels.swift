@@ -178,6 +178,21 @@ public struct Profile: Codable, Equatable, Sendable, Identifiable {
         guard let index = bindings.firstIndex(where: { $0.controlID == binding.controlID }) else { return }
         bindings[index] = binding
     }
+
+    public static func blank(name: String) -> Profile {
+        Profile(
+            name: name,
+            bindings: ControlID.all.map {
+                Binding(controlID: $0, action: ControlAction(
+                    kind: .disabled,
+                    label: "Unassigned",
+                    parameter: "",
+                    detail: "No action is assigned to this control."
+                ))
+            },
+            summary: "A blank profile ready for custom assignments."
+        )
+    }
 }
 
 public struct ProfileDocument: Codable, Equatable, Sendable {

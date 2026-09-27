@@ -133,11 +133,11 @@ struct ContentView: View {
     @MainActor private func runSelected() async {
         let controlID = store.selectedControlID
         let action = store.selectedBinding.action
-        if action.kind.rawValue == "profileSwitch" { store.simulate(controlID); return }
+        if action.kind == .profileSwitch { store.simulate(controlID); return }
         guard liveActionsEnabled else { store.simulate(controlID); return }
         do {
             let result: String
-            if action.kind.rawValue == "agentAction" {
+            if action.kind == .agentAction {
                 guard codex.isConnected else { store.recordLiveResult("Codex Deck is not connected. Preview remains available.", for: controlID); return }
                 result = try await codex.perform(action)
             } else if action.kind == .obsAction {
@@ -147,7 +147,7 @@ struct ContentView: View {
                 result = try await runner.perform(action, fallbackTargetBundleID: action.targetBundleID ?? store.lastExternalBundleID)
             }
             store.recordLiveResult(result, for: controlID)
-            if action.kind.rawValue == "agentAction", ["new-task", "open-task", "previous-task", "next-task", "open-diff"].contains(action.parameter) {
+            if action.kind == .agentAction, ["new-task", "open-task", "previous-task", "next-task", "open-diff"].contains(action.parameter) {
                 openWindow(id: "integrations")
             }
         } catch { store.recordLiveResult("Run failed: \(error.localizedDescription)", for: controlID) }

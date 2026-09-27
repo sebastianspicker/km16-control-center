@@ -3,12 +3,7 @@ import Observation
 import AppKit
 import KM16ControlCore
 
-enum ProfileImportMode: String, CaseIterable, Identifiable {
-    case replace
-    case mergeReplacingNameConflicts
-    case mergeKeepingExisting
-
-    var id: String { rawValue }
+extension ProfileImportMode {
     var title: String {
         switch self {
         case .replace: "Replace current library"
@@ -43,9 +38,9 @@ final class ControlCenterStore {
     var closeConfirmationRequested = false
     var quitRequested = false
     let persistence: ProfilePersistence
-    private let dispatcher: any ActionDispatching
+    private let dispatcher: SimulationDispatcher
 
-    init(persistence: ProfilePersistence, dispatcher: any ActionDispatching = SimulationDispatcher()) {
+    init(persistence: ProfilePersistence, dispatcher: SimulationDispatcher = SimulationDispatcher()) {
         self.persistence = persistence
         self.dispatcher = dispatcher
         do {
@@ -101,42 +96,43 @@ final class ControlCenterStore {
     }
 
     func createProfile(named name: String = "Untitled Profile") {
-        guard canAddProfile else { statusMessage = profileLimitMessage; return }
-        let profile = Presets.blank(name: uniqueName(name))
-        appendProfile(profile, message: "Created \(profile.name).")
+        var library = ProfileLibrary(document: document)
+        guard library.canAddProfiles() else { statusMessage = profileLimitMessage; return }
+        let profile = library.createProfile(named: name)
+        mutate("Created \(profile.name).") { document = library.document }
     }
 
     func duplicateActiveProfile() {
-        guard canAddProfile else { statusMessage = profileLimitMessage; return }
-        var duplicate = activeProfile
-        duplicate.id = UUID()
-        duplicate.name = uniqueName("\(activeProfile.name) Copy")
-        duplicate.presetID = nil
-        appendProfile(duplicate, message: "Duplicated \(activeProfile.name).")
+        var library = ProfileLibrary(document: document)
+        guard library.canAddProfiles() else { statusMessage = profileLimitMessage; return }
+        let originalName = activeProfile.name
+        guard library.duplicateActiveProfile() != nil else { return }
+        mutate("Duplicated \(originalName).") { document = library.document }
     }
 
     func renameActiveProfile(to name: String) {
-        let cleaned = name.trimmingCharacters(in: .whitespacesAndNewlines)
-        guard !cleaned.isEmpty else { statusMessage = "A profile name cannot be blank."; return }
-        guard cleaned == activeProfile.name || !document.profiles.contains(where: { $0.name.localizedCaseInsensitiveCompare(cleaned) == .orderedSame }) else {
+        switch ProfileLibrary(document: document).validateRename(to: name) {
+        case .failure(.blank):
+            statusMessage = "A profile name cannot be blank."
+        case .failure(.duplicate(let cleaned)):
             statusMessage = "A profile named \(cleaned) already exists."
-            return
-        }
-        mutate("Renamed profile to \(cleaned).") {
-            guard let index = document.profiles.firstIndex(where: { $0.id == document.activeProfileID }) else { return }
-            document.profiles[index].name = cleaned
+        case .success(let cleaned):
+            mutate("Renamed profile to \(cleaned).") {
+                var library = ProfileLibrary(document: document)
+                library.renameActiveProfile(to: cleaned)
+                document = library.document
+            }
         }
     }
 
     func deleteActiveProfile() {
-        guard document.profiles.count > 1 else { statusMessage = "Keep at least one profile in the library."; return }
-        let deleting = activeProfile
-        mutate("Deleted \(deleting.name).") {
-            guard let index = document.profiles.firstIndex(where: { $0.id == deleting.id }) else { return }
-            document.profiles.remove(at: index)
-            document.activeProfileID = document.profiles[max(0, index - 1)].id
+        var library = ProfileLibrary(document: document)
+        guard let deleted = library.deleteActiveProfile() else {
+            statusMessage = "Keep at least one profile in the library."
+            return
         }
-        if manualProfileOverrideID == deleting.id { manualProfileOverrideID = nil }
+        mutate("Deleted \(deleted.name).") { document = library.document }
+        if manualProfileOverrideID == deleted.id { manualProfileOverrideID = nil }
     }
 
     func resetActiveProfile() {
@@ -144,42 +140,29 @@ final class ControlCenterStore {
             statusMessage = "This custom profile has no factory preset to restore."
             return
         }
-        var replacement = preset
-        replacement.id = activeProfile.id
-        replacement.name = activeProfile.name
-        mutate("Restored the \(preset.name) preset.") {
-            guard let index = document.profiles.firstIndex(where: { $0.id == document.activeProfileID }) else { return }
-            document.profiles[index] = replacement
-        }
+        var library = ProfileLibrary(document: document)
+        guard library.resetActiveProfile(preset: preset) else { return }
+        mutate("Restored the \(preset.name) preset.") { document = library.document }
     }
 
     func addPreset(_ preset: Profile) {
-        guard canAddProfile else { statusMessage = profileLimitMessage; return }
-        var copy = preset
-        copy.id = UUID()
-        copy.name = uniqueName(preset.name)
-        appendProfile(copy, message: "Added the \(preset.name) preset.")
+        var library = ProfileLibrary(document: document)
+        guard library.canAddProfiles() else { statusMessage = profileLimitMessage; return }
+        library.addPreset(preset)
+        mutate("Added the \(preset.name) preset.") { document = library.document }
     }
 
     var missingPresets: [Profile] {
-        let installed = Set(document.profiles.compactMap(\.presetID))
-        return Presets.all.filter { !installed.contains($0.presetID ?? "") }
+        ProfileLibrary(document: document).missingPresets(from: Presets.all)
     }
 
     func addMissingPresets() {
         let missing = missingPresets
         guard !missing.isEmpty else { statusMessage = "All presets are already in this library."; return }
-        guard document.profiles.count + missing.count <= ProfilePersistence.maximumProfileCount else {
-            statusMessage = profileLimitMessage; return
-        }
-        mutate("Added \(missing.count) missing presets.") {
-            for preset in missing {
-                var copy = preset
-                copy.id = UUID()
-                copy.name = uniqueName(preset.name)
-                document.profiles.append(copy)
-            }
-        }
+        var library = ProfileLibrary(document: document)
+        guard library.canAddProfiles(missing.count) else { statusMessage = profileLimitMessage; return }
+        library.addPresets(missing)
+        mutate("Added \(missing.count) missing presets.") { document = library.document }
     }
 
     func updateSelected(action: ControlAction) {
@@ -202,13 +185,15 @@ final class ControlCenterStore {
         guard automaticProfileMatchingEnabled, manualProfileOverrideID == nil else { return }
         lastForegroundBundleID = bundleID
         if bundleID != Bundle.main.bundleIdentifier { lastExternalBundleID = bundleID }
-        if let bundleID, let match = document.profiles.first(where: { $0.matchingBundleIDs.contains(bundleID) }) {
-            guard match.id != document.activeProfileID else { return }
+        switch ProfileLibrary(document: document).resolveForegroundMatch(bundleID: bundleID, fallback: fallbackProfile) {
+        case .matched(let matchedBundleID, let match):
             select(profileID: match.id, isManual: false)
-            statusMessage = "Matched foreground app \(bundleID) to \(match.name)."
-        } else if fallbackProfile.id != document.activeProfileID {
-            select(profileID: fallbackProfile.id, isManual: false)
-            statusMessage = "No foreground-app profile matched; using \(fallbackProfile.name)."
+            statusMessage = "Matched foreground app \(matchedBundleID) to \(match.name)."
+        case .fallback(let fallback):
+            select(profileID: fallback.id, isManual: false)
+            statusMessage = "No foreground-app profile matched; using \(fallback.name)."
+        case .unchanged:
+            break
         }
     }
 
@@ -228,11 +213,12 @@ final class ControlCenterStore {
         selectedControlID = controlID
         guard let binding = activeProfile.binding(for: controlID) else { return }
         let action = binding.action
-        if action.kind.rawValue == "profileSwitch" {
-            if action.parameter == "cycle-profile" { cycleProfile(); return }
-            if let target = document.profiles.first(where: { $0.presetID == action.parameter || $0.name == action.parameter }) { select(profileID: target.id); return }
-            if let target = document.profiles.first(where: { $0.id.uuidString.caseInsensitiveCompare(action.parameter) == .orderedSame }) { select(profileID: target.id); return }
-            recordLiveResult("Profile switch target \(action.parameter) is unavailable.", for: controlID)
+        if action.kind == .profileSwitch {
+            switch ProfileLibrary(document: document).resolveProfileSwitch(parameter: action.parameter) {
+            case .cycle: cycleProfile()
+            case .profile(let id): select(profileID: id)
+            case .unavailable: recordLiveResult("Profile switch target \(action.parameter) is unavailable.", for: controlID)
+            }
             return
         }
         record(dispatcher.dispatch(binding: binding, profile: activeProfile))
@@ -264,7 +250,7 @@ final class ControlCenterStore {
     func importProfiles(from url: URL, mode: ProfileImportMode) {
         do {
             let candidate = try persistence.importDocument(from: url)
-            let result = mode == .replace ? candidate : merged(candidate, replaceNameConflicts: mode == .mergeReplacingNameConflicts)
+            let result = mode == .replace ? candidate : ProfileLibrary(document: document).merged(with: candidate, replaceNameConflicts: mode == .mergeReplacingNameConflicts)
             guard result.profiles.count <= ProfilePersistence.maximumProfileCount else {
                 statusMessage = "Import would exceed the \(ProfilePersistence.maximumProfileCount)-profile limit; the current library is unchanged."
                 return
@@ -315,13 +301,6 @@ final class ControlCenterStore {
         } catch { statusMessage = "Could not list recovery files: \(error.localizedDescription)" }
     }
 
-    private func appendProfile(_ profile: Profile, message: String) {
-        mutate(message) {
-            document.profiles.append(profile)
-            document.activeProfileID = profile.id
-        }
-    }
-
     private func mutate(_ message: String, _ change: () -> Void) {
         let before = document
         change()
@@ -339,51 +318,6 @@ final class ControlCenterStore {
         statusMessage = message
     }
 
-    private func merged(_ imported: ProfileDocument, replaceNameConflicts: Bool) -> ProfileDocument {
-        var profiles = document.profiles
-        var destinations: [UUID: UUID] = [:]
-        // Reserve names and identities before remapping forward references. Multiple
-        // imported profiles with the same name share the destination retained by
-        // the chosen merge policy, even when that name is new to the library.
-        var reservedProfiles = profiles
-        for importedProfile in imported.profiles {
-            if let existing = reservedProfiles.first(where: { $0.name.localizedCaseInsensitiveCompare(importedProfile.name) == .orderedSame }) {
-                destinations[importedProfile.id] = existing.id
-            } else {
-                var reserved = importedProfile
-                if reservedProfiles.contains(where: { $0.id == importedProfile.id }) { reserved.id = UUID() }
-                destinations[importedProfile.id] = reserved.id
-                reservedProfiles.append(reserved)
-            }
-        }
-        for importedProfile in imported.profiles {
-            let sameNameIndex = profiles.firstIndex(where: { $0.name.localizedCaseInsensitiveCompare(importedProfile.name) == .orderedSame })
-            if sameNameIndex != nil && !replaceNameConflicts { continue }
-            var mapped = importedProfile
-            mapped.id = destinations[importedProfile.id]!
-            mapped.bindings = mapped.bindings.map { binding in
-                var binding = binding
-                if binding.action.kind == .profileSwitch,
-                   let sourceID = UUID(uuidString: binding.action.parameter),
-                   let destinationID = destinations[sourceID] {
-                    binding.action.parameter = destinationID.uuidString
-                }
-                return binding
-            }
-            if let sameNameIndex { profiles[sameNameIndex] = mapped }
-            else { profiles.append(mapped) }
-        }
-        return ProfileDocument(activeProfileID: document.activeProfileID, profiles: profiles)
-    }
-
-    private func uniqueName(_ proposed: String) -> String {
-        guard document.profiles.contains(where: { $0.name.localizedCaseInsensitiveCompare(proposed) == .orderedSame }) else { return proposed }
-        var number = 2
-        while document.profiles.contains(where: { $0.name.localizedCaseInsensitiveCompare("\(proposed) \(number)") == .orderedSame }) { number += 1 }
-        return "\(proposed) \(number)"
-    }
-
-    private var canAddProfile: Bool { document.profiles.count < ProfilePersistence.maximumProfileCount }
     private var profileLimitMessage: String { "A profile library can contain at most \(ProfilePersistence.maximumProfileCount) profiles." }
 
     private func appendUndo(_ document: ProfileDocument) {

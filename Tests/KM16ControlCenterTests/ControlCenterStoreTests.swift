@@ -60,7 +60,7 @@ import KM16ControlCore
         #expect(upgraded.document.profiles.count == 16)
 
         // A nearly-full existing library must reject the whole expansion atomically.
-        let profiles = [edited] + (1..<125).map { Presets.blank(name: "Custom \($0)") }
+        let profiles = [edited] + (1..<125).map { Profile.blank(name: "Custom \($0)") }
         let capacityDocument = ProfileDocument(activeProfileID: edited.id, profiles: profiles)
         try persistence.save(capacityDocument)
         let capped = ControlCenterStore(persistence: persistence)
@@ -75,14 +75,14 @@ import KM16ControlCore
         // Duplicate imported names are valid documents. Both IDs must resolve to the
         // one retained destination, including forward references from other profiles.
         for mode in [ProfileImportMode.mergeKeepingExisting, .mergeReplacingNameConflicts] {
-            let local = Presets.blank(name: "Local")
+            let local = Profile.blank(name: "Local")
             let persistence = ProfilePersistence(url: directory.appendingPathComponent("merge-\(mode.rawValue).json"))
             let original = ProfileDocument(activeProfileID: local.id, profiles: [local])
             try persistence.save(original)
             let store = ControlCenterStore(persistence: persistence)
-            var source = Presets.blank(name: "Source")
-            let first = Presets.blank(name: "Destination")
-            var second = Presets.blank(name: "destination")
+            var source = Profile.blank(name: "Source")
+            let first = Profile.blank(name: "Destination")
+            var second = Profile.blank(name: "destination")
             second.summary = "Replacement"
             source.bindings[0].action = ControlAction(kind: .profileSwitch, label: "First", parameter: first.id.uuidString)
             source.bindings[1].action = ControlAction(kind: .profileSwitch, label: "Second", parameter: second.id.uuidString)
@@ -147,9 +147,9 @@ import KM16ControlCore
         #expect(store.document.profiles.count == originalCount + 2, "merge duplicated same-name profiles")
 
         let existingDesktopID = try #require(store.document.profiles.first(where: { $0.presetID == "desktop" })).id
-        var importedSource = Presets.blank(name: "Imported Source")
+        var importedSource = Profile.blank(name: "Imported Source")
         importedSource.id = existingDesktopID
-        var importedDesktop = Presets.blank(name: "Desktop")
+        var importedDesktop = Profile.blank(name: "Desktop")
         importedDesktop.id = UUID()
         importedSource.replace(Binding(controlID: .keys[0], action: ControlAction(kind: .profileSwitch, label: "Imported destination", parameter: importedDesktop.id.uuidString)))
         let mergeURL = directory.appending(path: "merge.json")

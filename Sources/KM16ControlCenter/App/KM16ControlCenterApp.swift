@@ -1,7 +1,6 @@
 import SwiftUI
 import KM16ControlCore
 import KM16Integrations
-import Darwin
 
 @main
 struct KM16ControlCenterApp: App {
@@ -10,36 +9,6 @@ struct KM16ControlCenterApp: App {
     @State private var codex = CodexDeckClient()
     @State private var obs = OBSController()
     @NSApplicationDelegateAdaptor(KM16ApplicationDelegate.self) private var applicationDelegate
-
-    init() {
-        if let index = CommandLine.arguments.firstIndex(of: "--render-design"), CommandLine.arguments.indices.contains(index + 1) {
-            do {
-                try DesignPreviewRenderer.render(to: URL(fileURLWithPath: CommandLine.arguments[index + 1]))
-                exit(EXIT_SUCCESS)
-            } catch {
-                fputs("Design export failed: \(error.localizedDescription)\n", stderr)
-                exit(EXIT_FAILURE)
-            }
-        }
-
-        if AppConfiguration.requestsSmokeTest {
-            let persistence = ProfilePersistence(url: AppConfiguration.profilesURL())
-            do {
-                let document: ProfileDocument
-                if FileManager.default.fileExists(atPath: persistence.url.path) {
-                    document = try persistence.load()
-                } else {
-                    document = Presets.factoryDocument()
-                }
-                try ProfileValidator.validate(document)
-                print("KM16ControlCenter smoke test passed: \(document.profiles.count) profiles, \(ControlID.all.count) inputs, \(persistence.url.path)")
-                exit(EXIT_SUCCESS)
-            } catch {
-                fputs("KM16ControlCenter smoke test failed: \(error.localizedDescription)\n", stderr)
-                exit(EXIT_FAILURE)
-            }
-        }
-    }
 
     var body: some Scene {
         WindowGroup("KM16 Control Center", id: "main") {
