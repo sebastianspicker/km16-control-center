@@ -5,13 +5,28 @@ desktop/service actions. Profiles do not synchronize with device firmware layers
 
 ## Package structure
 
-| Target | Responsibility |
-| --- | --- |
-| `KM16ControlCore` | Control IDs, action/profile models, presets, validation, persistence, editing, and simulation |
-| `KM16Integrations` | Desktop input, audio, windows, bounded processes, OBS, Codex transport, and saved HID decoding |
-| `KM16ProcessSupport` | C bridge for spawning an owned process group with explicit file descriptors |
-| `KM16ControlCenter` | SwiftUI scenes, shared observable store, editors, settings, and AppKit bridges |
-| Self-test and XCTest targets | Core behavior, store transitions, parsers, and local protocol/process fixtures |
+The Swift package is at the repository root. Dependencies point downward only:
+the app depends on everything, and Core depends on nothing in the package.
+
+| Target | Location | Responsibility |
+| --- | --- | --- |
+| `KM16ControlCore` | `Sources/KM16ControlCore` | Control IDs, action and profile models, validation, schema migration, persistence, library editing rules (`ProfileLibrary`), grouping, and simulation. No AppKit or SwiftUI |
+| `KM16Presets` | `presets/` | Factory preset definitions (`Catalog/`), the bundled setup guides (`setup/`), and the generated JSON exports |
+| `KM16Integrations` | `Sources/KM16Integrations` | Side effects: desktop input, audio, windows, bounded processes, OBS, the Codex transport, and saved HID capture decoding |
+| `KM16ProcessSupport` | `Sources/KM16ProcessSupport` | C bridge that spawns an owned process group with explicit file descriptors |
+| `KM16ControlCenter` | `Sources/KM16ControlCenter` | SwiftUI app: scenes, the shared observable store, editors, settings, and AppKit bridges |
+
+`ControlCenterStore` owns session state: the working document, undo and redo,
+dirty tracking, status messages, selection, and foreground-app bookkeeping. It
+delegates library rules such as naming, merge import, and profile-switch
+resolution to `ProfileLibrary`, which receives factory presets as values rather
+than depending on the catalog. Live actions are routed from the main window's Run
+Selected command to the desktop runner, the OBS controller, or the Codex client.
+
+Preset definitions are Swift. `presets/<id>.json` and `presets/all.json` are
+generated from them and checked byte for byte by the tests; the browser demo
+reads `all.json`. The app bundles `presets/setup/` unchanged, and Export Setup
+Files copies that folder.
 
 The app shares one store and its providers across windows. Connection panels reuse
 those providers. Termination handles unsaved profiles and stops owned providers.
@@ -81,8 +96,11 @@ invalidates the connection generation and fails outstanding requests.
 
 ## Verification
 
-[Source checks](../../CONTRIBUTING.md) cover models, persistence, store transitions,
-parsers, authentication fixtures, and child processes. UI, accessibility, live services,
-desktop input, and physical devices need separate testing. See
-[development status](IMPLEMENTATION-LEDGER.md) for outstanding work and
-[Releasing](../RELEASING.md) for distribution checks.
+Each target has a Swift Testing target in `Tests/`: models, persistence, and
+library rules (`KM16ControlCoreTests`); preset content, export parity, setup
+files, and the demo's group list (`KM16PresetsTests`); parsers, protocol and
+approval fixtures, and child processes (`KM16IntegrationsTests`); and store
+behavior (`KM16ControlCenterTests`). See [Contributing](../../CONTRIBUTING.md)
+for commands. UI, accessibility, live services, desktop input, and physical
+devices need separate testing. See [development status](IMPLEMENTATION-LEDGER.md)
+for outstanding work and [Releasing](../RELEASING.md) for distribution checks.
