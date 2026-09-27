@@ -23,7 +23,10 @@ public struct ProfilePersistence: Sendable {
     public init(url: URL) { self.url = url }
 
     public static func defaultURL(fileManager: FileManager = .default) -> URL {
-        let support = fileManager.urls(for: .applicationSupportDirectory, in: .userDomainMask).first!
+        let support = fileManager.urls(for: .applicationSupportDirectory, in: .userDomainMask).first
+            ?? fileManager.homeDirectoryForCurrentUser
+                .appending(path: "Library", directoryHint: .isDirectory)
+                .appending(path: "Application Support", directoryHint: .isDirectory)
         return support.appending(path: "KM16ControlCenter", directoryHint: .isDirectory).appending(path: "profiles.json")
     }
 

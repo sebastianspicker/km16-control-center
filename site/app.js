@@ -13,7 +13,7 @@ const kinds = {
   shell: {name: 'Shell process', tag: 'Shell', ink: 'runs', payload: 'Process payload (JSON)'},
   agentAction: {name: 'Agent action', tag: 'Agent', ink: 'runs', payload: 'Agent action identifier'},
   obsAction: {name: 'OBS action', tag: 'OBS', ink: 'runs', payload: 'OBS action identifier'},
-  disabled: {name: 'Disabled', tag: 'Off', ink: 'types', payload: 'Payload'},
+  disabled: {name: 'Disabled', tag: 'Off', ink: 'types', payload: 'Payload', consequence: 'Does nothing'},
 };
 const inkNames = {
   types: 'Types into the front app',
@@ -169,7 +169,7 @@ function renderInspector() {
   $('control-position').textContent = controlPosition(selected);
   $('control-name').textContent = controlName(selected);
   $('action-name').value = assigned.label;
-  $('kind-name').textContent = `${kind.name} · ${inkNames[kind.ink]}`;
+  $('kind-name').textContent = `${kind.name} · ${kind.consequence || inkNames[kind.ink]}`;
   $('action-detail').textContent = assigned.detail || 'No description for this assignment.';
   $('payload-label').textContent = kind.payload;
   $('payload').value = assigned.parameter;
@@ -199,11 +199,13 @@ function renderLog() {
   }
   $('activity').replaceChildren(...events.map((event, index) => {
     const line = element('li', `log-line ink-${event.ink}${index === 0 ? ' log-new' : ''}`);
+    const payload = element('code', 'log-code', `${event.kind} · ${event.payload || '—'}`);
+    payload.title = `${event.kind}: ${event.payload || 'No payload'}`;
     line.append(
       element('time', 'log-time', time(event.date)),
       element('span', 'log-where', `${event.profile} · ${event.control}`),
       element('strong', 'log-label', event.label || 'Untitled'),
-      element('code', 'log-code', event.code),
+      payload,
       element('span', 'log-result', 'not run'),
     );
     return line;
@@ -223,7 +225,8 @@ function animate(id) {
 }
 function preview() {
   const assigned = action();
-  events.unshift({date: new Date(), profile: profile.name, control: controlName(selected), label: assigned.label, code: codeFor(assigned), ink: kindOf(assigned).ink});
+  const kind = kindOf(assigned);
+  events.unshift({date: new Date(), profile: profile.name, control: controlName(selected), label: assigned.label, kind: kind.name, payload: assigned.parameter, ink: kind.ink});
   events = events.slice(0, 6);
   renderLog();
   animate(selected);
@@ -275,11 +278,45 @@ async function load() {
   }
 }
 function setSheet(open, restoreFocus = true) {
-  $('sidebar').classList.toggle('open', open);
+  const app = $('app');
+  const sidebar = $('sidebar');
+  const covered = [
+    ...[...document.body.children].filter((child) => child !== app),
+    ...[...app.children].filter((child) => child !== sidebar),
+  ];
+  covered.forEach((element) => { element.inert = open; });
+  sidebar.classList.toggle('open', open);
+  if (open) {
+    sidebar.setAttribute('role', 'dialog');
+    sidebar.setAttribute('aria-modal', 'true');
+  } else {
+    sidebar.removeAttribute('role');
+    sidebar.removeAttribute('aria-modal');
+  }
   $('library-toggle').setAttribute('aria-expanded', String(open));
   document.body.classList.toggle('sheet-open', open);
   if (open) $('search').focus();
   else if (restoreFocus) $('library-toggle').focus();
+}
+function trapSheetFocus(event) {
+  const sidebar = $('sidebar');
+  if (event.key !== 'Tab' || !sidebar.classList.contains('open')) return false;
+  const focusable = [...sidebar.querySelectorAll('button:not([disabled]), input:not([disabled]), [href], [tabindex]:not([tabindex="-1"])')]
+    .filter((element) => element.offsetParent !== null);
+  if (!focusable.length) return false;
+  const first = focusable[0];
+  const last = focusable[focusable.length - 1];
+  if (event.shiftKey && (document.activeElement === first || !sidebar.contains(document.activeElement))) {
+    event.preventDefault();
+    last.focus();
+    return true;
+  }
+  if (!event.shiftKey && (document.activeElement === last || !sidebar.contains(document.activeElement))) {
+    event.preventDefault();
+    first.focus();
+    return true;
+  }
+  return false;
 }
 
 $('preview-shortcut').textContent = isMac ? '⌘↩' : 'Ctrl ↩';
@@ -301,7 +338,8 @@ $('payload').addEventListener('input', () => {
   $('edit-status').textContent = 'Payload changed in this tab. It will not run.';
 });
 document.addEventListener('keydown', (event) => {
-  if (event.key === 'Enter' && (isMac ? event.metaKey : event.ctrlKey) && !$('app').hidden) {
+  if (trapSheetFocus(event)) return;
+  if (event.key === 'Enter' && (isMac ? event.metaKey : event.ctrlKey) && !$('app').hidden && !$('sidebar').classList.contains('open')) {
     event.preventDefault();
     preview();
   } else if (event.key === 'Escape' && $('sidebar').classList.contains('open')) {

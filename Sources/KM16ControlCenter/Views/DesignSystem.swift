@@ -71,6 +71,10 @@ enum LegendInk: CaseIterable {
         }
     }
 
+    static func consequence(of kind: ActionKind) -> String {
+        kind == .disabled ? "Does nothing" : LegendInk(kind).title
+    }
+
     var color: Color {
         switch self {
         case .types: .primary

@@ -158,7 +158,22 @@ import KM16Presets
     }
 }
 
+private final class EmptySearchPathFileManager: FileManager, @unchecked Sendable {
+    override func urls(for directory: SearchPathDirectory, in domainMask: SearchPathDomainMask) -> [URL] { [] }
+}
+
 @Suite struct PersistenceTests {
+    @Test func defaultProfilesURLFallsBackWhenApplicationSupportIsUnavailable() {
+        let fileManager = EmptySearchPathFileManager()
+        let expected = fileManager.homeDirectoryForCurrentUser
+            .appending(path: "Library", directoryHint: .isDirectory)
+            .appending(path: "Application Support", directoryHint: .isDirectory)
+            .appending(path: "KM16ControlCenter", directoryHint: .isDirectory)
+            .appending(path: "profiles.json")
+
+        #expect(ProfilePersistence.defaultURL(fileManager: fileManager) == expected)
+    }
+
     @Test func schemaOneLoadMigratesWithBackwardDefaultsWithoutRewritingFile() throws {
         let directory = temporaryDirectory()
         defer { try? FileManager.default.removeItem(at: directory) }

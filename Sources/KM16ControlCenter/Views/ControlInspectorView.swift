@@ -22,7 +22,7 @@ struct ControlInspectorView: View {
                             .frame(width: 40, height: 40).background(LegendInk(store.selectedBinding.action.kind).color.opacity(0.08), in: RoundedRectangle(cornerRadius: 8))
                         VStack(alignment: .leading, spacing: 4) {
                             Text(store.selectedControlID.gridTitle).font(.system(size: 13, weight: .semibold)).lineLimit(1).truncationMode(.tail)
-                            Text("\(store.selectedBinding.action.kind.displayName) · \(LegendInk(store.selectedBinding.action.kind).title)").font(.system(size: 11)).foregroundStyle(.secondary).lineLimit(1).truncationMode(.tail)
+                            Text("\(store.selectedBinding.action.kind.displayName) · \(LegendInk.consequence(of: store.selectedBinding.action.kind))").font(.system(size: 11)).foregroundStyle(.secondary).lineLimit(1).truncationMode(.tail)
                         }
                         .frame(maxWidth: .infinity, alignment: .leading)
                     }
