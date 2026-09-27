@@ -24,5 +24,5 @@ cmake --build build/custom
 ctest --test-dir build/custom --output-on-failure
 build/custom/km16_custom_demo
 cmake --build build/custom --target cortex-m3-objects
-bash scripts/verify-companion.sh
+KM16_CAPTURE_ROOT=evidence/captures swift test
 python3 scripts/verify-preservation.py

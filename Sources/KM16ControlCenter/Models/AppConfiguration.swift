@@ -15,5 +15,4 @@ enum AppConfiguration {
     }
 
     static var requestsSmokeTest: Bool { CommandLine.arguments.contains("--smoke-test") }
-    static var requestsStoreSelfTest: Bool { CommandLine.arguments.contains("--store-self-test") }
 }

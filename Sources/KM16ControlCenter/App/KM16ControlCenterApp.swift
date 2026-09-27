@@ -22,16 +22,6 @@ struct KM16ControlCenterApp: App {
             }
         }
 
-        if AppConfiguration.requestsStoreSelfTest {
-            do {
-                try ControlCenterStoreSelfTest.run()
-                print("KM16ControlCenter store self-test passed.")
-                exit(EXIT_SUCCESS)
-            } catch {
-                fputs("KM16ControlCenter store self-test failed: \(error.localizedDescription)\n", stderr)
-                exit(EXIT_FAILURE)
-            }
-        }
         if AppConfiguration.requestsSmokeTest {
             let persistence = ProfilePersistence(url: AppConfiguration.profilesURL())
             do {
@@ -124,69 +114,4 @@ final class KM16ApplicationDelegate: NSObject, NSApplicationDelegate {
         store.closeConfirmationRequested = true
         return .terminateCancel
     }
-}
-
-enum ControlCenterStoreSelfTest {
-    @MainActor static func run() throws {
-        let directory = FileManager.default.temporaryDirectory.appending(path: "KM16StoreSelfTest-\(UUID().uuidString)", directoryHint: .isDirectory)
-        defer { try? FileManager.default.removeItem(at: directory) }
-        let persistence = ProfilePersistence(url: directory.appending(path: "profiles.json"))
-        let store = ControlCenterStore(persistence: persistence)
-        guard store.recoveryMessage == nil, store.document.profiles.count == Presets.all.count,
-              !FileManager.default.fileExists(atPath: persistence.url.path) else {
-            throw StoreSelfTestError.assertion("first launch must load factory presets without recovery warnings or creating storage")
-        }
-        try presetLibraryChecks(directory: directory)
-        try profileMergeChecks(directory: directory)
-        let originalCount = store.document.profiles.count
-        guard let desktop = store.document.profiles.first(where: { $0.presetID == "desktop" }) else { throw StoreSelfTestError.assertion("desktop fallback preset is missing") }
-        store.select(profileID: desktop.id, isManual: false)
-        store.selectedControlID = ControlID.all.last!
-        store.simulate(store.selectedControlID)
-        guard store.activeProfile.presetID == "agent-deck" else { throw StoreSelfTestError.assertion("preset profile switch did not resolve its preset ID") }
-        store.manualProfileOverrideID = nil
-        store.recordForegroundApplication(bundleID: "com.microsoft.VSCode")
-        guard store.activeProfile.presetID == "developer", store.lastExternalBundleID == "com.microsoft.VSCode" else { throw StoreSelfTestError.assertion("foreground app matching did not use the notification bundle") }
-        store.createProfile(named: "Self Test")
-        guard store.document.profiles.count == originalCount + 1, store.isDirty else { throw StoreSelfTestError.assertion("create did not mark a dirty profile library") }
-        store.renameActiveProfile(to: "Renamed Self Test")
-        guard store.activeProfile.name == "Renamed Self Test" else { throw StoreSelfTestError.assertion("rename failed") }
-        store.duplicateActiveProfile()
-        guard store.document.profiles.count == originalCount + 2 else { throw StoreSelfTestError.assertion("duplicate failed") }
-        store.undo()
-        guard store.document.profiles.count == originalCount + 1 else { throw StoreSelfTestError.assertion("undo failed") }
-        store.redo()
-        guard store.document.profiles.count == originalCount + 2 else { throw StoreSelfTestError.assertion("redo failed") }
-        store.save()
-        guard !store.isDirty else { throw StoreSelfTestError.assertion("save did not clear dirty tracking") }
-        let exportURL = directory.appending(path: "export.json")
-        store.exportProfiles(to: exportURL)
-        store.importProfiles(from: exportURL, mode: .mergeKeepingExisting)
-        guard store.document.profiles.count == originalCount + 2 else { throw StoreSelfTestError.assertion("merge duplicated same-name profiles") }
-        let existingDesktopID = store.document.profiles.first(where: { $0.presetID == "desktop" })!.id
-        var importedSource = Presets.blank(name: "Imported Source")
-        importedSource.id = existingDesktopID
-        var importedDesktop = Presets.blank(name: "Desktop")
-        importedDesktop.id = UUID()
-        importedSource.replace(Binding(controlID: .keys[0], action: ControlAction(kind: .profileSwitch, label: "Imported destination", parameter: importedDesktop.id.uuidString)))
-        let mergeURL = directory.appending(path: "merge.json")
-        try ProfilePersistence(url: mergeURL).exportDocument(ProfileDocument(activeProfileID: importedSource.id, profiles: [importedSource, importedDesktop]), to: mergeURL)
-        store.importProfiles(from: mergeURL, mode: .mergeKeepingExisting)
-        guard let mergedSource = store.document.profiles.first(where: { $0.name == "Imported Source" }),
-              mergedSource.id != existingDesktopID,
-              mergedSource.binding(for: .keys[0])?.action.parameter.caseInsensitiveCompare(existingDesktopID.uuidString) == .orderedSame else {
-            throw StoreSelfTestError.assertion("merged UUID profile switches were not remapped to retained destinations")
-        }
-        store.simulate(.keys[0])
-        guard !store.events.isEmpty, store.events[0].message.contains("Would run") else { throw StoreSelfTestError.assertion("simulation escaped the local dispatcher") }
-        while store.document.profiles.count < ProfilePersistence.maximumProfileCount { store.createProfile(named: "Capacity Test") }
-        let cappedCount = store.document.profiles.count
-        store.createProfile(named: "Over Capacity")
-        guard store.document.profiles.count == cappedCount, store.statusMessage?.contains("at most") == true else { throw StoreSelfTestError.assertion("profile library cap was not enforced") }
-    }
-}
-
-enum StoreSelfTestError: Error, LocalizedError {
-    case assertion(String)
-    var errorDescription: String? { if case .assertion(let value) = self { return value }; return nil }
 }
