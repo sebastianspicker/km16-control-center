@@ -195,7 +195,7 @@ low-voltage cutoff.
 ## Development status and open questions
 
 The [custom scaffold](../../firmware/custom/README.md) builds a portable C core,
-native demonstration/tests, and compile-only Cortex-M3 objects. The source uses
+native demonstration, and compile-only Cortex-M3 objects. The source uses
 recovered constants and behavior, with no vendor binary or decompiled function
 linked into the custom core. It does not yet provide startup, a linker map, a
 hardware HAL, USB/VIA, radio state handling, persistent settings, or a complete

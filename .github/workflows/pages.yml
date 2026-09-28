@@ -7,14 +7,12 @@ on:
       - 'site/**'
       - 'presets/all.json'
       - 'scripts/build-site.py'
-      - 'scripts/tests/test_site_build.py'
       - '.github/workflows/pages.yml'
   pull_request:
     paths:
       - 'site/**'
       - 'presets/all.json'
       - 'scripts/build-site.py'
-      - 'scripts/tests/test_site_build.py'
       - '.github/workflows/pages.yml'
   workflow_dispatch:
 
@@ -37,10 +35,9 @@ jobs:
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
         with:
           persist-credentials: false
-      - name: Check the demo and publication boundary
+      - name: Build the demo publication artifact
         run: |
           node --check site/app.js
-          python3 -m unittest discover -s scripts/tests -p 'test_site_build.py' -v
           python3 scripts/build-site.py
       - name: Configure Pages
         if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'

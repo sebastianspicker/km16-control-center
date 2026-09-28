@@ -50,11 +50,10 @@ Edit the HTML, CSS, and JavaScript in this directory. Change factory assignments
 through the [preset source workflow](../CONTRIBUTING.md#compatibility-and-presets);
 the site build always takes its data from `presets/all.json`.
 
-Run the focused checks before testing the rendered page:
+Build the publication artifact before checking the rendered page:
 
 ```sh
 node --check site/app.js
-python3 -m unittest discover -s scripts/tests -p 'test_site_build.py' -v
 python3 scripts/build-site.py
 ```
 

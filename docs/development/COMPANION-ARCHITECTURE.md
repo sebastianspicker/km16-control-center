@@ -24,9 +24,8 @@ than depending on the catalog. Live actions are routed from the main window's Ru
 Selected command to the desktop runner, the OBS controller, or the Codex client.
 
 Preset definitions are Swift. `presets/<id>.json` and `presets/all.json` are
-generated from them and checked byte for byte by the tests; the browser demo
-reads `all.json`. The app bundles `presets/setup/` unchanged, and Export Setup
-Files copies that folder.
+generated exports; the browser demo reads `all.json`. The app bundles
+`presets/setup/` unchanged, and Export Setup Files copies that folder.
 
 The app shares one store and its providers across windows. Connection panels reuse
 those providers. Termination handles unsaved profiles and stops owned providers.
@@ -75,7 +74,7 @@ does not change a layer on the device.
 
 ## Codex transport
 
-Agent Deck uses the locally generated [CLI 0.154.0 protocol subset](codex-protocol-0.154.0.json).
+Agent Deck was implemented against the Codex CLI 0.154.0 app-server protocol.
 It owns a stdio app-server process and completes initialization before requesting
 models or threads. The installed CLI supplies authentication.
 
@@ -93,14 +92,3 @@ The transport bounds frames, buffered input, pending requests, and request time.
 Its ordered reader accepts fragmented JSON lines; a separate queue writes to the
 child process. Completion and cancellation release request timers. Disconnect
 invalidates the connection generation and fails outstanding requests.
-
-## Verification
-
-Each target has a Swift Testing target in `Tests/`: models, persistence, and
-library rules (`KM16ControlCoreTests`); preset content, export parity, setup
-files, and the demo's group list (`KM16PresetsTests`); parsers, protocol and
-approval fixtures, and child processes (`KM16IntegrationsTests`); and store
-behavior (`KM16ControlCenterTests`). See [Contributing](../../CONTRIBUTING.md)
-for commands. UI, accessibility, live services, desktop input, and physical
-devices need separate testing. See [development status](IMPLEMENTATION-LEDGER.md)
-for outstanding work and [Releasing](../RELEASING.md) for distribution checks.

@@ -1,15 +1,54 @@
-# Local research inputs, captures, and third-party material
+# Private research inputs, captures, and third-party material
 /evidence/
 /firmware/vendor/
 /reference/
 /archive/
 /downloads/
 
+# Agent instructions, tool state, and local worktrees
+.agents/
+.claude/
+.codex/
+.cursor/
+.continue/
+.windsurf/
+.serena/
+.impeccable/
+.aider*
+.mcp.json
+.history/
+.cache/
+.state/
+.worktrees/
+worktrees/
+AGENTS.md
+CLAUDE.md
+GEMINI.md
+.cursorrules
+/.github/copilot-instructions.md
+
+# Tests, local verification, benchmarks, and working documents
+/Tests/
+/tests/
+/scripts/tests/
+/scripts/benchmarks/
+/firmware/custom/tests/
+/scripts/verify*.sh
+/scripts/verify*.py
+/DESIGN_BRIEF*.md
+/ROADMAP*.md
+/PRD*.md
+/TODO*.md
+/docs/development/*LEDGER*.md
+/docs/**/*DRAFT*.md
+.coverage
+coverage/
+htmlcov/
+__snapshots__/
+
 # Machine-specific tooling and unbuilt layout experiments
-/.codex/
-/.state/
-/bin/
 /apps/KM16ControlCenter/Views/
+/bin/
 
 # Build and release output
 /build/
@@ -21,7 +60,7 @@ DerivedData/
 *.xcuserstate
 xcuserdata/
 
-# Python and editor caches
+# Python, editor, and operating-system caches
 .venv/
 venv/
 __pycache__/
@@ -29,6 +68,8 @@ __pycache__/
 .pytest_cache/
 .mypy_cache/
 .ruff_cache/
+.idea/
+.vscode/
 .DS_Store
 ._*
 *.swp

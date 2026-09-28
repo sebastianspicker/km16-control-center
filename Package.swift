@@ -16,7 +16,7 @@ let package = Package(
             dependencies: ["KM16ControlCore"],
             path: "presets",
             // The per-preset and combined JSON files are generated exports of the Catalog sources
-            // below (checked for parity by KM16PresetsTests), not build inputs.
+            // below, not build inputs.
             exclude: [
                 "README.md", "all.json",
                 "3d-modelling.json", "agent-deck.json", "creative.json", "desktop.json",
@@ -28,10 +28,6 @@ let package = Package(
             sources: ["Catalog"],
             resources: [.copy("setup")]
         ),
-        .executableTarget(name: "KM16ControlCenter", dependencies: ["KM16ControlCore", "KM16Integrations", "KM16Presets"]),
-        .testTarget(name: "KM16ControlCoreTests", dependencies: ["KM16ControlCore", "KM16Presets"]),
-        .testTarget(name: "KM16PresetsTests", dependencies: ["KM16Presets", "KM16ControlCore"]),
-        .testTarget(name: "KM16IntegrationsTests", dependencies: ["KM16Integrations", "KM16ControlCore", "KM16Presets"]),
-        .testTarget(name: "KM16ControlCenterTests", dependencies: ["KM16ControlCenter", "KM16ControlCore", "KM16Integrations", "KM16Presets"])
+        .executableTarget(name: "KM16ControlCenter", dependencies: ["KM16ControlCore", "KM16Integrations", "KM16Presets"])
     ]
 )

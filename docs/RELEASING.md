@@ -1,19 +1,20 @@
 # Releasing
 
-Source releases include the app, portable firmware core, presets, tests, and
+Source releases include the app, portable firmware core, presets, and
 research reports. Vendor firmware, board readbacks, raw captures, and local
 analysis projects are excluded. No flashable custom firmware is provided.
 
 ## Source release
 
 1. From a clean checkout on macOS 14 or newer, run
-   `bash scripts/verify-source.sh` using full Xcode with Swift 6, Python 3.10 or
-   newer, Node.js with `node --test`, and CMake 3.16 or newer.
-2. Run `bash script/build_and_run.sh --build-only` and inspect the unsigned bundle
+   `bash script/build_and_run.sh --build-only` using full Xcode with Swift 6 and
+   inspect the unsigned bundle
    at `build/apps/KM16ControlCenter.app`. This validates bundle assembly and its
    `Info.plist`; it does not sign, notarize, package, launch, or test integrations.
-3. Review the [development status](development/IMPLEMENTATION-LEDGER.md). Include
-   user-visible changes and known limitations in the release notes.
+2. Build the portable core as described in its
+   [guide](../firmware/custom/README.md), and build the browser demo with
+   `python3 scripts/build-site.py`.
+3. Include user-visible changes and known limitations in the release notes.
 4. Inspect `git ls-files`. Then run
    `git ls-files --cached --ignored --exclude-standard`; it must print nothing.
    Ignore rules do not remove files already tracked. Include `LICENSE`; check
@@ -32,13 +33,13 @@ git archive --format=zip --prefix=km16-control-center/ \
   --output=dist/km16-control-center-source.zip HEAD
 ```
 
-Extract the archive, inspect its contents, and run the source checks before
+Extract the archive, inspect its contents, and run the documented builds before
 attaching it to a release. Avoid zipping the working directory: ignored data,
 credentials, and build products may be present.
 
 GitHub publication covers the reviewed source and generated source archive only.
-The workflow builds and tests source but does not create, sign, upload, or publish
-a binary release.
+The workflow builds source but does not create, sign, upload, or publish a binary
+release.
 
 ## Browser demo
 

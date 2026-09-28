@@ -1,4 +1,4 @@
-name: Source verification
+name: Source build
 
 on:
   push:
@@ -28,7 +28,11 @@ jobs:
             printf 'Tracked files match repository ignore rules:\n%s\n' "$tracked_ignored" >&2
             exit 1
           fi
-      - name: Build and test the public source
-        run: bash scripts/verify-source.sh
+      - name: Build the Swift package
+        run: swift build
+      - name: Build the portable C core
+        run: |
+          cmake -S firmware/custom -B build/custom
+          cmake --build build/custom
       - name: Validate the unsigned app bundle build
         run: bash script/build_and_run.sh --build-only

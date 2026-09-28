@@ -11,7 +11,6 @@ From this directory:
 ```sh
 cmake -S . -B build
 cmake --build build
-ctest --test-dir build --output-on-failure
 ./build/km16_custom_demo
 ```
 
@@ -46,8 +45,8 @@ binary-image step.
 - The bounded UART builder emits `0x55 | body_length | body`, where the body is at
   most 255 bytes and the largest frame is 257 bytes. It adds no checksum, escaping,
   terminator, or inferred command semantics.
-- The demonstration and tests run those production core functions on the host;
-  they do not substitute a mock implementation of the primitives.
+- The demonstration runs those production core functions on the host; it does not
+  substitute a mock implementation of the primitives.
 
 ## Hardware boundary and remaining work
 

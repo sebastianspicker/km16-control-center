@@ -25,8 +25,8 @@ public enum PresetSetupFiles {
 
     /// Looks first for the packaged app's `KM16Presets` resource bundle in `resourcesURL`
     /// (`Bundle.main.resourceURL` in the hand-assembled `.app` made by `script/build_and_run.sh`),
-    /// then falls back to `moduleBundle` (`Bundle.module` when running unbundled, e.g. under
-    /// `swift test`). Returns nil when neither location has the setup resources.
+    /// then falls back to `moduleBundle` (`Bundle.module` in an unbundled SwiftPM build).
+    /// Returns nil when neither location has the setup resources.
     /// `moduleBundle` is evaluated only as a fallback: some SwiftPM `Bundle.module` accessors trap when
     /// the build directory is gone, which is normal for a packaged app.
     static func directory(resourcesURL: URL? = Bundle.main.resourceURL, moduleBundle: @autoclosure () -> Bundle? = Bundle.module) -> URL? {

@@ -102,9 +102,9 @@ records raw bytes, IDs, and success or failure. Outbound timestamps describe cal
 completion, not USB bus transmission time.
 
 Reloading removes the logger. Workers, frames, other tabs, and cached method
-references may bypass it, so the log is not a complete USB bus trace. Tests use
-synthetic APIs; real VIA/browser/device behavior needs separate verification.
-Review traces for personal data before sharing.
+references may bypass it, so the log is not a complete USB bus trace. Real
+VIA/browser/device behavior needs separate verification. Review traces for
+personal data before sharing.
 
 ## Offline firmware analysis
 
@@ -127,21 +127,3 @@ The three 122,880-byte application readbacks at `0x08002000` matched and passed 
 embedded CRC check, but every upload ended with a PIPE error. The first 8 KiB are
 absent; restoration is untested. The separate vendor image is not a verified
 replacement for this board.
-
-## Verification
-
-```sh
-bash scripts/verify-source.sh
-```
-
-This runs the public source checks without device access or excluded research
-artifacts.
-If you have the original snapshot, firmware, relocation manifest, and archived
-files, you can also run:
-
-```sh
-bash scripts/verify-offline.sh
-```
-
-The second command validates saved hashes and reruns pinned analyses into `build/`.
-It does not perform hardware acquisition or flashing.

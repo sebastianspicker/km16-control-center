@@ -78,25 +78,22 @@ Codex CLI and a workspace you choose. Neither service is needed to edit profiles
 | [App guide](docs/app-guide.md) | Profiles, desktop actions, OBS, Agent Deck, and recovery |
 | [Preset catalog](presets/README.md) | Assignments and setup instructions for the included apps |
 | [Browser demo](site/README.md) | Interactive mockup, local preview, and GitHub Pages setup |
-| [Contributing](CONTRIBUTING.md) | Development requirements and verification commands |
+| [Contributing](CONTRIBUTING.md) | Development requirements and build commands |
 | [Architecture](docs/development/COMPANION-ARCHITECTURE.md) | Swift package boundaries and integration behavior |
-| [Development status](docs/development/IMPLEMENTATION-LEDGER.md) | Implemented features and remaining work |
 | [Releasing](docs/RELEASING.md) | Source releases and Mac app distribution requirements |
 
-The public source checks run without a pad, OBS, Codex, or private research files:
+The unsigned app bundle can be validated without a pad, OBS, Codex, or private
+research files:
 
 ```sh
-bash scripts/verify-source.sh
+bash script/build_and_run.sh --build-only
 ```
-
-The full suite also requires full Xcode, Node.js, and CMake; see
-[Contributing](CONTRIBUTING.md) for versions and focused checks.
 
 ## Hardware research
 
 The research documents the examined KM16 Pro board and stock behavior. Findings
 are tied to the recorded hardware and firmware revisions. The
-[portable C core](firmware/custom/README.md) has host tests and a demo; it is not a
+[portable C core](firmware/custom/README.md) has a host demo; it is not a
 flashable firmware image.
 
 | Guide | Contents |
@@ -108,9 +105,8 @@ flashable firmware image.
 | [Mac research tools](docs/workflows/mac-tools.md) | Device snapshots, HID capture, WebHID logging, and offline analysis |
 
 Vendor firmware, raw captures, and third-party reference files are excluded from
-the repository. Reports retain hashes and artifact names for provenance. Public
-tests use synthetic fixtures; reproducing the research requires matching original
-inputs.
+the repository. Reports retain hashes and artifact names for provenance.
+Reproducing the research requires matching original inputs.
 
 ## License
 

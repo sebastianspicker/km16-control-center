@@ -394,7 +394,6 @@ python3 scripts/analysis/decode-live-eeprom.py \
   evidence/backups/dfu-backup-20260912T103449Z/km16pro-live-alt2-0x08002000.bin \
   --output build/analysis/live/logical-eeprom.bin \
   --json build/analysis/live/settings.json
-python3 -m unittest discover -s scripts/tests -p 'test_eeprom_decode.py' -v
 ```
 
 The static scripts guard the exact acquired hash and never open a device.

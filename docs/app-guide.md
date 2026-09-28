@@ -8,17 +8,18 @@ The app is host-only. It does not detect the keyboard, read or change its live c
 
 ## Requirements
 
-Building from source requires a Mac running macOS 14 or later, a Swift 6 toolchain,
-and Python 3.10 or later. The repository's full verification also uses Node.js,
-CMake, and the Apple SDK; see [CONTRIBUTING.md](../CONTRIBUTING.md).
+Building the app from source requires a Mac running macOS 14 or later, a Swift 6
+toolchain, and Python 3.10 or later. The portable C core additionally requires
+CMake, and the browser workflow uses Node.js; see
+[CONTRIBUTING.md](../CONTRIBUTING.md).
 
 Editing and previewing need no special permissions. Other features are opt-in:
 
 - Desktop keyboard, text, scrolling, media, and window actions require
   Accessibility permission.
 - OBS actions require OBS Studio with OBS WebSocket v5 enabled.
-- Agent Deck requires a trusted Codex CLI executable. The checked-in protocol
-  contract was generated from Codex CLI 0.154.0.
+- Agent Deck requires a trusted Codex CLI executable. The integration targets the
+  Codex CLI 0.154.0 app-server protocol.
 
 ## Build and run
 
@@ -34,10 +35,8 @@ The script builds the unsigned development app at `build/apps/KM16ControlCenter.
 bash script/build_and_run.sh --build-only
 ```
 
-To test with a separate profile library, set `KM16_PROFILES_PATH` to the absolute
+To use a separate profile library, set `KM16_PROFILES_PATH` to the absolute
 path of a `profiles.json` file before launching.
-
-See [CONTRIBUTING.md](../CONTRIBUTING.md) for development checks and focused test commands.
 
 ## Profiles
 
@@ -110,7 +109,8 @@ rejects stale or incomplete evidence, unknown fields, stdin requests without the
 input bytes, and session-wide file-access grants. Decline and Cancel remain
 available when the server supports them.
 
-The client follows the generated [Codex CLI 0.154.0 protocol contract](development/codex-protocol-0.154.0.json). Test other CLI versions before relying on them.
+The client was implemented against the Codex CLI 0.154.0 app-server protocol.
+Verify other CLI versions before relying on them.
 
 ## Preset setup files
 
