@@ -6,8 +6,8 @@ export PYTHONDONTWRITEBYTECODE=1
 python3 scripts/verify-preservation.py
 scripts/build.sh
 python3 scripts/verify.py
-node --test tests/webhid-trace.test.cjs
-python3 -m unittest discover -s tests -p 'test_*.py' -v
+node --test scripts/tests/webhid-trace.test.cjs
+python3 -m unittest discover -s scripts/tests -p 'test_*.py' -v
 
 python3 scripts/analysis/analyze-live-firmware.py
 python3 scripts/analysis/analyze-firmware.py \
@@ -24,5 +24,5 @@ cmake --build build/custom
 ctest --test-dir build/custom --output-on-failure
 build/custom/km16_custom_demo
 cmake --build build/custom --target cortex-m3-objects
-bash scripts/verify-companion.sh
+KM16_CAPTURE_ROOT=evidence/captures swift test
 python3 scripts/verify-preservation.py

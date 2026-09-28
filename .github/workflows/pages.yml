@@ -7,14 +7,14 @@ on:
       - 'site/**'
       - 'presets/all.json'
       - 'scripts/build-site.py'
-      - 'tests/test_site_build.py'
+      - 'scripts/tests/test_site_build.py'
       - '.github/workflows/pages.yml'
   pull_request:
     paths:
       - 'site/**'
       - 'presets/all.json'
       - 'scripts/build-site.py'
-      - 'tests/test_site_build.py'
+      - 'scripts/tests/test_site_build.py'
       - '.github/workflows/pages.yml'
   workflow_dispatch:
 
@@ -40,7 +40,7 @@ jobs:
       - name: Check the demo and publication boundary
         run: |
           node --check site/app.js
-          python3 -m unittest discover -s tests -p 'test_site_build.py' -v
+          python3 -m unittest discover -s scripts/tests -p 'test_site_build.py' -v
           python3 scripts/build-site.py
       - name: Configure Pages
         if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'

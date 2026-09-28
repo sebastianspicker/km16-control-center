@@ -30,7 +30,7 @@ actions in **Connections** and use **Run Selected**. Desktop input requires macO
 Accessibility permission. Review imported assignments first: profiles can contain
 commands, text, and agent prompts.
 
-See the [app guide](apps/KM16ControlCenter/README.md) for storage, import/export,
+See the [app guide](docs/app-guide.md) for storage, import/export,
 recovery, and optional OBS and Codex setup.
 
 ## Screenshot tour
@@ -75,7 +75,7 @@ Codex CLI and a workspace you choose. Neither service is needed to edit profiles
 
 | Guide | What you'll find |
 | --- | --- |
-| [App guide](apps/KM16ControlCenter/README.md) | Profiles, desktop actions, OBS, Agent Deck, and recovery |
+| [App guide](docs/app-guide.md) | Profiles, desktop actions, OBS, Agent Deck, and recovery |
 | [Preset catalog](presets/README.md) | Assignments and setup instructions for the included apps |
 | [Browser demo](site/README.md) | Interactive mockup, local preview, and GitHub Pages setup |
 | [Contributing](CONTRIBUTING.md) | Development requirements and verification commands |

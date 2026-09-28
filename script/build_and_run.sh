@@ -3,7 +3,6 @@ set -euo pipefail
 
 KM16_MODE="${1:-run}"
 KM16_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-KM16_PACKAGE="$KM16_ROOT/apps/KM16ControlCenter"
 KM16_APP="$KM16_ROOT/build/apps/KM16ControlCenter.app"
 KM16_BINARY="$KM16_APP/Contents/MacOS/KM16ControlCenter"
 KM16_BUNDLE_ID="org.local.KM16ControlCenter"
@@ -13,8 +12,9 @@ case "$KM16_MODE" in
   *) echo "usage: $0 [run|--build-only|--debug|--logs|--telemetry|--verify]" >&2; exit 2 ;;
 esac
 
-swift build --package-path "$KM16_PACKAGE"
-KM16_BUILT="$(swift build --package-path "$KM16_PACKAGE" --show-bin-path)/KM16ControlCenter"
+swift build --package-path "$KM16_ROOT"
+KM16_BIN="$(swift build --package-path "$KM16_ROOT" --show-bin-path)"
+KM16_BUILT="$KM16_BIN/KM16ControlCenter"
 
 # Rebuilds preserve user edits. Only an explicitly isolated verification instance may be restarted.
 python3 - "$KM16_BINARY" "$KM16_MODE" "$KM16_ROOT/.state/companion-ui-test/" <<'PY'
@@ -52,8 +52,31 @@ PY
 mkdir -p "$KM16_APP/Contents/MacOS"
 cp "$KM16_BUILT" "$KM16_BINARY"
 mkdir -p "$KM16_APP/Contents/Resources"
-cp "$KM16_PACKAGE/Assets/AppIcon.icns" "$KM16_APP/Contents/Resources/AppIcon.icns"
-cp -R "$(dirname "$KM16_BUILT")/KM16ControlCenter_KM16ControlCenter.bundle" "$KM16_APP/Contents/Resources/"
+cp "$KM16_ROOT/packaging/AppIcon.icns" "$KM16_APP/Contents/Resources/AppIcon.icns"
+# SwiftPM resource bundles are looked up in Contents/Resources at run time.
+for bundle in "$KM16_BIN"/KM16ControlCenter_*.bundle; do
+  rm -rf "$KM16_APP/Contents/Resources/$(basename "$bundle")"
+  cp -R "$bundle" "$KM16_APP/Contents/Resources/"
+done
+
+# SwiftPM emits a flat resource bundle under Xcode 16 and a macOS-style Contents/Resources bundle
+# under newer Command Line Tools. Validate the resource root produced by the active toolchain.
+KM16_PRESETS_BUNDLE="$KM16_APP/Contents/Resources/KM16ControlCenter_KM16Presets.bundle"
+if [[ -d "$KM16_PRESETS_BUNDLE/Contents/Resources" ]]; then
+  KM16_PRESETS_RESOURCES="$KM16_PRESETS_BUNDLE/Contents/Resources"
+else
+  KM16_PRESETS_RESOURCES="$KM16_PRESETS_BUNDLE"
+fi
+
+# The preset setup guides must ship with the app: fail the build rather than package a bundle
+# that would silently fall back to "This preset uses the actions shown on the pad" everywhere.
+for required in setup/README.md setup/git-review.md setup/keybindings/git-review.code-keybindings.json; do
+  if [[ ! -f "$KM16_PRESETS_RESOURCES/$required" ]]; then
+    echo "Packaged KM16Presets bundle is missing $required" >&2
+    exit 1
+  fi
+done
+echo "Packaged KM16Presets bundle has the setup guides and keybindings fragment."
 cat > "$KM16_APP/Contents/Info.plist" <<'PLIST'
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
