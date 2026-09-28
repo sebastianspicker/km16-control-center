@@ -2,7 +2,7 @@
 
 This preset targets Visual Studio Code (`com.microsoft.VSCode`). It has no automatic app match because the Developer preset uses the same app.
 
-VS Code assigns `Control-Shift-G` to Source Control by default. Several other controls need the bindings supplied in `presets/keybindings/git-review.code-keybindings.json`:
+VS Code assigns `Control-Shift-G` to Source Control by default. Several other controls need the bindings supplied in `keybindings/git-review.code-keybindings.json` (next to this guide):
 
 1. In VS Code, run Preferences: Open Keyboard Shortcuts (JSON) from the Command Palette.
 2. Keep the existing outer JSON array and all existing entries.

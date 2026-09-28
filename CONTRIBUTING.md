@@ -16,11 +16,13 @@ bash scripts/verify-source.sh
 ```
 
 This compiles the HID capture utility with `xcrun clang`; runs the Node and Python
-tests; configures, builds, and tests the portable C core with CMake and CTest; runs
-the companion self-tests and preset asset checks; and finishes with the Swift
-package tests. It uses synthetic fixtures without device access, desktop input,
-OBS, or a real Codex session. Process tests launch and terminate local synthetic
-fixtures and check a child-process heartbeat to verify cancellation.
+tests; builds the browser demo; configures, builds, and tests the portable C core
+with CMake and CTest; and finishes with `swift build` and `swift test`. The Swift
+tests use Swift Testing and synthetic fixtures without device access, desktop
+input, OBS, or a real Codex session. Process tests launch and terminate local
+synthetic fixtures and check a child-process heartbeat to verify cancellation.
+When the private research captures exist in `evidence/captures`, the script also
+replays them (`KM16_CAPTURE_ROOT`).
 
 CI also validates the documented unsigned app-bundle build without launching it:
 
@@ -28,8 +30,9 @@ CI also validates the documented unsigned app-bundle build without launching it:
 bash script/build_and_run.sh --build-only
 ```
 
-This creates `build/apps/KM16ControlCenter.app` and checks its `Info.plist`. It does
-not sign, notarize, package, launch, or exercise live integrations.
+This creates `build/apps/KM16ControlCenter.app`, checks its `Info.plist`, and fails
+if the packaged preset bundle lacks the setup guides. It does not sign, notarize,
+package, launch, or exercise live integrations.
 
 Before building, CI checks that no tracked file also matches the repository's
 ignore rules. This command must print nothing:
@@ -41,26 +44,26 @@ git ls-files --cached --ignored --exclude-standard
 For focused checks:
 
 ```sh
-bash scripts/verify-companion.sh
-swift test --package-path apps/KM16ControlCenter
-python3 -m unittest discover -s tests -p 'test_*.py' -v
-node --test tests/webhid-trace.test.cjs
+swift test
+swift test --filter KM16PresetsTests
+python3 -m unittest discover -s scripts/tests -p 'test_*.py' -v
+node --test scripts/tests/webhid-trace.test.cjs
 ```
 
-To measure Agent Deck's text-update path with a fixed 280 KB diff and a mock
-transport, run:
+To measure Agent Deck's text-update path (a fixed 280 KB diff and a mock
+transport) and JSON-line framing of a fragmented 256 KiB frame, run:
 
 ```sh
-swift run --package-path apps/KM16ControlCenter KM16IntegrationSelfTest --benchmark-deck
+KM16_BENCHMARK=1 swift test --filter Benchmark
 ```
 
-The benchmark checks the resulting transcript and changed-file list, then reports
-seven timings after one warmup. Compare runs built with the same configuration.
+The benchmarks check their results, then report seven timings after one warmup.
+Compare runs built with the same configuration.
 
 See the [firmware guide](firmware/custom/README.md) for C builds and the
 [app architecture](docs/development/COMPANION-ARCHITECTURE.md) for package boundaries.
 
-The app icon source is `apps/KM16ControlCenter/Assets/AppIcon.png`. After changing
+The app icon source is `packaging/AppIcon.png`. After changing
 it, run `bash script/build_app_icon.sh` to regenerate the bundled `.icns` file.
 
 The [browser demo](site/README.md) is a static HTML/CSS/JavaScript mockup. The source
@@ -74,14 +77,18 @@ Preserve profile IDs, schema migration, validation errors, and capture formats
 unless a change is deliberate and documented. Preview and replay must remain
 separate from actions that affect other apps or devices. Test observable behavior.
 
-Edit setup guides in `presets/setup/` and make the same change in
-`apps/KM16ControlCenter/Sources/KM16ControlCenter/Resources/PresetSetup/`.
-Preset definition changes also need matching individual JSON exports and
-`presets/all.json`. Check the assets with:
+Factory presets are defined in Swift in `presets/Catalog/`. The JSON files in
+`presets/` are generated exports for the browser demo and for importing; after a
+preset change, regenerate them and commit the result:
 
 ```sh
-python3 scripts/verify-preset-assets.py
+KM16_WRITE_PRESET_EXPORTS=1 swift test --filter KM16PresetsTests
 ```
+
+`swift test` fails when the exports are stale. Setup guides live only in
+`presets/setup/`, which is bundled with the app and copied as-is by Export Setup
+Files. Group changes in `ProfileGroup` also need the same change in `site/app.js`;
+a test compares them.
 
 ## Research contributions
 

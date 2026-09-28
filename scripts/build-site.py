@@ -8,7 +8,7 @@ import shutil
 
 
 ROOT = Path(__file__).resolve().parents[1]
-SITE_FILES = ("index.html", "styles.css", "app.js", "favicon.svg")
+SITE_FILES = ("index.html", "styles.css", "app.js", "favicon.svg", "archivo.woff2", "fragment-mono.woff2", "fonts-OFL.txt")
 OUTPUT_FILES = {*SITE_FILES, "presets.json", ".nojekyll"}
 
 
