@@ -59,9 +59,17 @@ for bundle in "$KM16_BIN"/KM16ControlCenter_*.bundle; do
   cp -R "$bundle" "$KM16_APP/Contents/Resources/"
 done
 
+# SwiftPM emits a flat resource bundle under Xcode 16 and a macOS-style Contents/Resources bundle
+# under newer Command Line Tools. Validate the resource root produced by the active toolchain.
+KM16_PRESETS_BUNDLE="$KM16_APP/Contents/Resources/KM16ControlCenter_KM16Presets.bundle"
+if [[ -d "$KM16_PRESETS_BUNDLE/Contents/Resources" ]]; then
+  KM16_PRESETS_RESOURCES="$KM16_PRESETS_BUNDLE/Contents/Resources"
+else
+  KM16_PRESETS_RESOURCES="$KM16_PRESETS_BUNDLE"
+fi
+
 # The preset setup guides must ship with the app: fail the build rather than package a bundle
 # that would silently fall back to "This preset uses the actions shown on the pad" everywhere.
-KM16_PRESETS_RESOURCES="$KM16_APP/Contents/Resources/KM16ControlCenter_KM16Presets.bundle/Contents/Resources"
 for required in setup/README.md setup/git-review.md setup/keybindings/git-review.code-keybindings.json; do
   if [[ ! -f "$KM16_PRESETS_RESOURCES/$required" ]]; then
     echo "Packaged KM16Presets bundle is missing $required" >&2
