@@ -2,8 +2,8 @@
 
 const $ = (id) => document.getElementById(id);
 
-// Each kind is printed in one of four inks. The ink names the consequence, not
-// the mechanism: what reaches the front app, the Mac, another app, or a process.
+// Each kind belongs to one consequence group: what reaches the front app, the
+// Mac, another app, or a process. Only the last group gets the accent colour.
 const kinds = {
   shortcut: {name: 'Shortcut', tag: 'Keys', ink: 'types', payload: 'Keyboard shortcut'},
   snippet: {name: 'Text snippet', tag: 'Text', ink: 'types', payload: 'Text to insert'},
@@ -67,7 +67,7 @@ function codeFor(assigned) {
     case 'shortcut': return shortcutDisplay(value);
     case 'launchApp': return value.split('.').pop() || value;
     case 'profileSwitch': return `→ ${value}`;
-    case 'disabled': return '—';
+    case 'disabled': return 'Off';
     case 'snippet': return `“${value}”`;
     case 'shell':
       try {
@@ -90,7 +90,7 @@ function renderProfiles() {
     list.setAttribute('aria-label', name);
     items.forEach((item) => {
       const button = element('button', 'index-item');
-      button.append(element('span', 'index-number', String(profiles.indexOf(item) + 1).padStart(2, '0')), element('span', 'index-name', item.name));
+      button.append(element('span', 'index-name', item.name));
       button.dataset.profile = item.id;
       button.setAttribute('aria-current', String(item.id === profile.id));
       button.addEventListener('click', () => {
@@ -176,12 +176,11 @@ function renderInspector() {
   $('payload').rows = assigned.kind === 'shell' || assigned.kind === 'snippet' ? 4 : 1;
   $('shortcut-preview').textContent = codeFor(assigned);
   $('target-section').hidden = !['shortcut', 'system', 'snippet', 'launchApp'].includes(assigned.kind);
-  $('target').textContent = assigned.targetBundleID || (assigned.kind === 'launchApp' ? assigned.parameter : 'The app you used last');
+  $('target').textContent = assigned.targetBundleID || (assigned.kind === 'launchApp' ? assigned.parameter : 'Frontmost app');
   $('edit-status').textContent = '';
 }
 function renderWorkspace() {
   const group = groups.find(([, ids]) => ids.includes(profile.presetID));
-  $('profile-number').textContent = `Preset ${String(profiles.indexOf(profile) + 1).padStart(2, '0')} of ${profiles.length}`;
   $('profile-group').textContent = group ? group[0] : '';
   $('profile-name').textContent = profile.name;
   $('preset-bar-name').textContent = profile.name;
@@ -194,12 +193,12 @@ function time(date) {
 }
 function renderLog() {
   if (!events.length) {
-    $('activity').replaceChildren(element('li', 'log-empty', 'No previews yet. Each preview is recorded here and nothing else happens.'));
+    $('activity').replaceChildren(element('li', 'log-empty', 'No previews yet.'));
     return;
   }
   $('activity').replaceChildren(...events.map((event, index) => {
     const line = element('li', `log-line ink-${event.ink}${index === 0 ? ' log-new' : ''}`);
-    const payload = element('code', 'log-code', `${event.kind} · ${event.payload || '—'}`);
+    const payload = element('code', 'log-code', `${event.kind} · ${event.payload || 'none'}`);
     payload.title = `${event.kind}: ${event.payload || 'No payload'}`;
     line.append(
       element('time', 'log-time', time(event.date)),
@@ -230,7 +229,7 @@ function preview() {
   events = events.slice(0, 6);
   renderLog();
   animate(selected);
-  $('edit-status').textContent = `Previewed ${assigned.label || 'this assignment'}. Nothing was run.`;
+  $('edit-status').textContent = `Logged a preview of ${assigned.label || 'this assignment'}.`;
 }
 function reset() {
   profiles = structuredClone(original.profiles);
@@ -328,14 +327,14 @@ $('preview').addEventListener('click', preview);
 $('action-name').addEventListener('input', () => {
   action().label = $('action-name').value;
   renderControls();
-  $('edit-status').textContent = 'Name changed in this tab.';
+  $('edit-status').textContent = 'Name updated.';
 });
 $('payload').addEventListener('input', () => {
   action().parameter = $('payload').value;
   $('shortcut-preview').textContent = codeFor(action());
   if (action().kind === 'launchApp') $('target').textContent = action().parameter;
   renderControls();
-  $('edit-status').textContent = 'Payload changed in this tab. It will not run.';
+  $('edit-status').textContent = 'Payload updated.';
 });
 document.addEventListener('keydown', (event) => {
   if (trapSheetFocus(event)) return;

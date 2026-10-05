@@ -4,24 +4,24 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; font-src 'self'; connect-src 'self'; img-src 'self'; base-uri 'none'; object-src 'none'; form-action 'none'">
-    <meta name="description" content="Every factory preset for the MMD KM16 Pro macro pad, laid out as a legend card. Select a key or knob to read exactly what it sends. A browser simulation of KM16 Control Center for macOS.">
+    <meta name="description" content="Try every factory preset for the MMD KM16 Pro macro pad in your browser. Select a key or knob to see what it does and what it sends. A simulation of KM16 Control Center for macOS.">
     <meta name="color-scheme" content="light dark">
-    <meta name="theme-color" content="#f3f1ea" media="(prefers-color-scheme: light)">
-    <meta name="theme-color" content="#161512" media="(prefers-color-scheme: dark)">
-    <title>KM16 Control Center · Legend card demo</title>
+    <meta name="theme-color" content="#f4f5f6" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#111214" media="(prefers-color-scheme: dark)">
+    <title>KM16 Control Center browser demo</title>
     <link rel="icon" href="./favicon.svg" type="image/svg+xml">
     <link rel="preload" href="./archivo.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="./styles.css">
     <script src="./app.js" defer></script>
   </head>
   <body>
-    <a class="skip-link" href="#card">Skip to the pad</a>
+    <a class="skip-link" href="#card">Skip to the keys</a>
     <header class="masthead">
       <a class="wordmark" href="./" aria-label="KM16 Control Center, browser demo">
         <span class="wordmark-model">KM16</span>
         <span class="wordmark-name">Control Center</span>
       </a>
-      <p class="masthead-note"><span class="sim-mark" aria-hidden="true"></span>Browser demo. Nothing here reaches your Mac.</p>
+      <p class="masthead-note">Browser demo. Actions are simulated.</p>
       <nav class="masthead-links" aria-label="Project">
         <a href="https://github.com/sebastianspicker/km16-control-center#get-started">Get the Mac app</a>
         <a href="https://github.com/sebastianspicker/km16-control-center">Source</a>
@@ -29,8 +29,8 @@
     </header>
 
     <div class="lede">
-      <h1>A legend card for every KM16&nbsp;Pro preset.</h1>
-      <p>Sixteen keys and three knobs, each printed with what it does and the exact code it sends. Pick a preset, select a control, and preview it. Edits stay in this tab.</p>
+      <h1>Try the KM16&nbsp;Pro presets in your browser.</h1>
+      <p>Pick a preset, select a key or knob, and see what it sends. Previews only write to the log.</p>
     </div>
 
     <div id="load-state" class="load-state" role="status">
@@ -59,7 +59,7 @@
 
       <main id="card" class="card" tabindex="-1">
         <header class="card-head">
-          <p class="card-meta"><span id="profile-number"></span><span id="profile-group"></span></p>
+          <p class="card-meta"><span id="profile-group"></span></p>
           <p class="card-model" aria-hidden="true">KM16 Pro</p>
           <h2 id="profile-name" class="card-title"></h2>
           <p id="profile-summary" class="card-summary"></p>
@@ -69,12 +69,9 @@
           <div id="dials" class="knobs" role="group" aria-label="Three knobs"></div>
         </div>
         <footer class="card-foot">
-          <p class="section-label">Ink</p>
-          <ul class="ink-key" aria-label="What each legend colour means">
-            <li class="ink-types">Types into the front app</li>
-            <li class="ink-adjusts">Adjusts the Mac</li>
-            <li class="ink-opens">Opens or switches</li>
-            <li class="ink-runs">Runs outside the app</li>
+          <p class="section-label">Legend</p>
+          <ul class="ink-key" aria-label="What the accent colour means">
+            <li class="ink-runs">Runs a shell command, OBS, or Codex action</li>
           </ul>
         </footer>
       </main>
@@ -92,9 +89,9 @@
           <p id="shortcut-preview" class="entry-code" aria-hidden="true"></p>
           <label id="payload-label" class="field-label" for="payload">Payload</label>
           <textarea id="payload" class="payload" rows="2" spellcheck="false" maxlength="12000" aria-describedby="payload-help"></textarea>
-          <p id="payload-help" class="field-help">Edits apply to this tab only. Reload or restore to undo them.</p>
+          <p id="payload-help" class="field-help">Changes last until you reload or restore the presets.</p>
           <div id="target-section" class="entry-target">
-            <p class="field-label">Target in the Mac app</p>
+            <p class="field-label">Target app</p>
             <p id="target" class="entry-target-value"></p>
           </div>
         </div>
@@ -103,7 +100,7 @@
           <button id="preview" class="preview-button" aria-describedby="preview-note">
             <span>Preview</span><kbd id="preview-shortcut">⌘↩</kbd>
           </button>
-          <p id="preview-note" class="field-help">Writes a line to the log below. Nothing is typed, launched, or run.</p>
+          <p id="preview-note" class="field-help">Adds an entry to the log. The action itself does not run.</p>
           <p id="edit-status" class="edit-status" role="status"></p>
         </div>
       </aside>
@@ -114,25 +111,26 @@
           <button id="reset" class="text-button" disabled>Restore factory presets</button>
         </div>
         <ol id="activity" class="log-lines" aria-live="polite">
-          <li class="log-empty">No previews yet. Each preview is recorded here and nothing else happens.</li>
+          <li class="log-empty">No previews yet.</li>
         </ol>
       </section>
     </div>
 
     <footer class="colophon">
       <div class="colophon-col">
-        <h2 class="section-label">Simulated here</h2>
-        <p>The 16 factory presets and 400 assignments from the Mac app. Names and payloads are editable in memory. Nothing is sent to a keyboard, shell, OBS, Codex, or a KM16 pad.</p>
+        <h2 class="section-label">In this demo</h2>
+        <p>The 16 factory presets and 400 assignments from the Mac app. You can rename actions and edit payloads. Nothing leaves the browser tab.</p>
       </div>
       <div class="colophon-col">
-        <h2 class="section-label">Real in the Mac app</h2>
-        <p>Live desktop actions, once you enable them. Profiles saved on your Mac, import and export, OBS over WebSocket v5, and the Codex Agent Deck. Built from source for macOS 14 or later.</p>
+        <h2 class="section-label">In the Mac app</h2>
+        <p>Actions run for real once you turn on live actions. Profiles are saved on your Mac and can be imported and exported. OBS connects over WebSocket v5, Codex through the Agent Deck. Build it from source on macOS 14 or later.</p>
       </div>
       <div class="colophon-col">
-        <h2 class="section-label">Read further</h2>
+        <h2 class="section-label">Links</h2>
         <ul class="colophon-links">
+          <li><a href="https://github.com/sebastianspicker/km16-control-center">Source code on GitHub</a></li>
           <li><a href="https://github.com/sebastianspicker/km16-control-center/blob/main/presets/README.md">Preset catalogue and setup guides</a></li>
-          <li><a href="https://github.com/sebastianspicker/km16-control-center/blob/main/docs/analysis/KNOB-MAPPING.md">Hardware research: key and knob mapping</a></li>
+          <li><a href="https://github.com/sebastianspicker/km16-control-center/blob/main/docs/analysis/KNOB-MAPPING.md">Key and knob mapping research</a></li>
           <li><a href="https://github.com/sebastianspicker/km16-control-center/blob/main/LICENSE">MIT licence</a>. Unofficial; not affiliated with the pad's maker.</li>
         </ul>
       </div>
