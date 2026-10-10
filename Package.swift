@@ -16,7 +16,7 @@ let package = Package(
             dependencies: ["KM16ControlCore"],
             path: "presets",
             // The per-preset and combined JSON files are generated exports of the Catalog sources
-            // below, not build inputs.
+            // below (regenerate with `swift run KM16PresetExport`), not build inputs.
             exclude: [
                 "README.md", "all.json",
                 "3d-modelling.json", "agent-deck.json", "creative.json", "desktop.json",
@@ -28,6 +28,7 @@ let package = Package(
             sources: ["Catalog"],
             resources: [.copy("setup")]
         ),
-        .executableTarget(name: "KM16ControlCenter", dependencies: ["KM16ControlCore", "KM16Integrations", "KM16Presets"])
+        .executableTarget(name: "KM16ControlCenter", dependencies: ["KM16ControlCore", "KM16Integrations", "KM16Presets"]),
+        .executableTarget(name: "KM16PresetExport", dependencies: ["KM16ControlCore", "KM16Presets"])
     ]
 )

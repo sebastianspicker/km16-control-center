@@ -64,6 +64,11 @@ public struct ProfilePersistence: Sendable {
         try data.write(to: url, options: [.atomic])
     }
 
+    /// Validates a document and returns the exact bytes that `exportDocument` writes.
+    public static func exportData(_ document: ProfileDocument) throws -> Data {
+        try encodedDocument(document)
+    }
+
     public func exportDocument(_ document: ProfileDocument, to exportURL: URL) throws {
         let data = try Self.encodedDocument(document)
         let directory = exportURL.deletingLastPathComponent()

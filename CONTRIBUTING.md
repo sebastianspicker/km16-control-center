@@ -44,11 +44,13 @@ Preserve profile IDs, schema migration, validation errors, and capture formats
 unless a change is deliberate and documented. Preview and replay must remain
 separate from actions that affect other apps or devices. Test observable behavior.
 
-Factory presets are defined in Swift in `presets/Catalog/`. The JSON files in
-`presets/` are generated exports for the browser demo and for importing; keep them
-in sync with catalog changes. Setup guides live only in `presets/setup/`, which is
-bundled with the app and copied as-is by Export Setup Files. Keep group changes in
-`ProfileGroup` synchronized with `site/app.js`.
+Factory presets are defined in Swift in `presets/Catalog/`, and their groups in
+`ProfileGroup`. The JSON files in `presets/` (exports for the browser demo and for
+importing) and the `groups` list in `site/app.js` are generated from them. After
+changing either, run `swift run KM16PresetExport` from the project root and commit
+the result; CI runs `swift run KM16PresetExport --check` and fails on stale files.
+Setup guides live only in `presets/setup/`, which is bundled with the app and copied
+as-is by Export Setup Files.
 
 ## Research contributions
 

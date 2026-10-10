@@ -30,6 +30,8 @@ jobs:
           fi
       - name: Build the Swift package
         run: swift build
+      - name: Check generated preset exports
+        run: swift run KM16PresetExport --check
       - name: Build the portable C core
         run: |
           cmake -S firmware/custom -B build/custom
