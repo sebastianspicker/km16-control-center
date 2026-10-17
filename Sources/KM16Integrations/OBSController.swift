@@ -22,18 +22,47 @@ public final class OBSController {
 
     @ObservationIgnored private let transportFactory: (URL) -> any OBSWebSocketTransport
     @ObservationIgnored private let defaults: UserDefaults?
+    @ObservationIgnored private let requestID: () -> String
 
     private static let hostURLKey = "KM16.obs.hostURL"
     private static let microphoneSourceKey = "KM16.obs.microphoneSource"
     private static let playbackSourceKey = "KM16.obs.playbackSource"
 
-    public init() {
-        let defaults = UserDefaults.standard
-        hostURL = defaults.string(forKey: Self.hostURLKey) ?? "ws://localhost:4455"
-        microphoneSource = defaults.string(forKey: Self.microphoneSourceKey) ?? ""
-        playbackSource = defaults.string(forKey: Self.playbackSourceKey) ?? ""
+    public convenience init() {
+        self.init(transportFactory: { URLSessionOBSTransport(url: $0) }, defaults: .standard)
+    }
+
+    init(transportFactory: @escaping (URL) -> any OBSWebSocketTransport, defaults: UserDefaults?, requestID: @escaping () -> String = { UUID().uuidString }) {
+        hostURL = defaults?.string(forKey: Self.hostURLKey) ?? "ws://localhost:4455"
+        microphoneSource = defaults?.string(forKey: Self.microphoneSourceKey) ?? ""
+        playbackSource = defaults?.string(forKey: Self.playbackSourceKey) ?? ""
         self.defaults = defaults
-        transportFactory = { URLSessionOBSTransport(url: $0) }
+        self.transportFactory = transportFactory
+        self.requestID = requestID
+    }
+
+    /// Opens one session, identifies, and asks OBS for its version, so a wrong host, port or
+    /// password shows up in `status` before a pad action runs.
+    @discardableResult
+    public func testConnection() async -> Bool {
+        guard !isRunning else { status = "An OBS action is already running."; return false }
+        isRunning = true
+        status = "Testing the OBS connection…"
+        defer { isRunning = false }
+        do {
+            let transport = transportFactory(try Self.validatedURL(hostURL))
+            transport.start()
+            defer { transport.close() }
+            let session = OBSProtocolSession(transport: transport, requestID: requestID)
+            try await session.identify(password: password)
+            let version = try await session.request("GetVersion")
+            status = "Connected to OBS \(version["obsVersion"].string ?? "?") (WebSocket \(version["obsWebSocketVersion"].string ?? "?"))."
+            return true
+        } catch {
+            status = "Failed: \(error.localizedDescription)"
+            IntegrationLog.obs.error("OBS connection test failed: [\(IntegrationLog.category(of: error), privacy: .public)] \(error.localizedDescription, privacy: .private)")
+            return false
+        }
     }
 
     public func perform(_ operation: OBSOperation) async throws -> String {
@@ -51,7 +80,7 @@ public final class OBSController {
         defer { transport.close() }
 
         do {
-            let session = OBSProtocolSession(transport: transport)
+            let session = OBSProtocolSession(transport: transport, requestID: requestID)
             try await session.identify(password: password)
             let message = try await OBSActionExecutor(
                 session: session,
@@ -62,6 +91,7 @@ public final class OBSController {
             return message
         } catch {
             status = "Failed: \(error.localizedDescription)"
+            IntegrationLog.obs.error("OBS \(operation.rawValue, privacy: .public) failed: [\(IntegrationLog.category(of: error), privacy: .public)] \(error.localizedDescription, privacy: .private)")
             throw error
         }
     }

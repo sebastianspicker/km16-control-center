@@ -4,8 +4,12 @@ import KM16ControlCore
 
 @MainActor @Observable
 public final class CodexDeckClient {
-    public var executablePath = "/opt/homebrew/bin/codex"
-    public var workspacePath = ""
+    public var executablePath: String {
+        didSet { defaults?.set(executablePath, forKey: Self.executablePathKey) }
+    }
+    public var workspacePath: String {
+        didSet { defaults?.set(workspacePath, forKey: Self.workspacePathKey) }
+    }
     public var selectedModel = ""
     public var selectedEffort = ""
     public internal(set) var state = "Disconnected"
@@ -32,14 +36,23 @@ public final class CodexDeckClient {
     @ObservationIgnored var approvalEvidence: [DeckApprovalKey: DeckApprovalEvidence] = [:]
     @ObservationIgnored var approvalEvidenceOrder: [DeckApprovalKey] = []
     @ObservationIgnored var presentedApprovalEvidence: [String: String] = [:]
+    @ObservationIgnored private let defaults: UserDefaults?
 
-    public init(transport: (any DeckTransport)? = nil) {
+    private static let executablePathKey = "KM16.codex.executablePath"
+    private static let workspacePathKey = "KM16.codex.workspacePath"
+
+    /// `defaults` remembers the Codex command and workspace across launches; nil keeps them in memory.
+    public init(transport: (any DeckTransport)? = nil, defaults: UserDefaults? = nil) {
+        self.defaults = defaults
+        executablePath = defaults?.string(forKey: Self.executablePathKey) ?? "/opt/homebrew/bin/codex"
+        workspacePath = defaults?.string(forKey: Self.workspacePathKey) ?? ""
         self.transport = transport ?? CodexRPCTransport()
         self.transport.onMessage = { [weak self] message in self?.receive(message) }
         self.transport.onClose = { [weak self] reason in
             guard let self else { return }
             self.epoch = UUID(); self.isConnected = false; self.state = "Disconnected"
             self.activeTurnID = nil; self.requests.removeAll(); self.clearApprovalState(); self.lastError = reason
+            IntegrationLog.codex.notice("Codex connection closed: \(reason, privacy: .public)")
         }
     }
     public func connect() async throws {
@@ -67,6 +80,7 @@ public final class CodexDeckClient {
             try await refreshThreads()
         } catch {
             if epoch == token { disconnect(); lastError = error.localizedDescription }
+            IntegrationLog.codex.error("Codex connect failed: [\(IntegrationLog.category(of: error), privacy: .public)] \(error.localizedDescription, privacy: .private)")
             throw error
         }
     }

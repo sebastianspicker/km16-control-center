@@ -13,16 +13,19 @@ with the same factory presets. All actions are simulated. See the
 
 ## Get started
 
-Requires macOS 14 or newer, a Swift 6 toolchain, and Python 3.10 or newer. From the
-repository root:
+Requires macOS 14 or newer with full Xcode 16 or newer installed (it provides Swift 6
+and the macOS SDK; builds with only the Command Line Tools are not supported), and
+Python 3.10 or newer. If `xcode-select -p` does not print a path inside `Xcode.app`,
+run `sudo xcode-select -s /Applications/Xcode.app`. From the repository root:
 
 ```sh
 bash script/build_and_run.sh
 ```
 
-The script builds and opens `build/apps/KM16ControlCenter.app`. Add `--build-only`
-to build without launching. Close the app before rebuilding. This is an unsigned,
-unnotarized development build.
+The script builds an optimized app at `build/apps/KM16ControlCenter.app` and opens it.
+Add `--build-only` to build without launching. Close the app before rebuilding. This
+is an ad-hoc signed, unnotarized development build; after a rebuild macOS may ask
+for Accessibility permission again (see the [app guide](docs/app-guide.md#build-and-run)).
 
 Choose a profile, select a key or knob, then use **Preview action** or
 **Command-Return** to simulate its assignment. To execute an action, enable live
@@ -82,7 +85,7 @@ Codex CLI and a workspace you choose. Neither service is needed to edit profiles
 | [Architecture](docs/development/COMPANION-ARCHITECTURE.md) | Swift package boundaries and integration behavior |
 | [Releasing](docs/RELEASING.md) | Source releases and Mac app distribution requirements |
 
-The unsigned app bundle can be validated without a pad, OBS, Codex, or private
+The ad-hoc signed app bundle can be validated without a pad, OBS, Codex, or private
 research files:
 
 ```sh

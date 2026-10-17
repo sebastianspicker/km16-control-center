@@ -12,8 +12,15 @@ case "$KM16_MODE" in
   *) echo "usage: $0 [run|--build-only|--debug|--logs|--telemetry|--verify]" >&2; exit 2 ;;
 esac
 
-swift build --package-path "$KM16_ROOT"
-KM16_BIN="$(swift build --package-path "$KM16_ROOT" --show-bin-path)"
+# Testers get an optimized build. --debug (lldb) and KM16_CONFIGURATION=debug use the debug configuration.
+KM16_CONFIGURATION="${KM16_CONFIGURATION:-release}"
+[[ "$KM16_MODE" != "--debug" ]] || KM16_CONFIGURATION=debug
+case "$KM16_CONFIGURATION" in
+  debug|release) ;;
+  *) echo "KM16_CONFIGURATION must be debug or release" >&2; exit 2 ;;
+esac
+swift build --package-path "$KM16_ROOT" -c "$KM16_CONFIGURATION"
+KM16_BIN="$(swift build --package-path "$KM16_ROOT" -c "$KM16_CONFIGURATION" --show-bin-path)"
 KM16_BUILT="$KM16_BIN/KM16ControlCenter"
 
 # Rebuilds preserve user edits. Only an explicitly isolated verification instance may be restarted.
@@ -95,6 +102,15 @@ cat > "$KM16_APP/Contents/Info.plist" <<'PLIST'
 </dict></plist>
 PLIST
 plutil -lint "$KM16_APP/Contents/Info.plist"
+
+# Sign the assembled bundle so its resources are sealed and Info.plist is bound to the code.
+# The default is an ad-hoc signature: macOS ties Accessibility permission to that exact build,
+# so it may need granting again after a rebuild. Set KM16_SIGN_IDENTITY to a code-signing
+# identity from your keychain (for example "Apple Development: …") to keep it across rebuilds.
+KM16_SIGN_IDENTITY="${KM16_SIGN_IDENTITY:--}"
+codesign --force --sign "$KM16_SIGN_IDENTITY" --identifier "$KM16_BUNDLE_ID" --timestamp=none "$KM16_APP"
+codesign --verify --strict "$KM16_APP"
+echo "Signed $KM16_APP ($([[ "$KM16_SIGN_IDENTITY" == "-" ]] && echo ad-hoc || echo "$KM16_SIGN_IDENTITY"))."
 
 km16_open_app() {
   if [[ -n "${KM16_PROFILES_PATH:-}" ]]; then

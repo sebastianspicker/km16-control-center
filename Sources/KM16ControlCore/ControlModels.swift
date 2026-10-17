@@ -119,6 +119,23 @@ public struct ControlAction: Codable, Equatable, Sendable {
         targetBundleID = try container.decodeIfPresent(String.self, forKey: .targetBundleID)
         detail = try container.decodeIfPresent(String.self, forKey: .detail) ?? ""
     }
+
+    /// Returns this action as `kind`, starting from that kind's own parameter instead of carrying
+    /// the previous kind's parameter over (a shortcut string is never a valid bundle identifier).
+    /// The destination app is kept only for kinds that send input to an app.
+    public func changingKind(to kind: ActionKind) -> ControlAction {
+        guard kind != self.kind else { return self }
+        let parameter = switch kind {
+        case .shortcut, .launchApp, .snippet, .disabled: ""
+        case .shell: ProcessSpec(executable: "", args: [], timeoutSeconds: 30).encoded()
+        case .agentAction: "new-task"
+        case .obsAction: OBSOperation.allCases[0].rawValue
+        case .profileSwitch: "cycle-profile"
+        case .system: "volumeDown"
+        }
+        let keepsDestination = [ActionKind.shortcut, .snippet, .system].contains(kind)
+        return ControlAction(kind: kind, label: label, parameter: parameter, targetBundleID: keepsDestination ? targetBundleID : nil, detail: detail)
+    }
 }
 
 public struct Binding: Codable, Equatable, Sendable, Identifiable {
@@ -285,5 +302,15 @@ public enum ProfileValidator {
         guard seenProfiles.contains(document.activeProfileID) else {
             throw ProfileValidationError.missingActiveProfile(document.activeProfileID)
         }
+    }
+
+    /// The first binding, in document order, that `validate` rejects as an invalid action.
+    public static func firstInvalidAction(in document: ProfileDocument) -> (profileID: UUID, controlID: ControlID)? {
+        for profile in document.profiles {
+            if let binding = profile.bindings.first(where: { !ActionValidator.issues(for: $0.action).isEmpty }) {
+                return (profile.id, binding.controlID)
+            }
+        }
+        return nil
     }
 }

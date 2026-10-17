@@ -9,15 +9,16 @@ Node.js, and CMake 3.16 or newer. Xcode supplies the Apple SDK, `xcrun clang`, a
 Swift. The Python tools use only the standard library. GitHub Actions runs the
 macOS build on a `macos-15` runner.
 
-From the project root, validate the documented unsigned app-bundle build without
+From the project root, validate the documented ad-hoc signed app-bundle build without
 launching it:
 
 ```sh
 bash script/build_and_run.sh --build-only
 ```
 
-This creates `build/apps/KM16ControlCenter.app`, checks its `Info.plist`, and fails
-if the packaged preset bundle lacks the setup guides. It does not sign, notarize,
+This creates `build/apps/KM16ControlCenter.app`, checks its `Info.plist`, fails
+if the packaged preset bundle lacks the setup guides, and signs the bundle ad-hoc
+(set `KM16_SIGN_IDENTITY` to use a keychain identity). It does not notarize,
 package, launch, or exercise live integrations. The portable C core and browser
 demo have their own build instructions in their linked guides below.
 

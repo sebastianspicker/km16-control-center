@@ -37,6 +37,13 @@ public struct ProfilePersistence: Sendable {
         return try Self.decodeAndMigrate(data)
     }
 
+    /// The bytes currently stored at `url`, or nil when no file exists. Callers compare this with
+    /// what they loaded or saved to detect changes made by another instance or editor.
+    public func currentFileData() throws -> Data? {
+        guard try Self.regularFileExists(at: url, fileManager: .default) else { return nil }
+        return try Self.readBoundedData(from: url)
+    }
+
     /// Validates and atomically writes a document. A valid previous revision rotates to
     /// `backupURL`. An invalid previous file is copied to a unique durable recovery URL.
     public func save(_ document: ProfileDocument) throws {

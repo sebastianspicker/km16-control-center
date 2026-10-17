@@ -6,7 +6,7 @@ import KM16Integrations
 struct KM16ControlCenterApp: App {
     @State private var store = ControlCenterStore(persistence: ProfilePersistence(url: AppConfiguration.profilesURL()))
     @State private var runner = DesktopActionRunner()
-    @State private var codex = CodexDeckClient()
+    @State private var codex = CodexDeckClient(defaults: .standard)
     @State private var obs = OBSController()
     @NSApplicationDelegateAdaptor(KM16ApplicationDelegate.self) private var applicationDelegate
 

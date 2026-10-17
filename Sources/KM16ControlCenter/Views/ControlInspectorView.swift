@@ -76,9 +76,9 @@ struct ControlInspectorView: View {
             Text(StudioStyle.shortcutLabel(store.selectedBinding.action.parameter)).font(.system(size: 25, weight: .light, design: .rounded))
                 .frame(maxWidth: .infinity, minHeight: 64).studioSurface(cornerRadius: 12)
             inspectorField("Keyboard shortcut") {
-                ShortcutCaptureField(value: parameterBinding).frame(maxWidth: .infinity).frame(height: 26).accessibilityLabel("Keyboard shortcut capture")
+                ShortcutCaptureField(value: parameterBinding, scope: "\(store.document.activeProfileID.uuidString)/\(store.selectedControlID.rawValue)").frame(maxWidth: .infinity).frame(height: 26).accessibilityLabel("Keyboard shortcut capture")
             }
-            Text("Click to record a shortcut.").font(.system(size: 10)).foregroundStyle(.secondary)
+            Text("Click, then press a shortcut. For a key without modifiers, type its name (for example j, space or f12) and press Return.").font(.system(size: 10)).foregroundStyle(.secondary).fixedSize(horizontal: false, vertical: true)
         case .launchApp:
             inspectorField("Bundle identifier") { TextField("Bundle identifier", text: parameterBinding) }
             Button("Choose Application…") { chooseApplication { action, identifier in action.parameter = identifier; action.targetBundleID = nil } }
@@ -198,7 +198,7 @@ struct ControlInspectorView: View {
     private var parameterBinding: SwiftUI.Binding<String> { binding(\.parameter) }
     private var detailBinding: SwiftUI.Binding<String> { binding(\.detail) }
     private var targetBundleBinding: SwiftUI.Binding<String> { SwiftUI.Binding(get: { store.selectedBinding.action.targetBundleID ?? "" }, set: { updateTarget($0.isEmpty ? nil : $0) }) }
-    private var kindBinding: SwiftUI.Binding<ActionKind> { SwiftUI.Binding(get: { store.selectedBinding.action.kind }, set: { value in var action = store.selectedBinding.action; action.kind = value; store.updateSelected(action: action) }) }
+    private var kindBinding: SwiftUI.Binding<ActionKind> { SwiftUI.Binding(get: { store.selectedBinding.action.kind }, set: { value in store.updateSelected(action: store.selectedBinding.action.changingKind(to: value)) }) }
     private var agentChoiceBinding: SwiftUI.Binding<String> { SwiftUI.Binding(get: { store.selectedBinding.action.parameter.hasPrefix("prompt:") ? customPrompt : store.selectedBinding.action.parameter }, set: { value in var action = store.selectedBinding.action; action.parameter = value == customPrompt ? "prompt:" : value; store.updateSelected(action: action) }) }
     private var customPromptBinding: SwiftUI.Binding<String> { SwiftUI.Binding(get: { String(store.selectedBinding.action.parameter.dropFirst("prompt:".count)) }, set: { value in var action = store.selectedBinding.action; action.parameter = "prompt:\(value)"; store.updateSelected(action: action) }) }
     private var profileSwitchBinding: SwiftUI.Binding<String> { SwiftUI.Binding(get: { profileSwitchSelection }, set: { value in var action = store.selectedBinding.action; action.parameter = value; store.updateSelected(action: action) }) }

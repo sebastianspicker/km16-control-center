@@ -13,8 +13,20 @@ public protocol DeckTransport: AnyObject {
     func stop()
 }
 
+/// Bytes read from Codex's stdout that the main-actor reader has not decoded yet.
+private final class UnreadByteCount: @unchecked Sendable {
+    private let lock = NSLock()
+    private var bytes = 0
+    func add(_ count: Int) -> Int { lock.lock(); defer { lock.unlock() }; bytes += count; return bytes }
+    func remove(_ count: Int) { lock.lock(); bytes -= count; lock.unlock() }
+}
+
 @MainActor
 public final class CodexRPCTransport: DeckTransport {
+    /// Unread output allowed to queue while the main actor is busy: eight maximum-size frames.
+    /// Limiting chunks instead of bytes dropped the connection during bursts of small deltas.
+    static let maximumUnreadBytes = 16 * 1_024 * 1_024
+    static let maximumUnreadChunks = 65_536
     public var onMessage: ((JSONValue) -> Void)?
     public var onClose: ((String) -> Void)?
     private var process: Process?
@@ -47,14 +59,18 @@ public final class CodexRPCTransport: DeckTransport {
         task.standardInput = stdin; task.standardOutput = stdout; task.standardError = stderr
         let token = UUID(); generation = token; decoder = JSONLineDecoder()
         input = stdin.fileHandleForWriting; output = stdout.fileHandleForReading; errorOutput = stderr.fileHandleForReading
-        let (stream, continuation) = AsyncStream<Data>.makeStream(bufferingPolicy: .bufferingOldest(64))
+        // The chunk cap only bounds per-chunk overhead; the byte cap is the limit that matters.
+        let (stream, continuation) = AsyncStream<Data>.makeStream(bufferingPolicy: .bufferingOldest(Self.maximumUnreadChunks))
+        let unread = UnreadByteCount(), unreadLimit = Self.maximumUnreadBytes
         stdout.fileHandleForReading.readabilityHandler = { handle in
             let data = handle.availableData
             if data.isEmpty { continuation.finish(); return }
+            guard unread.add(data.count) <= unreadLimit else { continuation.finish(); return }
             if case .dropped = continuation.yield(data) { continuation.finish() }
         }
         readerTask = Task { [weak self] in
             for await data in stream {
+                unread.remove(data.count)
                 guard let self, self.generation == token else { return }
                 do { for message in try self.decoder.append(data) { self.receive(message) } }
                 catch { self.fail(error.localizedDescription); return }

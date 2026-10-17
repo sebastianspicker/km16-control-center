@@ -13,6 +13,9 @@ struct ContentView: View {
     @State private var showingImportPolicy = false
     @SceneStorage("KM16.inspectorVisible") private var inspectorVisible = true
     @State private var showingStatus = false
+    /// The save or export problem on screen. It is shown one run-loop turn after the store reports
+    /// it, so it never collides with the unsaved-changes alert that is closing at that moment.
+    @State private var presentedProblem: LibraryProblem?
 
     var body: some View {
         VStack(spacing: 0) {
@@ -22,7 +25,7 @@ struct ContentView: View {
         .background(WindowCloseGuard(store: store).frame(width: 0, height: 0))
         .sheet(isPresented: $showingImportPolicy) { importPolicySheet }
         .alert("Unsaved Profile Changes", isPresented: Bindable(store).closeConfirmationRequested) {
-            Button("Save") { store.save(); finishQuitIfNeeded() }
+            Button("Save") { if store.saveForClose() { finishQuitIfNeeded() } }
             Button("Discard", role: .destructive) { store.discardUnsavedChanges(); finishQuitIfNeeded() }
             Button("Keep Editing", role: .cancel) { store.cancelCloseRequest() }
         } message: { Text("Profiles have unsaved changes. Save or discard them before closing this window.") }
@@ -110,6 +113,20 @@ struct ContentView: View {
         .padding(.horizontal, 18).frame(height: 34)
         .background(.bar)
         .overlay(alignment: .top) { Divider() }
+        // On the status bar, which is always in the window, unlike the collapsible sidebar.
+        .onChange(of: store.libraryProblem?.id) { _, _ in DispatchQueue.main.async { presentedProblem = store.libraryProblem } }
+        .alert(presentedProblem?.title ?? "", isPresented: SwiftUI.Binding(get: { presentedProblem != nil }, set: { shown in
+            guard !shown, let problem = presentedProblem else { return }
+            presentedProblem = nil
+            store.dismissLibraryProblem(problem.id)
+        }), presenting: presentedProblem) { problem in
+            if problem.offersOverwrite {
+                Button("Overwrite", role: .destructive) { store.save(overwritingExternalChanges: true) }
+                Button("Cancel", role: .cancel) {}
+            } else {
+                Button("OK", role: .cancel) {}
+            }
+        } message: { problem in Text(problem.message) }
     }
 
     private var importPolicySheet: some View {
@@ -147,10 +164,14 @@ struct ContentView: View {
                 result = try await runner.perform(action, fallbackTargetBundleID: action.targetBundleID ?? store.lastExternalBundleID)
             }
             store.recordLiveResult(result, for: controlID)
+            Diagnostics.logLiveAction(action, controlID: controlID, result: .success(result))
             if action.kind == .agentAction, ["new-task", "open-task", "previous-task", "next-task", "open-diff"].contains(action.parameter) {
                 openWindow(id: "integrations")
             }
-        } catch { store.recordLiveResult("Run failed: \(error.localizedDescription)", for: controlID) }
+        } catch {
+            store.recordLiveResult("Run failed: \(error.localizedDescription)", for: controlID)
+            Diagnostics.logLiveAction(action, controlID: controlID, result: .failure(error))
+        }
     }
 
     @MainActor private func replaySavedCapture(_ url: URL) async {

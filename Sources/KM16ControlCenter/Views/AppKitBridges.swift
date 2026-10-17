@@ -3,20 +3,41 @@ import SwiftUI
 
 struct ShortcutCaptureField: NSViewRepresentable {
     @Binding var value: String
+    /// Identifies the control being edited; typing in progress is dropped when it changes.
+    var scope: String
     var placeholder: String = "Click and press a shortcut"
     func makeNSView(context: Context) -> ShortcutCaptureTextField {
         let field = ShortcutCaptureTextField()
         field.placeholderString = placeholder
         field.stringValue = value
+        field.displayedValue = value
+        field.scope = scope
         field.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         field.onCapture = { value = $0 }
         return field
     }
-    func updateNSView(_ nsView: ShortcutCaptureTextField, context: Context) { if nsView.stringValue != value { nsView.stringValue = value } }
+    func updateNSView(_ nsView: ShortcutCaptureTextField, context: Context) {
+        nsView.onCapture = { value = $0 }
+        if nsView.scope != scope {
+            nsView.scope = scope
+            nsView.discardTyping(showing: value)
+        } else if nsView.displayedValue != value {
+            // Only an outside change replaces the text; an unchanged binding keeps any typing.
+            nsView.displayedValue = value
+            nsView.stringValue = value
+        }
+    }
 }
 
+/// Records modifier shortcuts as they are pressed. Keys without modifiers (j, space, f12,
+/// pageup) are typed by name and committed when editing ends.
 final class ShortcutCaptureTextField: NSTextField {
     var onCapture: ((String) -> Void)?
+    var scope = ""
+    /// The binding value the field last showed or committed.
+    var displayedValue = ""
+    /// The scope an edit started in; typing is committed only to the control it was typed for.
+    private var editingScope: String?
     private var monitor: Any?
 
     override var intrinsicContentSize: NSSize {
@@ -38,14 +59,41 @@ final class ShortcutCaptureTextField: NSTextField {
         return super.resignFirstResponder()
     }
 
-    override func performKeyEquivalent(with event: NSEvent) -> Bool { capture(event) }
+    /// AppKit offers key equivalents to every view in the window, so only claim them while this
+    /// field is being edited; otherwise Command-S, Command-Z and the like reach their menu commands.
+    override func performKeyEquivalent(with event: NSEvent) -> Bool { currentEditor() != nil && capture(event) }
 
-    private func capture(_ event: NSEvent) -> Bool {
+    override func textDidBeginEditing(_ notification: Notification) {
+        super.textDidBeginEditing(notification)
+        editingScope = scope
+    }
+
+    override func textDidEndEditing(_ notification: Notification) {
+        super.textDidEndEditing(notification)
+        defer { editingScope = nil }
+        guard editingScope == scope else { stringValue = displayedValue; return }
+        let typed = stringValue.trimmingCharacters(in: .whitespacesAndNewlines)
+        stringValue = typed
+        guard typed != displayedValue else { return }
+        displayedValue = typed
+        onCapture?(typed)
+    }
+
+    /// Drops uncommitted typing, for example when the inspector switches to another control.
+    func discardTyping(showing value: String) {
+        editingScope = nil
+        abortEditing()
+        displayedValue = value
+        stringValue = value
+    }
+
+    func capture(_ event: NSEvent) -> Bool {
         let modifiers: [(NSEvent.ModifierFlags, String)] = [(.command, "cmd"), (.shift, "shift"), (.option, "alt"), (.control, "ctrl")]
         let names = modifiers.compactMap { event.modifierFlags.contains($0.0) ? $0.1 : nil }
         guard !names.isEmpty, let key = canonicalKey(for: event) else { return false }
         let result = (names + [key]).joined(separator: "+")
         stringValue = result
+        displayedValue = result
         onCapture?(result)
         return true
     }
@@ -75,9 +123,14 @@ enum ProfilePanels {
         let panel = NSOpenPanel(); panel.canChooseDirectories = false; panel.canChooseFiles = true; panel.allowsMultipleSelection = false; panel.allowedContentTypes = [.applicationBundle]
         panel.begin { completion($0 == .OK ? panel.url : nil) }
     }
-    @MainActor static func chooseExecutable(completion: @escaping (URL?) -> Void) {
+    @MainActor static func chooseExecutable(message: String = "Choose an executable file. It only starts after an explicit live Run Selected action.", completion: @escaping (URL?) -> Void) {
         let panel = NSOpenPanel(); panel.canChooseDirectories = false; panel.canChooseFiles = true; panel.allowsMultipleSelection = false
-        panel.message = "Choose an executable file. It only starts after an explicit live Run Selected action."
+        panel.message = message
+        panel.begin { completion($0 == .OK ? panel.url : nil) }
+    }
+    @MainActor static func chooseFolder(completion: @escaping (URL?) -> Void) {
+        let panel = NSOpenPanel(); panel.canChooseDirectories = true; panel.canChooseFiles = false; panel.allowsMultipleSelection = false
+        panel.message = "Choose the workspace folder that Codex works in."
         panel.begin { completion($0 == .OK ? panel.url : nil) }
     }
     @MainActor static func chooseSavedCapture(completion: @escaping (URL?) -> Void) {

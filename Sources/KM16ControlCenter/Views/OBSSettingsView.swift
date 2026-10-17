@@ -35,6 +35,10 @@ struct OBSSettingsView: View {
                 .controlSize(.small)
                 Text("Use ws:// for localhost. Remote OBS connections require wss:// with TLS; redirects are not followed.")
                     .font(.caption).foregroundStyle(.secondary)
+                Button("Test Connection") { Task { await controller.testConnection() } }
+                    .controlSize(.small)
+                    .disabled(controller.isRunning)
+                    .help("Connect once and ask OBS for its version. The result appears under OBS Studio.")
                 Label("The password remains in memory and is not saved to preferences.", systemImage: "lock")
                     .font(.caption)
                     .foregroundStyle(.secondary)

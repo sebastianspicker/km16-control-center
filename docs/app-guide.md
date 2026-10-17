@@ -8,8 +8,9 @@ The app is host-only. It does not detect the keyboard, read or change its live c
 
 ## Requirements
 
-Building the app from source requires a Mac running macOS 14 or later, a Swift 6
-toolchain, and Python 3.10 or later. The portable C core additionally requires
+Building the app from source requires a Mac running macOS 14 or later with full
+Xcode 16 or later (Swift 6 and the macOS SDK; the Command Line Tools alone are not
+supported), and Python 3.10 or later. The portable C core additionally requires
 CMake, and the browser workflow uses Node.js; see
 [CONTRIBUTING.md](../CONTRIBUTING.md).
 
@@ -29,7 +30,7 @@ From the repository root:
 bash script/build_and_run.sh
 ```
 
-The script builds the unsigned development app at `build/apps/KM16ControlCenter.app` and opens it. To build without opening it, run:
+The script builds an optimized (release configuration) app at `build/apps/KM16ControlCenter.app`, signs it ad-hoc (not notarized), and opens it. Set `KM16_CONFIGURATION=debug` for a debug build; `--debug` always builds debug and starts it under `lldb`. To build without opening it, run:
 
 ```sh
 bash script/build_and_run.sh --build-only
@@ -38,13 +39,26 @@ bash script/build_and_run.sh --build-only
 To use a separate profile library, set `KM16_PROFILES_PATH` to the absolute
 path of a `profiles.json` file before launching.
 
+Accessibility permission belongs to one signed build. With the default ad-hoc
+signature, macOS can keep listing the app after a rebuild while live input
+actions still report missing permission. Reset the entry and grant it again:
+
+```sh
+tccutil reset Accessibility org.local.KM16ControlCenter
+```
+
+To keep the permission across rebuilds, sign with a code-signing identity from your
+keychain, for example `KM16_SIGN_IDENTITY="Apple Development: Your Name (TEAMID)"
+bash script/build_and_run.sh`. List available identities with
+`security find-identity -v -p codesigning`.
+
 ## Profiles
 
 The factory library contains 16 profiles and 400 assignments. Each profile maps 16 keys and the clockwise, counterclockwise, and press inputs of three knobs. See the [preset library](../presets/README.md) for every assignment and any required app setup.
 
 Select a profile and control to edit its assignment. Preview or Command-Return simulates the selected action. Run Selected or Command-Shift-Return runs it after live actions are enabled. Profile-switch actions change the active software profile in either mode.
 
-The sidebar can create, duplicate, rename, delete, and restore profiles. Imports use an explicit replace or merge policy; exports produce validated JSON. Undo and Redo cover library changes. Automatic matching selects the first profile that names the foreground app's bundle identifier and otherwise uses Desktop. Choosing a profile manually pauses automatic matching until you select Use Automatic Matching or Resume automatic matching.
+The sidebar can create, duplicate, rename, delete, and restore profiles. Imports use an explicit replace or merge policy; exports produce validated JSON. Undo and Redo cover library changes. Automatic matching selects the first profile that names the foreground app's bundle identifier and otherwise uses Desktop; switching back to KM16 Control Center keeps the profile of the app you came from. Choosing a profile manually pauses automatic matching until you select Use Automatic Matching or Resume automatic matching. Choosing a profile is not an edit: it does not mark the library unsaved or add an undo step, and Save records the selected profile with your changes.
 
 These profiles stay on the Mac. Editing or selecting one does not change a firmware layer.
 
@@ -71,7 +85,7 @@ The activity view omits raw snippets, process arguments and output, and Agent De
 
 ## OBS Studio
 
-The Recording & Streaming preset uses OBS WebSocket v5. In Connections, enter a `ws://` or `wss://` endpoint, the WebSocket password, and the exact OBS input names for microphone and playback audio. The endpoint and input names are saved in preferences. The password stays in memory only for the current app process.
+The Recording & Streaming preset uses OBS WebSocket v5. In Connections, enter a `ws://` or `wss://` endpoint, the WebSocket password, and the exact OBS input names for microphone and playback audio. The endpoint and input names are saved in preferences. The password stays in memory only for the current app process, so enter it again after each launch. **Test Connection** connects once and shows the OBS version, or the reason the connection failed, without running an action.
 
 Each action uses a short-lived connection. Scene controls select the current Program scene. In Studio Mode, Transition sends the current Preview scene to Program. Volume steps change the linear multiplier by 0.05 and keep it between 0 and 1. Save Replay requires an active replay buffer.
 
@@ -81,7 +95,8 @@ The preset does not start a stream or create scenes, inputs, recording paths, or
 
 ## Agent Deck and Codex
 
-In Connections, choose a trusted Codex executable and an existing workspace.
+In Connections, choose a trusted Codex executable and an existing workspace
+(**Choose…** opens a file or folder picker). Both paths are remembered across launches.
 Authentication comes from the CLI's existing configuration. KM16 Control Center
 starts its own local stdio app-server process; it does not attach to a Codex
 Desktop window.
@@ -129,6 +144,18 @@ By default, profiles are stored at:
 Schema 1 files load as schema 2 in memory and remain unchanged until you save. Saving validates the document and replaces it atomically. A valid previous version becomes `profiles.json.backup`. Before replacing an invalid, unknown, or oversized file, the app writes a durable `profiles.json.recovery-<timestamp>-<uuid>.json` copy beside it.
 
 Profile documents are limited to 128 profiles and 8 MiB. Undo retains up to 100 revisions, and the activity list retains up to 80 entries.
+
+If another KM16 Control Center window or app changed `profiles.json` since it was opened, Save writes nothing and asks first. Overwrite replaces that version and keeps a copy of it: `profiles.json.backup`, or a `profiles.json.recovery-…` copy if that version is not a valid library.
+
+## Diagnostics
+
+The app writes load, save, import, and export results, live-action outcomes, and OBS and Codex connection failures to the macOS unified log under the subsystem `org.local.KM16ControlCenter`. Entries name the operation, the action type and control, and an error category (for example `KM16ControlCore.ProfileValidationError 7`). The error's own text can contain profile names, action labels, or messages from OBS or Codex, so it is logged as private and shows as `<private>`; the status line and the ⓘ popover show it in full. Snippet text, commands, prompts, and passwords are never logged. To collect the last hour for a bug report:
+
+```sh
+log show --last 1h --info --style compact --predicate 'subsystem == "org.local.KM16ControlCenter"'
+```
+
+Review the output before attaching it. `bash script/build_and_run.sh --telemetry` launches the app and streams the same entries live.
 
 ## Saved-capture replay
 

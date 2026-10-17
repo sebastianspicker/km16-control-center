@@ -8,9 +8,10 @@ analysis projects are excluded. No flashable custom firmware is provided.
 
 1. From a clean checkout on macOS 14 or newer, run
    `bash script/build_and_run.sh --build-only` using full Xcode with Swift 6 and
-   inspect the unsigned bundle
+   inspect the bundle
    at `build/apps/KM16ControlCenter.app`. This validates bundle assembly and its
-   `Info.plist`; it does not sign, notarize, package, launch, or test integrations.
+   `Info.plist` and signs it ad-hoc (or with `KM16_SIGN_IDENTITY`); it does not
+   notarize, package, launch, or test integrations.
 2. Build the portable core as described in its
    [guide](../firmware/custom/README.md), and build the browser demo with
    `python3 scripts/build-site.py`.
@@ -51,8 +52,8 @@ native app or provide live device and desktop actions.
 
 ## Mac app release
 
-`bash script/build_and_run.sh --build-only` creates an unsigned development bundle.
-A binary release also needs signing, notarization, stapling, packaging, and launch
+`bash script/build_and_run.sh --build-only` creates an ad-hoc signed development bundle.
+A binary release also needs Developer ID signing, notarization, stapling, packaging, and launch
 checks on a clean Mac running a supported macOS version. Keep signing credentials
 outside the repository.
 

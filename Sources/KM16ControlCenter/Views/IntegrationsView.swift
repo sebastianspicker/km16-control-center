@@ -67,14 +67,37 @@ struct IntegrationsView: View {
                 }
             }
             .font(.caption)
+            if !runner.accessibilityGranted {
+                HStack(spacing: 8) {
+                    Button("Request Access…") { runner.requestAccessibility() }
+                    Button("Open Accessibility Settings") { runner.openAccessibilitySettings() }
+                }
+                .controlSize(.small)
+                Text("Shortcuts, snippets, media keys and window actions need Accessibility permission. After you rebuild the app, macOS may ask again.")
+                    .font(.caption).foregroundStyle(.secondary).fixedSize(horizontal: false, vertical: true)
+            }
         }
+        .onAppear { runner.refreshAccessibility() }
+        .onReceive(NotificationCenter.default.publisher(for: NSApplication.didBecomeActiveNotification)) { _ in runner.refreshAccessibility() }
     }
 
     private var connection: some View {
         StudioSection("Connection", subtitle: "Nothing connects until you select Connect.") {
             Grid(alignment: .leadingFirstTextBaseline, horizontalSpacing: 18, verticalSpacing: 12) {
-                GridRow { Text("Codex command").foregroundStyle(.secondary); TextField("/opt/homebrew/bin/codex", text: executableBinding) }
-                GridRow { Text("Workspace").foregroundStyle(.secondary); TextField("Choose a local workspace", text: workspaceBinding) }
+                GridRow {
+                    Text("Codex command").foregroundStyle(.secondary)
+                    HStack {
+                        TextField("/opt/homebrew/bin/codex", text: executableBinding)
+                        Button("Choose…") { ProfilePanels.chooseExecutable(message: "Choose the codex executable. It starts only when you select Connect.") { url in if let url { client.executablePath = url.path } } }
+                    }
+                }
+                GridRow {
+                    Text("Workspace").foregroundStyle(.secondary)
+                    HStack {
+                        TextField("Choose a local workspace", text: workspaceBinding)
+                        Button("Choose…") { ProfilePanels.chooseFolder { url in if let url { client.workspacePath = url.path } } }
+                    }
+                }
                 GridRow {
                     Text("Model").foregroundStyle(.secondary)
                     Picker("Model", selection: modelBinding) {
