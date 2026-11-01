@@ -11,6 +11,7 @@ ROOT = Path(__file__).resolve().parents[2]
 spec = importlib.util.spec_from_file_location("reference_inspector", ROOT / "scripts/analysis/analyze-firmware.py")
 helper = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(helper)
+# Pinned per script on purpose: this script's offsets were verified against this exact dump.
 EXPECTED = "5ff18a34b99de0e6ebb657f9f79df8e35a8b8e21459997096c24209bc493262e"
 
 
@@ -33,10 +34,12 @@ def main():
     snapshot_bytes = args.snapshot.read_bytes()
     device = json.loads(snapshot_bytes)
     descriptors = []
+    hex4 = lambda v: f"{v:04x}" if isinstance(v, int) else "unknown"
     for interface in device["interfaces"]:
         descriptor = bytes.fromhex(interface["descriptor_hex"])
-        offsets = helper.find_all(raw, descriptor)
-        descriptors.append({"usage": f"{interface['PrimaryUsagePage']:04x}:{interface['PrimaryUsage']:04x}",
+        # A missing descriptor (snapshot.py marks it) cannot match; keep it so the summary stays honest.
+        offsets = helper.find_all(raw, descriptor) if descriptor else []
+        descriptors.append({"usage": f"{hex4(interface['PrimaryUsagePage'])}:{hex4(interface['PrimaryUsage'])}",
                             "matches_snapshot": bool(offsets), "file_offsets": [hex(i) for i in offsets],
                             "flash_addresses": [hex(helper.BASE + i) for i in offsets],
                             "reports": helper.report_sizes(descriptor)})
@@ -65,15 +68,15 @@ def main():
             {"file_start": "0x1c000", "file_end_exclusive": "0x1e000", "interpretation": "Candidate physical EEPROM backing, decoded separately from actual firmware"},
         ],
     }
-    args.output.mkdir(parents=True, exist_ok=True)
     derived = args.output / "derived"
-    derived.mkdir(exist_ok=True)
-    for name, data in {"live-application.bin": raw[:suffix_offset],
-                       "live-application-with-embedded-suffix.bin": raw[:suffix_offset + 16],
-                       "live-settings-physical.bin": raw[0x1C000:0x1E000]}.items():
-        dest = derived / name
+    files = {derived / "live-application.bin": raw[:suffix_offset],
+             derived / "live-application-with-embedded-suffix.bin": raw[:suffix_offset + 16],
+             derived / "live-settings-physical.bin": raw[0x1C000:0x1E000]}
+    for dest, data in files.items():
         if dest.exists() and dest.read_bytes() != data:
             parser.error(f"Refusing to replace differing derivative {dest}")
+    derived.mkdir(parents=True, exist_ok=True)
+    for dest, data in files.items():
         dest.write_bytes(data)
     (args.output / "analysis.json").write_text(json.dumps(result, indent=2) + "\n")
     print(json.dumps({"source_sha256": sha, "application_crc_valid": True,

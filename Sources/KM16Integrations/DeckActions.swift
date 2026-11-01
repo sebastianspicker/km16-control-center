@@ -32,7 +32,10 @@ extension CodexDeckClient {
             diffRevealCounter += 1
             return "Opened the Agent Deck diff."
         case "scroll-up": outputScrollOffset = max(0, outputScrollOffset - 1); return "Moved output selection up."
-        case "scroll-down": outputScrollOffset += 1; return "Moved output selection down."
+        case "scroll-down":
+            // Clamp to the last line the output view shows, so Scroll up responds immediately afterwards.
+            outputScrollOffset = min(outputScrollOffset + 1, max(0, output.components(separatedBy: .newlines).count - 1))
+            return "Moved output selection down."
         default:
             let prompts = [
                 "review-changes": "Review the current working-tree changes for bugs and regressions. Report findings with file references. Do not modify files.",

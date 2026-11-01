@@ -36,6 +36,8 @@ def main():
     for n in hid:
         row = {k: n.get(k) for k in fields}
         descriptor = n.get("ReportDescriptor", b"")
+        if not descriptor:
+            row["descriptor_missing"] = True
         name = f"report-{n['IORegistryEntryID']:x}-{n.get('PrimaryUsagePage', 0):04x}.bin"
         (out / name).write_bytes(descriptor)
         row.update(descriptor_file=name, descriptor_hex=descriptor.hex(),

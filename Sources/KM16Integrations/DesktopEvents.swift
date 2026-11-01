@@ -41,8 +41,7 @@ enum DesktopEvents {
     }
     static func keyCode(_ sourceKey: String) -> (CGKeyCode, CGEventFlags)? {
         let key = ["plus": "+", "minus": "-", "backtick": "`"] [sourceKey] ?? sourceKey
-        let special: [String: CGKeyCode] = ["return":36,"enter":36,"tab":48,"space":49,"delete":51,"backspace":51,"escape":53,"esc":53,"left":123,"right":124,"down":125,"up":126,"home":115,"end":119,"pageup":116,"pagedown":121,"forwarddelete":117,"f1":122,"f2":120,"f3":99,"f4":118,"f5":96,"f6":97,"f7":98,"f8":100,"f9":101,"f10":109,"f11":103,"f12":111,"f13":105,"f14":107,"f15":113,"f16":106,"f17":64,"f18":79,"f19":80,"f20":90]
-        if let value = special[key] { return (value, []) }
+        if let value = DesktopShortcutResolver.namedKeyCodes[key] { return (value, []) }
         guard let source = TISCopyCurrentASCIICapableKeyboardLayoutInputSource()?.takeRetainedValue(),
               let raw = TISGetInputSourceProperty(source, kTISPropertyUnicodeKeyLayoutData) else { return nil }
         let data = Unmanaged<CFData>.fromOpaque(raw).takeUnretainedValue()
@@ -62,5 +61,15 @@ enum DesktopEvents {
 
 /// Resolves a shortcut against the selected keyboard layout without sending input.
 @MainActor public enum DesktopShortcutResolver {
+    /// Canonical key names, as `ShortcutSpec.parse` returns them, mapped to macOS virtual key codes.
+    /// The shortcut capture field derives its reverse map from this table.
+    public static let namedKeyCodes: [String: CGKeyCode] = [
+        "enter": 36, "tab": 48, "space": 49, "delete": 51, "esc": 53,
+        "left": 123, "right": 124, "down": 125, "up": 126, "home": 115, "end": 119,
+        "pageup": 116, "pagedown": 121, "forwarddelete": 117,
+        "f1": 122, "f2": 120, "f3": 99, "f4": 118, "f5": 96, "f6": 97, "f7": 98, "f8": 100,
+        "f9": 101, "f10": 109, "f11": 103, "f12": 111, "f13": 105, "f14": 107, "f15": 113,
+        "f16": 106, "f17": 64, "f18": 79, "f19": 80, "f20": 90
+    ]
     public static func canResolve(_ shortcut: ShortcutSpec) -> Bool { DesktopEvents.keyCode(shortcut.key) != nil }
 }

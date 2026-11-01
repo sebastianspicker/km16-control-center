@@ -231,7 +231,6 @@ public enum ProfileValidationError: Error, LocalizedError, Equatable {
     case duplicateProfileID(UUID)
     case missingActiveProfile(UUID)
     case duplicateControlID(profile: String, controlID: ControlID)
-    case unknownControlID(profile: String, controlID: ControlID)
     case missingControlIDs(profile: String, controlIDs: [ControlID])
     case blankName
     case invalidMatchingBundleID(profile: String, bundleID: String)
@@ -244,7 +243,6 @@ public enum ProfileValidationError: Error, LocalizedError, Equatable {
         case .duplicateProfileID: "Profile IDs must be unique."
         case .missingActiveProfile: "The active profile is missing from the document."
         case .duplicateControlID(let profile, let controlID): "\(profile) assigns \(controlID.rawValue) more than once."
-        case .unknownControlID(let profile, let controlID): "\(profile) assigns unknown control \(controlID.rawValue)."
         case .missingControlIDs(let profile, let controlIDs): "\(profile) is missing: \(controlIDs.map(\.rawValue).joined(separator: ", "))."
         case .blankName: "Profile names cannot be blank."
         case .invalidMatchingBundleID(let profile, _): "\(profile) has an invalid matching bundle identifier."
@@ -287,9 +285,6 @@ public enum ProfileValidator {
             }
             var seenControls = Set<ControlID>()
             for binding in profile.bindings {
-                guard ControlID.all.contains(binding.controlID) else {
-                    throw ProfileValidationError.unknownControlID(profile: profile.name, controlID: binding.controlID)
-                }
                 guard seenControls.insert(binding.controlID).inserted else {
                     throw ProfileValidationError.duplicateControlID(profile: profile.name, controlID: binding.controlID)
                 }

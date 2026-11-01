@@ -14,8 +14,7 @@ public struct StockHIDDecoder {
         0xea: ControlID.encoder(2, .counterClockwise)!
     ]
     public init() {}
-    public mutating func decode(_ bytes: [UInt8], vendorID: Int = 0x28e9, productID: Int = 0x3145, usagePage: Int = 1, usage: Int = 2) throws -> [ControlID] {
-        guard vendorID == 0x28e9, productID == 0x3145, usagePage == 1, usage == 2 else { throw IntegrationError.message("Report is not from the KM16 Pro composite interface.") }
+    public mutating func decode(_ bytes: [UInt8]) throws -> [ControlID] {
         guard let report = bytes.first else { throw IntegrationError.message("Empty HID report.") }
         if report == 6 {
             guard bytes.count == 32 else { throw IntegrationError.message("NKRO report must contain 32 bytes including ID.") }
@@ -42,7 +41,6 @@ public struct StockHIDDecoder {
         // Other composite report IDs (mouse/system controls) do not identify pad positions.
         return []
     }
-    public mutating func reset() { keyboard.removeAll(); consumer = 0 }
 }
 
 public enum CaptureReplay {
@@ -65,21 +63,5 @@ public enum CaptureReplay {
             guard results.count <= 20_000 else { throw IntegrationError.message("Capture contains too many input events.") }
         }
         return results
-    }
-}
-
-public struct StockConsoleDecoder {
-    private var buffer = Data()
-    public init() {}
-    public mutating func append(_ packet: [UInt8]) throws -> [String] {
-        guard packet.count == 32 else { throw IntegrationError.message("Console packets must contain 32 bytes.") }
-        buffer.append(contentsOf: packet.prefix { $0 != 0 })
-        guard buffer.count <= 4096 else { buffer.removeAll(); throw IntegrationError.message("Console line exceeds 4096 bytes.") }
-        var lines: [String] = []
-        while let end = buffer.firstIndex(of: 10) {
-            lines.append(String(decoding: buffer[..<end], as: UTF8.self).trimmingCharacters(in: .newlines))
-            buffer.removeSubrange(...end)
-        }
-        return lines
     }
 }

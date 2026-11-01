@@ -159,7 +159,7 @@ def main(argv=None):
     out = root / "evidence/captures" / (
         "knob-" + args.action + "-" + start.strftime("%Y%m%dT%H%M%S.%fZ")
     )
-    out.mkdir()
+    out.mkdir(parents=True)
     processes = []
     stopped = False
     runner_error = None

@@ -160,12 +160,11 @@ def main():
                        "custom_keycodes": definition["customKeycodes"],
                        "is_current_keymap_backup": False},
     }
-    args.output.mkdir(parents=True, exist_ok=True)
-    (args.output / "analysis.json").write_text(json.dumps(result, indent=2) + "\n")
-    (args.output / "derived").mkdir(exist_ok=True)
     derived = args.output / "derived" / "km16pro-application.bin"
     if derived.exists() and derived.read_bytes() != payload:
         parser.error("Existing derivative differs; refusing to overwrite")
+    derived.parent.mkdir(parents=True, exist_ok=True)
+    (args.output / "analysis.json").write_text(json.dumps(result, indent=2) + "\n")
     derived.write_bytes(payload)
     print(json.dumps({"analysis": str(args.output / "analysis.json"), "crc_valid": True,
                       "payload_bytes": len(payload),

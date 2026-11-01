@@ -40,10 +40,10 @@ events. Profile-switch actions change local state. Neither path calls a live pro
 
 Run Selected requires live actions to be enabled. Desktop input validates the
 action, checks Accessibility access, focuses the target app, and posts input to
-that process. Commands use an absolute executable and literal arguments. Output,
-execution time, and child-process lifetime are bounded; unrelated parent file
-descriptors are not inherited. The activity log omits raw snippets, command
-arguments and output, and prompts.
+that process. Commands use an absolute executable and literal arguments. Output
+is drained and discarded; execution time and child-process lifetime are bounded;
+unrelated parent file descriptors are not inherited. The activity log omits raw
+snippets, command arguments, and prompts.
 
 OBS actions use a short-lived WebSocket v5 connection. The endpoint and source names
 are saved locally; the password remains in memory. Protocol code checks authentication,

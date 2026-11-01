@@ -33,7 +33,10 @@ public class KM16DriverCallbacks extends GhidraScript {
   if(consolePointer!=0x0800b811L) throw new IllegalArgumentException("Unexpected console hook");
   var consoleTarget=toAddr(consolePointer&~1L);
   if(getFunctionAt(consoleTarget)==null) {
-   disassemble(consoleTarget); createFunction(consoleTarget,"console_enqueue_character"); added++;
+   disassemble(consoleTarget);
+   if(createFunction(consoleTarget,"console_enqueue_character")==null)
+    throw new IllegalStateException("Cannot create console hook at "+consoleTarget);
+   added++;
   }
   currentProgram.getReferenceManager().addMemoryReference(consoleCell,consoleTarget,
     RefType.DATA,SourceType.USER_DEFINED,-1);

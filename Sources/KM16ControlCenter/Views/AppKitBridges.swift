@@ -1,5 +1,6 @@
 import AppKit
 import SwiftUI
+import KM16Integrations
 
 struct ShortcutCaptureField: NSViewRepresentable {
     @Binding var value: String
@@ -98,10 +99,13 @@ final class ShortcutCaptureTextField: NSTextField {
         return true
     }
 
+    private static let keyNames = Dictionary(DesktopShortcutResolver.namedKeyCodes.map { ($1, $0) }, uniquingKeysWith: { min($0, $1) })
+
     private func canonicalKey(for event: NSEvent) -> String? {
-        let special: [UInt16: String] = [36: "enter", 48: "tab", 49: "space", 51: "delete", 53: "esc", 117: "forwarddelete", 123: "left", 124: "right", 125: "down", 126: "up", 115: "home", 119: "end", 116: "pageup", 121: "pagedown", 122: "f1", 120: "f2", 99: "f3", 118: "f4", 96: "f5", 97: "f6", 98: "f7", 100: "f8", 101: "f9", 109: "f10", 103: "f11", 111: "f12"]
-        if let special = special[event.keyCode] { return special }
-        guard let characters = event.charactersIgnoringModifiers?.lowercased(), characters.count == 1 else { return nil }
+        if let name = Self.keyNames[event.keyCode] { return name }
+        guard let characters = event.charactersIgnoringModifiers?.lowercased(), characters.count == 1,
+              // AppKit reports other special keys (Help, Print, keypad functions) as private-use characters no shortcut can send.
+              !characters.unicodeScalars.contains(where: { (0xF700...0xF8FF).contains($0.value) }) else { return nil }
         return ["`": "backtick", "+": "plus", "-": "minus"][characters] ?? characters
     }
 

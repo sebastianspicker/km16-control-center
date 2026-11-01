@@ -73,7 +73,7 @@ public struct ShortcutSpec: Codable, Equatable, Sendable {
         "return": "enter", "escape": "esc", "backspace": "delete",
         "uparrow": "up", "downarrow": "down", "leftarrow": "left", "rightarrow": "right",
         "page up": "pageup", "page down": "pagedown", "pgup": "pageup", "pgdn": "pagedown",
-        "`": "backtick", " ": "space"
+        "`": "backtick"
     ]
     private static let supportedKeys: Set<String> = [
         "enter", "tab", "space", "esc", "delete", "forwarddelete",
@@ -143,15 +143,18 @@ public struct ProcessSpec: Codable, Equatable, Sendable {
 }
 
 public enum ActionValidator {
-    public static let supportedSystemParameters: Set<String> = Set(WindowOperation.allCases.map(\.rawValue)).union([
-        "volumeDown", "volumeUp", "mute", "playPause", "previousTrack", "nextTrack",
+    /// Picker order for the editor; the `supported…` sets are derived, so validation is unchanged.
+    public static let systemParameters: [String] = [
+        "volumeDown", "volumeUp", "mute", "playPause", "nextTrack", "previousTrack",
         "scrollUp", "scrollDown", "dictation"
-    ])
-    public static let supportedAgentParameters: Set<String> = [
+    ] + WindowOperation.allCases.map(\.rawValue)
+    public static let supportedSystemParameters = Set(systemParameters)
+    public static let agentParameters: [String] = [
         "new-task", "review-changes", "run-tests", "explain-selection", "stop-current-task",
         "summarize-context", "draft-commit", "previous-task", "next-task", "open-task",
         "previous-changed-file", "next-changed-file", "open-diff", "scroll-up", "scroll-down"
     ]
+    public static let supportedAgentParameters = Set(agentParameters)
 
     public static func issues(for action: ControlAction) -> [String] {
         var issues = issue(if: action.label.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty, "The label is required.")

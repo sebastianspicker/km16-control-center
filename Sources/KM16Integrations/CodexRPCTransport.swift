@@ -53,6 +53,8 @@ public final class CodexRPCTransport: DeckTransport {
         stop()
         guard executable.hasPrefix("/"), FileManager.default.isExecutableFile(atPath: executable) else { throw IntegrationError.message("Codex executable must be an installed absolute path.") }
         let task = Process(), stdin = Pipe(), stdout = Pipe(), stderr = Pipe()
+        // A write to an exited Codex must fail with EPIPE, not end the whole app with SIGPIPE.
+        _ = fcntl(stdin.fileHandleForWriting.fileDescriptor, F_SETNOSIGPIPE, 1)
         task.executableURL = URL(fileURLWithPath: executable)
         task.arguments = arguments
         task.currentDirectoryURL = URL(fileURLWithPath: directory)

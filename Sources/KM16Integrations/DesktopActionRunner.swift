@@ -51,8 +51,8 @@ public final class DesktopActionRunner {
             return "Opened \(action.label)."
         case .shell:
             let spec = try ProcessSpec.parse(action.parameter)
-            let result = try await processRunner.run(executable: spec.executable, arguments: spec.args, directory: spec.workingDirectory, timeout: spec.timeoutSeconds)
-            guard result.status == 0 else { throw IntegrationError.message("\(action.label) exited with status \(result.status).") }
+            let status = try await processRunner.run(executable: spec.executable, arguments: spec.args, directory: spec.workingDirectory, timeout: spec.timeoutSeconds)
+            guard status == 0 else { throw IntegrationError.message("\(action.label) exited with status \(status).") }
             // Raw command output and arguments deliberately do not enter the routine activity log.
             return "\(action.label) finished successfully."
         case .shortcut:

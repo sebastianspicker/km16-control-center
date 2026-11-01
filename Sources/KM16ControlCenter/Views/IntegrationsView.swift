@@ -226,8 +226,9 @@ private enum DeckOutputKind: String, CaseIterable, Identifiable {
 private struct DeckOutputView: View {
     let text: String
     let offset: Int
-    private var lines: [String] { text.isEmpty ? ["No response yet."] : text.components(separatedBy: .newlines) }
     var body: some View {
+        // Split once per update; a computed property read per row re-split the whole transcript.
+        let lines = text.isEmpty ? ["No response yet."] : text.components(separatedBy: .newlines)
         ScrollViewReader { proxy in
             ScrollView {
                 LazyVStack(alignment: .leading, spacing: 4) {

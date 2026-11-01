@@ -2,40 +2,22 @@ import Foundation
 import Darwin
 import KM16ProcessSupport
 
-/// Pipe callbacks may run off the main actor; all retained output and EOF state are locked.
-final class OutputBuffer: @unchecked Sendable {
-    private let lock = NSLock()
-    private var data = Data()
-    private var ended = false
-    private let limit: Int
-    init(limit: Int = 65_536) { self.limit = limit }
-    func append(_ bytes: Data) {
-        lock.lock(); defer { lock.unlock() }
-        if bytes.isEmpty { ended = true }
-        data.append(bytes); if data.count > limit { data.removeFirst(data.count - limit) }
-    }
-    var text: String { lock.lock(); defer { lock.unlock() }; return String(decoding: data, as: UTF8.self) }
-    var isFinished: Bool { lock.lock(); defer { lock.unlock() }; return ended }
-}
-
-public struct ProcessResult: Sendable {
-    public let status: Int32
-    public let output: String
-}
-
 @MainActor
 public final class BoundedProcessRunner {
     private var pid: pid_t?
     private var cancelled = false
     public init() {}
     public func cancel() { cancelled = true; if let pid { kill(-pid, SIGTERM) } }
-    public func run(executable: String, arguments: [String], directory: String?, timeout: Double) async throws -> ProcessResult {
+    /// Runs `executable` with literal `arguments` and returns its exit status. Output is drained and
+    /// discarded, so a chatty command never blocks on a full pipe; it is never shown or logged.
+    public func run(executable: String, arguments: [String], directory: String?, timeout: Double) async throws -> Int32 {
         guard pid == nil else { throw IntegrationError.message("A command is already running.") }
         guard executable.hasPrefix("/"), FileManager.default.isExecutableFile(atPath: executable) else { throw IntegrationError.message("Choose an executable using an absolute path.") }
         guard timeout.isFinite, timeout > 0, timeout <= 3600 else { throw IntegrationError.message("Timeout must be between 0 and 3600 seconds.") }
         guard ([executable] + arguments + [directory ?? ""]).allSatisfy({ !$0.utf8.contains(0) }) else { throw IntegrationError.message("Process arguments cannot contain NUL characters.") }
-        let pipe = Pipe(), buffer = OutputBuffer()
-        pipe.fileHandleForReading.readabilityHandler = { handle in buffer.append(handle.availableData) }
+        let pipe = Pipe()
+        // Stop at end of output: an EOF handle stays readable and would otherwise call this in a loop.
+        pipe.fileHandleForReading.readabilityHandler = { handle in if handle.availableData.isEmpty { handle.readabilityHandler = nil } }
         let strings = ([executable] + arguments).map { strdup($0) }
         defer { strings.forEach { free($0) } }
         var argv = strings + [nil], child: pid_t = 0
@@ -68,14 +50,8 @@ public final class BoundedProcessRunner {
             if result < 0 && errno != EINTR { throw IntegrationError.message("Could not collect command status.") }
             try? await Task.sleep(for: .milliseconds(20))
         }
-        kill(-child, SIGKILL)
-        for _ in 0..<25 {
-            if buffer.isFinished { break }
-            try? await Task.sleep(for: .milliseconds(10))
-        }
         if cancelled { throw CancellationError() }
         if deadline != nil { throw IntegrationError.message("Command timed out after \(timeout) seconds.") }
-        let exitStatus = status & 0x7f == 0 ? (status >> 8) & 0xff : 128 + (status & 0x7f)
-        return ProcessResult(status: exitStatus, output: buffer.text)
+        return status & 0x7f == 0 ? (status >> 8) & 0xff : 128 + (status & 0x7f)
     }
 }

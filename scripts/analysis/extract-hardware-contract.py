@@ -7,6 +7,7 @@ from pathlib import Path
 import struct
 
 ROOT = Path(__file__).resolve().parents[2]
+# Pinned per script on purpose: this script's offsets were verified against this exact dump.
 EXPECTED = "5ff18a34b99de0e6ebb657f9f79df8e35a8b8e21459997096c24209bc493262e"
 BASE = 0x08002000
 

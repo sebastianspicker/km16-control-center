@@ -34,9 +34,10 @@ jobs:
         run: swift build
       - name: Check generated preset exports
         run: swift run KM16PresetExport --check
-      - name: Build the portable C core
+      - name: Build and run the portable C core
         run: |
           cmake -S firmware/custom -B build/custom
           cmake --build build/custom
+          ./build/custom/km16_custom_demo
       - name: Validate the unsigned app bundle build
         run: bash script/build_and_run.sh --build-only

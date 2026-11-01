@@ -272,23 +272,23 @@ extension CodexDeckClient {
             return "Accept is disabled because required request identifiers or timing fields are malformed."
         }
         let object = params.object
-        guard validNullableString("reason", in: object),
-              validStringArray("availableDecisions", in: object) else {
+        guard valid("reason", in: object, isString),
+              valid("availableDecisions", in: object, allowNull: false, { isArray($0, of: isString) }) else {
             return "Accept is disabled because the request contains malformed fields."
         }
         if method == "item/commandExecution/requestApproval" {
-            guard validNullableString("approvalId", in: object),
-                  validNullableString("command", in: object),
-                  validNullableString("cwd", in: object),
-                  validNullableString("environmentId", in: object),
-                  validNullableObject("networkApprovalContext", in: object),
-                  validNullableArray("commandActions", in: object),
-                  validNullableStringArray("proposedExecpolicyAmendment", in: object),
-                  validNullableObjectArray("proposedNetworkPolicyAmendments", in: object),
+            guard valid("approvalId", in: object, isString),
+                  valid("command", in: object, isString),
+                  valid("cwd", in: object, isString),
+                  valid("environmentId", in: object, isString),
+                  valid("networkApprovalContext", in: object, isObject),
+                  valid("commandActions", in: object, { isArray($0) }),
+                  valid("proposedExecpolicyAmendment", in: object, { isArray($0, of: isString) }),
+                  valid("proposedNetworkPolicyAmendments", in: object, { isArray($0, of: isObject) }),
                   object["kind"] == nil || ["command", "writeStdin"].contains(params["kind"].string ?? "") else {
                 return "Accept is disabled because the command request contains malformed or unknown fields."
             }
-        } else if !validNullableString("grantRoot", in: object) {
+        } else if !valid("grantRoot", in: object, isString) {
             return "Accept is disabled because the file request contains malformed fields."
         }
         return nil
@@ -328,43 +328,22 @@ extension CodexDeckClient {
         return nil
     }
 
-    private static func validNullableString(_ key: String, in object: [String: JSONValue]) -> Bool {
+    /// A missing key passes; `null` passes when `allowNull`; any other value must satisfy `test`.
+    private static func valid(_ key: String, in object: [String: JSONValue], allowNull: Bool = true, _ test: (JSONValue) -> Bool) -> Bool {
         guard let value = object[key] else { return true }
-        return value == .null || value.string != nil
+        return (allowNull && value == .null) || test(value)
     }
 
-    private static func validNullableObject(_ key: String, in object: [String: JSONValue]) -> Bool {
-        guard let value = object[key] else { return true }
-        if value == .null { return true }
+    private static func isString(_ value: JSONValue) -> Bool { value.string != nil }
+
+    private static func isObject(_ value: JSONValue) -> Bool {
         if case .object = value { return true }
         return false
     }
 
-    private static func validNullableArray(_ key: String, in object: [String: JSONValue]) -> Bool {
-        guard let value = object[key] else { return true }
-        if value == .null { return true }
-        if case .array = value { return true }
-        return false
-    }
-
-    private static func validStringArray(_ key: String, in object: [String: JSONValue]) -> Bool {
-        guard let value = object[key] else { return true }
+    private static func isArray(_ value: JSONValue, of element: (JSONValue) -> Bool = { _ in true }) -> Bool {
         guard case .array(let values) = value else { return false }
-        return values.allSatisfy { $0.string != nil }
-    }
-
-    private static func validNullableStringArray(_ key: String, in object: [String: JSONValue]) -> Bool {
-        guard let value = object[key] else { return true }
-        if value == .null { return true }
-        guard case .array(let values) = value else { return false }
-        return values.allSatisfy { $0.string != nil }
-    }
-
-    private static func validNullableObjectArray(_ key: String, in object: [String: JSONValue]) -> Bool {
-        guard let value = object[key] else { return true }
-        if value == .null { return true }
-        guard case .array(let values) = value else { return false }
-        return values.allSatisfy { if case .object = $0 { return true }; return false }
+        return values.allSatisfy(element)
     }
 
     private static func validFileChange(_ value: JSONValue) -> Bool {

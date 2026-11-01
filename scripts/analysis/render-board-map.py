@@ -1,12 +1,17 @@
 #!/usr/bin/env python3
 """Render recovered firmware indices; no device access or assumed case geometry."""
+import argparse
 import json
 from html import escape
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
-OUT = ROOT / "evidence/analysis/live-20260912"
-data = json.loads((OUT / "led-layout.json").read_text())
+parser = argparse.ArgumentParser(description=__doc__)
+parser.add_argument("--contract", type=Path, default=ROOT / "build/analysis/hardware-contract.json",
+                    help="output of extract-hardware-contract.py")
+parser.add_argument("--output", type=Path, default=ROOT / "evidence/analysis/live-20260912/board-map.svg")
+args = parser.parse_args()
+grid = json.loads(args.contract.read_text())["leds"]["matrix_index"]
 parts = ['<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="1000" viewBox="0 0 1180 1000" role="img" aria-labelledby="title desc">',
          '<title id="title">KM16 Pro recovered input and LED map</title>',
          '<desc id="desc">Sixteen key LEDs in a four by four grid. Three encoder pin pairs. Five status and six underglow slots shown separately because their physical locations are unknown.</desc>',
@@ -26,7 +31,7 @@ text(40, 48, "KM16 Pro • recovered input and LED map", "title")
 text(40, 79, "Source: this board’s acquired firmware • 2026-09-12 • GPIO names use the STM32F1-compatible map")
 text(40, 125, "Key grid: user-confirmed orientation", "head")
 text(680, 125, "Rotary controls", "head")
-for row, indices in enumerate(data["matrix_led_index_by_row_col"]):
+for row, indices in enumerate(grid):
     for col, index in enumerate(indices[:4]):
         x, y = 40 + col * 145, 145 + row * 95
         box(x, y, 130, 80)
@@ -56,5 +61,6 @@ text(40, 876, "800 kbit/s configured • GRB-compatible channel order • PB7 fi
 text(40, 909, "Key coordinates are normalized animation units. Non-key coordinates are (0,0) placeholders.")
 text(40, 956, "Exact MCU, radio, LED IC, switching circuit and physical supply voltages remain unverified.", "small")
 parts.append("</svg>")
-(OUT / "board-map.svg").write_text("\n".join(parts) + "\n")
-print(OUT / "board-map.svg")
+args.output.parent.mkdir(parents=True, exist_ok=True)
+args.output.write_text("\n".join(parts) + "\n")
+print(args.output)

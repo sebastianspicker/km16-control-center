@@ -11,6 +11,7 @@ public class KM16Annotate extends GhidraScript {
   for(String line:Files.readAllLines(Path.of(getScriptArgs()[0]))) {
    if(line.startsWith("address\t") || line.isBlank()) continue;
    String[] fields=line.split("\t",3);
+   if(fields.length<3) throw new IllegalArgumentException("Expected address<TAB>name<TAB>comment: "+line);
    Function function=getFunctionAt(toAddr(Long.parseLong(fields[0],16)));
    if(function==null) throw new IllegalStateException("Missing function: "+fields[0]);
    function.setName(fields[1],SourceType.USER_DEFINED);

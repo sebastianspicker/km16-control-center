@@ -160,6 +160,7 @@ def main() -> None:
     args = parser.parse_args()
 
     image = args.image.read_bytes()
+    # Pinned per script on purpose: this script's offsets were verified against this exact dump.
     if hashlib.sha256(image).hexdigest() != "5ff18a34b99de0e6ebb657f9f79df8e35a8b8e21459997096c24209bc493262e":
         parser.error("Different dump hash; firmware-specific replay offsets require fresh analysis")
     logical, records, terminator = replay_journal(image)

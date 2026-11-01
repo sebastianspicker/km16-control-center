@@ -76,9 +76,12 @@ final class KM16ApplicationDelegate: NSObject, NSApplicationDelegate {
     }
 
     func applicationShouldTerminate(_ sender: NSApplication) -> NSApplication.TerminateReply {
-        runner?.cancel()
-        codex?.disconnect()
-        guard let store, store.isDirty else { return .terminateNow }
+        // Stop work only once quitting is certain; "Keep Editing" must leave commands and Codex alone.
+        guard let store, store.isDirty else {
+            runner?.cancel()
+            codex?.disconnect()
+            return .terminateNow
+        }
         store.quitRequested = true
         store.closeConfirmationRequested = true
         return .terminateCancel

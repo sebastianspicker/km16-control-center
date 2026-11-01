@@ -7,8 +7,6 @@ struct ControlInspectorView: View {
     @State private var appPickerError: String?
     @State private var notesExpanded = false
     private let customPrompt = "__custom_prompt__"
-    private let agentChoices = ["new-task", "review-changes", "run-tests", "explain-selection", "stop-current-task", "summarize-context", "draft-commit", "previous-task", "next-task", "open-task", "previous-changed-file", "next-changed-file", "open-diff", "scroll-up", "scroll-down"]
-    private let systemChoices = ["volumeDown", "volumeUp", "mute", "playPause", "nextTrack", "previousTrack", "scrollUp", "scrollDown", "dictation"] + WindowOperation.allCases.map(\.rawValue)
 
     var body: some View {
         GeometryReader { proxy in
@@ -101,7 +99,7 @@ struct ControlInspectorView: View {
         case .agentAction:
             inspectorField("Agent command") {
                 Picker("Agent command", selection: agentChoiceBinding) {
-                    ForEach(agentChoices, id: \.self) { Text(friendlyName($0)).lineLimit(1).truncationMode(.tail).tag($0) }
+                    ForEach(ActionValidator.agentParameters, id: \.self) { Text(friendlyName($0)).lineLimit(1).truncationMode(.tail).tag($0) }
                     Text("Custom prompt").lineLimit(1).truncationMode(.tail).tag(customPrompt)
                 }
                 .labelsHidden().pickerStyle(.menu).fixedSize(horizontal: false, vertical: true).frame(maxWidth: .infinity, alignment: .leading)
@@ -109,7 +107,7 @@ struct ControlInspectorView: View {
             if agentChoiceBinding.wrappedValue == customPrompt { inspectorField("Custom prompt") { TextEditor(text: customPromptBinding).font(.body.monospaced()).frame(minHeight: 100).accessibilityLabel("Custom agent prompt") } }
         case .system:
             inspectorField("System action") {
-                Picker("System action", selection: parameterBinding) { ForEach(systemChoices, id: \.self) { Text(friendlyName($0)).lineLimit(1).truncationMode(.tail).tag($0) } }
+                Picker("System action", selection: parameterBinding) { ForEach(ActionValidator.systemParameters, id: \.self) { Text(friendlyName($0)).lineLimit(1).truncationMode(.tail).tag($0) } }
                     .labelsHidden().pickerStyle(.menu).fixedSize(horizontal: false, vertical: true).frame(maxWidth: .infinity, alignment: .leading)
             }
         case .profileSwitch:
@@ -181,7 +179,7 @@ struct ControlInspectorView: View {
     private var issues: [String] {
         var values = ActionValidator.issues(for: store.selectedBinding.action)
         let action = store.selectedBinding.action
-        if action.kind == .profileSwitch, action.parameter != "cycle-profile", !store.document.profiles.contains(where: { $0.id.uuidString.caseInsensitiveCompare(action.parameter) == .orderedSame || $0.presetID == action.parameter || $0.name == action.parameter }) { values.append("The selected profile switch target no longer exists.") }
+        if action.kind == .profileSwitch, ProfileLibrary(document: store.document).resolveProfileSwitch(parameter: action.parameter) == .unavailable { values.append("The selected profile switch target no longer exists.") }
         return values
     }
 
@@ -204,8 +202,8 @@ struct ControlInspectorView: View {
     private var profileSwitchBinding: SwiftUI.Binding<String> { SwiftUI.Binding(get: { profileSwitchSelection }, set: { value in var action = store.selectedBinding.action; action.parameter = value; store.updateSelected(action: action) }) }
     private var profileSwitchSelection: String {
         let parameter = store.selectedBinding.action.parameter
-        if parameter == "cycle-profile" || store.document.profiles.contains(where: { $0.id.uuidString.caseInsensitiveCompare(parameter) == .orderedSame }) { return parameter }
-        if let profile = store.document.profiles.first(where: { $0.presetID == parameter || $0.name == parameter }) { return profile.id.uuidString }
+        // Show the profile Preview would switch to; menu tags are uppercase UUID strings.
+        if case .profile(let id) = ProfileLibrary(document: store.document).resolveProfileSwitch(parameter: parameter) { return id.uuidString }
         return parameter
     }
 
