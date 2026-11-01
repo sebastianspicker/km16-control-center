@@ -23,6 +23,7 @@
 worktrees/
 AGENTS.md
 CLAUDE.md
+CODEX.md
 GEMINI.md
 .cursorrules
 /.github/copilot-instructions.md
@@ -101,3 +102,10 @@ id_rsa*
 id_ed25519*
 id_ecdsa*
 .*_history
+
+# Local remediation records and scratch state.
+/.private/
+/scratch/
+/ALPHA_*.md
+/*_LEDGER.md
+/*-LEDGER.md

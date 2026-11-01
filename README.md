@@ -3,6 +3,23 @@
 A macOS profile editor and action launcher for the MMD KM16 Pro macro pad.
 Assign shortcuts, text, commands, and app actions to its 16 keys and three knobs.
 
+<details>
+<summary>Status and limitations</summary>
+
+KM16 Control Center is an independent experimental project for editing
+macro-pad profiles and launching desktop actions. Developed independently
+alongside my main professional work. The app and portable firmware core
+remain alpha starting points to review and adapt. The Mac app can edit
+profiles and run actions, but live pad input, device configuration and
+firmware flashing are not implemented; the C core is not a flashable image.
+
+**Disclaimer.** Imported assignments can execute commands or affect other
+applications. Review their contents and permissions before enabling live
+actions, keep recoverable copies of important work, and take responsibility
+for changes made on your Mac.
+
+</details>
+
 The app works without a pad connected. Profiles stay on the Mac; live pad
 input, device configuration, and firmware flashing are not implemented. This
 repository also contains the hardware research and a portable C firmware core.
@@ -10,6 +27,16 @@ repository also contains the hardware research and a portable C firmware core.
 Try the [browser demo](https://sebastianspicker.github.io/km16-control-center/)
 with the same factory presets. All actions are simulated. See the
 [demo guide](site/README.md) to run it locally or host your own copy.
+
+The current workflow runs on the Mac; the physical pad is not connected to it.
+
+```mermaid
+flowchart LR
+    A[Edit a profile] --> B[Save assignments on the Mac]
+    B --> C[Preview an action]
+    B --> D[Run Selected with live actions enabled]
+    D --> E[Mac apps or configured services]
+```
 
 ## Get started
 
@@ -75,6 +102,10 @@ Codex CLI and a workspace you choose. Neither service is needed to edit profiles
 ![Connections window with live actions disabled and unconfigured OBS audio sources](docs/screenshots/connections.jpg)
 
 ## Documentation and development
+
+The source-build workflow runs automatically only for Dependabot-authored PRs
+and can be dispatched manually. Publishing the browser demo requires a manual
+workflow run on `main`; ordinary pushes and PRs do not deploy it.
 
 | Guide | What you'll find |
 | --- | --- |

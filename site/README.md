@@ -33,8 +33,8 @@ stops; choose a fresh destination with `--output`.
 
 After pushing the repository to GitHub, open **Settings → Pages** and choose
 **GitHub Actions** as the build source. The **Browser demo** workflow builds and
-deploys changes from `main`; you can also run it manually from the Actions tab.
-Pull requests build and check the demo without deploying it.
+deploys only when manually run from the Actions tab with `main` selected.
+Ordinary pushes and pull requests do not build or deploy Pages.
 
 The deployment job reports the site's URL in the `github-pages` environment. Add
 that URL to the repository's About website field and the root README once the

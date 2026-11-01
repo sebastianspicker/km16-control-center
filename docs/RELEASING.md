@@ -44,7 +44,8 @@ release.
 
 ## Browser demo
 
-The separate **Browser demo** workflow publishes the static mockup to GitHub Pages
+The separate **Browser demo** workflow requires a manual run on `main` to publish
+the static mockup to GitHub Pages
 after Pages is configured to use GitHub Actions. It deploys only the allowlisted
 `dist/site` output, never the repository root. See the [demo guide](../site/README.md)
 for local preview and first-time setup. A deployed demo does not distribute the

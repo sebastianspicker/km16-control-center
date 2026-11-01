@@ -22,7 +22,8 @@ if the packaged preset bundle lacks the setup guides, and signs the bundle ad-ho
 package, launch, or exercise live integrations. The portable C core and browser
 demo have their own build instructions in their linked guides below.
 
-Before building, CI checks that no tracked file also matches the repository's
+The source-build workflow runs automatically only for Dependabot-authored PRs
+and remains manually dispatchable. Before building, CI checks that no tracked file also matches the repository's
 ignore rules. This command must print nothing:
 
 ```sh
