@@ -3,6 +3,8 @@
 A macOS profile editor and action launcher for the MMD KM16 Pro macro pad.
 Assign shortcuts, text, commands, and app actions to its 16 keys and three knobs.
 
+> _Claude was used to polish and proof-read the code and documentation of this repository._
+
 <details>
 <summary>Status and limitations</summary>
 
@@ -113,7 +115,7 @@ workflow run on `main`; ordinary pushes and PRs do not deploy it.
 | [Preset catalog](presets/README.md) | Assignments and setup instructions for the included apps |
 | [Browser demo](site/README.md) | Interactive mockup, local preview, and GitHub Pages setup |
 | [Contributing](CONTRIBUTING.md) | Development requirements and build commands |
-| [Architecture](docs/development/COMPANION-ARCHITECTURE.md) | Swift package boundaries and integration behavior |
+| [Architecture](docs/development/COMPANION-ARCHITECTURE.md) | Diagrams of what runs where, Run Selected, Save, the build, and a code map |
 | [Releasing](docs/RELEASING.md) | Source releases and Mac app distribution requirements |
 
 The ad-hoc signed app bundle can be validated without a pad, OBS, Codex, or private

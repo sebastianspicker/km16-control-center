@@ -3,6 +3,53 @@
 KM16 Control Center is a SwiftPM macOS app for software profiles and explicit
 desktop/service actions. Profiles do not synchronize with device firmware layers.
 
+## System overview
+
+What runs where, and what does the app talk to? Everything inside the box runs
+in one macOS process; the boxes outside it are other programs on the Mac or on
+the network. The pad itself is not connected.
+
+```mermaid
+flowchart LR
+  user((User))
+  subgraph app [KM16ControlCenter process]
+    views[SwiftUI views]
+    store[ControlCenterStore]
+    core[KM16ControlCore]
+    runner[DesktopActionRunner]
+    obsc[OBSController]
+    codexc[CodexDeckClient]
+  end
+  file[("profiles.json")]
+  apps[Other Mac apps]
+  obs[OBS Studio]
+  codex[codex app-server]
+  user -->|"click, ⌘S, ⌘⇧Return"| views
+  views -->|"edit, preview, save"| store
+  store -->|"validate, load, save"| core
+  core -->|atomic write| file
+  views -->|Run Selected| runner
+  views -->|Run Selected| obsc
+  views -->|"Run Selected, chat"| codexc
+  runner -->|"CGEvent, posix_spawn"| apps
+  obsc -->|WebSocket v5| obs
+  codexc -->|stdio JSON-RPC| codex
+  classDef focus fill:#fde68a,stroke:#b45309,color:#1f2937
+  class store focus
+```
+
+Edits, Preview and Save stay inside the process: `ControlCenterStore` changes
+the working document and `KM16ControlCore` validates and persists it. Only
+**Run Selected** with live actions enabled reaches the three providers, and
+`ContentView` calls each provider directly, not through the store. The store
+only records the result.
+
+Where in the code:
+- [App/KM16ControlCenterApp.swift](../../Sources/KM16ControlCenter/App/KM16ControlCenterApp.swift): scenes (main, overlay, Connections, Settings) and the one shared store
+- [Stores/ControlCenterStore.swift](../../Sources/KM16ControlCenter/Stores/ControlCenterStore.swift): session state
+- [Views/ContentView.swift](../../Sources/KM16ControlCenter/Views/ContentView.swift): toolbar and `runSelected()`
+- [DesktopActionRunner.swift](../../Sources/KM16Integrations/DesktopActionRunner.swift), [OBSController.swift](../../Sources/KM16Integrations/OBSController.swift), [CodexDeckClient.swift](../../Sources/KM16Integrations/CodexDeckClient.swift): the providers
+
 ## Package structure
 
 The Swift package is at the repository root. Dependencies point downward only:
@@ -34,6 +81,51 @@ those providers. Termination handles unsaved profiles and stops owned providers.
 
 ## Input and actions
 
+### What happens on Run Selected
+
+What does **Run Selected** (⌘⇧Return) do with a shortcut assignment?
+
+```mermaid
+sequenceDiagram
+  autonumber
+  actor U as User
+  participant cv as ContentView
+  participant runner as DesktopActionRunner
+  participant val as ActionValidator
+  participant target as Target app
+  participant store as ControlCenterStore
+  U->>cv: Run Selected
+  cv->>cv: liveActionsEnabled?
+  cv->>runner: perform(action, fallback bundle ID)
+  runner->>val: issues(for: action)
+  val-->>runner: no issues
+  runner->>runner: requireAccessibility()
+  runner->>target: activate, wait until frontmost
+  runner-)target: DesktopEvents.shortcut (postToPid)
+  runner-->>cv: "Sent … to …"
+  cv->>store: recordLiveResult(message)
+```
+
+At step 2, a disabled live-action setting or a profile-switch action turns the
+run into a Preview: `store.simulate` is called and nothing leaves the process.
+OBS and agent actions branch at step 3 to `OBSController.perform` and
+`CodexDeckClient.perform` instead. Commands (`.shell`) skip steps 6–7 and run
+through `BoundedProcessRunner`, which spawns the executable in its own process
+group through the `km16_spawn_group` C shim. A thrown error is recorded as
+"Run failed: …" at step 10.
+
+Preview (⌘Return) is the short path: `ControlCenterStore.simulate` calls
+`SimulationDispatcher.dispatch`, which validates the action and records a
+"Would run …" event.
+
+Where in the code:
+- [Views/ContentView.swift](../../Sources/KM16ControlCenter/Views/ContentView.swift): `runSelected()`
+- [DesktopActionRunner.swift](../../Sources/KM16Integrations/DesktopActionRunner.swift): `perform`, `requireAccessibility`, `focus`
+- [DesktopEvents.swift](../../Sources/KM16Integrations/DesktopEvents.swift), [ProcessRunner.swift](../../Sources/KM16Integrations/ProcessRunner.swift), [ProcessSupport.c](../../Sources/KM16ProcessSupport/ProcessSupport.c): input events and commands
+- [Simulation.swift](../../Sources/KM16ControlCore/Simulation.swift), [ActionSpecifications.swift](../../Sources/KM16ControlCore/ActionSpecifications.swift): Preview and validation
+
+### Preview, replay and live-action rules
+
 The 25 input slots cover 16 keys and three actions per knob. Preview and saved-capture
 replay resolve assignments in the selected profile and produce bounded simulation
 events. Profile-switch actions change local state. Neither path calls a live provider.
@@ -56,6 +148,43 @@ are specific to the studied stock layer. Fn and two knob presses were not visibl
 in the captures. The app does not enumerate or open HID devices.
 
 ## Profiles and persistence
+
+What happens on Save (⌘S), and which files end up on disk?
+
+```mermaid
+sequenceDiagram
+  autonumber
+  actor U as User
+  participant store as ControlCenterStore
+  participant pers as ProfilePersistence
+  participant disk as profiles.json
+  U->>store: save()
+  store->>pers: currentFileData()
+  pers-->>store: bytes on disk
+  alt changed since load
+    store-->>U: "Profiles Changed on Disk" (Overwrite?)
+  else unchanged
+    store->>pers: save(document)
+    pers->>disk: read and validate old file
+    pers->>disk: write profiles.json.backup
+    pers->>disk: atomic write of new document
+    store->>store: savedDocument = document
+  end
+```
+
+The file lives at `~/Library/Application Support/KM16ControlCenter/profiles.json`
+unless `--profiles-path` or `KM16_PROFILES_PATH` overrides it. If the old file
+does not validate at step 6, it is copied to
+`profiles.json.recovery-<time>-<uuid>.json` instead of replacing the backup.
+Overwrite in the dialog calls `save(overwritingExternalChanges: true)`. OBS and
+Codex settings live in `UserDefaults`, not in the profiles file.
+
+Where in the code:
+- [Persistence.swift](../../Sources/KM16ControlCore/Persistence.swift): `ProfilePersistence` (load, save, import, export, recovery)
+- [ControlModels.swift](../../Sources/KM16ControlCore/ControlModels.swift): `ProfileDocument`, `Profile`, `Binding`, `ControlAction`
+- [AppConfiguration.swift](../../Sources/KM16ControlCenter/Models/AppConfiguration.swift): profiles path overrides
+
+### Profile and storage rules
 
 Profiles contain a UUID, name, preset origin, summary, app-matching rules, and one
 binding per control. Schema 1 migrates to schema 2 in memory. Incomplete legacy
@@ -94,3 +223,58 @@ The transport bounds frames, buffered input, pending requests, and request time.
 Its ordered reader accepts fragmented JSON lines; a separate queue writes to the
 child process. Completion and cancellation release request timers. Disconnect
 invalidates the connection generation and fails outstanding requests.
+
+## Build and release
+
+How do the Swift sources become the app, the preset exports and the demo site?
+
+```mermaid
+flowchart LR
+  catalog["presets/Catalog/*.swift"]
+  export[KM16PresetExport]
+  json["presets/*.json, all.json"]
+  groups["site/app.js groups"]
+  build[swift build]
+  script[build_and_run.sh]
+  bundle[KM16ControlCenter.app]
+  site[build-site.py]
+  pages[GitHub Pages]
+  catalog --> export
+  export -->|generates| json
+  export -->|generates| groups
+  catalog --> build
+  build -->|"binary, resource bundles"| script
+  script -->|"copy, ad-hoc codesign"| bundle
+  json -->|all.json as presets.json| site
+  groups --> site
+  site -->|"dist/site, manual dispatch"| pages
+```
+
+`swift run KM16PresetExport --check` fails when the generated files are stale,
+so commit the regenerated JSON with every catalog change. `build_and_run.sh`
+checks that the setup guides are inside the packaged presets bundle before it
+signs the app. The `macos` job in [offline.yml](../../.github/workflows/offline.yml)
+runs on manual dispatch and on Dependabot PRs; [pages.yml](../../.github/workflows/pages.yml)
+deploys the demo only on a manual run from `main`. Releases are covered in
+[RELEASING.md](../RELEASING.md).
+
+## Code map
+
+In the order a newcomer would read it:
+
+| Path | Responsibility |
+| --- | --- |
+| [Package.swift](../../Package.swift) | Targets and their dependencies |
+| [KM16ControlCore/ControlModels.swift](../../Sources/KM16ControlCore/ControlModels.swift) | Controls, actions, profiles, the document |
+| [KM16ControlCore/ActionSpecifications.swift](../../Sources/KM16ControlCore/ActionSpecifications.swift) | Action validation and parameter parsing |
+| [KM16ControlCore/Persistence.swift](../../Sources/KM16ControlCore/Persistence.swift) | Load, migrate, save, import, export |
+| [KM16ControlCore/ProfileLibrary.swift](../../Sources/KM16ControlCore/ProfileLibrary.swift) | Naming, merge import, profile switching |
+| [Stores/ControlCenterStore.swift](../../Sources/KM16ControlCenter/Stores/ControlCenterStore.swift) | Session state, undo, the save flow |
+| [Views/ContentView.swift](../../Sources/KM16ControlCenter/Views/ContentView.swift) | Main window, toolbar, Run Selected |
+| [Sources/KM16Integrations/](../../Sources/KM16Integrations) | Desktop input, processes, OBS, Codex, HID capture decoding |
+| [presets/Catalog/](../../presets/Catalog) | Factory presets (source of truth) |
+| [KM16PresetExport/main.swift](../../Sources/KM16PresetExport/main.swift) | Preset JSON and demo group generator |
+| [script/build_and_run.sh](../../script/build_and_run.sh) | App bundle assembly and signing |
+| [site/](../../site) | Browser demo (simulated actions only) |
+| [firmware/custom/](../../firmware/custom) | Portable C firmware core with a host demo |
+| [scripts/](../../scripts) | Research, capture and site build tools |
