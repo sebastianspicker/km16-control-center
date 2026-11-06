@@ -71,7 +71,7 @@ public struct ProfileLibrary: Equatable, Sendable {
         let cleaned = name.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !cleaned.isEmpty else { return .failure(.blank) }
         if let active = activeProfile, cleaned != active.name,
-           document.profiles.contains(where: { $0.name.localizedCaseInsensitiveCompare(cleaned) == .orderedSame }) {
+           document.profiles.contains(where: { $0.id != active.id && $0.name.localizedCaseInsensitiveCompare(cleaned) == .orderedSame }) {
             return .failure(.duplicate(cleaned))
         }
         return .success(cleaned)

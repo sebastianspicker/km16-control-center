@@ -120,6 +120,13 @@ public struct ControlAction: Codable, Equatable, Sendable {
         detail = try container.decodeIfPresent(String.self, forKey: .detail) ?? ""
     }
 
+    /// The parameter as validation and dispatch both read it. Identifiers drop surrounding
+    /// whitespace; snippet text and custom agent prompts keep theirs.
+    public var normalizedParameter: String {
+        if kind == .snippet || (kind == .agentAction && parameter.hasPrefix("prompt:")) { return parameter }
+        return parameter.trimmingCharacters(in: .whitespacesAndNewlines)
+    }
+
     /// Returns this action as `kind`, starting from that kind's own parameter instead of carrying
     /// the previous kind's parameter over (a shortcut string is never a valid bundle identifier).
     /// The destination app is kept only for kinds that send input to an app.

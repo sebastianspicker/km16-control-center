@@ -73,7 +73,7 @@ struct SidebarView: View {
         .alert(editingName ? "Rename Profile" : "New Profile", isPresented: $showingNameEditor) {
             TextField("Name", text: $name)
             Button(editingName ? "Rename" : "Create") {
-                if editingName { store.renameActiveProfile(to: name) } else { store.createProfile(named: name.isEmpty ? "Untitled Profile" : name) }
+                if editingName { store.renameActiveProfile(to: name) } else { store.createProfile(named: name) }
             }
             Button("Cancel", role: .cancel) {}
         }

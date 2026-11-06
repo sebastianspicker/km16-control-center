@@ -23,7 +23,9 @@ package, launch, or exercise live integrations. The portable C core and browser
 demo have their own build instructions in their linked guides below.
 
 The source-build workflow runs automatically only for Dependabot-authored PRs
-and remains manually dispatchable. Before building, CI checks that no tracked file also matches the repository's
+and remains manually dispatchable. On other PRs its `macos` job is skipped, and
+GitHub counts a skipped required check as passed, so run the build commands above
+(or dispatch the workflow) before merging. Before building, CI checks that no tracked file also matches the repository's
 ignore rules. This command must print nothing:
 
 ```sh

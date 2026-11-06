@@ -50,8 +50,9 @@ extension CodexDeckClient {
         case "item/agentMessage/delta":
             let key = params["itemId"].string ?? "latest"
             let delta = params["delta"].string ?? ""
-            snapshot.messages[key] = String((snapshot.messages[key, default: ""] + delta).suffix(100_000))
-            snapshot.output = String((snapshot.output + delta).suffix(200_000))
+            // Runs for every streamed token: check and trim in UTF-8 bytes, never by walking Characters.
+            snapshot.messages[key] = Self.keepingLast(100_000, of: snapshot.messages[key, default: ""] + delta)
+            snapshot.output = Self.keepingLast(200_000, of: snapshot.output + delta)
         case "item/completed":
             let item = params["item"]
             if let itemID = item["id"].string {
@@ -88,6 +89,14 @@ extension CodexDeckClient {
         requests.append(request)
         state = "Needs input"
     }
+    /// The last `limit` UTF-8 bytes of `text`. A cut inside a character drops that partial character.
+    static func keepingLast(_ limit: Int, of text: String) -> String {
+        guard text.utf8.count > limit else { return text }
+        let tail = text.utf8.suffix(limit)
+        // Skip UTF-8 continuation bytes (10xxxxxx) left over from a character cut in half.
+        return String(decoding: tail.drop { $0 & 0xC0 == 0x80 }, as: UTF8.self)
+    }
+
     func hydrate(_ thread: JSONValue) {
         guard let id = thread["id"].string else { return }
         var snapshot = DeckSnapshot()

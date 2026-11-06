@@ -25,9 +25,9 @@ struct ContentView: View {
         .background(WindowCloseGuard(store: store).frame(width: 0, height: 0))
         .sheet(isPresented: $showingImportPolicy) { importPolicySheet }
         .alert("Unsaved Profile Changes", isPresented: Bindable(store).closeConfirmationRequested) {
-            Button("Save") { if store.saveForClose() { finishQuitIfNeeded() } }
-            Button("Discard", role: .destructive) { store.discardUnsavedChanges(); finishQuitIfNeeded() }
-            Button("Keep Editing", role: .cancel) { store.cancelCloseRequest() }
+            Button("Save") { store.save() }
+            Button("Discard", role: .destructive) { store.discardUnsavedChanges() }
+            Button("Keep Editing", role: .cancel) {}
         } message: { Text("Profiles have unsaved changes. Save or discard them before closing this window.") }
         .onAppear { store.matchForegroundApplication() }
         .onReceive(NSWorkspace.shared.notificationCenter.publisher(for: NSWorkspace.didActivateApplicationNotification)) { notification in
@@ -158,14 +158,14 @@ struct ContentView: View {
                 guard codex.isConnected else { store.recordLiveResult("Codex Deck is not connected. Preview remains available.", for: controlID); return }
                 result = try await codex.perform(action)
             } else if action.kind == .obsAction {
-                guard let operation = OBSOperation(rawValue: action.parameter) else { throw LiveActionError.unknownOBSOperation }
+                guard let operation = OBSOperation(rawValue: action.normalizedParameter) else { throw LiveActionError.unknownOBSOperation }
                 result = try await obs.perform(operation)
             } else {
                 result = try await runner.perform(action, fallbackTargetBundleID: action.targetBundleID ?? store.lastExternalBundleID)
             }
             store.recordLiveResult(result, for: controlID)
             Diagnostics.logLiveAction(action, controlID: controlID, result: .success(result))
-            if action.kind == .agentAction, ["new-task", "open-task", "previous-task", "next-task", "open-diff"].contains(action.parameter) {
+            if action.kind == .agentAction, ["new-task", "open-task", "previous-task", "next-task", "open-diff"].contains(action.normalizedParameter) {
                 openWindow(id: "integrations")
             }
         } catch {
@@ -187,12 +187,6 @@ struct ContentView: View {
         } catch {
             store.recordLiveResult("Replay rejected: \(error.localizedDescription)", for: store.selectedControlID)
         }
-    }
-
-    @MainActor private func finishQuitIfNeeded() {
-        guard store.quitRequested else { return }
-        store.quitRequested = false
-        NSApp.terminate(nil)
     }
 }
 

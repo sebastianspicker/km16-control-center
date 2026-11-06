@@ -4,13 +4,14 @@ import KM16ControlCore
 extension CodexDeckClient {
     public func perform(_ action: ControlAction) async throws -> String {
         try requireConnection()
-        switch action.parameter {
+        let parameter = action.normalizedParameter
+        switch parameter {
         case "new-task":
             return try await startThread()
         case "previous-task", "next-task":
             guard !threads.isEmpty else { throw IntegrationError.message("No threads in this workspace.") }
             let current = threads.firstIndex { $0.id == selectedThreadID } ?? 0
-            let delta = action.parameter == "next-task" ? 1 : -1
+            let delta = parameter == "next-task" ? 1 : -1
             let next = (current + delta + threads.count) % threads.count
             try await selectThread(threads[next].id)
             return "Opened \(threads[next].title)."
@@ -23,7 +24,7 @@ extension CodexDeckClient {
             return "Interrupt requested; waiting for turn completion."
         case "previous-changed-file", "next-changed-file":
             guard !changedFiles.isEmpty else { throw IntegrationError.message("The selected thread has no changed files.") }
-            let delta = action.parameter == "next-changed-file" ? 1 : -1
+            let delta = parameter == "next-changed-file" ? 1 : -1
             selectedFileIndex = (selectedFileIndex + delta + changedFiles.count) % changedFiles.count
             diffRevealCounter += 1
             return "Selected \(changedFiles[selectedFileIndex])."
@@ -44,7 +45,7 @@ extension CodexDeckClient {
                 "summarize-context": "Summarize this task, decisions, changed files, verification and unfinished work. Do not modify files.",
                 "draft-commit": "Inspect the current changes and draft a concise commit message. Do not commit, push or modify files."
             ]
-            let prompt = action.parameter.hasPrefix("prompt:") ? String(action.parameter.dropFirst(7)) : prompts[action.parameter]
+            let prompt = parameter.hasPrefix("prompt:") ? String(parameter.dropFirst(7)) : prompts[parameter]
             guard let prompt else { throw IntegrationError.message("Unknown Agent Deck action.") }
             try await sendPrompt(prompt)
             return "Submitted \(action.label) to the selected thread."

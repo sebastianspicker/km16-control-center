@@ -162,8 +162,7 @@ public enum ActionValidator {
             if: action.targetBundleID.map { !isValidBundleID($0) } ?? false,
             "The target bundle identifier is invalid."
         )
-        let parameter = action.parameter.trimmingCharacters(in: .whitespacesAndNewlines)
-        issues.append(contentsOf: parameterIssues(for: action, parameter: parameter))
+        issues.append(contentsOf: parameterIssues(for: action, parameter: action.normalizedParameter))
         return issues
     }
 
@@ -171,7 +170,7 @@ public enum ActionValidator {
         switch action.kind {
         case .shortcut: return parsingIssues { try ShortcutSpec.parse(parameter) }
         case .launchApp: return issue(if: !isValidBundleID(parameter), "The app bundle identifier is invalid.")
-        case .snippet: return issue(if: parameter.isEmpty, "Snippet text is required.")
+        case .snippet: return issue(if: parameter.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty, "Snippet text is required.")
         case .shell: return parsingIssues { try ProcessSpec.parse(parameter) }
         case .obsAction: return issue(if: OBSOperation(rawValue: parameter) == nil, "The OBS action identifier is unsupported.")
         case .agentAction: return agentIssues(parameter)

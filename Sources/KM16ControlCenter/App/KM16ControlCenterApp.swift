@@ -65,25 +65,72 @@ struct KM16ControlCenterApp: App {
     }
 }
 
+enum UnsavedQuitChoice { case save, discard, keepEditing }
+
 @MainActor
 final class KM16ApplicationDelegate: NSObject, NSApplicationDelegate {
     weak var store: ControlCenterStore?
     weak var runner: DesktopActionRunner?
     weak var codex: CodexDeckClient?
+    /// Modal prompts, so quitting works even when no main window is open. Tests replace them.
+    var confirmUnsavedQuit: @MainActor () -> UnsavedQuitChoice = KM16ApplicationDelegate.askUnsavedQuit
+    /// Returns true when the user chose Overwrite for a file that changed on disk.
+    var showProblem: @MainActor (LibraryProblem) -> Bool = KM16ApplicationDelegate.show
 
     func configure(store: ControlCenterStore, runner: DesktopActionRunner, codex: CodexDeckClient) {
         self.store = store; self.runner = runner; self.codex = codex
     }
 
     func applicationShouldTerminate(_ sender: NSApplication) -> NSApplication.TerminateReply {
-        // Stop work only once quitting is certain; "Keep Editing" must leave commands and Codex alone.
-        guard let store, store.isDirty else {
-            runner?.cancel()
-            codex?.disconnect()
-            return .terminateNow
+        if let store, store.isDirty {
+            switch confirmUnsavedQuit() {
+            case .keepEditing: return .terminateCancel
+            case .discard: store.discardUnsavedChanges()
+            case .save:
+                guard saveOrReport(store) else { return .terminateCancel }
+            }
         }
-        store.quitRequested = true
-        store.closeConfirmationRequested = true
-        return .terminateCancel
+        // Stop work only once quitting is certain; "Keep Editing" must leave commands and Codex alone.
+        runner?.cancel()
+        codex?.disconnect()
+        return .terminateNow
+    }
+
+    /// Reports a failed save here, because the main window that reports it otherwise may be closed.
+    /// A file changed on disk can be overwritten once from that report.
+    private func saveOrReport(_ store: ControlCenterStore) -> Bool {
+        var overwriting = false
+        while !store.save(overwritingExternalChanges: overwriting) {
+            guard let problem = store.libraryProblem else { return false }
+            store.dismissLibraryProblem(problem.id)
+            guard showProblem(problem), problem.offersOverwrite, !overwriting else { return false }
+            overwriting = true
+        }
+        return true
+    }
+
+    private static func askUnsavedQuit() -> UnsavedQuitChoice {
+        let alert = NSAlert()
+        alert.messageText = "Unsaved Profile Changes"
+        alert.informativeText = "Profiles have unsaved changes. Save or discard them before quitting."
+        alert.addButton(withTitle: "Save")
+        alert.addButton(withTitle: "Discard").hasDestructiveAction = true
+        alert.addButton(withTitle: "Keep Editing").keyEquivalent = "\u{1b}"
+        switch alert.runModal() {
+        case .alertFirstButtonReturn: return .save
+        case .alertSecondButtonReturn: return .discard
+        default: return .keepEditing
+        }
+    }
+
+    private static func show(_ problem: LibraryProblem) -> Bool {
+        let alert = NSAlert()
+        alert.alertStyle = .warning
+        alert.messageText = problem.title
+        alert.informativeText = problem.message
+        guard problem.offersOverwrite else { _ = alert.runModal(); return false }
+        alert.addButton(withTitle: "Overwrite").hasDestructiveAction = true
+        alert.addButton(withTitle: "Cancel")
+        return alert.runModal() == .alertFirstButtonReturn
     }
 }

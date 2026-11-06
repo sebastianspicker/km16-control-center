@@ -15,18 +15,22 @@ enum SystemAudio {
             guard AudioObjectSetPropertyData(device, &address, 0, nil, size, &mute) == noErr else { throw IntegrationError.message("The output device rejected mute control.") }
             return
         }
-        var changed = false
-        for channel in [UInt32(0), 1, 2] {
-            address = AudioObjectPropertyAddress(mSelector: kAudioDevicePropertyVolumeScalar, mScope: kAudioDevicePropertyScopeOutput, mElement: channel)
-            var settable: DarwinBoolean = false
-            guard AudioObjectHasProperty(device, &address), AudioObjectIsPropertySettable(device, &address, &settable) == noErr, settable.boolValue else { continue }
-            var value: Float32 = 0; size = UInt32(MemoryLayout<Float32>.size)
-            guard AudioObjectGetPropertyData(device, &address, 0, nil, &size, &value) == noErr else { continue }
-            value = min(1, max(0, value + (action == "volumeUp" ? 0.0625 : -0.0625)))
-            guard AudioObjectSetPropertyData(device, &address, 0, nil, size, &value) == noErr else { throw IntegrationError.message("The output device rejected volume control.") }
-            changed = true
-            if channel == 0 { break }
+        func volumeAddress(_ channel: UInt32) -> AudioObjectPropertyAddress {
+            AudioObjectPropertyAddress(mSelector: kAudioDevicePropertyVolumeScalar, mScope: kAudioDevicePropertyScopeOutput, mElement: channel)
         }
-        guard changed else { throw IntegrationError.message("This output device has no writable volume control.") }
+        func writable(_ channel: UInt32) -> Bool {
+            var channelAddress = volumeAddress(channel), settable: DarwinBoolean = false
+            return AudioObjectHasProperty(device, &channelAddress) && AudioObjectIsPropertySettable(device, &channelAddress, &settable) == noErr && settable.boolValue
+        }
+        // The main element, or both stereo channels together so the balance never shifts.
+        let channels: [UInt32] = writable(0) ? [0] : (writable(1) && writable(2) ? [1, 2] : [])
+        guard !channels.isEmpty else { throw IntegrationError.message("This output device has no writable volume control.") }
+        for channel in channels {
+            var channelAddress = volumeAddress(channel), value: Float32 = 0
+            size = UInt32(MemoryLayout<Float32>.size)
+            guard AudioObjectGetPropertyData(device, &channelAddress, 0, nil, &size, &value) == noErr else { throw IntegrationError.message("The output device did not report its volume.") }
+            value = min(1, max(0, value + (action == "volumeUp" ? 0.0625 : -0.0625)))
+            guard AudioObjectSetPropertyData(device, &channelAddress, 0, nil, size, &value) == noErr else { throw IntegrationError.message("The output device rejected volume control.") }
+        }
     }
 }

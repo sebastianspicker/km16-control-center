@@ -237,7 +237,8 @@ struct OBSActionExecutor {
         guard let current = response["inputVolumeMul"].number, current.isFinite else {
             throw IntegrationError.message("OBS did not return a valid volume for the \(label) source.")
         }
-        let updated = min(1, max(0, current + delta))
+        // OBS allows gains above 1.0: "up" never lowers such a boost, and never adds one by itself.
+        let updated = delta > 0 ? min(max(current, 1), current + delta) : max(0, current + delta)
         _ = try await session.request("SetInputVolume", data: [
             "inputName": .string(source),
             "inputVolumeMul": .number(updated)

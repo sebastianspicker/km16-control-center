@@ -3,7 +3,6 @@ import SwiftUI
 struct SettingsView: View {
     @Environment(ControlCenterStore.self) private var store
     @AppStorage("KM16.overlayFloating") private var overlayFloating = false
-    @AppStorage("KM16.overlayPosition") private var overlayPosition = "Remembered"
     @State private var bundleIDs = ""
     @State private var summary = ""
 
@@ -22,7 +21,11 @@ struct SettingsView: View {
             .frame(maxWidth: 760, alignment: .leading)
         }
         .onAppear(perform: syncFields)
+        // Undo, redo and import can change these without switching profiles; binding edits must not
+        // overwrite text typed here.
         .onChange(of: store.document.activeProfileID) { _, _ in syncFields() }
+        .onChange(of: store.activeProfile.summary) { _, _ in syncFields() }
+        .onChange(of: store.activeProfile.matchingBundleIDs) { _, _ in syncFields() }
     }
 
     private var matching: some View {
@@ -68,12 +71,6 @@ struct SettingsView: View {
     private var overlay: some View {
         StudioSection("Overlay", subtitle: "A compact reference window for the active profile.") {
             Toggle("Keep overlay above normal windows", isOn: $overlayFloating)
-            Picker("Opening position", selection: $overlayPosition) {
-                Text("Remembered by macOS").tag("Remembered")
-                Text("Centered on open").tag("Center")
-            }
-            .pickerStyle(.radioGroup)
-            .controlSize(.small)
         }
     }
 

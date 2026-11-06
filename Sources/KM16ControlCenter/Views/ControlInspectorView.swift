@@ -179,7 +179,7 @@ struct ControlInspectorView: View {
     private var issues: [String] {
         var values = ActionValidator.issues(for: store.selectedBinding.action)
         let action = store.selectedBinding.action
-        if action.kind == .profileSwitch, ProfileLibrary(document: store.document).resolveProfileSwitch(parameter: action.parameter) == .unavailable { values.append("The selected profile switch target no longer exists.") }
+        if action.kind == .profileSwitch, ProfileLibrary(document: store.document).resolveProfileSwitch(parameter: action.normalizedParameter) == .unavailable { values.append("The selected profile switch target no longer exists.") }
         return values
     }
 

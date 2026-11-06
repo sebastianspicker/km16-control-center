@@ -45,12 +45,12 @@ public final class DesktopActionRunner {
         switch action.kind {
         case .disabled: return "Disabled control; no action performed."
         case .launchApp:
-            guard let url = NSWorkspace.shared.urlForApplication(withBundleIdentifier: action.parameter) else { throw IntegrationError.message("The selected application is not installed.") }
+            guard let url = NSWorkspace.shared.urlForApplication(withBundleIdentifier: action.normalizedParameter) else { throw IntegrationError.message("The selected application is not installed.") }
             let configuration = NSWorkspace.OpenConfiguration(); configuration.activates = true
             _ = try await NSWorkspace.shared.openApplication(at: url, configuration: configuration)
             return "Opened \(action.label)."
         case .shell:
-            let spec = try ProcessSpec.parse(action.parameter)
+            let spec = try ProcessSpec.parse(action.normalizedParameter)
             let status = try await processRunner.run(executable: spec.executable, arguments: spec.args, directory: spec.workingDirectory, timeout: spec.timeoutSeconds)
             guard status == 0 else { throw IntegrationError.message("\(action.label) exited with status \(status).") }
             // Raw command output and arguments deliberately do not enter the routine activity log.
@@ -66,19 +66,19 @@ public final class DesktopActionRunner {
             try DesktopEvents.text(action.parameter, targetPID: target.processIdentifier)
             return "Inserted \(action.label) into \(target.localizedName ?? "selected app")."
         case .system:
-            if let operation = WindowOperation(rawValue: action.parameter) {
+            if let operation = WindowOperation(rawValue: action.normalizedParameter) {
                 try requireAccessibility()
                 let target = try await focus(action.targetBundleID ?? fallbackTargetBundleID)
                 try windowController.perform(operation, application: target)
                 return "Performed \(operation.title)."
             }
-            switch action.parameter {
-            case "volumeUp", "volumeDown", "mute": try SystemAudio.perform(action.parameter)
-            case "playPause", "previousTrack", "nextTrack": try requireAccessibility(); try DesktopEvents.media(action.parameter)
+            switch action.normalizedParameter {
+            case "volumeUp", "volumeDown", "mute": try SystemAudio.perform(action.normalizedParameter)
+            case "playPause", "previousTrack", "nextTrack": try requireAccessibility(); try DesktopEvents.media(action.normalizedParameter)
             case "scrollUp", "scrollDown":
                 try requireAccessibility()
                 let target = try await focus(action.targetBundleID ?? fallbackTargetBundleID)
-                guard let event = CGEvent(scrollWheelEvent2Source: nil, units: .line, wheelCount: 1, wheel1: action.parameter == "scrollUp" ? 3 : -3, wheel2: 0, wheel3: 0) else { throw IntegrationError.message("Could not create a scroll event.") }
+                guard let event = CGEvent(scrollWheelEvent2Source: nil, units: .line, wheelCount: 1, wheel1: action.normalizedParameter == "scrollUp" ? 3 : -3, wheel2: 0, wheel3: 0) else { throw IntegrationError.message("Could not create a scroll event.") }
                 event.postToPid(target.processIdentifier)
             case "dictation": throw IntegrationError.message("Set this action to the Dictation shortcut configured in macOS Keyboard settings. The app does not assume the system shortcut.")
             default: throw IntegrationError.message("Unsupported system action.")

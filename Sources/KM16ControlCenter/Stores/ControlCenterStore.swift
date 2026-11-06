@@ -48,7 +48,6 @@ final class ControlCenterStore {
     var lastForegroundBundleID: String?
     var lastExternalBundleID: String?
     var closeConfirmationRequested = false
-    var quitRequested = false
     let persistence: ProfilePersistence
     private let dispatcher: SimulationDispatcher
     private let ownBundleIdentifier: String?
@@ -121,7 +120,9 @@ final class ControlCenterStore {
     func createProfile(named name: String = "Untitled Profile") {
         var library = ProfileLibrary(document: document)
         guard library.canAddProfiles() else { statusMessage = profileLimitMessage; return }
-        let profile = library.createProfile(named: name)
+        // A blank name would make every later save fail validation.
+        let cleaned = name.trimmingCharacters(in: .whitespacesAndNewlines)
+        let profile = library.createProfile(named: cleaned.isEmpty ? "Untitled Profile" : cleaned)
         mutate("Created \(profile.name).") { document = library.document }
     }
 
@@ -241,10 +242,10 @@ final class ControlCenterStore {
         guard let binding = activeProfile.binding(for: controlID) else { return }
         let action = binding.action
         if action.kind == .profileSwitch {
-            switch ProfileLibrary(document: document).resolveProfileSwitch(parameter: action.parameter) {
+            switch ProfileLibrary(document: document).resolveProfileSwitch(parameter: action.normalizedParameter) {
             case .cycle: cycleProfile()
             case .profile(let id): select(profileID: id)
-            case .unavailable: recordLiveResult("Profile switch target \(action.parameter) is unavailable.", for: controlID)
+            case .unavailable: recordLiveResult("Profile switch target \(action.normalizedParameter) is unavailable.", for: controlID)
             }
             return
         }
@@ -291,13 +292,6 @@ final class ControlCenterStore {
         knownFileData = (try? persistence.currentFileData()) ?? nil
         statusMessage = "Saved profiles to \(persistence.url.path)."
         Diagnostics.library.info("Saved \(self.document.profiles.count) profiles\(overwritingExternalChanges ? " over external changes" : "", privacy: .public).")
-        return true
-    }
-
-    /// Save from the unsaved-changes dialog. A failed save also cancels a pending quit, so the
-    /// dialog does not reappear until the reported problem is fixed.
-    func saveForClose() -> Bool {
-        guard save() else { cancelCloseRequest(); return false }
         return true
     }
 
@@ -358,11 +352,6 @@ final class ControlCenterStore {
         normalizeTransientState()
         undoHistory.removeAll(); redoHistory.removeAll()
         statusMessage = "Discarded unsaved edits."
-    }
-
-    func cancelCloseRequest() {
-        closeConfirmationRequested = false
-        quitRequested = false
     }
 
     func revealRecoveryFiles() {
