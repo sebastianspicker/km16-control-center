@@ -7,10 +7,10 @@ The device snapshot remains authoritative for the connected board.
 import argparse
 import hashlib
 import json
-from pathlib import Path
 import re
 import struct
 import zlib
+from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 EXPECTED = "d162ee27c2ac752278e6b71e6ebceb8bd74107be84fca1f14d7499792a07e351"

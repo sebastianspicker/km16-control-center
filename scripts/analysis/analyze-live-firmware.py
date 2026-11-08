@@ -3,9 +3,9 @@
 import argparse
 import importlib.util
 import json
-from pathlib import Path
 import struct
 import zlib
+from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 spec = importlib.util.spec_from_file_location("reference_inspector", ROOT / "scripts/analysis/analyze-firmware.py")

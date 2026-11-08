@@ -5,12 +5,11 @@ import datetime
 import hashlib
 import json
 import os
-from pathlib import Path
 import signal
 import subprocess
 import sys
 import time
-
+from pathlib import Path
 
 MAX_CAPTURE_BYTES = 8 * 1024 * 1024
 MAX_CAPTURE_REPORTS = 20_000

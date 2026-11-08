@@ -3,9 +3,9 @@
 import datetime
 import hashlib
 import json
-from pathlib import Path
 import plistlib
 import subprocess
+from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 VID, PID = 0x28E9, 0x3145

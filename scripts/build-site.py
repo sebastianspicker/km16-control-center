@@ -3,9 +3,8 @@
 
 import argparse
 import json
-from pathlib import Path
 import shutil
-
+from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 SITE_FILES = ("index.html", "styles.css", "app.js", "favicon.svg", "archivo.woff2", "fragment-mono.woff2", "fonts-OFL.txt")

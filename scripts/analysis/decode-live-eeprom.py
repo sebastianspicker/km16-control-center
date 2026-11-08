@@ -14,7 +14,6 @@ import hashlib
 import json
 from pathlib import Path
 
-
 FLASH_BASE = 0x08002000
 EEPROM_SIZE = 0x1000
 STORAGE_FILE_OFFSET = 0x1C000

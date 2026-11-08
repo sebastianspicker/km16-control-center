@@ -1,0 +1,11 @@
+---
+# SwiftLint already reports Swift complexity; Lizard keeps C, Python and JavaScript.
+# Ruff's flake8-bandit rules (S1xx-S7xx) cover Bandit's checks; Opengrep also scans Python.
+# With this file present, the Codacy UI "Ignored files" setting no longer applies.
+engines:
+  lizard:
+    exclude_paths:
+      - "**.swift"
+  bandit:
+    exclude_paths:
+      - "**.py"
